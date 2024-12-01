@@ -1,0 +1,30 @@
+<.header>
+  Ergebnisse abschlussarbeiten <%= @ergebnisse_abschlussarbeiten.id %>
+  <:subtitle>This is a ergebnisse_abschlussarbeiten record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/ergebnisse_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit ergebnisse_abschlussarbeiten</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Matrikelnummer"><%= @ergebnisse_abschlussarbeiten.matrikelnummer %></:item>
+  <:item title="Studienniveau"><%= @ergebnisse_abschlussarbeiten.studienniveau %></:item>
+  <:item title="Status"><%= @ergebnisse_abschlussarbeiten.status %></:item>
+  <:item title="Korrekturdatum"><%= @ergebnisse_abschlussarbeiten.korrekturdatum %></:item>
+  <:item title="Note"><%= @ergebnisse_abschlussarbeiten.note %></:item>
+</.list>
+
+<.back navigate={~p"/ergebnisse_abschlussarbeiten"}>Back to ergebnisse_abschlussarbeiten</.back>
+
+<.modal :if={@live_action == :edit} id="ergebnisse_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/ergebnisse_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten}")}>
+  <.live_component
+    module={LehrstuhlWeb.ErgebnisseAbschlussarbeitenLive.FormComponent}
+    id={@ergebnisse_abschlussarbeiten.id}
+    title={@page_title}
+    action={@live_action}
+    ergebnisse_abschlussarbeiten={@ergebnisse_abschlussarbeiten}
+    patch={~p"/ergebnisse_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten}"}
+  />
+</.modal>

@@ -1,0 +1,33 @@
+<.header>
+  Modul <%= @modul.id %>
+  <:subtitle>This is a modul record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/module/#{@modul}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit modul</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Betreuer"><%= @modul.mitarbeiter.email %></:item>
+  <:item title="Lehrstuhlinahber"><%= @modul.lehrstuhlinhaber.email %></:item>
+  <:item title="Name"><%= @modul.name %></:item>
+</.list>
+
+<.back navigate={~p"/module"}>Back to module</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="modul-modal"
+  show
+  on_cancel={JS.patch(~p"/module/#{@modul}")}
+>
+  <.live_component
+    module={LehrstuhlWeb.ModulLive.FormComponent}
+    id={@modul.id}
+    title={@page_title}
+    action={@live_action}
+    modul={@modul}
+    patch={~p"/module/#{@modul}"}
+  />
+</.modal>

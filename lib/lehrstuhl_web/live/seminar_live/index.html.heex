@@ -1,0 +1,54 @@
+<.header>
+  Listing Seminare
+  <:actions>
+    <.link patch={~p"/seminare/new"}>
+      <.button>New Seminar</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="seminare"
+  rows={@streams.seminare}
+  row_click={fn {_id, seminar} -> JS.navigate(~p"/seminare/#{seminar}") end}
+>
+  <:col :let={{_id, seminar}} label="Betreuer"><%= seminar.mitarbeiter.email %></:col>
+  <:col :let={{_id, seminar}} label="Abstraktes Seminar">
+    <%= seminar.abstraktes_seminar.thema %>
+  </:col>
+  <:col :let={{_id, seminar}} label="Titel"><%= seminar.titel %></:col>
+  <:col :let={{_id, seminar}} label="Aufnahmekapazitaet"><%= seminar.aufnahmekapazitaet %></:col>
+  <:col :let={{_id, seminar}} label="Semester"><%= seminar.semester %></:col>
+  <:col :let={{_id, seminar}} label="Praesenzdatum"><%= seminar.praesenzdatum %></:col>
+  <:col :let={{_id, seminar}} label="Ort"><%= seminar.ort %></:col>
+  <:action :let={{_id, seminar}}>
+    <div class="sr-only">
+      <.link navigate={~p"/seminare/#{seminar}"}>Show</.link>
+    </div>
+    <.link patch={~p"/seminare/#{seminar}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, seminar}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: seminar.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="seminar-modal"
+  show
+  on_cancel={JS.patch(~p"/seminare")}
+>
+  <.live_component
+    module={LehrstuhlWeb.SeminarLive.FormComponent}
+    id={@seminar.id || :new}
+    title={@page_title}
+    action={@live_action}
+    seminar={@seminar}
+    patch={~p"/seminare"}
+  />
+</.modal>

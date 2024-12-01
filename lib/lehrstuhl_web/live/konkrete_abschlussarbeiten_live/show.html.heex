@@ -1,0 +1,34 @@
+<.header>
+  Konkrete abschlussarbeiten <%= @konkrete_abschlussarbeiten.id %>
+  <:subtitle>This is a konkrete_abschlussarbeiten record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/konkrete_abschlussarbeiten/#{@konkrete_abschlussarbeiten}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit konkrete Abschlussarbeit</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Betreuer"><%= @konkrete_abschlussarbeiten.betreuer %></:item>
+  <:item title="Forschungsprojekt"><%= @konkrete_abschlussarbeiten.forschungsprojekt %></:item>
+  <:item title="Semester"><%= @konkrete_abschlussarbeiten.semester %></:item>
+  <:item title="Matrikelnummer"><%= @konkrete_abschlussarbeiten.matrikelnummer %></:item>
+  <:item title="Angepasste themenskizze"><%= @konkrete_abschlussarbeiten.angepasste_themenskizze %></:item>
+  <:item title="Gesetzte schwerpunkte"><%= @konkrete_abschlussarbeiten.gesetzte_schwerpunkte %></:item>
+  <:item title="Anmeldung pruefungsamt"><%= @konkrete_abschlussarbeiten.anmeldung_pruefungsamt %></:item>
+  <:item title="Abgabedatum"><%= @konkrete_abschlussarbeiten.abgabedatum %></:item>
+  <:item title="Studienniveau"><%= @konkrete_abschlussarbeiten.studienniveau %></:item>
+</.list>
+
+<.back navigate={~p"/konkrete_abschlussarbeiten"}>Back to konkrete_abschlussarbeiten</.back>
+
+<.modal :if={@live_action == :edit} id="konkrete_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/konkrete_abschlussarbeiten/#{@konkrete_abschlussarbeiten}")}>
+  <.live_component
+    module={LehrstuhlWeb.KonkreteAbschlussarbeitenLive.FormComponent}
+    id={@konkrete_abschlussarbeiten.id}
+    title={@page_title}
+    action={@live_action}
+    konkrete_abschlussarbeiten={@konkrete_abschlussarbeiten}
+    patch={~p"/konkrete_abschlussarbeiten/#{@konkrete_abschlussarbeiten}"}
+  />
+</.modal>

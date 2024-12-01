@@ -1,0 +1,49 @@
+<.header>
+  Listing Mitarbeiter
+  <:actions>
+    <.link patch={~p"/mitarbeiter/new"}>
+      <.button>New Mitarbeiter</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mitarbeiter"
+  rows={@streams.mitarbeiter_collection}
+  row_click={fn {_id, mitarbeiter} -> JS.navigate(~p"/mitarbeiter/#{mitarbeiter}") end}
+>
+  <:col :let={{_id, mitarbeiter}} label="Email"><%= mitarbeiter.email %></:col>
+  <:col :let={{_id, mitarbeiter}} label="Nachname"><%= mitarbeiter.nachname %></:col>
+  <:col :let={{_id, mitarbeiter}} label="Vorname"><%= mitarbeiter.vorname %></:col>
+  <:col :let={{_id, mitarbeiter}} label="Rolle"><%= mitarbeiter.rolle %></:col>
+  <:action :let={{_id, mitarbeiter}}>
+    <div class="sr-only">
+      <.link navigate={~p"/mitarbeiter/#{mitarbeiter}"}>Show</.link>
+    </div>
+    <.link patch={~p"/mitarbeiter/#{mitarbeiter}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, mitarbeiter}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: mitarbeiter.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="mitarbeiter-modal"
+  show
+  on_cancel={JS.patch(~p"/mitarbeiter")}
+>
+  <.live_component
+    module={LehrstuhlWeb.MitarbeiterLive.FormComponent}
+    id={@mitarbeiter.id || :new}
+    title={@page_title}
+    action={@live_action}
+    mitarbeiter={@mitarbeiter}
+    patch={~p"/mitarbeiter"}
+  />
+</.modal>

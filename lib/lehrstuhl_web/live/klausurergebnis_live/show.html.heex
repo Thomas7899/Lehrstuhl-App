@@ -1,0 +1,36 @@
+<.header>
+  Klausurergebnis <%= @klausurergebnis.id %>
+  <:subtitle>This is a klausurergebnis record from your database.</:subtitle>
+  <:actions>
+    <.link
+      patch={~p"/klausurergebnisse/#{@klausurergebnis}/show/edit"}
+      phx-click={JS.push_focus()}
+    >
+      <.button>Edit klausurergebnis</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Student"><%= @klausurergebnis.student.matrikelnummer %></:item>
+  <:item title="Klausur"><%= @klausurergebnis.klausur.kenner %></:item>
+  <:item title="Punkte"><%= @klausurergebnis.punkte %></:item>
+</.list>
+
+<.back navigate={~p"/klausurergebnisse"}>Back to Klausurergebnisse</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="klausurergebnis-modal"
+  show
+  on_cancel={JS.patch(~p"/klausurergebnisse/#{@klausurergebnis}")}
+>
+  <.live_component
+    module={LehrstuhlWeb.KlausurergebnisLive.FormComponent}
+    id={@klausurergebnis.id}
+    title={@page_title}
+    action={@live_action}
+    klausurergebnis={@klausurergebnis}
+    patch={~p"/klausurergebnisse/#{@klausurergebnis}"}
+  />
+</.modal>

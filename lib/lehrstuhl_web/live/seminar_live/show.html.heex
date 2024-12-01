@@ -1,0 +1,76 @@
+<.header>
+  Seminar <%= @seminar.id %>
+  <:subtitle>This is a seminar record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/seminare/#{@seminar}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit seminar</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Abstraktes Seminar"><%= @seminar.abstraktes_seminar.thema %></:item>
+  <:item title="Betreuer"><%= @seminar.mitarbeiter.email %></:item>
+  <:item title="Titel"><%= @seminar.titel %></:item>
+  <:item title="Aufnahmekapazitaet"><%= @seminar.aufnahmekapazitaet %></:item>
+  <:item title="Semester"><%= @seminar.semester %></:item>
+  <:item title="Praesenzdatum"><%= @seminar.praesenzdatum %></:item>
+  <:item title="Ort"><%= @seminar.ort %></:item>
+</.list>
+
+<h2 style="font-size: 160%;">Seminarergebnis für Seminar<%= @seminar.titel %></h2>
+<!--TODO some Styling here-->
+<.table id="seminarergebnisse_detail" rows={@seminarergebnisse}>
+  <:col :let={seminarergebnis} label="Student">
+    <%= seminarergebnis.student.matrikelnummer %>
+  </:col>
+  <:col :let={seminarergebnis} label="Fachvortrag Titel">
+    <%= seminarergebnis.fachvortrag_titel %>
+  </:col>
+  <:col :let={seminarergebnis} label="Fachvortrag Datum">
+    <%= seminarergebnis.fachvortrag_datum %>
+  </:col>
+  <:col :let={seminarergebnis} label="Fachvortrag Start">
+    <%= seminarergebnis.fachvortrag_start %>
+  </:col>
+  <:col :let={seminarergebnis} label="Fachvortrag Stop">
+    <%= seminarergebnis.fachvortrag_stop %>
+  </:col>
+  <:col :let={seminarergebnis} label="Fachvortrag Notenvorschlag">
+    <%= seminarergebnis.fachvortrag_notenvorschlag %>
+  </:col>
+  <:col :let={seminarergebnis} label="Fachvortrag Teilnote">
+    <%= seminarergebnis.fachvortrag_teilnote %>
+  </:col>
+  <:col :let={seminarergebnis} label="Seminararbeit Titel">
+    <%= seminarergebnis.seminararbeit_titel %>
+  </:col>
+  <:col :let={seminarergebnis} label="Seminararbeit Einreichung">
+    <%= seminarergebnis.seminararbeit_einreichung %>
+  </:col>
+  <:col :let={seminarergebnis} label="Seminararbeit Notenvorschlag">
+    <%= seminarergebnis.seminararbeit_notenvorschlag %>
+  </:col>
+  <:col :let={seminarergebnis} label="Seminararbeit Teilnote">
+    <%= seminarergebnis.seminararbeit_teilnote %>
+  </:col>
+  <:col :let={seminarergebnis} label="Gesamtergebnis"><%= seminarergebnis.gesamtergebnis %></:col>
+</.table>
+
+<.back navigate={~p"/seminare"}>Back to seminare</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="seminar-modal"
+  show
+  on_cancel={JS.patch(~p"/seminare/#{@seminar}")}
+>
+  <.live_component
+    module={LehrstuhlWeb.SeminarLive.FormComponent}
+    id={@seminar.id}
+    title={@page_title}
+    action={@live_action}
+    seminar={@seminar}
+    patch={~p"/seminare/#{@seminar}"}
+  />
+</.modal>

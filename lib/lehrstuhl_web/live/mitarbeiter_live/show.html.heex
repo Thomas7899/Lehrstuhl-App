@@ -1,0 +1,34 @@
+<.header>
+  Mitarbeiter <%= @mitarbeiter.id %>
+  <:subtitle>This is a mitarbeiter record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/mitarbeiter/#{@mitarbeiter}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit mitarbeiter</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Email"><%= @mitarbeiter.email %></:item>
+  <:item title="Nachname"><%= @mitarbeiter.nachname %></:item>
+  <:item title="Vorname"><%= @mitarbeiter.vorname %></:item>
+  <:item title="Rolle"><%= @mitarbeiter.rolle %></:item>
+</.list>
+
+<.back navigate={~p"/mitarbeiter"}>Back to mitarbeiter</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="mitarbeiter-modal"
+  show
+  on_cancel={JS.patch(~p"/mitarbeiter/#{@mitarbeiter}")}
+>
+  <.live_component
+    module={LehrstuhlWeb.MitarbeiterLive.FormComponent}
+    id={@mitarbeiter.id}
+    title={@page_title}
+    action={@live_action}
+    mitarbeiter={@mitarbeiter}
+    patch={~p"/mitarbeiter/#{@mitarbeiter}"}
+  />
+</.modal>

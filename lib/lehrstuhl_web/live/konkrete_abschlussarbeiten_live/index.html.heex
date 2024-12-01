@@ -1,0 +1,52 @@
+<.header>
+  <div class="überschrift">Konkrete Abschlussarbeiten</div>
+  <:actions>
+   <.link patch={~p"/filter_konkret"}>
+      <.button>Filtern!</.button>
+    </.link>
+
+     <.link patch={~p"/konkrete_abschlussarbeiten/new"}>
+      <.button>Neue konkrete Abschlussarbeit erstellen</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="konkrete_abschlussarbeiten"
+  rows={@streams.konkrete_abschlussarbeiten_collection}
+  row_click={fn {_id, konkrete_abschlussarbeiten} -> JS.navigate(~p"/konkrete_abschlussarbeiten/#{konkrete_abschlussarbeiten}") end}>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Betreuer"><%= konkrete_abschlussarbeiten.betreuer %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Forschungsprojekt"><%= konkrete_abschlussarbeiten.forschungsprojekt %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Semester"><%= konkrete_abschlussarbeiten.semester %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Matrikelnummer"><%= konkrete_abschlussarbeiten.matrikelnummer %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Angepasste themenskizze"><%= konkrete_abschlussarbeiten.angepasste_themenskizze %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Gesetzte schwerpunkte"><%= konkrete_abschlussarbeiten.gesetzte_schwerpunkte %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Anmeldung pruefungsamt"><%= konkrete_abschlussarbeiten.anmeldung_pruefungsamt %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Abgabedatum"><%= konkrete_abschlussarbeiten.abgabedatum %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Studienniveau"><%= konkrete_abschlussarbeiten.studienniveau %></:col>
+  <:action :let={{_id, konkrete_abschlussarbeiten}}>
+    <div class="sr-only">
+      <.link navigate={~p"/konkrete_abschlussarbeiten/#{konkrete_abschlussarbeiten}"}>Show</.link>
+    </div>
+    <.link patch={~p"/konkrete_abschlussarbeiten/#{konkrete_abschlussarbeiten}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, konkrete_abschlussarbeiten}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: konkrete_abschlussarbeiten.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="konkrete_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/konkrete_abschlussarbeiten")}>
+  <.live_component
+    module={LehrstuhlWeb.KonkreteAbschlussarbeitenLive.FormComponent}
+    id={@konkrete_abschlussarbeiten.id || :new}
+    title={@page_title}
+    action={@live_action}
+    konkrete_abschlussarbeiten={@konkrete_abschlussarbeiten}
+    patch={~p"/konkrete_abschlussarbeiten"}
+  />
+</.modal>

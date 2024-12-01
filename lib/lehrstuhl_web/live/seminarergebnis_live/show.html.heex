@@ -1,0 +1,52 @@
+<.header>
+  Seminarergebnis <%= @seminarergebnis.id %>
+  <:subtitle>This is a seminarergebnis record from your database.</:subtitle>
+  <:actions>
+    <.link
+      patch={~p"/seminarergebnisse/#{@seminarergebnis}/show/edit"}
+      phx-click={JS.push_focus()}
+    >
+      <.button>Edit seminarergebnis</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Fachvortrag titel"><%= @seminarergebnis.fachvortrag_titel %></:item>
+  <:item title="Student"><%= @seminarergebnis.student.nachname %></:item>
+  <:item title="Seminar"><%= @seminarergebnis.seminar.titel %></:item>
+  <:item title="Fachvortrag datum"><%= @seminarergebnis.fachvortrag_datum %></:item>
+  <:item title="Fachvortrag start"><%= @seminarergebnis.fachvortrag_start %></:item>
+  <:item title="Fachvortrag stop"><%= @seminarergebnis.fachvortrag_stop %></:item>
+  <:item title="Fachvortrag notenvorschlag">
+    <%= @seminarergebnis.fachvortrag_notenvorschlag %>
+  </:item>
+  <:item title="Fachvortrag teilnote"><%= @seminarergebnis.fachvortrag_teilnote %></:item>
+  <:item title="Seminararbeit titel"><%= @seminarergebnis.seminararbeit_titel %></:item>
+  <:item title="Seminararbeit einreichung">
+    <%= @seminarergebnis.seminararbeit_einreichung %>
+  </:item>
+  <:item title="Seminararbeit notenvorschlag">
+    <%= @seminarergebnis.seminararbeit_notenvorschlag %>
+  </:item>
+  <:item title="Seminararbeit teilnote"><%= @seminarergebnis.seminararbeit_teilnote %></:item>
+  <:item title="Gesamtergebnis"><%= @seminarergebnis.gesamtergebnis %></:item>
+</.list>
+
+<.back navigate={~p"/seminarergebnisse"}>Back to seminarergebnisse</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="seminarergebnis-modal"
+  show
+  on_cancel={JS.patch(~p"/seminarergebnisse/#{@seminarergebnis}")}
+>
+  <.live_component
+    module={LehrstuhlWeb.SeminarergebnisLive.FormComponent}
+    id={@seminarergebnis.id}
+    title={@page_title}
+    action={@live_action}
+    seminarergebnis={@seminarergebnis}
+    patch={~p"/seminarergebnisse/#{@seminarergebnis}"}
+  />
+</.modal>

@@ -1,0 +1,61 @@
+<.header>
+  Klausur <%= @klausur.kenner %>
+  <%!-- <:subtitle>This is a klausur record from your database.</:subtitle> --%>
+  <:subtitle><%= @klausur.id %></:subtitle>
+  <:actions>
+    <.link patch={~p"/klausuren/#{@klausur}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit klausur</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Kenner"><%= @klausur.kenner %></:item>
+  <:item title="Modul">
+    <.link
+      href={~p"/module/#{@klausur.modul}"}
+      class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+    >
+      <%= @klausur.modul.name %>
+    </.link>
+  </:item>
+  <:item title="Beschreibung"><%= @klausur.beschreibung %></:item>
+  <:item title="Punktegesamt"><%= @klausur.punkteGesamt %></:item>
+  <:item title="Semester"><%= @klausur.semester %></:item>
+  <:item title="Praesenzdatum"><%= @klausur.praesenzdatum %></:item>
+  <:item title="Ort"><%= @klausur.ort %></:item>
+  <:item title="Notenschnitt "><%= @avg %></:item>
+  <:item title="Anzahl Klausurteilnehmer "><%= @anz_studierende %></:item>
+</.list>
+
+<h2 style="font-size: 160%;">Klausurergebnis für Klausur <%= @klausur.kenner %></h2>
+<!--TODO some Styling here-->
+<.table id="klausurergebnisse_detail" rows={@klausurergebnisse}>
+  <%!-- <:col :let={klausurergebnis} label="Klausur ID"><%= klausurergebnis.id %></:col> --%>
+  <:col :let={klausurergebnis} label="Student"><%= klausurergebnis.student.email %></:col>
+  <:col :let={klausurergebnis} label="Matrikelnummer">
+    <%= klausurergebnis.student.matrikelnummer %>
+  </:col>
+  <:col :let={klausurergebnis} label="Punke"><%= klausurergebnis.punkte %></:col>
+  <:col :let={klausurergebnis} label="% Punkte">
+    <%= klausurergebnis.punkte / @klausur.punkteGesamt * 100 %>
+  </:col>
+</.table>
+
+<.back navigate={~p"/klausuren"}>Back to klausuren</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="klausur-modal"
+  show
+  on_cancel={JS.patch(~p"/klausuren/#{@klausur}")}
+>
+  <.live_component
+    module={LehrstuhlWeb.KlausurLive.FormComponent}
+    id={@klausur.id}
+    title={@page_title}
+    action={@live_action}
+    klausur={@klausur}
+    patch={~p"/klausuren/#{@klausur}"}
+  />
+</.modal>

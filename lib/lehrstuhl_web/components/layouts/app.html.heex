@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="app.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Lehrstuhl Management App</title>
+</head>
+
+<body class="flex flex-col h-screen">
+ <header class="flex items-center justify-between bg-white shadow p-4">
+        <div class="mr-4">
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">
+                  <img src="/images/menu.svg">
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/konkrete_abschlussarbeiten">Konkrete Abschlussarbeiten</a>
+                    <a href="/abstrakte_abschlussarbeiten">Abstrakte Abschlussarbeiten</a>
+                    <a href="/filter_konkret">Filter konkrete Abschlussarbeiten</a>
+                    <a href="/ergebnisse_abschlussarbeiten">Ergebnisse Abschlussarbeiten</a>
+                    <a href="/filter_abstrakt">Filter abstrakte Abschlussarbeiten</a>
+                    <a href="/filter_abstrakt_konkret">Filter abstrakt/konkret</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center">
+            <a href="/">
+                <img src="/images/fernuni-logo.svg" alt="Fernuni Logo" class="h-10 w-auto">
+            </a>
+            <div class="text-lg font-semibold text-zinc-900 mr-4">
+                Lehrstuhl Management App
+            </div>
+        </div>
+        <div class="w-12"></div> 
+    </header>
+
+    
+  
+  <!-- Main Content Wrapper <img src="/images/watercolor.jpg" alt="background"> class="bg-[url('/image/watercolor.jpg')]"
+  <div class="flex flex-1">
+    <aside class="w-64 bg-white p-6 h-full">
+      <ul class="space-y-4">
+        <li>
+          <a href="/students" class="text-sm font-semibold text-gray-900 hover:text-blue-500">
+            Studenten
+          </a>
+        </li>
+        <li>
+          <a href="/mitarbeiter" class="text-sm font-semibold text-gray-900 hover:text-blue-500">
+            Mitarbeiter
+          </a>
+        </li>
+          <li>
+          <a href="/students" class="text-sm font-semibold text-gray-900 hover:text-blue-500">
+            Studenten
+          </a>
+        </li>
+        <li>
+          <a href="/mitarbeiter" class="text-sm font-semibold text-gray-900 hover:text-blue-500">
+            Mitarbeiter
+          </a>
+        </li>
+          <li>
+          <a href="/students" class="text-sm font-semibold text-gray-900 hover:text-blue-500">
+            Studenten
+          </a>
+        </li>
+      </ul>
+    </aside>
+    -->
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col items-center py-4">
+      <div class="flex-1 mx-auto w-full px-4">
+        <.flash_group flash={@flash} />
+        <%= @inner_content %>
+      </div>
+    </main>
+
+    <footer class="bg-gray-100 p-8 font-sans">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-wrap justify-between">
+            <div class="flex-1 min-w-[300px] p-4">
+                <h3 class="text-xl font-semibold">FernUniversität in Hagen</h3>
+                <p class="mt-2">
+                    Universitätsstraße 47<br>
+                    58097 Hagen<br>
+                    Telefon: +49 2331 987-2444<br>
+                    <a href="mailto:info@fernuni-hagen.de" class="text-blue-500">info@fernuni-hagen.de</a>
+                </p>
+            </div>
+            <div class="flex-1 min-w-[200px] p-4">
+                <h3 class="text-xl font-semibold">Kontakt</h3>
+                <ul class="mt-2 list-none p-0">
+                    <li><a href="#" class="text-blue-500">Kontaktseite</a></li>
+                    <li><a href="#" class="text-blue-500">Campusplan & Anfahrt</a></li>
+                    <li><a href="#" class="text-blue-500">Feedback & Kritik</a></li>
+                    <li><a href="#" class="text-blue-500">Meldestelle für Hinweise</a></li>
+                    <li><a href="#" class="text-blue-500">Personensuche</a></li>
+                    <li><a href="#" class="text-blue-500">Pressestelle / Marketing</a></li>
+                </ul>
+            </div>
+            <div class="flex-1 min-w-[200px] p-4">
+                <h3 class="text-xl font-semibold">Weitere Informationen</h3>
+                <ul class="mt-2 list-none p-0">
+                    <li><a href="#" class="text-blue-500">News</a></li>
+                    <li><a href="#" class="text-blue-500">Termine</a></li>
+                    <li><a href="#" class="text-blue-500">Karriere</a></li>
+                    <li><a href="#" class="text-blue-500">Onlineshop</a></li>
+                    <li><a href="#" class="text-blue-500">Social Media</a></li>
+                </ul>
+            </div>
+            <div class="flex-1 min-w-[200px] p-4">
+                <h3 class="text-xl font-semibold">Rechtliches</h3>
+                <ul class="mt-2 list-none p-0">
+                    <li><a href="#" class="text-blue-500">Themen A-Z</a></li>
+                    <li><a href="#" class="text-blue-500">Barrierefrei</a></li>
+                    <li><a href="#" class="text-blue-500">Datenschutzerklärung</a></li>
+                    <li><a href="#" class="text-blue-500">Datenschutzbeauftragter</a></li>
+                    <li><a href="#" class="text-blue-500">Impressum</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    let dropdowns = document.getElementsByClassName("dropdown-content");
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
+
+
