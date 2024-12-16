@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lehrstuhl Management App</title>
+  <link rel="icon" href="/images/fernuni-logo.svg">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<header>
+<!--navbar-->
+<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="/images/fernuni-logo.svg" class="h-8" alt="FernUni Logo" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Lehrstuhl App</span>
+    </a>
+
+    <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+
+    <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+        </li>
+
+        <!-- Nav Button Filter -->
+        <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Filtern <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+  </svg></button>
+            <!-- Dropdown menu -->
+            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <a href="/filter_konkret" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Konkrete Abschlussarbeiten</a>
+                  </li>
+                  <li>
+                    <a href="/filter_abstrakt" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Abstrakte Abschlussarbeiten</a>
+                  </li>
+                  <li>
+                    <a href="/filter_abstrakt_konkret" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">AbstraktundKonkret</a>
+                  </li>
+                </ul>
+            </div>
+        </li>
+
+
+<!-- Nav Button Erstellen 
+ <button data-collapse-toggle="navbar-dropdown2" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown2" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+
+    <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown2">
+      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+        </li>
+        
+        <li>
+            <button id="dropdownNavbarLink2" data-dropdown-toggle="dropdownNavbar2" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Erstellen <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+  </svg></button>
+            
+            <div id="dropdownNavbar2" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton2">
+                  <li>
+                    <a href="/abstrakte_abschlussarbeiten" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Konkrete Abschlussarbeiten</a>
+                  </li>
+                  <li>
+                    <a href="/konkrete_abschlussarbeiten" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Abstrakte Abschlussarbeiten</a>
+                  </li>
+                  <li>
+                    <a href="/konkrete_abschlussarbeiten" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Abstrakte Abschlussarbeiten</a>
+                  </li>
+                 
+                </ul>         
+            </div>
+        </li>
+</div>
+-->
+
+
+
+        <li>
+          <a href="/ergebnisse_abschlussarbeiten" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Ergebnisse</a>
+        </li>
+        <li>
+          <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Kontakt</a>
+        </li>
+
+     
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
+
+
+
+<!--NEW Homepage Main-->
+
+
+<!-- Hero -->
+<div class="relative overflow-hidden">
+  <!-- Gradients -->
+  <div aria-hidden="true" class="flex absolute -top-96 start-1/2 transform -translate-x-1/2">
+    <div class="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900"></div>
+    <div class="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] dark:from-indigo-900/70 dark:via-indigo-900/70 dark:to-blue-900/70"></div>
+  </div>
+  <!-- End Gradients -->
+
+  <div class="relative z-10">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+      <div class="max-w-2xl text-center mx-auto">
+        <p class="inline-block text-sm font-medium bg-clip-text bg-gradient-to-l from-blue-600 to-violet-500 text-transparent dark:from-blue-400 dark:to-violet-400">
+          Preline: A vision for 2023
+        </p>
+
+        <!-- Title -->
+        <div class="mt-5 max-w-2xl">
+          <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
+            The Intuitive Web Solutions
+          </h1>
+        </div>
+        <!-- End Title -->
+
+        <div class="mt-5 max-w-3xl">
+          <p class="text-lg text-gray-600 dark:text-neutral-400">Preline UI is an open-source set of prebuilt UI components, ready-to-use examples and Figma design system based on the utility-first Tailwind CSS framework.</p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-8 gap-3 flex justify-center">
+          <a class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
+            Get started
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <a class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800" href="#">
+            <svg class="shrink-0 size-4" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.875 18C8.531 18 9.875 16.656 9.875 15V12H6.875C5.219 12 3.875 13.344 3.875 15C3.875 16.656 5.219 18 6.875 18Z" fill="#0ACF83"></path>
+              <path d="M3.875 9C3.875 7.344 5.219 6 6.875 6H9.875V12H6.875C5.219 12 3.875 10.656 3.875 9Z" fill="#A259FF"></path>
+              <path d="M3.875 3C3.875 1.344 5.219 0 6.875 0H9.875V6H6.875C5.219 6 3.875 4.656 3.875 3Z" fill="#F24E1E"></path>
+              <path d="M9.87501 0H12.875C14.531 0 15.875 1.344 15.875 3C15.875 4.656 14.531 6 12.875 6H9.87501V0Z" fill="#FF7262"></path>
+              <path d="M15.875 9C15.875 10.656 14.531 12 12.875 12C11.219 12 9.87501 10.656 9.87501 9C9.87501 7.344 11.219 6 12.875 6C14.531 6 15.875 7.344 15.875 9Z" fill="#1ABCFE"></path>
+            </svg>
+            Preline Figma
+          </a>
+        </div>
+        <!-- End Buttons -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Hero -->
+
+
+
+
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 items-center gap-6 md:gap-10">
+
+    <div class="size-full bg-white shadow-lg rounded-lg p-5 dark:bg-neutral-900">
+      <div class="flex items-center gap-x-4 mb-3">
+        <div class="inline-flex justify-center items-center size-[62px] rounded-full border-4 border-blue-50 bg-blue-100 dark:border-blue-900 dark:bg-blue-800">
+          <svg class="shrink-0 size-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </div>
+        <div class="shrink-0">
+          <h3 class="block text-lg font-semibold text-gray-800 dark:text-white">Filterfunktion für Abschlussarbeiten</h3>
+        </div>
+      </div>
+      <p class="text-gray-600 dark:text-neutral-400">The simplest way to keep your portfolio always up-to-date.</p>
+    </div>
+  
+    <div class="size-full bg-white shadow-lg rounded-lg p-5 dark:bg-neutral-900">
+      <div class="flex items-center gap-x-4 mb-3">
+        <div class="inline-flex justify-center items-center size-[62px] rounded-full border-4 border-blue-50 bg-blue-100 dark:border-blue-900 dark:bg-blue-800">
+          <svg class="shrink-0 size-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg>
+        </div>
+        <div class="shrink-0">
+          <h3 class="block text-lg font-semibold text-gray-800 dark:text-white">Neue Abschlussarbeiten anlegen</h3>
+        </div>
+      </div>
+      <p class="text-gray-600 dark:text-neutral-400">New design projects delivered to your inbox each morning.</p>
+    </div>
+
+    <div class="size-full bg-white shadow-lg rounded-lg p-5 dark:bg-neutral-900">
+      <div class="flex items-center gap-x-4 mb-3">
+        <div class="inline-flex justify-center items-center size-[62px] rounded-full border-4 border-blue-50 bg-blue-100 dark:border-blue-900 dark:bg-blue-800">
+          <svg class="shrink-0 size-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/></svg>
+        </div>
+        <div class="shrink-0">
+          <h3 class="block text-lg font-semibold text-gray-800 dark:text-white">Durchforsten Sie alle Seminare in kürzester Zeit</h3>
+        </div>
+      </div>
+      <p class="text-gray-600 dark:text-neutral-400">Get your goods in front of millions of potential customers with ease.</p>
+    </div>
+
+    <div class="size-full bg-white shadow-lg rounded-lg p-5 dark:bg-neutral-900">
+      <div class="flex items-center gap-x-4 mb-3">
+        <div class="inline-flex justify-center items-center size-[62px] rounded-full border-4 border-blue-50 bg-blue-100 dark:border-blue-900 dark:bg-blue-800">
+          <svg class="shrink-0 size-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 8.5 9 12l-3.5 3.5L2 12l3.5-3.5Z"/><path d="m12 2 3.5 3.5L12 9 8.5 5.5 12 2Z"/><path d="M18.5 8.5 22 12l-3.5 3.5L15 12l3.5-3.5Z"/><path d="m12 15 3.5 3.5L12 22l-3.5-3.5L12 15Z"/></svg>
+        </div>
+        <div class="shrink-0">
+          <h3 class="block text-lg font-semibold text-gray-800 dark:text-white">Alle Klausurergebnisse auf einen Blick</h3>
+        </div>
+      </div>
+      <p class="text-gray-600 dark:text-neutral-400">New design projects delivered to your inbox each morning.</p>
+    </div>
+
+    <div class="size-full bg-white shadow-lg rounded-lg p-5 dark:bg-neutral-900">
+      <div class="flex items-center gap-x-4 mb-3">
+        <div class="inline-flex justify-center items-center size-[62px] rounded-full border-4 border-blue-50 bg-blue-100 dark:border-blue-900 dark:bg-blue-800">
+          <svg class="shrink-0 size-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.466 7.5C15.643 4.237 13.952 2 12 2 9.239 2 7 6.477 7 12s2.239 10 5 10c.342 0 .677-.069 1-.2"/><path d="m15.194 13.707 3.814 1.86-1.86 3.814"/><path d="M19 15.57c-1.804.885-4.274 1.43-7 1.43-5.523 0-10-2.239-10-5s4.477-5 10-5c4.838 0 8.873 1.718 9.8 4"/></svg>
+        </div>
+        <div class="shrink-0">
+          <h3 class="block text-lg font-semibold text-gray-800 dark:text-white">Eintragen von allen Ergebnissen</h3>
+        </div>
+      </div>
+      <p class="text-gray-600 dark:text-neutral-400">Get your goods in front of millions of potential customers with ease.</p>
+    </div>
+
+    <div class="size-full bg-white shadow-lg rounded-lg p-5 dark:bg-neutral-900">
+      <div class="flex items-center gap-x-4 mb-3">
+        <div class="inline-flex justify-center items-center size-[62px] rounded-full border-4 border-blue-50 bg-blue-100 dark:border-blue-900 dark:bg-blue-800">
+          <svg class="shrink-0 size-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>
+        </div>
+        <div class="shrink-0">
+          <h3 class="block text-lg font-semibold text-gray-800 dark:text-white">Zeigen Sie alle zugehörigen konkreten, zu den abstrakten Abschlussarbeiten</h3>
+        </div>
+      </div>
+      <p class="text-gray-600 dark:text-neutral-400">The simplest way to keep your portfolio always up-to-date.</p>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+
+  <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Unser Team</h2>
+    <p class="mt-1 text-gray-600 dark:text-neutral-400">Wissenschaftliche Mitarbeiter des Lehrstuhls</p>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
+    <div class="text-center">
+      <img class="rounded-full size-24 mx-auto" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Avatar">
+      <div class="mt-2 sm:mt-4">
+        <h3 class="font-medium text-gray-800 dark:text-neutral-200">
+          Hansen Peter
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-neutral-400">
+          Betreuer Abschlussarbeiten
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <img class="rounded-full size-24 mx-auto" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Avatar">
+      <div class="mt-2 sm:mt-4">
+        <h3 class="font-medium text-gray-800 dark:text-neutral-200">
+          Müller Johanna
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-neutral-400">
+          Betreuer Klausuren
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <img class="rounded-full size-24 mx-auto" src="https://images.unsplash.com/photo-1521151716396-b2da27b1a19f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Avatar">
+      <div class="mt-2 sm:mt-4">
+        <h3 class="font-medium text-gray-800 dark:text-neutral-200">
+          Becker Karl
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-neutral-400">
+          Betreuer Seminare
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mt-12 flex justify-center">
+    <div class="border border-gray-200 py-2 px-3 rounded-full dark:border-neutral-700">
+      <div class="flex items-center gap-x-3">
+        <span class="text-sm text-gray-500 dark:text-neutral-500">Want to work with us?</span>
+        <a class="inline-flex items-center gap-x-2 text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:text-blue-500 dark:text-blue-500 dark:hover:text-blue-600 dark:focus:text-blue-600" href="#">
+          We are hiring
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- FAQ -->
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <!-- Title -->
+  <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Your questions, answered</h2>
+    <p class="mt-1 text-gray-600 dark:text-neutral-400">Answers to the most frequently asked questions.</p>
+  </div>
+  <!-- End Title -->
+
+  <div class="max-w-2xl mx-auto">
+    <!-- Accordion -->
+    <div class="hs-accordion-group">
+      <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 dark:hs-accordion-active:bg-white/10 active" id="hs-basic-with-title-and-arrow-stretched-heading-one">
+        <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400" aria-expanded="true" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one">
+          Can I cancel at anytime?
+          <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
+        <div id="hs-basic-with-title-and-arrow-stretched-collapse-one" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one">
+          <p class="text-gray-800 dark:text-neutral-200">
+            Yes, you can cancel anytime no questions are asked while you cancel but we would highly appreciate if you will give us some feedback.
+          </p>
+        </div>
+      </div>
+
+      <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 dark:hs-accordion-active:bg-white/10" id="hs-basic-with-title-and-arrow-stretched-heading-two">
+        <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two">
+          My team has credits. How do we use them?
+          <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
+        <div id="hs-basic-with-title-and-arrow-stretched-collapse-two" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two">
+          <p class="text-gray-800 dark:text-neutral-200">
+            Once your team signs up for a subscription plan. This is where we sit down, grab a cup of coffee and dial in the details.
+          </p>
+        </div>
+      </div>
+
+      <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 dark:hs-accordion-active:bg-white/10" id="hs-basic-with-title-and-arrow-stretched-heading-three">
+        <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-three">
+          How does Preline's pricing work?
+          <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
+        <div id="hs-basic-with-title-and-arrow-stretched-collapse-three" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-three">
+          <p class="text-gray-800 dark:text-neutral-200">
+            Our subscriptions are tiered. Understanding the task at hand and ironing out the wrinkles is key.
+          </p>
+        </div>
+      </div>
+
+      <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 dark:hs-accordion-active:bg-white/10" id="hs-basic-with-title-and-arrow-stretched-heading-four">
+        <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-four">
+          How secure is Preline?
+          <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
+        <div id="hs-basic-with-title-and-arrow-stretched-collapse-four" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-four">
+          <p class="text-gray-800 dark:text-neutral-200">
+            Protecting the data you trust to Preline is our first priority. This part is really crucial in keeping the project in line to completion.
+          </p>
+        </div>
+      </div>
+
+      <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 dark:hs-accordion-active:bg-white/10" id="hs-basic-with-title-and-arrow-stretched-heading-five">
+        <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five">
+          How do I get access to a theme I purchased?
+          <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
+        <div id="hs-basic-with-title-and-arrow-stretched-collapse-five" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-five">
+          <p class="text-gray-800 dark:text-neutral-200">
+            If you lose the link for a theme you purchased, don't panic! We've got you covered. You can login to your account, tap your avatar in the upper right corner, and tap Purchases. If you didn't create a login or can't remember the information, you can use our handy Redownload page, just remember to use the same email you originally made your purchases with.
+          </p>
+        </div>
+      </div>
+
+      <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 dark:hs-accordion-active:bg-white/10" id="hs-basic-with-title-and-arrow-stretched-heading-six">
+        <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six">
+          Upgrade License Type
+          <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
+        <div id="hs-basic-with-title-and-arrow-stretched-collapse-six" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-six">
+          <p class="text-gray-800 dark:text-neutral-200">
+            There may be times when you need to upgrade your license from the original type you purchased and we have a solution that ensures you can apply your original purchase cost to the new license purchase.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- End Accordion -->
+  </div>
+</div>
+<!-- End FAQ -->
+
+
+
+  <main class="flex-1 container mx-auto p-8">
+    <div id="main-content" class="bg-slate-50 p-8 rounded shadow">
+      <p class="homepage">Die Lehrstuhl Management App ermöglicht eine effiziente Verwaltung Ihrer Klausuren, Seminare und Abschlussarbeiten.</p>
+
+      <div id="features" class="grid grid-flow-row auto-rows-max">
+        <div class="flex items-start mb-10">
+          <div class="w-2/3 feature bg-blue-100 p-4 rounded shadow">
+            <h2 class="text-center text-xl font-bold mb-2 text-slate-900">Klausuren</h2>
+            <p class="untertext">Verwalten Sie Ihre Klausuren einfach und effizient. Erfassen Sie Ergebnisse und behalten Sie den Überblick.</p>
+            <a href="/module" class="block  bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded mb-2">Module</a>
+            <a href="/klausuren" class="block  bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded mb-2">Klausuren</a>
+            <a href="/klausurergebnisse" class="block  bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded">Klausurergebnisse</a>
+          </div>
+          <div class="w-1/3 pl-1">
+            <img src="/images/boy.jpg" alt="boy" class="h-auto w-auto rounded">
+          </div>
+        </div>
+
+        <div class="flex items-start mb-10">
+          <div class="w-1/3 pr-1">
+            <img src="/images/student1.jpg" alt="student" class="h-auto w-auto rounded">
+          </div>
+          <div class="w-2/3 feature bg-blue-100 p-4 rounded shadow">
+            <h2 class="text-center text-xl font-bold mb-2 text-slate-900">Seminare</h2>
+            <p class="untertext">Organisieren Sie Ihre Seminare stressfrei. Planen Sie Termine, verwalten Sie Teilnehmer und Ressourcen.</p>
+            <a href="/seminare" class="block bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded mb-2">Seminare</a>
+            <a href="/abstrakte_seminare" class="block bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded mb-2">Abstrakte Seminare</a>
+            <a href="/seminarergebnisse" class="block bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded">Seminarergebnisse</a>
+          </div>
+        </div>
+
+        <div class="flex items-start">
+        <div class="w-2/3 feature bg-blue-100 p-4 rounded shadow">
+          <h2 class="text-center text-xl font-bold mb-2 text-slate-900">Abschlussarbeiten</h2>
+          <p class="untertext">Behalten Sie den Überblick über Abschlussarbeiten. Verwalten Sie Themen, Betreuer und den
+            Fortschritt der Studierenden.</p>
+          <a href="/konkrete_abschlussarbeiten"
+            class="block  bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded mb-2">Abschlussarbeiten
+            erstellen</a>
+          <a href="/filter_konkret"
+            class="block  bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded mb-2">Abschlussarbeiten
+            filtern</a>
+          <a href="/ergebnisse_abschlussarbeiten"
+            class="block  bg-blue-200 hover:bg-blue-300 text-blue-900 text-center py-2 px-4 rounded">Ergebnisse der
+            Abschlussarbeiten</a>
+        </div>
+        <div class="w-1/3 pl-1">
+          <img src="/images/woman.jpg" alt="book" class="h-auto w-auto">
+        </div>
+       </div>
+      </div>
+
+    </div>
+  </main>
+
+
+
+<!-- FOOTER -->
+
+<footer class="bg-gray-100 p-8 font-sans">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-wrap justify-between">
+            <div class="flex-1 min-w-[300px] p-4">
+                <h3 class="text-xl font-semibold">FernUniversität in Hagen</h3>
+                <p class="mt-2">
+                    Universitätsstraße 47<br>
+                    58097 Hagen<br>
+                    Telefon: +49 2331 987-2444<br>
+                    <a href="mailto:info@fernuni-hagen.de" class="text-blue-500">info@fernuni-hagen.de</a>
+                </p>
+            </div>
+            <div class="flex-1 min-w-[200px] p-4">
+                <h3 class="text-xl font-semibold">Kontakt</h3>
+                <ul class="mt-2 list-none p-0">
+                    <li><a href="#" class="text-blue-500">Kontaktseite</a></li>
+                    <li><a href="#" class="text-blue-500">Campusplan & Anfahrt</a></li>
+                    <li><a href="#" class="text-blue-500">Feedback & Kritik</a></li>
+                    <li><a href="#" class="text-blue-500">Meldestelle für Hinweise</a></li>
+                    <li><a href="#" class="text-blue-500">Personensuche</a></li>
+                    <li><a href="#" class="text-blue-500">Pressestelle / Marketing</a></li>
+                </ul>
+            </div>
+            <div class="flex-1 min-w-[200px] p-4">
+                <h3 class="text-xl font-semibold">Weitere Informationen</h3>
+                <ul class="mt-2 list-none p-0">
+                    <li><a href="#" class="text-blue-500">News</a></li>
+                    <li><a href="#" class="text-blue-500">Termine</a></li>
+                    <li><a href="#" class="text-blue-500">Karriere</a></li>
+                    <li><a href="#" class="text-blue-500">Onlineshop</a></li>
+                    <li><a href="#" class="text-blue-500">Social Media</a></li>
+                </ul>
+            </div>
+            <div class="flex-1 min-w-[200px] p-4">
+                <h3 class="text-xl font-semibold">Rechtliches</h3>
+                <ul class="mt-2 list-none p-0">
+                    <li><a href="#" class="text-blue-500">Themen A-Z</a></li>
+                    <li><a href="#" class="text-blue-500">Barrierefrei</a></li>
+                    <li><a href="#" class="text-blue-500">Datenschutzerklärung</a></li>
+                    <li><a href="#" class="text-blue-500">Datenschutzbeauftragter</a></li>
+                    <li><a href="#" class="text-blue-500">Impressum</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.phoenix.min.js"></script>
+<script src="./node_modules/preline/dist/preline.js"></script>
+
+</body>
+
+</html>

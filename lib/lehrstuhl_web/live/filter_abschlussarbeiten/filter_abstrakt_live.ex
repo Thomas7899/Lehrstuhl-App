@@ -9,7 +9,6 @@ defmodule LehrstuhlWeb.FilterAbstraktLive do
           filter: %{betreuer: "", semester: "", thema: ""},
           abschlussarbeiten: Abschlussarbeiten.list_abstrakte_abschlussarbeiten()
         )
-
       {:ok, socket, temporary_assigns: [abschlussarbeiten: []]}
     end
 
@@ -39,6 +38,7 @@ defmodule LehrstuhlWeb.FilterAbstraktLive do
             </select>
           </div>
         </form>
+
         <div class="flex flex-wrap md:flex-wrap-reverse">
           <div :for={abstrakte_abschlussarbeiten <- @abschlussarbeiten} class="bg-slate-50 p-4 w-full md:w-1/2 lg:w-1/3">
           <div class="p-6 bg-slate-50">

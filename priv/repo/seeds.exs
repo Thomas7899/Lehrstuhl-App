@@ -15,6 +15,25 @@ alias Lehrstuhl.Persons.Student
 alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
 alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
 alias Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten
+alias Lehrstuhl.Seminare.Seminar
+
+
+Repo.insert!(%Seminar{
+  titel: "Entwicklung von Informationnssystemen",
+    aufnahmekapazitaet: 25,
+    semester: "WS24/25",
+    praesenzdatum: ~D[2025-02-10],
+    ort: "Hagen"
+})
+
+Repo.insert!(%Seminar{
+  titel: "Künstliche Intelligenz",
+    aufnahmekapazitaet: 21,
+    semester: "SS25",
+    praesenzdatum: ~D[2025-09-12],
+    ort: "Hagen"
+})
+
 
 Repo.insert!(%Mitarbeiter{
   id: "11e68a9e-069e-4e28-96d5-3d85c5849fba",
@@ -56,6 +75,15 @@ Repo.insert!(%Student{
   nachname: "Student",
   vorname: "Zwei",
   geburtsdatum: ~D[1980-09-12]
+})
+
+Repo.insert!(%Student{
+  id: "55e68a9e-069e-4e28-96d5-3d85c5849fb2",
+  email: "student@drei.de",
+  matrikelnummer: "1837675",
+  nachname: "Student",
+  vorname: "Drei",
+  geburtsdatum: ~D[1984-02-19]
 })
 
 

@@ -5,9 +5,23 @@ defmodule Lehrstuhl.Seminare do
 
   import Ecto.Changeset
   import Ecto.Query, warn: false
-  alias Lehrstuhl.Repo
 
+  alias Lehrstuhl.Repo
   alias Lehrstuhl.Seminare.Seminarergebnis
+  alias Lehrstuhl.Seminare.Seminar
+
+    #Suchfunktion
+def filter_seminare(filter) do
+  Seminare
+  |> search_by(filter["q"])
+  |> Repo.all()
+end
+
+defp search_by(query, q) when q in ["", nil], do: query
+
+defp search_by(query, q) do
+  where(query, [i], ilike(i.titel, ^"%#{q}%"))
+end
 
   @doc """
   Returns the list of seminarergebnisse.

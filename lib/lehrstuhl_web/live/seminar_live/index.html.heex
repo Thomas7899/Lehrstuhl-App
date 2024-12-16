@@ -12,10 +12,6 @@
   rows={@streams.seminare}
   row_click={fn {_id, seminar} -> JS.navigate(~p"/seminare/#{seminar}") end}
 >
-  <:col :let={{_id, seminar}} label="Betreuer"><%= seminar.mitarbeiter.email %></:col>
-  <:col :let={{_id, seminar}} label="Abstraktes Seminar">
-    <%= seminar.abstraktes_seminar.thema %>
-  </:col>
   <:col :let={{_id, seminar}} label="Titel"><%= seminar.titel %></:col>
   <:col :let={{_id, seminar}} label="Aufnahmekapazitaet"><%= seminar.aufnahmekapazitaet %></:col>
   <:col :let={{_id, seminar}} label="Semester"><%= seminar.semester %></:col>

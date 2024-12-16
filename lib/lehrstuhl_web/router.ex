@@ -90,6 +90,7 @@ defmodule LehrstuhlWeb.Router do
 
     live "/abstrakte_abschlussarbeiten/:id", AbstrakteAbschlussarbeitenLive.Show, :show
     live "/abstrakte_abschlussarbeiten/:id/show/edit", AbstrakteAbschlussarbeitenLive.Show, :edit
+
     #Konkrete Abschlussarbeiten
     live "/konkrete_abschlussarbeiten", KonkreteAbschlussarbeitenLive.Index, :index
     live "/konkrete_abschlussarbeiten/new", KonkreteAbschlussarbeitenLive.Index, :new
@@ -97,6 +98,7 @@ defmodule LehrstuhlWeb.Router do
 
     live "/konkrete_abschlussarbeiten/:id", KonkreteAbschlussarbeitenLive.Show, :show
     live "/konkrete_abschlussarbeiten/:id/show/edit", KonkreteAbschlussarbeitenLive.Show, :edit
+    
     #Ergebnisse Abschlussarbeiten
     live "/ergebnisse_abschlussarbeiten", ErgebnisseAbschlussarbeitenLive.Index, :index
     live "/ergebnisse_abschlussarbeiten/new", ErgebnisseAbschlussarbeitenLive.Index, :new
@@ -113,6 +115,9 @@ defmodule LehrstuhlWeb.Router do
      live "/filter_konkret", FilterKonkretLive
 
      live "/ergebnisse-abschlussarbeiten", ErgebnisseAbschlussarbeitenLive
+
+     #Filter Seminare
+     live "/filterseminare", FilterSeminar.Index
 
   end
 
