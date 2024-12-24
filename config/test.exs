@@ -15,7 +15,8 @@ config :lehrstuhl, Lehrstuhl.Repo,
   database: System.get_env("POSTGRES_DB") || "lehrstuhl-mgmt-test",
   hostname: System.get_env("POSTGRES_HOST") || "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: 10
+  pool_size: 10,
+  port: 5435
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.

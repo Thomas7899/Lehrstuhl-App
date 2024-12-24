@@ -17,6 +17,8 @@ defmodule Lehrstuhl.Klausuren do
       [%Klausur{}, ...]
 
   """
+
+
   def list_klausuren do
     Klausur
     |> Repo.all()

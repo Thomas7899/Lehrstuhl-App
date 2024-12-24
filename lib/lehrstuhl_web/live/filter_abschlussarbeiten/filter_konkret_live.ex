@@ -15,23 +15,25 @@ defmodule LehrstuhlWeb.FilterKonkretLive do
 
     def render(assigns) do
       ~H"""
-      <h1 class="text-2xl font-mono">Filter konkrete Abschlussarbeiten</h1>
+      <div class="flex justify-center items-center">
+      <h1 class="text-3xl font-mono text-white hover:text-[#8000ff] bg-gray-800 hover:bg-neutral-900 rounded-lg inline-block p-3">Konkrete Abschlussarbeiten</h1>
+      </div>
       <div id="konkrete_abschlussarbeiten">
         <form phx-change="filter">
-          <div class="filters">
-            <select name="betreuer">
+          <div class="mt-4 flex flex-wrap justify-center gap-3">
+            <select class="rounded-lg bg-gray-800 hover:bg-neutral-900 text-white hover:text-[#8000ff]" name="betreuer">
               <%= Phoenix.HTML.Form.options_for_select(
                 betreuer_options(),
                 @filter.betreuer
               ) %>
             </select>
-            <select name="semester">
+            <select class="rounded-lg bg-gray-800 hover:bg-neutral-900 text-white hover:text-[#8000ff]" name="semester">
               <%= Phoenix.HTML.Form.options_for_select(
                 semester_options(),
                 @filter.semester
               ) %>
             </select>
-            <select name="forschungsprojekt">
+            <select class="rounded-lg bg-gray-800 hover:bg-neutral-900 text-white hover:text-[#8000ff]" name="forschungsprojekt">
               <%= Phoenix.HTML.Form.options_for_select(
                 forschungsprojekt_options(),
                 @filter.forschungsprojekt
@@ -42,70 +44,56 @@ defmodule LehrstuhlWeb.FilterKonkretLive do
       </div>
         <div class="flex flex-wrap md:flex-wrap-reverse">
           <div :for={konkrete_abschlussarbeiten <- @abschlussarbeiten} class="bg-slate-50 p-4 w-full md:w-1/2 lg:w-1/3">
-            <div class="p-6 bg-slate-50">
-              <div class="max-w-4xl mx-auto bg-blue-900 shadow-lg rounded-lg overflow-hidden p-4">
-                <div class="flex flex-wrap -mx-2">
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Betreuer:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.betreuer %></span>
+
+<div class="w-full max-w-md p-4 bg-gray-800 hover:bg-neutral-900 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+
+    <div class="flex items-center justify-between mb-4">
+        <h5 class="text-xl font-bold leading-none text-white"><%= konkrete_abschlussarbeiten.matrikelnummer %></h5>
+        <.link class="text-sm font-medium text-[#8000ff] hover:underline" navigate={~p"/konkrete_abschlussarbeiten/#{konkrete_abschlussarbeiten}"}>View all</.link>
+    </div>
+   <div class="flow-root">
+        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center">
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-neutral-400 truncate">
+                            Betreuer
+                        </p>
                     </div>
-                  </div>
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Forschungsprojekt:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.forschungsprojekt %></span>
+                    <div class="inline-flex items-center text-base font-semibold text-neutral-400">
+                          <%= konkrete_abschlussarbeiten.betreuer %>
                     </div>
-                  </div>
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Semester:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.semester %></span>
-                    </div>
-                  </div>
-                  <details>
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Matrikelnummer:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.matrikelnummer %></span>
-                    </div>
-                  </div>
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Angepasste Themenskizze:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.angepasste_themenskizze %></span>
-                    </div>
-                  </div>
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Gesetzte Schwerpunkte:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.gesetzte_schwerpunkte %></span>
-                    </div>
-                  </div>
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Anmeldung Prüfung:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.anmeldung_pruefungsamt %></span>
-                    </div>
-                  </div>
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Abgabedatum:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.abgabedatum %></span>
-                    </div>
-                  </div>
-                  <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-                    <div class="bg-blue-100 p-2 rounded">
-                      <span class="font-semibold text-blue-700">Studienniveau:</span>
-                      <span class="text-gray-700"><%= konkrete_abschlussarbeiten.studienniveau %></span>
-                    </div>
-                  </div>
-                  </details>
                 </div>
-              </div>
-            </div>
-          </div>
-      </div>
+            </li>
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center ">
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-neutral-400 truncate">
+                            Semester
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-neutral-400">
+                          <%= konkrete_abschlussarbeiten.semester %>
+                    </div>
+                </div>
+            </li>
+            <li class="py-3 sm:py-4">
+                <div class="flex items-center">
+                    <div class="flex-1 min-w-0 ms-4">
+                        <p class="text-sm font-medium text-neutral-400 truncate">
+                            Forschungsprojekt
+                        </p>
+                    </div>
+                    <div class="inline-flex items-center text-base font-semibold text-neutral-400">
+                          <%= konkrete_abschlussarbeiten.forschungsprojekt %>
+                    </div>
+                </div>
+            </li>
+        </ul>
+   </div>
+</div>
+</div>
+</div>
 
       """
     end
@@ -122,9 +110,9 @@ defmodule LehrstuhlWeb.FilterKonkretLive do
     defp betreuer_options do
       [
         "Alle Betreuer": "",
-        Winkler: :müller,
-        Christ: :hansen,
-        Boehmer: :becker
+        Müller: :müller,
+        Hansen: :hansen,
+        Becker: :becker
       ]
     end
 

@@ -18,6 +18,14 @@ defmodule Lehrstuhl.Abschlussarbeiten do
       [%AbstrakteAbschlussarbeiten{}, ...]
 
   """
+  def featured_abschlussarbeiten(abschlussarbeiten) do
+    AbstrakteAbschlussarbeiten
+   # |> where(status: :open)
+    |> where([r], r.id != ^abschlussarbeiten.id)
+    |> limit(3)
+    |> Repo.all()
+  end
+
   def list_abstrakte_abschlussarbeiten do
    Repo.all(AbstrakteAbschlussarbeiten)
   |> Repo.preload(:konkrete_abschlussarbeiten)
@@ -35,8 +43,6 @@ select: {aa})
 Repo.all(query)
 end
 
-
-
 #Funktionen zum Filtern der Abschlussarbeiten
 
 def list_abstrakte_abschlussarbeiten(filter) when is_map(filter) do
@@ -49,6 +55,7 @@ def list_abstrakte_abschlussarbeiten(filter) when is_map(filter) do
   |> Repo.all()
   |> Repo.preload(:konkrete_abschlussarbeiten)
 end
+
 
 #Abfrage der Datenbank nach Eingabe von Query
 
@@ -69,6 +76,9 @@ defp filter_by_semester1(query, %{semester: ""}), do: query
 defp filter_by_semester1(query, %{semester: semester}) do
   where(query, semester: ^semester)
 end
+
+
+
 
   @doc """
   Gets a single abstrakte_abschlussarbeiten.

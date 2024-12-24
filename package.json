@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "flowbite": "^2.5.2",
+    "preline": "^2.6.0",
+    "tailwind": "^4.0.0"
   }
 }
