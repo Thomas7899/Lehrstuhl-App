@@ -4,7 +4,7 @@ defmodule Lehrstuhl.Seminare do
   """
 
   import Ecto.Changeset
-  import Ecto.Query, warn: false
+  import Ecto.Query
 
   alias Lehrstuhl.Repo
   alias Lehrstuhl.Seminare.Seminarergebnis

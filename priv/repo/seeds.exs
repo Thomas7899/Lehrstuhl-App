@@ -16,6 +16,8 @@ alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
 alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
 alias Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten
 alias Lehrstuhl.Seminare.Seminar
+alias Lehrstuhl.Seminare.Seminarergebnis
+alias Lehrstuhl.Klausuren.Klausurergebnis
 
 
 Repo.insert!(%Seminar{
@@ -36,7 +38,7 @@ Repo.insert!(%Seminar{
 
 
 Repo.insert!(%Mitarbeiter{
-  id: "11e68a9e-069e-4e28-96d5-3d85c5849fba",
+  id: "11e68b9e-069e-4e28-96d5-3d85c5849fba",
   email: "mitarbeiter@eins.de",
   nachname: "müller",
   vorname: "johanna",
@@ -59,6 +61,22 @@ Repo.insert!(%Mitarbeiter{
   rolle: :wissenschaftlicher_mitarbeiter
 })
 
+Repo.insert!(%Mitarbeiter{
+  id: "23e58a9e-069e-4e28-96d5-3d85c5849fbc",
+  email: "mitarbeiter@vier.de",
+  nachname: "brenner",
+  vorname: "johann",
+  rolle: :professor
+})
+
+Repo.insert!(%Mitarbeiter{
+  id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  email: "mitarbeiter@fünf.de",
+  nachname: "fischer",
+  vorname: "leon",
+  rolle: :wissenschaftlicher_mitarbeiter
+})
+
 Repo.insert!(%Student{
   id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
   email: "student@eins.de",
@@ -78,7 +96,7 @@ Repo.insert!(%Student{
 })
 
 Repo.insert!(%Student{
-  id: "55e68a9e-069e-4e28-96d5-3d85c5849fb2",
+  id: "44e35a9e-069e-4e28-96d5-3d85c5849fb2",
   email: "student@drei.de",
   matrikelnummer: "1837675",
   nachname: "Student",
@@ -132,19 +150,19 @@ Repo.insert!(%AbstrakteAbschlussarbeiten{
 })
 
 Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :tool,
+  betreuer: :hansen,
+  forschungsprojekt: :sport,
   semester: "WS22/23",
-  thema: "TOOL - A web browser-based modeling tool and observatory",
-  themenskizze: "Weiterentwicklung und Erprobung des grafischen BPMN 2.0-Editors sowie der korrespondierenden implementierten Sprachspezifikation in TOOL"
+  thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
 })
 
 Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :tool,
+  betreuer: :hansen,
+  forschungsprojekt: :sport,
   semester: "SS23",
-  thema: "TOOL - A web browser-based modeling tool and observatory",
-  themenskizze: "Weiterentwicklung und Erprobung des grafischen ERM-Editors sowie der korrespondierenden implementierten Sprachspezifikation in TOOL"
+  thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
 })
 
 Repo.insert!(%AbstrakteAbschlussarbeiten{
@@ -166,7 +184,7 @@ Repo.insert!(%AbstrakteAbschlussarbeiten{
 Repo.insert!(%AbstrakteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
-  semester: "WS22/23",
+  semester: "SS22",
   thema: "TOOL - A web browser-based modeling tool and observatory",
   themenskizze: "Evaluation eines Natural Language Processing (NLP)-basierten Feedback-Assistenten für die Identifikation von gehaltvollen Bezeichnern für Modellelemente in Datenmodellen"
 })
@@ -180,11 +198,11 @@ Repo.insert!(%AbstrakteAbschlussarbeiten{
 })
 
 Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :tool,
+  betreuer: :müller,
+  forschungsprojekt: :imp,
   semester: "WS23/24",
-  thema: "TOOL - A web browser-based modeling tool and observatory",
-  themenskizze: "Entwicklung einer Softwaredokumentationsstrategie für TOOL basierend auf dem C4-Modell"
+  thema: "Individual Modeling Processes",
+  themenskizze: "Modellierungsschwierigkeiten von Experten und Novizen"
 })
 
 Repo.insert!(%AbstrakteAbschlussarbeiten{
@@ -338,6 +356,42 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-01-01],
   studienniveau: :bachelor
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :becker,
+  forschungsprojekt: :imp,
+  semester: "SS22",
+  matrikelnummer: "1247527",
+  angepasste_themenskizze: "Modellierungsschwierigkeiten",
+  gesetzte_schwerpunkte: "Literaturrecherche",
+  anmeldung_pruefungsamt: ~D[2022-02-01],
+  abgabedatum: ~D[2022-08-01],
+  studienniveau: :master
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :hansen,
+  forschungsprojekt: :sport,
+  semester: "WS23/24",
+  matrikelnummer: "8681732",
+  angepasste_themenskizze: "Erstellung einer neuen Zeichenfunktion",
+  gesetzte_schwerpunkte: "Literaturrecherche",
+  anmeldung_pruefungsamt: ~D[2023-04-01],
+  abgabedatum: ~D[2024-01-01],
+  studienniveau: :bachelor
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :müller,
+  forschungsprojekt: :imp,
+  semester: "SS22",
+  matrikelnummer: "9641742",
+  angepasste_themenskizze: "Erstellung einer neuen Zeichenfunktion",
+  gesetzte_schwerpunkte: "Literaturrecherche",
+  anmeldung_pruefungsamt: ~D[2022-04-01],
+  abgabedatum: ~D[2022-01-01],
+  studienniveau: :master
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{

@@ -2,6 +2,7 @@ defmodule LehrstuhlWeb.FilterSeminar.Index do
   use LehrstuhlWeb, :live_view
 
   import LehrstuhlWeb.CustomComponents
+  alias Lehrstuhl.Seminare.Seminar
   alias Lehrstuhl.Seminare
 
   def mount(_params, _session, socket) do
@@ -11,8 +12,8 @@ defmodule LehrstuhlWeb.FilterSeminar.Index do
   def handle_params(params, _uri, socket) do
     socket =
       socket
-      |> assign(:form, to_form(params))
       |> stream(:seminare, Seminare.filter_seminare(params), reset: true)
+      |> assign(:form, to_form(params))
 
     {:noreply, socket}
   end
@@ -23,7 +24,7 @@ defmodule LehrstuhlWeb.FilterSeminar.Index do
       <.filter_form form={@form} />
 
       <div class="seminare" id="seminare" phx-update="stream">
-        <.seminare_card :for={{seminar} <- @streams.seminare} seminar={seminar} />
+        <.seminare_card :for={{dom_id, seminar} <- @streams.seminare} seminar={seminar} id={dom_id} />
       </div>
     </div>
     """
@@ -41,9 +42,12 @@ defmodule LehrstuhlWeb.FilterSeminar.Index do
     """
   end
 
+  attr :seminar, Lehrstuhl.Seminare.Seminar, required: true
+  attr :id, :string, required: true
+
   def seminare_card(assigns) do
     ~H"""
-    <.link navigate={~p"/seminare/#{@seminar}"} >
+    <.link navigate={~p"/seminare/#{@seminar}"} id={@id} >
       <div class="card">
         <h2><%= @seminar.titel %></h2>
       </div>

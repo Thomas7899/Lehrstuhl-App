@@ -14,23 +14,25 @@ defmodule LehrstuhlWeb.FilterAbstraktLive do
 
     def render(assigns) do
       ~H"""
-      <h1 class="text-2xl font-mono">Filter abstrakte Abschlussarbeiten</h1>
+       <div class="flex justify-center items-center">
+      <h1 class="text-3xl font-mono text-white hover:text-[#8000ff] bg-gray-800 hover:bg-neutral-900 rounded-lg inline-block p-3">Abstrakte Abschlussarbeiten</h1>
+      </div>
       <div id="abstrakte_abschlussarbeiten">
         <form phx-change="filter">
-          <div class="filters">
-            <select name="betreuer">
+          <div class="mt-4 flex flex-wrap justify-center gap-3">
+            <select class="rounded-lg bg-gray-800 hover:bg-neutral-900 text-white hover:text-[#8000ff]" name="betreuer">
               <%= Phoenix.HTML.Form.options_for_select(
                 betreuer_options(),
                 @filter.betreuer
               ) %>
             </select>
-            <select name="semester">
+            <select class="rounded-lg bg-gray-800 hover:bg-neutral-900 text-white hover:text-[#8000ff]" name="semester">
               <%= Phoenix.HTML.Form.options_for_select(
                 semester_options(),
                 @filter.semester
               ) %>
             </select>
-            <select name="thema">
+            <select class="rounded-lg bg-gray-800 hover:bg-neutral-900 text-white hover:text-[#8000ff]" name="thema">
               <%= Phoenix.HTML.Form.options_for_select(
                 thema_options(),
                 @filter.thema
@@ -42,22 +44,21 @@ defmodule LehrstuhlWeb.FilterAbstraktLive do
         <div class="flex flex-wrap md:flex-wrap-reverse">
           <div :for={abstrakte_abschlussarbeiten <- @abschlussarbeiten} class="bg-slate-50 p-4 w-full md:w-1/2 lg:w-1/3">
 
-
-          <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+  <div class="w-full max-w-md p-4 bg-gray-800 hover:bg-neutral-900 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <div class="flex items-center justify-between mb-4">
-        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white"><%= abstrakte_abschlussarbeiten.forschungsprojekt %></h5>
-        <.link class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500" navigate={~p"/abstrakte_abschlussarbeiten/#{abstrakte_abschlussarbeiten}"}>View all</.link>
+        <h5 class="text-xl font-bold leading-none text-white"><%= abstrakte_abschlussarbeiten.forschungsprojekt %></h5>
+        <.link class="text-sm font-medium text-[#8000ff] hover:underline" navigate={~p"/abstrakte_abschlussarbeiten/#{abstrakte_abschlussarbeiten}"}>View all</.link>
     </div>
    <div class="flow-root">
         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
             <li class="py-3 sm:py-4">
                 <div class="flex items-center">
                     <div class="flex-1 min-w-0 ms-4">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        <p class="text-sm font-medium text-neutral-400 truncate">
                             Betreuer
                         </p>
                     </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    <div class="inline-flex items-center text-base font-semibold text-neutral-400">
                           <%= abstrakte_abschlussarbeiten.betreuer %>
                     </div>
                 </div>
@@ -65,11 +66,11 @@ defmodule LehrstuhlWeb.FilterAbstraktLive do
             <li class="py-3 sm:py-4">
                 <div class="flex items-center ">
                     <div class="flex-1 min-w-0 ms-4">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        <p class="text-sm font-medium text-neutral-400 truncate">
                             Semester
                         </p>
                     </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    <div class="inline-flex items-center text-base font-semibold text-neutral-400">
                           <%= abstrakte_abschlussarbeiten.semester %>
                     </div>
                 </div>
