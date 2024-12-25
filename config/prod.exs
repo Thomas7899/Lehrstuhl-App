@@ -6,8 +6,10 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :lehrstuhl, LehrstuhlWeb.Endpoint,
-url: [port: 443, scheme: "https"],
+url: [port: 443, scheme: "https", host: "https://lehrstuhlmanager-9beb7d74206d.herokuapp.com/"],
 force_ssl: [rewrite_on: [:x_forwarded_proto]],
+cache_static_manifest: "priv/static/cache_manifest.json",
+secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: Lehrstuhl.Finch
