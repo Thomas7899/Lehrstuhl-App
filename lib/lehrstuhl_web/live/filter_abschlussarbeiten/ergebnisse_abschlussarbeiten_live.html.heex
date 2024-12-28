@@ -1,4 +1,6 @@
-<h1>Ergebnisse Abschlussarbeiten</h1>
+<div class="flex justify-center items-center">
+<h1 class="text-3xl font-mono text-white hover:text-[#8000ff] bg-gray-800 hover:bg-neutral-900 rounded-lg inline-block p-3">Ergebnisse Abschlussarbeiten</h1>
+</div>
 <div id="ergebnisse-abschlussarbeiten">
   <form phx-change="select-per-page">
     <select name="per-page">
@@ -10,7 +12,7 @@
     <label for="label">pro Seite</label>
   </form>
   <div class="wrapper">
-    <table>
+    <table class="table-auto mx-auto border-collapse">
       <thead>
         <tr>
           <th>
@@ -60,7 +62,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="footer">
+    <div class="text-center mx-auto p-4 rounded-md">
       <div class="pagination">
        <div class="zurück">
         <.link

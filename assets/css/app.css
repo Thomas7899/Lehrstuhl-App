@@ -62,7 +62,6 @@
   line-height: 1.75rem;
 }
 
-
 /* Ergebnisse Abschlussarbeit */
 
 h1 {
@@ -86,11 +85,17 @@ td {
   font-family: 'Poppins', sans-serif;
   font-style: roboto;
   font-size: 1.125rem; 
-  font-weight: 400;
-  color: #27272a;
+  font-weight: 900;
+  color: rgb(23 23 23 / var(--tw-text-opacity, 1));
   text-shadow: 1px 1px 1px #fff;
   text-align: center;
   background-color: #f5f5f5
+}
+
+th:hover {
+  color: #8000ff;
+  background-color: rgb(23 23 23 / var(--tw-text-opacity, 1));
+  border-radius: 12px;
 }
 
 th {
@@ -101,13 +106,13 @@ th {
   color: #fff;
   text-shadow: 1px 1px 1px #27272a;
   text-align: center;
-  background-color: #1f547d79;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
   border-radius: 12px;
 }
 
 .footer {
   text-align: center;
-  background-color: #1f547d79;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
   margin-right: 100px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -116,33 +121,49 @@ th {
   cursor: pointer;
 }
 
-.vor {
-  padding-top: 5px;
-  flex-direction: row;
-}
-
 .pagination {
+  font-weight: 500;
   flex-direction: column;
   padding-left: 40px;
-  color: rgb(0, 45, 128);
-  background-color: rgb(212, 208, 208);
+  color: #fff;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
   margin-right: 400px;
   margin-left: 400px;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 19px;
   cursor: pointer;
+}
+
+.pagination:hover {
+  color: #8000ff;
+  background-color: rgb(23 23 23 / var(--tw-text-opacity, 1));
+}
+
+.vor {
+  padding-top: 5px;
+  flex-direction: row;
+  font-weight: 500;
+}
+
+.zurück {
+  padding-top: 5px;
+  flex-direction: row;
+  font-weight: 500;
 }
 
 .wrapper {
   margin-right: 10px;
-  padding: 5px;
+  margin-left: 10px;
+  padding: 15px;
+  padding-right: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
 }
+
 .label {
   text-align: center;
   font-size: 20px;
@@ -159,10 +180,10 @@ form {
 
 form select {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background-color: rgb(212, 208, 208);
+  color: #fff;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
   margin-right: 40px;
   margin-left: 40px;
-  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -181,6 +202,7 @@ form select:focus {
   justify-content: flex-start; 
   align-items: center;
 }
+
 
 /* Abstrakte Abschlussarbeit */
 

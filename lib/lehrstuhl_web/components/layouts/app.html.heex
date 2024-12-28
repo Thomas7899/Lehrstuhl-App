@@ -1,14 +1,7 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="app.css">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <title>Lehrstuhl App</title>
-  <link rel="icon" href="/images/fernuni-logo.svg">
-
-
+  <meta charset="utf-8">
   <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://preline.co/">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,9 +22,13 @@
   <meta property="og:description" content="Discover the difference that a professionally crafted website can make for your business.">
   <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Lehrstuhl App</title>
 
-   <script>
+  <link rel="icon" href="/images/fernuni-logo.svg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
     const html = document.querySelector('html');
     const isLightOrAuto = localStorage.getItem('hs_theme') === 'light' || (localStorage.getItem('hs_theme') === 'auto' && !window.matchMedia('(prefers-color-scheme: dark)').matches);
     const isDarkOrAuto = localStorage.getItem('hs_theme') === 'dark' || (localStorage.getItem('hs_theme') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -42,22 +39,19 @@
     else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add('light');
   </script>
 
-    <link rel="stylesheet" href="https://preline.co/assets/css/main.min.css">
+  <link rel="stylesheet" href="https://preline.co/assets/css/main.min.css">
 </head>
 
-<body class="flex flex-col h-screen">
- 
+<body class="bg-neutral-900">
   <header class="sticky top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
     <nav class="relative max-w-[66rem] w-full bg-white rounded-[28px] py-3 ps-5 pe-2 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto" aria-label="Global">
 
 
       <div class="flex items-center justify-between">
-        <!-- Logo -->
        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/images/fernuni-logo.svg" class="h-8" alt="FernUni Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Lehrstuhl App</span>
         </a>
-        <!-- End Logo -->
 
         <div class="md:hidden">
           <button type="button" class="hs-collapse-toggle size-8 flex justify-center items-center text-sm font-semibold rounded-full bg-neutral-800 text-white disabled:opacity-50 disabled:pointer-events-none" data-hs-collapse="#navbar-collapse" aria-controls="navbar-collapse" aria-label="Toggle navigation">
@@ -75,19 +69,10 @@
       </div>
 
 
-
-
-
-
-
-      <!-- Collapse -->
       <div id="navbar-collapse" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
         <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:ps-7">
           <a class="text-sm text-black hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/" aria-current="page">Home</a>
-          <a class="text-sm text-black hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/students">Mitarbeiter</a>
-          <a class="text-sm text-black hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/mitarbeiter">Studenten</a>
-
-
+          <a class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#8000ff] font-medium text-sm text-neutral-800 rounded-full focus:outline-none" href="#">Contact us</a>
           <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:py-4">
             <button type="button" class="flex items-center w-full text-sm text-black hover:text-neutral-300 focus:outline-none focus:text-neutral-300">
               Erstellen
@@ -103,22 +88,61 @@
                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/konkrete_abschlussarbeiten">
                     Konkrete Abschlussarbeiten
                   </a>
+
+                  <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
+                <button type="button" class="w-full flex justify-between items-center py-2 px-3 text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300">
+                  Personen
+                  <svg class="sm:-rotate-90 flex-shrink-0 ms-2 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute before:-end-5 before:top-0 before:h-full before:w-5 top-0 end-full !mx-[10px]">
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/students">
+                    Studierende
+                  </a>
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/mitarbeiter">
+                    Mitarbeiter
+                  </a>
+                </div>
+              </div>
+                  <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
+                <button type="button" class="w-full flex justify-between items-center py-2 px-3 text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300">
+                  Klausuren
+                  <svg class="sm:-rotate-90 flex-shrink-0 ms-2 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute before:-end-5 before:top-0 before:h-full before:w-5 top-0 end-full !mx-[10px]">
                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/module">
                     Module
                   </a>
-                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/seminare">
+                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/klausuren">
+                    Klausuren
+                  </a>   
+                </div>
+              </div>
+
+                    <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
+                <button type="button" class="w-full flex justify-between items-center py-2 px-3 text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300">
+                  Seminare
+                  <svg class="sm:-rotate-90 flex-shrink-0 ms-2 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute before:-end-5 before:top-0 before:h-full before:w-5 top-0 end-full !mx-[10px]">
+                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/seminare">
                     Seminare
                   </a>
                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/abstrakte_seminare">
                     Abstrakte Seminare
-                  </a>   
-                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/klausuren">
-                    Klausuren
-                  </a>            
+                  </a>  
+                </div>
+              </div>               
             </div>
           </div>
-
-
 
            <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:py-4">
             <button type="button" class="flex items-center w-full text-sm text-black hover:text-neutral-300 focus:outline-none focus:text-neutral-300">
@@ -140,9 +164,6 @@
                   </a>            
             </div>
           </div>
-
-
-
 
            <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:py-4">
             <button type="button" class="flex items-center w-full text-sm text-black hover:text-neutral-300 focus:outline-none focus:text-neutral-300">
@@ -166,11 +187,8 @@
           </div>
         </div>
       </div>
-      <!-- End Collapse -->
     </nav>
-  </header>
-
-    
+  </header> 
  
     <!-- Main Content -->
     <main class="flex-1 flex flex-col items-center py-4">
