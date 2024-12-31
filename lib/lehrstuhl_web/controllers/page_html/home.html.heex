@@ -72,7 +72,6 @@
       <div id="navbar-collapse" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
         <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:ps-7">
           <a class="text-sm text-black hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/" aria-current="page">Home</a>        
-            <a class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#8000ff] font-medium text-sm text-neutral-800 rounded-full focus:outline-none" href="#">Contact us</a>
          
           <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:py-4">
             <button type="button" class="flex items-center w-full text-sm text-black hover:text-neutral-300 focus:outline-none focus:text-neutral-300">
@@ -83,14 +82,8 @@
             </button>
 
             <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute top-full before:-top-5 before:start-0 before:w-full before:h-5">
-               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/abstrakte_abschlussarbeiten">
-                    Abstrakte Abschlussarbeiten
-                  </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/konkrete_abschlussarbeiten">
-                    Konkrete Abschlussarbeiten
-                  </a>
 
-                  <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
+               <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
                 <button type="button" class="w-full flex justify-between items-center py-2 px-3 text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300">
                   Personen
                   <svg class="sm:-rotate-90 flex-shrink-0 ms-2 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -107,6 +100,30 @@
                   </a>
                 </div>
               </div>
+
+             <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
+                <button type="button" class="w-full flex justify-between items-center py-2 px-3 text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300">
+                  Abschlussarbeiten
+                  <svg class="sm:-rotate-90 flex-shrink-0 ms-2 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute before:-end-5 before:top-0 before:h-full before:w-5 top-0 end-full !mx-[10px]">
+                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/abstrakte_abschlussarbeiten">
+                    Abstrakte Abschlussarbeiten
+                  </a>
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/konkrete_abschlussarbeiten">
+                    Konkrete Abschlussarbeiten
+                  </a>
+                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/ergebnisse_abschlussarbeiten">
+                    Ergebnisse Abschlussarbeiten
+                  </a>
+                </div>
+              </div>
+
+               
+
                   <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
                 <button type="button" class="w-full flex justify-between items-center py-2 px-3 text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300">
                   Klausuren
@@ -121,7 +138,10 @@
                   </a>
                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/klausuren">
                     Klausuren
-                  </a>   
+                  </a>
+                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/klausurergebnisse">
+                    Klausurergebnisse
+                  </a>     
                 </div>
               </div>
 
@@ -140,6 +160,9 @@
                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/abstrakte_seminare">
                     Abstrakte Seminare
                   </a>  
+                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/seminarergebnisse">
+                    Seminarergebnisse
+                  </a>
                 </div>
               </div>               
             </div>
@@ -162,30 +185,18 @@
                   </a>
                   <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/ergebnisse-abschlussarbeiten">
                     Ergebnisse Abschlussarbeiten
-                  </a>            
+                  </a>  
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/filter_abstrakt_konkret">
+                    Konkrete Abschlussarbeit gehört zu Abstrakter Abschlussarbeit
+                  </a>   
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/filterseminare">
+                    Seminare
+                  </a>        
             </div>
           </div>
 
-           <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:py-4">
-            <button type="button" class="flex items-center w-full text-sm text-black hover:text-neutral-300 focus:outline-none focus:text-neutral-300">
-              Ergebnisse
-              <svg class="flex-shrink-0 ms-1 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </button>
-
-            <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute top-full before:-top-5 before:start-0 before:w-full before:h-5">
-               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/ergebnisse_abschlussarbeiten">
-                    Ergebnisse Abschlussarbeiten
-                  </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/seminarergebnisse">
-                    Seminarergebnisse
-                  </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="/klausurergebnisse">
-                    Klausurergebnisse
-                  </a>            
-            </div>
-          </div>
+         <a class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#8000ff] font-medium text-sm text-neutral-800 rounded-full focus:outline-none" href="#">Contact us</a>
+         
         </div>
       </div>
     </nav>

@@ -19,6 +19,6 @@ defmodule Lehrstuhl.Klausuren.Modul do
   def changeset(modul, attrs) do
     modul
     |> cast(attrs, [:mitarbeiter_id, :lehrstuhlinhaber_id, :name])
-    |> validate_required([:mitarbeiter_id, :lehrstuhlinhaber_id, :name])
+    |> validate_required([:mitarbeiter_id, :name])
   end
 end

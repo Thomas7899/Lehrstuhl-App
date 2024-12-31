@@ -3,11 +3,14 @@ defmodule Lehrstuhl.Abschlussarbeiten do
   The Abschlussarbeiten context.
   """
 
+  import Ecto.Changeset
   import Ecto.Query, warn: false
   alias Lehrstuhl.Repo
 
   alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
   alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
+  alias Lehrstuhl.Abschlussarbeiten.FilterAbstraktKonkret
+  alias Lehrstuhl.Abschlussarbeiten
 
   @doc """
   Returns the list of abstrakte_abschlussarbeiten.
@@ -18,12 +21,15 @@ defmodule Lehrstuhl.Abschlussarbeiten do
       [%AbstrakteAbschlussarbeiten{}, ...]
 
   """
-  def featured_abschlussarbeiten(abschlussarbeiten) do
-    AbstrakteAbschlussarbeiten
-   # |> where(status: :open)
-    |> where([r], r.id != ^abschlussarbeiten.id)
-    |> limit(3)
-    |> Repo.all()
+  def featured_abschlussarbeiten() do
+    query = from(aa in AbstrakteAbschlussarbeiten,
+    join: ka in KonkreteAbschlussarbeiten,
+    on: aa.forschungsprojekt == ka.forschungsprojekt,
+    on: aa.betreuer == ka.betreuer,
+    on: aa.semester == ka.semester,
+    preload: [konkrete_abschlussarbeiten: ka],
+    select: {aa})
+    Repo.all(query)
   end
 
   def list_abstrakte_abschlussarbeiten do

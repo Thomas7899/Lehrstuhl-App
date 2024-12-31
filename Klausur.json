@@ -1,0 +1,296 @@
+
+# Klausuren
+
+Repo.insert!(%Klausur{
+  id: "9a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  titel: "Mathematik Klausur",
+  kenner: "MATH101",
+  beschreibung: "Klausur über lineare Algebra und Analysis",
+  punkteGesamt: 100,
+  semester: "SS24",
+  praesenzdatum: ~D[2025-06-15],
+  ort: "Raum A1",
+  modul_id: "1a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausur{
+  id: "8b7b3300-ae7f-11eb-bcbc-0242ac130002",
+  titel: "Informatik Klausur",
+  kenner: "INF102",
+  beschreibung: "Klausur über Datenstrukturen und Algorithmen",
+  punkteGesamt: 80,
+  semester: "SS24",
+  praesenzdatum: ~D[2025-06-20],
+  ort: "Raum B2",
+  modul_id: "2a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausur{
+  id: "7c7b3300-ae7f-11eb-bcbc-0242ac130002",
+  titel: "BWL Klausur",
+  kenner: "BWL101",
+  beschreibung: "Klausur über Grundlagen der Betriebswirtschaftslehre",
+  punkteGesamt: 60,
+  semester: "WS24/25",
+  praesenzdatum: ~D[2025-07-01],
+  ort: "Raum C3",
+  modul_id: "3a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausur{
+  id: "6d7b3300-ae7f-11eb-bcbc-0242ac130002",
+  titel: "Physik Klausur",
+  kenner: "PHY101",
+  beschreibung: "Klausur über Mechanik und Thermodynamik",
+  punkteGesamt: 75,
+  semester: "WS24/25",
+  praesenzdatum: ~D[2025-07-10],
+  ort: "Raum D4",
+  modul_id: "4a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausur{
+  id: "5e7b3300-ae7f-11eb-bcbc-0242ac130002",  
+  titel: "Chemie Klausur",
+  kenner: "CHEM101",
+  beschreibung: "Klausur über Organische und Anorganische Chemie",
+  punkteGesamt: 90,
+  semester: "SS25",
+  praesenzdatum: ~D[2025-08-12],
+  ort: "Raum E5",
+  modul_id: "5a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+
+#Klausurergebnisse
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 85,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1", # Student Eins
+  klausur_id: "9a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 90,
+  student_id: "55e68a9e-069e-4e28-96d5-3d85c5849fb2", # Student Zwei
+  klausur_id: "d91e1c80-bd42-44b3-bc1d-2b55c7df64cd"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 78,
+  student_id: "44e35a9e-069e-4e28-96d5-3d85c5849fb2", # Student Drei
+  klausur_id: "b121c400-df99-4ab8-a1d2-1b8a5bdc36c3"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 65,
+  student_id: "77e68a9e-069e-4e28-96d5-3d85c5849fb3", # Student Vier
+  klausur_id: "72d7c360-6c74-4a1e-9a72-0c58c44d8b3e"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 50,
+  student_id: "97e68a9e-069e-4e28-96d5-3d85c5849fb3", # Student Fünf
+  klausur_id: "bdc1f580-743d-46b6-85d4-3ed9a302fa20"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 88,
+  student_id: "10e68a9e-069e-4e28-96d5-3d85c5849fb3", # Student Sechs
+  klausur_id: "8b3624f0-993e-4b91-bc23-b114f8720d32"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 72,
+  student_id: "18e68a9e-069e-4e28-96d5-3d85c5849fb3", # Student Sieben
+  klausur_id: "af1e4533-4627-4b18-820b-2b62254c9fbd"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 95,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1", # Student Eins
+  klausur_id: "f27252e7-bd12-4674-a837-cac9b2e0f6d1"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 62,
+  student_id: "55e68a9e-069e-4e28-96d5-3d85c5849fb2", # Student Zwei
+  klausur_id: "c9bb01f1-2c63-4a24-840e-39a28b55df12"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 80,
+  student_id: "44e35a9e-069e-4e28-96d5-3d85c5849fb2", # Student Drei
+  klausur_id: "2f3e764d-44b5-4d1e-9ea8-c3bb42db4c76"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 85,
+  student_id: "77e68a9e-069e-4e28-96d5-3d85c5849fb3", # Student Vier
+  klausur_id: "e6a78d8d-9287-4971-90f2-ff9bdb4f74f3"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 91,
+  student_id: "97e68a9e-069e-4e28-96d5-3d85c5849fb3", # Student Fünf
+  klausur_id: "3c6b442a-b91e-4910-820d-3f8d37c772e5"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 75,
+  student_id: "10e68a9e-069e-4e28-96d5-3d85c5849fb3", # Student Sechs
+  klausur_id: "58a9b0ef-4f8b-4c88-ae21-5c451e947c81"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 68,
+  student_id: "18e68a9e-069e-4e28-96d5-3d85c5849fb3", # Student Sieben
+  klausur_id: "2b9a6cd9-7e11-4c9b-8433-c36208f127ef"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 94,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1", # Student Eins
+  klausur_id: "7d3a8f97-cd45-4cb8-96c5-cb7e37a01ec2"
+})
+
+
+
+
+
+
+
+
+
+# Klausuren
+
+Repo.insert!(%Klausur{
+  id: "9a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "MATH101",
+  beschreibung: "Klausur über lineare Algebra und Analysis",
+  punkteGesamt: 100,
+  semester: "SS24",
+  praesenzdatum: ~D[2025-06-15],
+  ort: "Raum A1",
+  modul_id: "1a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausur{
+  id: "8b7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "INF102",
+  beschreibung: "Klausur über Datenstrukturen und Algorithmen",
+  punkteGesamt: 80,
+  semester: "SS24",
+  praesenzdatum: ~D[2025-06-20],
+  ort: "Raum B2",
+  modul_id: "2a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausur{
+  id: "7c7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "BWL101",
+  beschreibung: "Klausur über Grundlagen der Betriebswirtschaftslehre",
+  punkteGesamt: 60,
+  semester: "WS24/25",
+  praesenzdatum: ~D[2025-07-01],
+  ort: "Raum C3",
+  modul_id: "3a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausur{
+  id: "6d7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "PHY101",
+  beschreibung: "Klausur über Mechanik und Thermodynamik",
+  punkteGesamt: 75,
+  semester: "WS24/25",
+  praesenzdatum: ~D[2025-07-10],
+  ort: "Raum D4",
+  modul_id: "4a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+Repo.insert!(%Klausur{
+  id: "5e7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "CHEM101",
+  beschreibung: "Klausur über Organische und Anorganische Chemie",
+  punkteGesamt: 90,
+  semester: "SS25",
+  praesenzdatum: ~D[2025-08-12],
+  ort: "Raum E5",
+  modul_id: "5a7b3300-ae7f-11eb-bcbc-0242ac130002"
+})
+
+# Module
+
+Repo.insert!(%Modul{
+  id: "1a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  betreuer: "mitarbeiter@vier.de",
+  name: "Entwicklung von Informationssystemen",
+  lehrstuhlinhaber: "mitarbeiter@vier.de"
+})
+
+Repo.insert!(%Modul{
+  id: "2a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  betreuer: "mitarbeiter@eins.de",
+  name: "Künstliche Intelligenz",
+  lehrstuhlinhaber: "mitarbeiter@vier.de"
+})
+
+Repo.insert!(%Modul{
+  id: "3a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  betreuer: "mitarbeiter@zwei.de",
+  name: "Programmiersprachen",
+  lehrstuhlinhaber: "mitarbeiter@drei.de"
+})
+
+Repo.insert!(%Modul{
+  id: "4a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  betreuer: "mitarbeiter@eins.de",
+  name: "Informationssystemarchitekturen",
+  lehrstuhlinhaber: "mitarbeiter@eins.de"
+})
+
+Repo.insert!(%Modul{
+  id: "5a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  betreuer: "mitarbeiter@fünf.de",
+  name: "Kommunikationssysteme und Rechnernetze",
+  lehrstuhlinhaber: "mitarbeiter@zwei.de"
+})
+
+
+#Klausurergebnisse
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 85,
+  student: "student@eins.de",
+  klausur: "CHEM101"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 90,
+  student: "student@eins.de",
+  klausur: "PHY101"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 78,
+  student: "student@eins.de",
+  klausur: "BWL101"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 65,
+  student: "student@drei.de",
+  klausur: "CHEM101"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 50,
+  student: "student@vier.de",
+  klausur: "BWL101"
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 88,
+  student: "student@fünf.de",
+  klausur: "PHY101"
+})

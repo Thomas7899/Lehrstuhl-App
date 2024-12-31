@@ -3,8 +3,6 @@
 @import "tailwindcss/utilities";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-
 .show {display: block;}
 
 .überschrift {
@@ -190,10 +188,9 @@ form select {
   cursor: pointer;
 }
 
-form select:focus {
-  outline: none;
-  border-color: #0070f3;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+form select:hover {
+  color: #8000ff;
+  background-color: rgb(23 23 23 / var(--tw-text-opacity, 1));
 }
 
 

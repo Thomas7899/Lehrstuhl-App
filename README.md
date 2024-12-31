@@ -62,4 +62,3 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ## pgAdmin
   * Official website: https://www.pgadmin.org
   * pgAdmin Docker Compose : https://towardsdatascience.com/how-to-run-postgresql-and-pgadmin-using-docker-3a6a8ae918b5
-

@@ -44,5 +44,6 @@ npm-debug.log
 
 # Ignore the database config file
 /database_credentials.txt
+/query.txt
 
 
