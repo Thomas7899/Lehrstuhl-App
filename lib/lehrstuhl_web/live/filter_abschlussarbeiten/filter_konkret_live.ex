@@ -9,7 +9,6 @@ defmodule LehrstuhlWeb.FilterKonkretLive do
           filter: %{betreuer: "", semester: "", forschungsprojekt: ""},
           abschlussarbeiten: Abschlussarbeiten.list_konkrete_abschlussarbeiten()
         )
-
       {:ok, socket, temporary_assigns: [abschlussarbeiten: []]}
     end
 

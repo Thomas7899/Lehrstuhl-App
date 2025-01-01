@@ -21,6 +21,14 @@ defmodule Lehrstuhl.Abschlussarbeiten do
       [%AbstrakteAbschlussarbeiten{}, ...]
 
   """
+#Suchfunktion
+def suche_abschlussarbeiten(filter) do
+  query = (from ka in KonkreteAbschlussarbeiten,
+  where: ilike(ka.matrikelnummer, ^"%#{filter["q"]}%"))
+  Repo.all(query)
+end
+
+
   def featured_abschlussarbeiten() do
     query = from(aa in AbstrakteAbschlussarbeiten,
     join: ka in KonkreteAbschlussarbeiten,

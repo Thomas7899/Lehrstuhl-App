@@ -45,5 +45,11 @@ npm-debug.log
 # Ignore the database config file
 /database_credentials.txt
 /query.txt
+/Klausur.json
+/Procfile
+/fly.toml
+/docker-compose.yml
+/Dockerfile
+/elixir_buildpack.config
 
 
