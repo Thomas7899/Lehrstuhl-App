@@ -16,6 +16,25 @@ Now you can visit localhost:4000 from your browser.
 
 * Return to Homepage per FernUni - Logo
 
+## Roadmap / To-Do List
+
+# The following tasks are planned or still need to be completed:
+
+  * Fix and improve tests
+    Resolve failing or incomplete tests to ensure the application functions as expected and meets quality standards.
+
+  * Add new features
+    Include [describe specific planned features if known] to enhance functionality.
+
+  * Improve documentation
+    Expand the documentation to provide clearer instructions for installation, usage, and contributing.
+
+  * Optimize performance
+    Analyze and address potential performance bottlenecks.
+
+  * Refactor code
+    Clean up and restructure parts of the codebase for better maintainability and readability.
+
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/
