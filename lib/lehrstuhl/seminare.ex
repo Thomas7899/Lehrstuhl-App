@@ -2,7 +2,6 @@ defmodule Lehrstuhl.Seminare do
   @moduledoc """
   The Seminare context.
   """
-
   import Ecto.Changeset
   import Ecto.Query
 
@@ -12,16 +11,16 @@ defmodule Lehrstuhl.Seminare do
 
     #Suchfunktion
 def filter_seminare(filter) do
-  Seminare
-  |> search_by(filter["q"])
-  |> Repo.all()
+  query = (from s in Seminar,
+  where: ilike(s.titel, ^"%#{filter["q"]}%"))
+  Repo.all(query)
 end
 
-defp search_by(query, q) when q in ["", nil], do: query
+#defp search_by(query, q) when q in ["", nil], do: query
 
-defp search_by(query, q) do
-  where(query, [i], ilike(i.titel, ^"%#{q}%"))
-end
+#defp search_by(query, q) do
+  #where(query, [i], ilike(i.titel, ^"%#{q}%"))
+#end
 
   @doc """
   Returns the list of seminarergebnisse.

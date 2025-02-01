@@ -31,8 +31,8 @@ defmodule Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten do
     |> cast(attrs, [:betreuer, :forschungsprojekt, :semester, :matrikelnummer, :angepasste_themenskizze, :gesetzte_schwerpunkte, :anmeldung_pruefungsamt, :abgabedatum, :studienniveau])
     |> validate_required([:betreuer, :forschungsprojekt, :semester, :matrikelnummer, :angepasste_themenskizze, :gesetzte_schwerpunkte, :anmeldung_pruefungsamt, :abgabedatum, :studienniveau])
     |> unique_constraint(:matrikelnummer)
-    |> validate_format(:semester, ~r/(WS|SS)[0-9]{4}/,
-      message: "Please use WS-YYYY or SS-YYYY Notation"
+    |> validate_format(:semester, ~r/(WS|SS)[0-9]{2}/,
+      message: "Please use WS-YY/YY or SS-YY Notation"
     )
   end
 end

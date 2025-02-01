@@ -1,0 +1,18 @@
+import Ecto.Query
+
+alias Lehrstuhl.Repo
+alias Lehrstuhl.FilterSeminareLive
+alias Lehrstuhl.Seminare.Seminarergebnis
+alias Lehrstuhl.Seminare.Seminar
+alias Lehrstuhl.Seminare
+
+alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
+alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
+alias Lehrstuhl.Abschlussarbeiten.FilterAbstraktKonkret
+alias Lehrstuhl.Abschlussarbeiten
+
+
+alias Lehrstuhl.Persons.Mitarbeiter
+alias Lehrstuhl.Persons.Student
+alias Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten
+alias Lehrstuhl.Klausuren.Klausurergebnis

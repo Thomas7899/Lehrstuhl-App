@@ -41,8 +41,8 @@ defmodule Lehrstuhl.Klausuren.Klausur do
       :modul_id
     ])
     |> unique_constraint(:kenner)
-    |> validate_format(:semester, ~r/(WS|SS)-[0-9]{4}/,
-      message: "Please use WS-YYYY or SS-YYYY Notation"
+    |> validate_format(:semester, ~r/(WS|SS)-[0-9]{2}/,
+      message: "Please use WS-YY/YY or SS-YY Notation"
     )
   end
 end
