@@ -3,14 +3,12 @@ defmodule Lehrstuhl.Abschlussarbeiten do
   The Abschlussarbeiten context.
   """
 
-  import Ecto.Changeset
   import Ecto.Query, warn: false
   alias Lehrstuhl.Repo
 
   alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
   alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
   alias Lehrstuhl.Abschlussarbeiten.FilterAbstraktKonkret
-  alias Lehrstuhl.Abschlussarbeiten
 
   @doc """
   Returns the list of abstrakte_abschlussarbeiten.

@@ -2,8 +2,8 @@ defmodule Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Lehrstuhl.Persons.{Student, Mitarbeiter}
-  alias Lehrstuhl.Abschlussarbeiten.{ErgebnisseAbschlussarbeiten, AbstrakteAbschlussarbeiten}
+  #alias Lehrstuhl.Persons.{Student, Mitarbeiter}
+  #alias Lehrstuhl.Abschlussarbeiten.{ErgebnisseAbschlussarbeiten, AbstrakteAbschlussarbeiten}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -17,10 +17,10 @@ defmodule Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten do
     field :anmeldung_pruefungsamt, :date
     field :abgabedatum, :date
     field :studienniveau, Ecto.Enum, values: [:bachelor, :master, :diplom]
-    belongs_to :mitarbeiter, Mitarbeiter # Assoziation hinzugefügt
-    belongs_to :student, Student # Assoziation hinzugefügt
-    belongs_to :abstrakte_abschlussarbeiten, AbstrakteAbschlussarbeiten # Assoziation hinzugefügt
-    has_one :ergebnisse_abschlussarbeiten, ErgebnisseAbschlussarbeiten # Assoziation hinzugefügt
+    #belongs_to :mitarbeiter, Mitarbeiter
+    #belongs_to :student, Student
+    #belongs_to :abstrakte_abschlussarbeiten, AbstrakteAbschlussarbeiten
+    #has_one :ergebnisse_abschlussarbeiten, ErgebnisseAbschlussarbeiten
 
     timestamps()
   end
@@ -31,8 +31,5 @@ defmodule Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten do
     |> cast(attrs, [:betreuer, :forschungsprojekt, :semester, :matrikelnummer, :angepasste_themenskizze, :gesetzte_schwerpunkte, :anmeldung_pruefungsamt, :abgabedatum, :studienniveau])
     |> validate_required([:betreuer, :forschungsprojekt, :semester, :matrikelnummer, :angepasste_themenskizze, :gesetzte_schwerpunkte, :anmeldung_pruefungsamt, :abgabedatum, :studienniveau])
     |> unique_constraint(:matrikelnummer)
-    |> validate_format(:semester, ~r/(WS|SS)[0-9]{2}/,
-      message: "Please use WS-YY/YY or SS-YY Notation"
-    )
   end
 end

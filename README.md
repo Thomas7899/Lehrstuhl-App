@@ -1,5 +1,15 @@
 # Lehrstuhl App
 
+Welcome to the Lehrstuhl-App – Designed for Efficient Administration
+
+This app has been specifically developed to optimize chair organization. It allows easy searching and filtering of theses and seminars via a text search field, as well as dropdown menus for supervisors, semesters, and research projects. With these features, you can quickly find out which theses were written in a particular semester or which supervisor is working on which project.
+
+The Lehrstuhl-App enables the efficient management and linking of seminars, exams, staff, theses, and students. Its intuitive user interface ensures that you always have a clear overview of all relevant information.
+
+Discover how the Lehrstuhl-App simplifies academic administration!
+
+## How to start
+
 To start your Phoenix Server:
 
 * Install dependencies with mix deps.get

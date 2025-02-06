@@ -9,10 +9,13 @@ defmodule Lehrstuhl.Repo.Migrations.CreateAbstrakteAbschlussarbeiten do
       add :semester, :string
       add :thema, :string
       add :themenskizze, :string
-      add :mitarbeiter_id, references(:mitarbeiter, on_delete: :delete_all, type: :binary_id)
+      add :mitarbeiter_id, references(:mitarbeiter, on_delete: :nothing, type: :uuid)
+      #add :student_id, references(:students, on_delete: :nothing, type: :uuid)
 
       timestamps()
     end
-
+    flush()
+    create index(:abstrakte_abschlussarbeiten, [:mitarbeiter_id])
+    #create index(:abstrakte_abschlussarbeiten, [:student_id])
   end
 end

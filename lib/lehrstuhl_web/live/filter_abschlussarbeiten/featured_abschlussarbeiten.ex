@@ -11,7 +11,6 @@ defmodule LehrstuhlWeb.FeaturedAbschlussarbeitenLive do
 
   def render(assigns) do
     ~H"""
-
 <div :for={abstrakte_abschlussarbeiten <- @abschlussarbeiten}>
   <h3><%= abstrakte_abschlussarbeiten.thema %></h3>
   <p>Betreuer: <%= abstrakte_abschlussarbeiten.betreuer %></p>

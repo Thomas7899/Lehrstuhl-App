@@ -2,8 +2,8 @@ defmodule Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Lehrstuhl.Persons.Student
-  alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
+  #alias Lehrstuhl.Persons.Student
+  #alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -13,8 +13,9 @@ defmodule Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten do
     field :studienniveau, Ecto.Enum, values: [:bachelorarbeit, :masterarbeit]
     field :korrekturdatum, :date
     field :note, :decimal
-    belongs_to :student, Student # Assoziation hinzugefügt
-    belongs_to :konkrete_abschlussarbeiten, KonkreteAbschlussarbeiten # Assoziation hinzugefügt
+
+    #belongs_to :student, Student, type: :binary_id
+    #belongs_to :konkrete_abschlussarbeiten, KonkreteAbschlussarbeiten
 
     timestamps()
   end
