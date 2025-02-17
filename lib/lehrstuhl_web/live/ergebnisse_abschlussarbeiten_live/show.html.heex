@@ -1,9 +1,9 @@
 <.header>
-  Ergebnisse abschlussarbeiten <%= @ergebnisse_abschlussarbeiten.id %>
+  Ergebnis Abschlussarbeiten <%= @ergebnisse_abschlussarbeiten.id %>
   <:subtitle>This is a ergebnisse_abschlussarbeiten record from your database.</:subtitle>
   <:actions>
     <.link patch={~p"/ergebnisse_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit ergebnisse_abschlussarbeiten</.button>
+      <.button>Edit Ergebnis</.button>
     </.link>
   </:actions>
 </.header>
@@ -14,9 +14,12 @@
   <:item title="Status"><%= @ergebnisse_abschlussarbeiten.status %></:item>
   <:item title="Korrekturdatum"><%= @ergebnisse_abschlussarbeiten.korrekturdatum %></:item>
   <:item title="Note"><%= @ergebnisse_abschlussarbeiten.note %></:item>
+<:item title="Konkrete Abschlussarbeit">
+  <%= @ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten && "#{@ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten.id}" || "No konkrete Abschlussarbeit assigned" %>
+</:item>
 </.list>
 
-<.back navigate={~p"/ergebnisse_abschlussarbeiten"}>Back to ergebnisse_abschlussarbeiten</.back>
+<.back navigate={~p"/ergebnisse_abschlussarbeiten"}>Back to Ergebnisse</.back>
 
 <.modal :if={@live_action == :edit} id="ergebnisse_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/ergebnisse_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten}")}>
   <.live_component

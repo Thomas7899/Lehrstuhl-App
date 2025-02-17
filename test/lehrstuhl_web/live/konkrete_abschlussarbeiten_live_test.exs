@@ -13,7 +13,8 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLiveTest do
        gesetzte_schwerpunkte: "some gesetzte_schwerpunkte",
         anmeldung_pruefungsamt: "2023-11-28",
          abgabedatum: "2023-11-28",
-          studienniveau: :bachelor}
+          studienniveau: :bachelor,
+          student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"}
   @update_attrs %{betreuer: :becker,
    forschungsprojekt: :tool,
     semester: "SS-2023",
@@ -22,7 +23,8 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLiveTest do
        gesetzte_schwerpunkte: "some updated gesetzte_schwerpunkte",
         anmeldung_pruefungsamt: "2023-11-29",
          abgabedatum: "2023-11-29",
-          studienniveau: :master}
+          studienniveau: :master,
+          student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"}
   @invalid_attrs %{betreuer: nil,
    forschungsprojekt: nil,
     semester: nil,

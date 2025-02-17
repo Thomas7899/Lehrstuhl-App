@@ -9,7 +9,7 @@ defmodule LehrstuhlWeb.ErgebnisseAbschlussarbeitenLive.FormComponent do
     <div>
       <.header>
         <%= @title %>
-        <:subtitle>Use this form to manage ergebnisse_abschlussarbeiten records in your database.</:subtitle>
+        <:subtitle>Use this form to manage ergebnisse records in your database.</:subtitle>
       </.header>
 
       <.simple_form
@@ -20,6 +20,7 @@ defmodule LehrstuhlWeb.ErgebnisseAbschlussarbeitenLive.FormComponent do
         phx-submit="save"
       >
         <.input field={@form[:matrikelnummer]} type="text" label="Matrikelnummer" />
+
         <.input
           field={@form[:studienniveau]}
           type="select"
@@ -34,10 +35,18 @@ defmodule LehrstuhlWeb.ErgebnisseAbschlussarbeitenLive.FormComponent do
           prompt="Choose a value"
           options={Ecto.Enum.values(Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten, :status)}
         />
+        <.input
+          field={@form[:konkrete_abschlussarbeiten_id]}
+          type="select"
+          label="Konkrete Abschlussarbeit"
+          prompt="Choose a Abschlussarbeit"
+          options={for arbeit <- @konkrete_abschlussarbeiten, do: {arbeit.id, arbeit.id}}
+        />
+
         <.input field={@form[:korrekturdatum]} type="date" label="Korrekturdatum" />
         <.input field={@form[:note]} type="number" label="Note" step="any" />
         <:actions>
-          <.button phx-disable-with="Saving...">Ergebnis Abschlussarbeit speichern</.button>
+          <.button phx-disable-with="Saving...">Ergebnis speichern</.button>
         </:actions>
       </.simple_form>
     </div>
@@ -46,13 +55,18 @@ defmodule LehrstuhlWeb.ErgebnisseAbschlussarbeitenLive.FormComponent do
 
   @impl true
   def update(%{ergebnisse_abschlussarbeiten: ergebnisse_abschlussarbeiten} = assigns, socket) do
+
+    konkrete_abschlussarbeiten = Lehrstuhl.Abschlussarbeiten.list_konkrete_abschlussarbeiten()
+
     changeset = Abschlussarbeiten.change_ergebnisse_abschlussarbeiten(ergebnisse_abschlussarbeiten)
 
     {:ok,
      socket
      |> assign(assigns)
+     |> assign(:konkrete_abschlussarbeiten, konkrete_abschlussarbeiten)
      |> assign_form(changeset)}
   end
+
 
   @impl true
   def handle_event("validate", %{"ergebnisse_abschlussarbeiten" => ergebnisse_abschlussarbeiten_params}, socket) do

@@ -21,7 +21,17 @@ alias Lehrstuhl.Klausuren.Klausurergebnis
 alias Lehrstuhl.Klausuren.Klausur
 alias Lehrstuhl.Klausuren
 alias Lehrstuhl.Klausuren.Modul
+alias Lehrstuhl.Accounts.User
+import Bcrypt, only: [hash_pwd_salt: 1]
 
+# Passwort hashen
+hashed_password = hash_pwd_salt("password123")
+
+Repo.insert!(%User{
+   email: "admin@example.com",
+   hashed_password: hashed_password,
+   confirmed_at: ~N[2025-02-17 00:00:00]
+})
 
 Repo.insert!(%Mitarbeiter{
   id: "11e68b9e-069e-4e28-96d5-3d85c5849fba",
@@ -130,81 +140,9 @@ Repo.insert!(%Student{
   geburtsdatum: ~D[1991-03-03]
 })
 
-#Abstrakte Abschlussarbeiten
+#konkrete Abschlussarbeiten
 
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :hansen,
-  forschungsprojekt: :sport,
-  semester: "WS23/24",
-  thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
-  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
-})
-
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :hansen,
-  forschungsprojekt: :sport,
-  semester: "WS22/23",
-  thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
-  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
-})
-
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :hansen,
-  forschungsprojekt: :sport,
-  semester: "SS23",
-  thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
-  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
-})
-
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :tool,
-  semester: "WS23/24",
-  thema: "TOOL - A web browser-based modeling tool and observatory",
-  themenskizze: "Moderne Softwarearchitekturen für webbasierte Anwendungen: Untersuchung von Build-Prozessen mit Jenkins (u.a. mit Docker und NPM) sowie Migrationsstrategien (u.a. Aktualisierung von JavaScript-Frameworks)"
-})
-
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :tool,
-  semester: "WS23/24",
-  thema: "TOOL - A web browser-based modeling tool and observatory",
-  themenskizze: "Weiterentwicklung und Erprobung eines Natural Language Processing (NLP) Assistenten für die Identifikation von gehaltvollen Bezeichnern für Entitätstypen, Beziehungstypen und zugehörige Attribute..."
-})
-
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :tool,
-  semester: "SS22",
-  thema: "TOOL - A web browser-based modeling tool and observatory",
-  themenskizze: "Evaluation eines Natural Language Processing (NLP)-basierten Feedback-Assistenten für die Identifikation von gehaltvollen Bezeichnern für Modellelemente in Datenmodellen"
-})
-
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :tool,
-  semester: "WS22/23",
-  thema: "TOOL - A web browser-based modeling tool and observatory",
-  themenskizze: "Beispielhafte Rekonstruktion eines Geschäftsprozessmodells mit der Business Process Model and Notation (BPMN 2.0) in TOOL unter Einbeziehung einer natürlichsprachlichen Sachverhaltsbeschreibung bzw. eines entsprechenden Referenzmodells"
-})
-
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :müller,
-  forschungsprojekt: :imp,
-  semester: "WS23/24",
-  thema: "Individual Modeling Processes",
-  themenskizze: "Modellierungsschwierigkeiten von Experten und Novizen"
-})
-
-Repo.insert!(%AbstrakteAbschlussarbeiten{
-  betreuer: :müller,
-  forschungsprojekt: :imp,
-  semester: "SS22",
-  thema: "Individual Modeling Processes",
-  themenskizze: "Modellierungsschwierigkeiten bei der Erstellung von Datenmodellen"
-})
-
-Repo.insert!(%KonkreteAbschlussarbeiten{
+konkrete_abschlussarbeit1 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "WS23/24",
@@ -213,11 +151,21 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Funktionalität",
   anmeldung_pruefungsamt: ~D[2023-06-05],
   abgabedatum: ~D[2023-12-25],
-  studienniveau: :bachelor
+  studienniveau: :bachelor,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
+  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc"
 })
 
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "6763877",
+  studienniveau: :masterarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2022-08-01],
+  note: 1.5,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit1.id
+})
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+konkrete_abschlussarbeit2 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "WS22/23",
@@ -226,10 +174,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Funktionalität",
   anmeldung_pruefungsamt: ~D[2022-06-05],
   abgabedatum: ~D[2022-12-25],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "77e68a9e-069e-4e28-96d5-3d85c5849fb3"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "4323550",
+  studienniveau: :masterarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2023-02-01],
+  note: 2.1,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit2.id
+})
+
+konkrete_abschlussarbeit3 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "SS22",
@@ -238,10 +196,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Funktionalität",
   anmeldung_pruefungsamt: ~D[2023-06-05],
   abgabedatum: ~D[2023-12-25],
-  studienniveau: :bachelor
+  studienniveau: :bachelor,
+  student_id: "55e68a9e-069e-4e28-96d5-3d85c5849fb2"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "8867110",
+  studienniveau: :masterarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2023-07-01],
+  note: 2.3,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit3.id
+})
+
+konkrete_abschlussarbeit4 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "SS23",
@@ -250,10 +218,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Funktionalität",
   anmeldung_pruefungsamt: ~D[2023-06-05],
   abgabedatum: ~D[2023-12-25],
-  studienniveau: :bachelor
+  studienniveau: :bachelor,
+  student_id: "44e35a9e-069e-4e28-96d5-3d85c5849fb2"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "8189911",
+  studienniveau: :masterarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2021-05-01],
+  note: 2.9,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit4.id
+})
+
+konkrete_abschlussarbeit5 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "SS23",
@@ -262,10 +240,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Funktionalität und Erscheinung",
   anmeldung_pruefungsamt: ~D[2023-02-01],
   abgabedatum: ~D[2023-06-25],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "4447227",
+  studienniveau: :bachelorarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2021-03-01],
+  note: 2.3,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit5.id
+})
+
+konkrete_abschlussarbeit6 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "SS22",
@@ -274,10 +262,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Funktionalität und Erscheinung",
   anmeldung_pruefungsamt: ~D[2023-02-01],
   abgabedatum: ~D[2023-06-25],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "97e68a9e-069e-4e28-96d5-3d85c5849fb3"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "1667997",
+  studienniveau: :bachelorarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2020-09-01],
+  note: 1.7,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit6.id
+})
+
+konkrete_abschlussarbeit7 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "WS23/24",
@@ -286,10 +284,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Funktionalität und Erscheinung",
   anmeldung_pruefungsamt: ~D[2023-02-01],
   abgabedatum: ~D[2023-06-25],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "6167773",
+  studienniveau: :masterarbeit,
+  status: :nichtbestanden,
+  korrekturdatum: ~D[2019-02-01],
+  note: 5.0,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit7.id
+})
+
+konkrete_abschlussarbeit8 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "WS22/23",
@@ -298,10 +306,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Funktionalität und Erscheinung",
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-03-22],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "1332787",
+  studienniveau: :bachelorarbeit,
+  status: :nichtbestanden,
+  korrekturdatum: ~D[2022-06-11],
+  note: 5.0,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit8.id
+})
+
+konkrete_abschlussarbeit9 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "WS22/23",
@@ -310,10 +328,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Auswertung von Daten",
   anmeldung_pruefungsamt: ~D[2022-12-01],
   abgabedatum: ~D[2023-01-01],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "6197877",
+  studienniveau: :bachelorarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2021-02-01],
+  note: 2.7,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit9.id
+})
+
+konkrete_abschlussarbeit10 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "S22",
@@ -322,10 +350,20 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Auswertung von Daten",
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-01-01],
-  studienniveau: :bachelor
+  studienniveau: :bachelor,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "5157777",
+  studienniveau: :masterarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2022-02-01],
+  note: 2.6,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit10.id
+})
+
+konkrete_abschlussarbeit11 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "SS23",
@@ -334,7 +372,17 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Auswertung von Daten",
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-01-01],
-  studienniveau: :bachelor
+  studienniveau: :bachelor,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
+})
+
+Repo.insert!(%ErgebnisseAbschlussarbeiten{
+  matrikelnummer: "6317777",
+  studienniveau: :bachelorarbeit,
+  status: :bestanden,
+  korrekturdatum: ~D[2021-02-01],
+  note: 2.4,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit11.id
 })
 
 Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -346,7 +394,8 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Auswertung von Daten",
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-01-01],
-  studienniveau: :bachelor
+  studienniveau: :bachelor,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
 Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -358,7 +407,8 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Literaturrecherche",
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-08-01],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
 Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -370,7 +420,8 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Literaturrecherche",
   anmeldung_pruefungsamt: ~D[2023-04-01],
   abgabedatum: ~D[2024-01-01],
-  studienniveau: :bachelor
+  studienniveau: :bachelor,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
 Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -382,7 +433,8 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Literaturrecherche",
   anmeldung_pruefungsamt: ~D[2022-04-01],
   abgabedatum: ~D[2022-01-01],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
 Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -394,7 +446,8 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Performance",
   anmeldung_pruefungsamt: ~D[2023-07-01],
   abgabedatum: ~D[2023-12-15],
-  studienniveau: :bachelor
+  studienniveau: :bachelor,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
 Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -406,7 +459,8 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   gesetzte_schwerpunkte: "Usability",
   anmeldung_pruefungsamt: ~D[2023-03-10],
   abgabedatum: ~D[2023-09-20],
-  studienniveau: :master
+  studienniveau: :master,
+  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
 })
 
 Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -445,101 +499,160 @@ Repo.insert!(%KonkreteAbschlussarbeiten{
   studienniveau: :bachelor
 })
 
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :müller,
+  forschungsprojekt: :sport,
+  semester: "WS23/24",
+  matrikelnummer: "1234567",
+  angepasste_themenskizze: "Analyse von Trainingseffekten",
+  gesetzte_schwerpunkte: "Datenanalyse",
+  anmeldung_pruefungsamt: ~D[2023-06-15],
+  abgabedatum: ~D[2023-12-20],
+  studienniveau: :bachelor
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :hansen,
+  forschungsprojekt: :imp,
+  semester: "SS23",
+  matrikelnummer: "9876543",
+  angepasste_themenskizze: "Integration neuer Softwaremodule",
+  gesetzte_schwerpunkte: "Modularität",
+  anmeldung_pruefungsamt: ~D[2023-04-10],
+  abgabedatum: ~D[2023-09-10],
+  studienniveau: :master
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :becker,
+  forschungsprojekt: :tool,
+  semester: "WS22/23",
+  matrikelnummer: "6543210",
+  angepasste_themenskizze: "Erstellung eines Prüfungsverwaltungstools",
+  gesetzte_schwerpunkte: "Benutzeroberfläche",
+  anmeldung_pruefungsamt: ~D[2022-10-05],
+  abgabedatum: ~D[2023-03-15],
+  studienniveau: :bachelor
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :müller,
+  forschungsprojekt: :imp,
+  semester: "SS22",
+  matrikelnummer: "3456789",
+  angepasste_themenskizze: "Entwicklung eines Feedbacksystems",
+  gesetzte_schwerpunkte: "Kundenzufriedenheit",
+  anmeldung_pruefungsamt: ~D[2022-02-20],
+  abgabedatum: ~D[2022-08-30],
+  studienniveau: :master
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :becker,
+  forschungsprojekt: :sport,
+  semester: "WS23/24",
+  matrikelnummer: "8765432",
+  angepasste_themenskizze: "Entwicklung einer Sportanalyse-Software",
+  gesetzte_schwerpunkte: "Präzision",
+  anmeldung_pruefungsamt: ~D[2023-06-25],
+  abgabedatum: ~D[2023-12-10],
+  studienniveau: :bachelor
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :hansen,
+  forschungsprojekt: :tool,
+  semester: "SS23",
+  matrikelnummer: "1122334",
+  angepasste_themenskizze: "Design und Implementierung eines Dashboards",
+  gesetzte_schwerpunkte: "Visualisierung",
+  anmeldung_pruefungsamt: ~D[2023-04-01],
+  abgabedatum: ~D[2023-09-15],
+  studienniveau: :master
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :becker,
+  forschungsprojekt: :imp,
+  semester: "WS22/23",
+  matrikelnummer: "2233445",
+  angepasste_themenskizze: "Optimierung eines Suchalgorithmus",
+  gesetzte_schwerpunkte: "Effizienz",
+  anmeldung_pruefungsamt: ~D[2022-11-01],
+  abgabedatum: ~D[2023-03-01],
+  studienniveau: :bachelor
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :müller,
+  forschungsprojekt: :sport,
+  semester: "SS22",
+  matrikelnummer: "3344556",
+  angepasste_themenskizze: "Analyse von Sportdaten mittels KI",
+  gesetzte_schwerpunkte: "Algorithmen",
+  anmeldung_pruefungsamt: ~D[2022-03-15],
+  abgabedatum: ~D[2022-08-25],
+  studienniveau: :master
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :hansen,
+  forschungsprojekt: :imp,
+  semester: "WS23/24",
+  matrikelnummer: "4455667",
+  angepasste_themenskizze: "Evaluierung von Sicherheitssystemen",
+  gesetzte_schwerpunkte: "Robustheit",
+  anmeldung_pruefungsamt: ~D[2023-07-01],
+  abgabedatum: ~D[2023-12-10],
+  studienniveau: :bachelor
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :becker,
+  forschungsprojekt: :tool,
+  semester: "WS22/23",
+  matrikelnummer: "5566778",
+  angepasste_themenskizze: "Entwicklung eines automatisierten Testtools",
+  gesetzte_schwerpunkte: "Automatisierung",
+  anmeldung_pruefungsamt: ~D[2022-10-20],
+  abgabedatum: ~D[2023-03-30],
+  studienniveau: :master
+})
+
+Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :müller,
+  forschungsprojekt: :imp,
+  semester: "SS23",
+  matrikelnummer: "6677889",
+  angepasste_themenskizze: "Integration eines neuen Datenbanksystems",
+  gesetzte_schwerpunkte: "Kompatibilität",
+  anmeldung_pruefungsamt: ~D[2023-04-15],
+  abgabedatum: ~D[2023-09-25],
+  studienniveau: :bachelor
+})
+
+konkrete_abschlussarbeit = Repo.insert!(%KonkreteAbschlussarbeiten{
+  betreuer: :hansen,
+  forschungsprojekt: :sport,
+  semester: "SS22",
+  matrikelnummer: "7788990",
+  angepasste_themenskizze: "Entwicklung eines Fitness-Trackers",
+  gesetzte_schwerpunkte: "Genauigkeit",
+  anmeldung_pruefungsamt: ~D[2022-03-01],
+  abgabedatum: ~D[2022-08-20],
+  studienniveau: :master
+})
+
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
   matrikelnummer: "8887777",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
-  note: 2.7
+  note: 2.7,
+  konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit.id
 })
 
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "6763877",
-  studienniveau: :masterarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2022-08-01],
-  note: 1.5
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "4323550",
-  studienniveau: :masterarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2023-02-01],
-  note: 2.1
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8867110",
-  studienniveau: :masterarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2023-07-01],
-  note: 2.3
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8189911",
-  studienniveau: :masterarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2021-05-01],
-  note: 2.9
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "4447227",
-  studienniveau: :bachelorarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2021-03-01],
-  note: 2.3
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "1667997",
-  studienniveau: :bachelorarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2020-09-01],
-  note: 1.7
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "6167773",
-  studienniveau: :masterarbeit,
-  status: :nichtbestanden,
-  korrekturdatum: ~D[2019-02-01],
-  note: 5.0
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "1332787",
-  studienniveau: :bachelorarbeit,
-  status: :nichtbestanden,
-  korrekturdatum: ~D[2022-06-11],
-  note: 5.0
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "6197877",
-  studienniveau: :bachelorarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2021-02-01],
-  note: 2.7
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "5157777",
-  studienniveau: :masterarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2022-02-01],
-  note: 2.6
-})
-
-Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "6317777",
-  studienniveau: :bachelorarbeit,
-  status: :bestanden,
-  korrekturdatum: ~D[2021-02-01],
-  note: 2.4
-})
+#Ergebnisse Abschlusarbeiten
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
   matrikelnummer: "6617757",
@@ -701,153 +814,81 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   note: 2.0
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
-  betreuer: :müller,
+#Abstrakte Abschlussarbeiten
+
+Repo.insert!(%AbstrakteAbschlussarbeiten{
+  betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "WS23/24",
-  matrikelnummer: "1234567",
-  angepasste_themenskizze: "Analyse von Trainingseffekten",
-  gesetzte_schwerpunkte: "Datenanalyse",
-  anmeldung_pruefungsamt: ~D[2023-06-15],
-  abgabedatum: ~D[2023-12-20],
-  studienniveau: :bachelor
+  thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%AbstrakteAbschlussarbeiten{
   betreuer: :hansen,
-  forschungsprojekt: :imp,
-  semester: "SS23",
-  matrikelnummer: "9876543",
-  angepasste_themenskizze: "Integration neuer Softwaremodule",
-  gesetzte_schwerpunkte: "Modularität",
-  anmeldung_pruefungsamt: ~D[2023-04-10],
-  abgabedatum: ~D[2023-09-10],
-  studienniveau: :master
+  forschungsprojekt: :sport,
+  semester: "WS22/23",
+  thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%AbstrakteAbschlussarbeiten{
+  betreuer: :hansen,
+  forschungsprojekt: :sport,
+  semester: "SS23",
+  thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+})
+
+Repo.insert!(%AbstrakteAbschlussarbeiten{
+  betreuer: :becker,
+  forschungsprojekt: :tool,
+  semester: "WS23/24",
+  thema: "TOOL - A web browser-based modeling tool and observatory",
+  themenskizze: "Moderne Softwarearchitekturen für webbasierte Anwendungen: Untersuchung von Build-Prozessen mit Jenkins (u.a. mit Docker und NPM) sowie Migrationsstrategien (u.a. Aktualisierung von JavaScript-Frameworks)"
+})
+
+Repo.insert!(%AbstrakteAbschlussarbeiten{
+  betreuer: :becker,
+  forschungsprojekt: :tool,
+  semester: "WS23/24",
+  thema: "TOOL - A web browser-based modeling tool and observatory",
+  themenskizze: "Weiterentwicklung und Erprobung eines Natural Language Processing (NLP) Assistenten für die Identifikation von gehaltvollen Bezeichnern für Entitätstypen, Beziehungstypen und zugehörige Attribute..."
+})
+
+Repo.insert!(%AbstrakteAbschlussarbeiten{
+  betreuer: :becker,
+  forschungsprojekt: :tool,
+  semester: "SS22",
+  thema: "TOOL - A web browser-based modeling tool and observatory",
+  themenskizze: "Evaluation eines Natural Language Processing (NLP)-basierten Feedback-Assistenten für die Identifikation von gehaltvollen Bezeichnern für Modellelemente in Datenmodellen"
+})
+
+Repo.insert!(%AbstrakteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "WS22/23",
-  matrikelnummer: "6543210",
-  angepasste_themenskizze: "Erstellung eines Prüfungsverwaltungstools",
-  gesetzte_schwerpunkte: "Benutzeroberfläche",
-  anmeldung_pruefungsamt: ~D[2022-10-05],
-  abgabedatum: ~D[2023-03-15],
-  studienniveau: :bachelor
+  thema: "TOOL - A web browser-based modeling tool and observatory",
+  themenskizze: "Beispielhafte Rekonstruktion eines Geschäftsprozessmodells mit der Business Process Model and Notation (BPMN 2.0) in TOOL unter Einbeziehung einer natürlichsprachlichen Sachverhaltsbeschreibung bzw. eines entsprechenden Referenzmodells"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%AbstrakteAbschlussarbeiten{
   betreuer: :müller,
-  forschungsprojekt: :imp,
-  semester: "SS22",
-  matrikelnummer: "3456789",
-  angepasste_themenskizze: "Entwicklung eines Feedbacksystems",
-  gesetzte_schwerpunkte: "Kundenzufriedenheit",
-  anmeldung_pruefungsamt: ~D[2022-02-20],
-  abgabedatum: ~D[2022-08-30],
-  studienniveau: :master
-})
-
-Repo.insert!(%KonkreteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :sport,
-  semester: "WS23/24",
-  matrikelnummer: "8765432",
-  angepasste_themenskizze: "Entwicklung einer Sportanalyse-Software",
-  gesetzte_schwerpunkte: "Präzision",
-  anmeldung_pruefungsamt: ~D[2023-06-25],
-  abgabedatum: ~D[2023-12-10],
-  studienniveau: :bachelor
-})
-
-Repo.insert!(%KonkreteAbschlussarbeiten{
-  betreuer: :hansen,
-  forschungsprojekt: :tool,
-  semester: "SS23",
-  matrikelnummer: "1122334",
-  angepasste_themenskizze: "Design und Implementierung eines Dashboards",
-  gesetzte_schwerpunkte: "Visualisierung",
-  anmeldung_pruefungsamt: ~D[2023-04-01],
-  abgabedatum: ~D[2023-09-15],
-  studienniveau: :master
-})
-
-Repo.insert!(%KonkreteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :imp,
-  semester: "WS22/23",
-  matrikelnummer: "2233445",
-  angepasste_themenskizze: "Optimierung eines Suchalgorithmus",
-  gesetzte_schwerpunkte: "Effizienz",
-  anmeldung_pruefungsamt: ~D[2022-11-01],
-  abgabedatum: ~D[2023-03-01],
-  studienniveau: :bachelor
-})
-
-Repo.insert!(%KonkreteAbschlussarbeiten{
-  betreuer: :müller,
-  forschungsprojekt: :sport,
-  semester: "SS22",
-  matrikelnummer: "3344556",
-  angepasste_themenskizze: "Analyse von Sportdaten mittels KI",
-  gesetzte_schwerpunkte: "Algorithmen",
-  anmeldung_pruefungsamt: ~D[2022-03-15],
-  abgabedatum: ~D[2022-08-25],
-  studienniveau: :master
-})
-
-Repo.insert!(%KonkreteAbschlussarbeiten{
-  betreuer: :hansen,
   forschungsprojekt: :imp,
   semester: "WS23/24",
-  matrikelnummer: "4455667",
-  angepasste_themenskizze: "Evaluierung von Sicherheitssystemen",
-  gesetzte_schwerpunkte: "Robustheit",
-  anmeldung_pruefungsamt: ~D[2023-07-01],
-  abgabedatum: ~D[2023-12-10],
-  studienniveau: :bachelor
+  thema: "Individual Modeling Processes",
+  themenskizze: "Modellierungsschwierigkeiten von Experten und Novizen"
 })
 
-Repo.insert!(%KonkreteAbschlussarbeiten{
-  betreuer: :becker,
-  forschungsprojekt: :tool,
-  semester: "WS22/23",
-  matrikelnummer: "5566778",
-  angepasste_themenskizze: "Entwicklung eines automatisierten Testtools",
-  gesetzte_schwerpunkte: "Automatisierung",
-  anmeldung_pruefungsamt: ~D[2022-10-20],
-  abgabedatum: ~D[2023-03-30],
-  studienniveau: :master
-})
-
-Repo.insert!(%KonkreteAbschlussarbeiten{
+Repo.insert!(%AbstrakteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
-  semester: "SS23",
-  matrikelnummer: "6677889",
-  angepasste_themenskizze: "Integration eines neuen Datenbanksystems",
-  gesetzte_schwerpunkte: "Kompatibilität",
-  anmeldung_pruefungsamt: ~D[2023-04-15],
-  abgabedatum: ~D[2023-09-25],
-  studienniveau: :bachelor
-})
-
-Repo.insert!(%KonkreteAbschlussarbeiten{
-  betreuer: :hansen,
-  forschungsprojekt: :sport,
   semester: "SS22",
-  matrikelnummer: "7788990",
-  angepasste_themenskizze: "Entwicklung eines Fitness-Trackers",
-  gesetzte_schwerpunkte: "Genauigkeit",
-  anmeldung_pruefungsamt: ~D[2022-03-01],
-  abgabedatum: ~D[2022-08-20],
-  studienniveau: :master
+  thema: "Individual Modeling Processes",
+  themenskizze: "Modellierungsschwierigkeiten bei der Erstellung von Datenmodellen"
 })
-
 
 #Seminare
-
 
 Repo.insert!(%Seminar{
   titel: "Entwicklung von Informationnssystemen",

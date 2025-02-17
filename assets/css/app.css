@@ -192,7 +192,10 @@ form select:hover {
   color: #8000ff;
   background-color: rgb(23 23 23 / var(--tw-text-opacity, 1));
 }
-
+form button:hover {
+  color: #8000ff;
+  background-color: rgb(23 23 23 / var(--tw-text-opacity, 1));
+}
 
 #abstrakte_abschlussarbeiten .grid {
   display: flex;

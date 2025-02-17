@@ -2,8 +2,8 @@ defmodule Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten do
   use Ecto.Schema
   import Ecto.Changeset
 
-  #alias Lehrstuhl.Persons.Mitarbeiter
-  #alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
+  alias Lehrstuhl.Persons.Mitarbeiter
+  alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -13,7 +13,7 @@ defmodule Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten do
     field :semester, :string
     field :thema, :string
     field :themenskizze, :string
-    #has_many :konkrete_abschlussarbeiten, KonkreteAbschlussarbeiten
+    has_many :konkrete_abschlussarbeiten, KonkreteAbschlussarbeiten
     belongs_to :mitarbeiter, Mitarbeiter
 
     timestamps()

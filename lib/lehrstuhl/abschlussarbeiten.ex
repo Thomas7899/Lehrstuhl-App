@@ -8,7 +8,6 @@ defmodule Lehrstuhl.Abschlussarbeiten do
 
   alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
   alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
-  alias Lehrstuhl.Abschlussarbeiten.FilterAbstraktKonkret
 
   @doc """
   Returns the list of abstrakte_abschlussarbeiten.
@@ -27,33 +26,30 @@ def suche_abschlussarbeiten(filter) do
 end
 
 
-  def featured_abschlussarbeiten() do
-    query = from(aa in AbstrakteAbschlussarbeiten,
-    join: ka in KonkreteAbschlussarbeiten,
-    on: aa.forschungsprojekt == ka.forschungsprojekt,
-    on: aa.betreuer == ka.betreuer,
-    on: aa.semester == ka.semester,
-    preload: [konkrete_abschlussarbeiten: ka],
-    select: {aa})
-    Repo.all(query)
-  end
-
   def list_abstrakte_abschlussarbeiten do
    Repo.all(AbstrakteAbschlussarbeiten)
-  |> Repo.preload(:konkrete_abschlussarbeiten)
+  #|> Repo.preload(:konkrete_abschlussarbeiten)
   end
 
 #Neue Funktion
 def list_abstrakte_abschlussarbeiten_konkret() do
-query = from(aa in AbstrakteAbschlussarbeiten,
-join: ka in KonkreteAbschlussarbeiten,
-on: aa.forschungsprojekt == ka.forschungsprojekt,
-on: aa.betreuer == ka.betreuer,
-on: aa.semester == ka.semester,
-preload: [konkrete_abschlussarbeiten: ka],
-select: {aa})
-Repo.all(query)
+  query =
+    from aa in AbstrakteAbschlussarbeiten,
+      join: ka in KonkreteAbschlussarbeiten,
+      on: aa.forschungsprojekt == ka.forschungsprojekt,
+      where: aa.semester == ka.semester,
+      preload: [konkrete_abschlussarbeiten: ka]
+  Repo.all(query)
+  # query = from(aa in AbstrakteAbschlussarbeiten,
+  #   join: ka in KonkreteAbschlussarbeiten,
+  #   on: aa.forschungsprojekt == ka.forschungsprojekt,
+  #   on: aa.betreuer == ka.betreuer,
+  #   on: aa.semester == ka.semester,
+  #   preload: [konkrete_abschlussarbeiten: ka],
+  #   select: {aa})
+  # Repo.all(query)
 end
+
 
 #Funktionen zum Filtern der Abschlussarbeiten
 
@@ -65,7 +61,7 @@ def list_abstrakte_abschlussarbeiten(filter) when is_map(filter) do
   #|> Repo.preload([:konkrete_abschlussarbeiten])
   #|> Repo.preload([abstrakte_abschlussarbeiten: :konkrete_abschlussarbeiten])
   |> Repo.all()
-  |> Repo.preload(:konkrete_abschlussarbeiten)
+  #|> Repo.preload(:konkrete_abschlussarbeiten)
 end
 
 
@@ -106,7 +102,9 @@ end
       ** (Ecto.NoResultsError)
 
   """
-  def get_abstrakte_abschlussarbeiten!(id), do: Repo.get!(AbstrakteAbschlussarbeiten, id)
+  def get_abstrakte_abschlussarbeiten!(id), do:
+  Repo.get!(AbstrakteAbschlussarbeiten, id)
+  |> Lehrstuhl.Repo.preload(:mitarbeiter)
 
   @doc """
   Creates a abstrakte_abschlussarbeiten.
@@ -245,7 +243,11 @@ end
       ** (Ecto.NoResultsError)
 
   """
-  def get_konkrete_abschlussarbeiten!(id), do: Repo.get!(KonkreteAbschlussarbeiten, id)
+def get_konkrete_abschlussarbeiten!(id) do
+  Lehrstuhl.Repo.get!(Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten, id)
+  |> Lehrstuhl.Repo.preload(:student)
+end
+
 
   @doc """
   Creates a konkrete_abschlussarbeiten.
@@ -262,6 +264,7 @@ end
   def create_konkrete_abschlussarbeiten(attrs \\ %{}) do
     %KonkreteAbschlussarbeiten{}
     |> KonkreteAbschlussarbeiten.changeset(attrs)
+    |> Ecto.Changeset.cast(attrs, [:student_id])
     |> Repo.insert()
   end
 
@@ -366,7 +369,12 @@ end
       ** (Ecto.NoResultsError)
 
   """
-  def get_ergebnisse_abschlussarbeiten!(id), do: Repo.get!(ErgebnisseAbschlussarbeiten, id)
+
+  def get_ergebnisse_abschlussarbeiten!(id) do
+    Repo.get!(ErgebnisseAbschlussarbeiten, id)
+    |> Lehrstuhl.Repo.preload([:konkrete_abschlussarbeiten])
+  end
+
 
   @doc """
   Creates a ergebnisse_abschlussarbeiten.
@@ -383,6 +391,7 @@ end
   def create_ergebnisse_abschlussarbeiten(attrs \\ %{}) do
     %ErgebnisseAbschlussarbeiten{}
     |> ErgebnisseAbschlussarbeiten.changeset(attrs)
+    |> Ecto.Changeset.cast(attrs, [:konkrete_abschlussarbeiten_id])
     |> Repo.insert()
   end
 

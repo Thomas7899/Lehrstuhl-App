@@ -4,11 +4,12 @@ defmodule LehrstuhlWeb.FilterSeminarLive do
   alias Lehrstuhl.Seminare
 
   def mount(_params, _session, socket) do
-    #form = to_form(%{"q" => ""})
+    # form = to_form(%{"q" => ""})
     socket =
       socket
       |> assign(seminare: Seminare.list_seminare())
       |> assign(:form, to_form(%{}))
+
     {:ok, socket}
   end
 
@@ -16,7 +17,7 @@ defmodule LehrstuhlWeb.FilterSeminarLive do
     ~H"""
     <div class="flex justify-center items-center">
      <.form for={@form} phx-change="filter" >
-      <.input field={@form[:q]} placeholder="Search..." autocomplete="off" phx-debounce="500" />
+      <.input field={@form[:q]} placeholder="Suche nach Titel..." autocomplete="off" phx-debounce="500" />
     </.form>
     </div>
     <div class="flex flex-wrap md:flex-wrap-reverse">
@@ -27,7 +28,7 @@ defmodule LehrstuhlWeb.FilterSeminarLive do
         <h5 class="text-xl font-bold leading-none text-white"><%= seminar.titel %></h5>
         <.link class="text-sm font-medium text-[#8000ff] hover:underline" navigate={~p"/seminare/#{seminar}"}>View all</.link>
     </div>
-   <div class="flow-root">
+    <div class="flow-root">
         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
             <li class="py-3 sm:py-4">
                 <div class="flex items-center">
@@ -66,10 +67,10 @@ defmodule LehrstuhlWeb.FilterSeminarLive do
                 </div>
             </li>
         </ul>
-   </div>
-</div>
-</div>
-</div>
+    </div>
+    </div>
+    </div>
+    </div>
 
     """
   end
@@ -79,6 +80,7 @@ defmodule LehrstuhlWeb.FilterSeminarLive do
       socket
       |> assign(:form, to_form(params))
       |> assign(seminare: Seminare.filter_seminare(params))
+
     {:noreply, socket}
   end
 end

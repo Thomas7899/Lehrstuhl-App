@@ -9,12 +9,9 @@ defmodule Lehrstuhl.Repo.Migrations.CreateErgebnisseAbschlussarbeiten do
       add :status, :string
       add :korrekturdatum, :date
       add :note, :decimal
-      add :student_id, references(:students, on_delete: :nothing, type: :uuid)
-      add :konkrete_abschlussarbeiten_id, references(:konkrete_abschlussarbeiten, on_delete: :delete_all, type: :uuid)
+      add :konkrete_abschlussarbeiten_id, references(:konkrete_abschlussarbeiten, on_delete: :nothing, type: :uuid)
       timestamps()
     end
-
-    create index(:abstrakte_abschlussarbeiten, [:student_id])
 
   end
 end
