@@ -1,5 +1,5 @@
 <.header>
-  Konkrete abschlussarbeiten <%= @konkrete_abschlussarbeiten.id %>
+  Konkrete Abschlussarbeit <%= @konkrete_abschlussarbeiten.id %>
   <:subtitle>This is a konkrete_abschlussarbeiten record from your database.</:subtitle>
   <:actions>
     <.link patch={~p"/konkrete_abschlussarbeiten/#{@konkrete_abschlussarbeiten}/show/edit"} phx-click={JS.push_focus()}>
@@ -18,9 +18,19 @@
   <:item title="Anmeldung pruefungsamt"><%= @konkrete_abschlussarbeiten.anmeldung_pruefungsamt %></:item>
   <:item title="Abgabedatum"><%= @konkrete_abschlussarbeiten.abgabedatum %></:item>
   <:item title="Studienniveau"><%= @konkrete_abschlussarbeiten.studienniveau %></:item>
+  <:item title="Student">
+  <%= @konkrete_abschlussarbeiten.student && "#{@konkrete_abschlussarbeiten.student.vorname} #{@konkrete_abschlussarbeiten.student.nachname}" || "No student assigned" %>
+</:item>
+<:item title="Mitarbeiter">
+  <%= @konkrete_abschlussarbeiten.mitarbeiter && "#{@konkrete_abschlussarbeiten.mitarbeiter.vorname} #{@konkrete_abschlussarbeiten.mitarbeiter.nachname}" || "No Mitarbeiter assigned" %>
+</:item>
 </.list>
 
-<.back navigate={~p"/konkrete_abschlussarbeiten"}>Back to konkrete_abschlussarbeiten</.back>
+<div class="flex space-x-4">
+  <.back navigate={~p"/konkrete_abschlussarbeiten"}>Back to create konkrete Abschlussarbeiten</.back>
+  <.back navigate={~p"/filter_konkret"}>Back to filter konkrete Abschlussarbeit</.back>
+</div>
+
 
 <.modal :if={@live_action == :edit} id="konkrete_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/konkrete_abschlussarbeiten/#{@konkrete_abschlussarbeiten}")}>
   <.live_component

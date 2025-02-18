@@ -14,6 +14,9 @@
   <:item title="Semester"><%= @abstrakte_abschlussarbeiten.semester %></:item>
   <:item title="Thema"><%= @abstrakte_abschlussarbeiten.thema %></:item>
   <:item title="Themenskizze"><%= @abstrakte_abschlussarbeiten.themenskizze %></:item>
+  <:item title="Mitarbeiter">
+  <%= @abstrakte_abschlussarbeiten.mitarbeiter && "#{@abstrakte_abschlussarbeiten.mitarbeiter.vorname} #{@abstrakte_abschlussarbeiten.mitarbeiter.nachname}" || "No Mitarbeiter assigned" %>
+</:item>
 </.list>
 
 <.back navigate={~p"/abstrakte_abschlussarbeiten"}>Back to abstrakte_abschlussarbeiten</.back>

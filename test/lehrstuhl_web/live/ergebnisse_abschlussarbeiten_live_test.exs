@@ -5,9 +5,9 @@ defmodule LehrstuhlWeb.ErgebnisseAbschlussarbeitenLiveTest do
   import Lehrstuhl.AbschlussarbeitenFixtures
   import Lehrstuhl.AccountsFixtures
 
-  @create_attrs %{status: :bestanden, matrikelnummer: "some matrikelnummer", studienniveau: :bachelorarbeit, korrekturdatum: "2023-12-24", note: "120.5"}
-  @update_attrs %{status: :nichtbestanden, matrikelnummer: "some updated matrikelnummer", studienniveau: :masterarbeit, korrekturdatum: "2023-12-25", note: "456.7"}
-  @invalid_attrs %{status: nil, matrikelnummer: nil, studienniveau: nil, korrekturdatum: nil, note: nil}
+  @create_attrs %{status: :bestanden, matrikelnummer: "some matrikelnummer", studienniveau: :bachelorarbeit, korrekturdatum: "2023-12-24", note: "120.5", student_id: nil}
+  @update_attrs %{status: :nichtbestanden, matrikelnummer: "some updated matrikelnummer", studienniveau: :masterarbeit, korrekturdatum: "2023-12-25", note: "456.7", student_id: nil}
+  @invalid_attrs %{status: nil, matrikelnummer: nil, studienniveau: nil, korrekturdatum: nil, note: nil, student_id: nil}
 
   defp create_ergebnisse_abschlussarbeiten(_) do
     ergebnisse_abschlussarbeiten = ergebnisse_abschlussarbeiten_fixture()
@@ -23,7 +23,7 @@ defmodule LehrstuhlWeb.ErgebnisseAbschlussarbeitenLiveTest do
         |> log_in_user(user_fixture())
         |> live(~p"/ergebnisse_abschlussarbeiten")
 
-      assert html =~ "Listing Ergebnisse abschlussarbeiten"
+      assert html =~ "Liste der Ergebnisse der Abschlussarbeiten"
       assert html =~ ergebnisse_abschlussarbeiten.matrikelnummer
     end
 

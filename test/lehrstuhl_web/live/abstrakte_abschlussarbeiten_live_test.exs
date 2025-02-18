@@ -5,21 +5,26 @@ defmodule LehrstuhlWeb.AbstrakteAbschlussarbeitenLiveTest do
   import Lehrstuhl.AbschlussarbeitenFixtures
   import Lehrstuhl.AccountsFixtures
 
-  @create_attrs %{betreuer: :winkler,
+  @create_attrs %{betreuer: :müller,
   forschungsprojekt: :sport,
    semester: "some semester",
     thema: "some thema",
-    themenskizze: "some themenskizze"}
-  @update_attrs %{betreuer: :boehmer,
+    themenskizze: "some themenskizze",
+    mitarbeiter_id: "some mitarbeiter"}
+
+  @update_attrs %{betreuer: :hansen,
   forschungsprojekt: :tool,
   semester: "some updated semester",
   thema: "some updated thema",
-  themenskizze: "some updated themenskizze"}
+  themenskizze: "some updated themenskizze",
+  mitarbeiter_id: "some mitarbeiter"}
+
   @invalid_attrs %{betreuer: nil,
   forschungsprojekt: nil,
   semester: nil,
   thema: nil,
-  themenskizze: nil}
+  themenskizze: nil,
+  mitarbeiter_id: nil}
 
   defp create_abstrakte_abschlussarbeiten(_) do
     abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
@@ -64,7 +69,8 @@ defmodule LehrstuhlWeb.AbstrakteAbschlussarbeitenLiveTest do
       #assert html =~ "Abstrakte abschlussarbeiten created successfully"
     end
 
-    test "updates abstrakte_abschlussarbeiten in listing", %{conn: conn, abstrakte_abschlussarbeiten: abstrakte_abschlussarbeiten} do
+    test "updates abstrakte_abschlussarbeiten in listing", %{conn: conn,
+    abstrakte_abschlussarbeiten: abstrakte_abschlussarbeiten} do
       {:ok, index_live, _html} =
         conn
         |> log_in_user(user_fixture())

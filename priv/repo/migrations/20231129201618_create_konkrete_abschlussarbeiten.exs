@@ -13,12 +13,12 @@ defmodule Lehrstuhl.Repo.Migrations.CreateKonkreteAbschlussarbeiten do
       add :anmeldung_pruefungsamt, :date
       add :abgabedatum, :date
       add :studienniveau, :string
-      add :student_id, references(:students, on_delete: :delete_all, type: :binary_id)
-      add :mitarbeiter_id, references(:mitarbeiter, on_delete: :delete_all, type: :binary_id)
-      add :abstrakte_abschlussarbeiten_id, references(:abstrakte_abschlussarbeiten, on_delete: :delete_all, type: :binary_id)
+      add :student_id, references(:students, on_delete: :nothing, type: :uuid)
+      add :mitarbeiter_id, references(:mitarbeiter, on_delete: :nothing, type: :uuid)
+      add :abstrakte_abschlussarbeiten_id, references(:abstrakte_abschlussarbeiten, on_delete: :nothing, type: :uuid)
 
       timestamps()
     end
-
+    flush()
   end
 end

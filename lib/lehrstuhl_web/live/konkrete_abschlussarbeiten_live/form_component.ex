@@ -33,12 +33,28 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLive.FormComponent do
           prompt="Choose a value"
           options={Ecto.Enum.values(Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten, :forschungsprojekt)}
         />
+        <.input
+          field={@form[:student_id]}
+          type="select"
+          label="Student"
+          prompt="Choose a student"
+          options={for student <- @students, do: {student.vorname <> " " <> student.nachname, student.id}}
+        />
+        <.input
+          field={@form[:mitarbeiter_id]}
+          type="select"
+          label="Mitarbeiter"
+          prompt="Choose a Mitarbeiter"
+          options={for mitarbeiter <- @mitarbeiter, do: {mitarbeiter.vorname <> " " <> mitarbeiter.nachname, mitarbeiter.id}}
+        />
+
         <.input field={@form[:semester]} type="text" label="Semester" />
         <.input field={@form[:matrikelnummer]} type="text" label="Matrikelnummer" />
         <.input field={@form[:angepasste_themenskizze]} type="text" label="Angepasste Themenskizze" />
         <.input field={@form[:gesetzte_schwerpunkte]} type="text" label="Gesetzte Schwerpunkte" />
         <.input field={@form[:anmeldung_pruefungsamt]} type="date" label="Anmeldung Pruefungsamt" />
         <.input field={@form[:abgabedatum]} type="date" label="Abgabedatum" />
+
         <.input
           field={@form[:studienniveau]}
           type="select"
@@ -55,14 +71,20 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLive.FormComponent do
   end
 
   @impl true
-  def update(%{konkrete_abschlussarbeiten: konkrete_abschlussarbeiten} = assigns, socket) do
-    changeset = Abschlussarbeiten.change_konkrete_abschlussarbeiten(konkrete_abschlussarbeiten)
+def update(%{konkrete_abschlussarbeiten: konkrete_abschlussarbeiten} = assigns, socket) do
+  students = Lehrstuhl.Persons.list_students()      # Studenten abrufen
+  mitarbeiter = Lehrstuhl.Persons.list_mitarbeiter() # Mitarbeiter abrufen
 
-    {:ok,
-     socket
-     |> assign(assigns)
-     |> assign_form(changeset)}
-  end
+  changeset = Abschlussarbeiten.change_konkrete_abschlussarbeiten(konkrete_abschlussarbeiten)
+
+  {:ok,
+   socket
+   |> assign(assigns)
+   |> assign(:students, students)
+   |> assign(:mitarbeiter, mitarbeiter)  # Mitarbeiter hinzufügen
+   |> assign_form(changeset)}
+end
+
 
   @impl true
   def handle_event("validate", %{"konkrete_abschlussarbeiten" => konkrete_abschlussarbeiten_params}, socket) do
