@@ -40,9 +40,9 @@ Now you can visit localhost:4000 from your browser.
   * Fix and improve tests
     Resolve failing or incomplete tests to ensure the application functions as expected and meets quality standards.
 
-  * Fix navbar
+  * Fix navbar. (Dropdown opens not every time or needs reload first)
 
-  * Add new features
+  * Add new features to manage Klausuren und Seminare.
 
   * Improve documentation
     Expand the documentation to provide clearer instructions for installation, usage, and contributing.

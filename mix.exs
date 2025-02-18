@@ -60,8 +60,7 @@ defmodule Lehrstuhl.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:excoveralls, "~> 0.10", only: :test},
       {:credo, "~> 1.7.11", only: [:dev, :test], runtime: false},
-      {:bandit, "~> 1.0"},
-      {:comeonin, "~> 5.3"}
+      {:bandit, "~> 1.0"}
     ]
   end
 
