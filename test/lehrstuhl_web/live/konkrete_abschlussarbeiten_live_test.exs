@@ -7,7 +7,7 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLiveTest do
 
   @create_attrs %{betreuer: :hansen,
    forschungsprojekt: :sport,
-    semester: "SS-2023",
+    semester: "some semester",
      matrikelnummer: "some matrikelnummer",
       angepasste_themenskizze: "some angepasste_themenskizze",
        gesetzte_schwerpunkte: "some gesetzte_schwerpunkte",
@@ -17,7 +17,7 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLiveTest do
           student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"}
   @update_attrs %{betreuer: :becker,
    forschungsprojekt: :tool,
-    semester: "SS-2023",
+    semester: "some semester",
      matrikelnummer: "some updated matrikelnummer",
       angepasste_themenskizze: "some updated angepasste_themenskizze",
        gesetzte_schwerpunkte: "some updated gesetzte_schwerpunkte",

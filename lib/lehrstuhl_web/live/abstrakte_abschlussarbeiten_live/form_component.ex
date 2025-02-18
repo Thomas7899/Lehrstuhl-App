@@ -33,6 +33,13 @@ defmodule LehrstuhlWeb.AbstrakteAbschlussarbeitenLive.FormComponent do
           prompt="Choose a value"
           options={Ecto.Enum.values(Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten, :forschungsprojekt)}
         />
+        <.input
+          field={@form[:mitarbeiter_id]}
+          type="select"
+          label="Mitarbeiter"
+          prompt="Choose a Mitarbeiter"
+          options={for mitarbeiter <- @mitarbeiter, do: {mitarbeiter.vorname <> " " <> mitarbeiter.nachname, mitarbeiter.id}}
+        />
         <.input field={@form[:semester]} type="text" label="Semester" />
         <.input field={@form[:thema]} type="text" label="Thema" />
         <.input field={@form[:themenskizze]} type="text" label="Themenskizze" />
@@ -46,11 +53,13 @@ defmodule LehrstuhlWeb.AbstrakteAbschlussarbeitenLive.FormComponent do
 
   @impl true
   def update(%{abstrakte_abschlussarbeiten: abstrakte_abschlussarbeiten} = assigns, socket) do
+    mitarbeiter = Lehrstuhl.Persons.list_mitarbeiter() # Mitarbeiter abrufen
     changeset = Abschlussarbeiten.change_abstrakte_abschlussarbeiten(abstrakte_abschlussarbeiten)
 
     {:ok,
      socket
      |> assign(assigns)
+     |> assign(:mitarbeiter, mitarbeiter)  # Mitarbeiter hinzufügen
      |> assign_form(changeset)}
   end
 

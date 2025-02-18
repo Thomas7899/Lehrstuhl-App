@@ -28,7 +28,7 @@ end
 
   def list_abstrakte_abschlussarbeiten do
    Repo.all(AbstrakteAbschlussarbeiten)
-  #|> Repo.preload(:konkrete_abschlussarbeiten)
+  |> Lehrstuhl.Repo.preload(:mitarbeiter)
   end
 
 #Neue Funktion

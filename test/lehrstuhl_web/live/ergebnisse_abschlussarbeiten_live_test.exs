@@ -23,7 +23,7 @@ defmodule LehrstuhlWeb.ErgebnisseAbschlussarbeitenLiveTest do
         |> log_in_user(user_fixture())
         |> live(~p"/ergebnisse_abschlussarbeiten")
 
-      assert html =~ "Listing Ergebnisse abschlussarbeiten"
+      assert html =~ "Liste der Ergebnisse der Abschlussarbeiten"
       assert html =~ ergebnisse_abschlussarbeiten.matrikelnummer
     end
 

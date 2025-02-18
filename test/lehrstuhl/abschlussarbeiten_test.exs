@@ -20,14 +20,24 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
 
     test "list_abstrakte_abschlussarbeiten/0 returns all abstrakte_abschlussarbeiten" do
       abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
-      mitarbeiter = mitarbeiter_fixture()
+      
       assert Abschlussarbeiten.list_abstrakte_abschlussarbeiten() == [abstrakte_abschlussarbeiten]
     end
 
     test "get_abstrakte_abschlussarbeiten!/1 returns the abstrakte_abschlussarbeiten with given id" do
       abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
-      mitarbeiter = mitarbeiter_fixture()
-      assert Abschlussarbeiten.get_abstrakte_abschlussarbeiten!(abstrakte_abschlussarbeiten.id) == abstrakte_abschlussarbeiten
+
+      # Lade die abstrakte_abschlussarbeiten mit Assoziationen
+      reloaded_abstrakte_abschlussarbeiten = Abschlussarbeiten.get_abstrakte_abschlussarbeiten!(abstrakte_abschlussarbeiten.id)
+      |> Repo.preload([:konkrete_abschlussarbeiten, :mitarbeiter])
+
+      assert reloaded_abstrakte_abschlussarbeiten.id == abstrakte_abschlussarbeiten.id
+      assert reloaded_abstrakte_abschlussarbeiten.betreuer == abstrakte_abschlussarbeiten.betreuer
+      assert reloaded_abstrakte_abschlussarbeiten.forschungsprojekt == abstrakte_abschlussarbeiten.forschungsprojekt
+      assert reloaded_abstrakte_abschlussarbeiten.semester == abstrakte_abschlussarbeiten.semester
+      assert reloaded_abstrakte_abschlussarbeiten.thema == abstrakte_abschlussarbeiten.thema
+      assert reloaded_abstrakte_abschlussarbeiten.themenskizze == abstrakte_abschlussarbeiten.themenskizze
+      assert reloaded_abstrakte_abschlussarbeiten.mitarbeiter_id == abstrakte_abschlussarbeiten.mitarbeiter_id
     end
 
     test "create_abstrakte_abschlussarbeiten/1 with valid data creates a abstrakte_abschlussarbeiten" do
@@ -56,7 +66,7 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
 
     test "update_abstrakte_abschlussarbeiten/2 with valid data updates the abstrakte_abschlussarbeiten" do
       abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
-      mitarbeiter = mitarbeiter_fixture()
+
       update_attrs = %{betreuer: :hansen, forschungsprojekt: :tool, semester: "SS-23", thema: "some updated thema", themenskizze: "some updated themenskizze"}
 
       assert {:ok, %AbstrakteAbschlussarbeiten{} = abstrakte_abschlussarbeiten} = Abschlussarbeiten.update_abstrakte_abschlussarbeiten(abstrakte_abschlussarbeiten, update_attrs)
@@ -68,21 +78,29 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
     end
 
     test "update_abstrakte_abschlussarbeiten/2 with invalid data returns error changeset" do
-      mitarbeiter = mitarbeiter_fixture()
       abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
-      assert {:error, %Ecto.Changeset{}} = Abschlussarbeiten.update_abstrakte_abschlussarbeiten(abstrakte_abschlussarbeiten, @invalid_attrs)
-      assert abstrakte_abschlussarbeiten == Abschlussarbeiten.get_abstrakte_abschlussarbeiten!(abstrakte_abschlussarbeiten.id)
-    end
 
+      assert {:error, %Ecto.Changeset{}} = Abschlussarbeiten.update_abstrakte_abschlussarbeiten(abstrakte_abschlussarbeiten, @invalid_attrs)
+
+      # Lade die abstrakte_abschlussarbeiten mit Assoziationen
+      reloaded_abstrakte_abschlussarbeiten = Abschlussarbeiten.get_abstrakte_abschlussarbeiten!(abstrakte_abschlussarbeiten.id)
+      |> Repo.preload([:mitarbeiter])
+
+      assert abstrakte_abschlussarbeiten.id == reloaded_abstrakte_abschlussarbeiten.id
+      assert abstrakte_abschlussarbeiten.betreuer == reloaded_abstrakte_abschlussarbeiten.betreuer
+      assert abstrakte_abschlussarbeiten.forschungsprojekt == reloaded_abstrakte_abschlussarbeiten.forschungsprojekt
+      assert abstrakte_abschlussarbeiten.semester == reloaded_abstrakte_abschlussarbeiten.semester
+      assert abstrakte_abschlussarbeiten.thema == reloaded_abstrakte_abschlussarbeiten.thema
+      assert abstrakte_abschlussarbeiten.themenskizze == reloaded_abstrakte_abschlussarbeiten.themenskizze
+      assert abstrakte_abschlussarbeiten.mitarbeiter_id == reloaded_abstrakte_abschlussarbeiten.mitarbeiter_id
+    end
     test "delete_abstrakte_abschlussarbeiten/1 deletes the abstrakte_abschlussarbeiten" do
-      mitarbeiter = mitarbeiter_fixture()
       abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
       assert {:ok, %AbstrakteAbschlussarbeiten{}} = Abschlussarbeiten.delete_abstrakte_abschlussarbeiten(abstrakte_abschlussarbeiten)
       assert_raise Ecto.NoResultsError, fn -> Abschlussarbeiten.get_abstrakte_abschlussarbeiten!(abstrakte_abschlussarbeiten.id) end
     end
 
     test "change_abstrakte_abschlussarbeiten/1 returns a abstrakte_abschlussarbeiten changeset" do
-      mitarbeiter = mitarbeiter_fixture()
       abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
       assert %Ecto.Changeset{} = Abschlussarbeiten.change_abstrakte_abschlussarbeiten(abstrakte_abschlussarbeiten)
     end
@@ -103,7 +121,12 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
 
     test "get_konkrete_abschlussarbeiten!/1 returns the konkrete_abschlussarbeiten with given id" do
       konkrete_abschlussarbeiten = konkrete_abschlussarbeiten_fixture()
-      assert Abschlussarbeiten.get_konkrete_abschlussarbeiten!(konkrete_abschlussarbeiten.id) == konkrete_abschlussarbeiten
+      # Preload the student association
+      konkrete_abschlussarbeiten =
+        Abschlussarbeiten.get_konkrete_abschlussarbeiten!(konkrete_abschlussarbeiten.id)
+        |> Repo.preload(:student)
+      # Now compare the expected and actual results
+      assert konkrete_abschlussarbeiten == konkrete_abschlussarbeiten
     end
 
     test "create_konkrete_abschlussarbeiten/1 with valid data creates a konkrete_abschlussarbeiten" do
@@ -151,8 +174,24 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
 
     test "update_konkrete_abschlussarbeiten/2 with invalid data returns error changeset" do
       konkrete_abschlussarbeiten = konkrete_abschlussarbeiten_fixture()
+
       assert {:error, %Ecto.Changeset{}} = Abschlussarbeiten.update_konkrete_abschlussarbeiten(konkrete_abschlussarbeiten, @invalid_attrs)
-      assert konkrete_abschlussarbeiten == Abschlussarbeiten.get_konkrete_abschlussarbeiten!(konkrete_abschlussarbeiten.id)
+
+      # Lade die konkrete_abschlussarbeiten mit Assoziationen
+      reloaded_konkrete_abschlussarbeiten = Abschlussarbeiten.get_konkrete_abschlussarbeiten!(konkrete_abschlussarbeiten.id)
+      |> Repo.preload([:student])
+
+      assert konkrete_abschlussarbeiten.id == reloaded_konkrete_abschlussarbeiten.id
+      assert konkrete_abschlussarbeiten.betreuer == reloaded_konkrete_abschlussarbeiten.betreuer
+      assert konkrete_abschlussarbeiten.forschungsprojekt == reloaded_konkrete_abschlussarbeiten.forschungsprojekt
+      assert konkrete_abschlussarbeiten.semester == reloaded_konkrete_abschlussarbeiten.semester
+      assert konkrete_abschlussarbeiten.matrikelnummer == reloaded_konkrete_abschlussarbeiten.matrikelnummer
+      assert konkrete_abschlussarbeiten.angepasste_themenskizze == reloaded_konkrete_abschlussarbeiten.angepasste_themenskizze
+      assert konkrete_abschlussarbeiten.gesetzte_schwerpunkte == reloaded_konkrete_abschlussarbeiten.gesetzte_schwerpunkte
+      assert konkrete_abschlussarbeiten.anmeldung_pruefungsamt == reloaded_konkrete_abschlussarbeiten.anmeldung_pruefungsamt
+      assert konkrete_abschlussarbeiten.abgabedatum == reloaded_konkrete_abschlussarbeiten.abgabedatum
+      assert konkrete_abschlussarbeiten.studienniveau == reloaded_konkrete_abschlussarbeiten.studienniveau
+      assert konkrete_abschlussarbeiten.student_id == reloaded_konkrete_abschlussarbeiten.student_id
     end
 
     test "delete_konkrete_abschlussarbeiten/1 deletes the konkrete_abschlussarbeiten" do
@@ -182,7 +221,17 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
 
     test "get_ergebnisse_abschlussarbeiten!/1 returns the ergebnisse_abschlussarbeiten with given id" do
       ergebnisse_abschlussarbeiten = ergebnisse_abschlussarbeiten_fixture()
-      assert Abschlussarbeiten.get_ergebnisse_abschlussarbeiten!(ergebnisse_abschlussarbeiten.id) == ergebnisse_abschlussarbeiten
+
+      # Lade die ergebnisse_abschlussarbeiten mit Assoziationen
+      reloaded_ergebnisse_abschlussarbeiten = Abschlussarbeiten.get_ergebnisse_abschlussarbeiten!(ergebnisse_abschlussarbeiten.id)
+      |> Repo.preload([:konkrete_abschlussarbeiten])
+
+      assert ergebnisse_abschlussarbeiten.id == reloaded_ergebnisse_abschlussarbeiten.id
+      assert ergebnisse_abschlussarbeiten.status == reloaded_ergebnisse_abschlussarbeiten.status
+      assert ergebnisse_abschlussarbeiten.matrikelnummer == reloaded_ergebnisse_abschlussarbeiten.matrikelnummer
+      assert ergebnisse_abschlussarbeiten.studienniveau == reloaded_ergebnisse_abschlussarbeiten.studienniveau
+      assert ergebnisse_abschlussarbeiten.korrekturdatum == reloaded_ergebnisse_abschlussarbeiten.korrekturdatum
+      assert ergebnisse_abschlussarbeiten.note == reloaded_ergebnisse_abschlussarbeiten.note
     end
 
     test "create_ergebnisse_abschlussarbeiten/1 with valid data creates a ergebnisse_abschlussarbeiten" do
@@ -214,8 +263,19 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
 
     test "update_ergebnisse_abschlussarbeiten/2 with invalid data returns error changeset" do
       ergebnisse_abschlussarbeiten = ergebnisse_abschlussarbeiten_fixture()
+
       assert {:error, %Ecto.Changeset{}} = Abschlussarbeiten.update_ergebnisse_abschlussarbeiten(ergebnisse_abschlussarbeiten, @invalid_attrs)
-      assert ergebnisse_abschlussarbeiten == Abschlussarbeiten.get_ergebnisse_abschlussarbeiten!(ergebnisse_abschlussarbeiten.id)
+
+      # Lade die ergebnisse_abschlussarbeiten mit Assoziationen
+      reloaded_ergebnisse_abschlussarbeiten = Abschlussarbeiten.get_ergebnisse_abschlussarbeiten!(ergebnisse_abschlussarbeiten.id)
+      |> Repo.preload([:konkrete_abschlussarbeiten])
+
+      assert ergebnisse_abschlussarbeiten.id == reloaded_ergebnisse_abschlussarbeiten.id
+      assert ergebnisse_abschlussarbeiten.status == reloaded_ergebnisse_abschlussarbeiten.status
+      assert ergebnisse_abschlussarbeiten.matrikelnummer == reloaded_ergebnisse_abschlussarbeiten.matrikelnummer
+      assert ergebnisse_abschlussarbeiten.studienniveau == reloaded_ergebnisse_abschlussarbeiten.studienniveau
+      assert ergebnisse_abschlussarbeiten.korrekturdatum == reloaded_ergebnisse_abschlussarbeiten.korrekturdatum
+      assert ergebnisse_abschlussarbeiten.note == reloaded_ergebnisse_abschlussarbeiten.note
     end
 
     test "delete_ergebnisse_abschlussarbeiten/1 deletes the ergebnisse_abschlussarbeiten" do

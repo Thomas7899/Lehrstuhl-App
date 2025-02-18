@@ -40,6 +40,8 @@ Now you can visit localhost:4000 from your browser.
   * Fix and improve tests
     Resolve failing or incomplete tests to ensure the application functions as expected and meets quality standards.
 
+  * Fix navbar
+
   * Add new features
 
   * Improve documentation

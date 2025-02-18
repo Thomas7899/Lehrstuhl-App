@@ -1,4 +1,5 @@
 defmodule Lehrstuhl.AbschlussarbeitenFixtures do
+  import Lehrstuhl.PersonsFixtures
   @moduledoc """
   This module defines test helpers for creating
   entities via the `Lehrstuhl.Abschlussarbeiten` context.
@@ -8,7 +9,7 @@ defmodule Lehrstuhl.AbschlussarbeitenFixtures do
   Generate a abstrakte_abschlussarbeiten.
   """
   def abstrakte_abschlussarbeiten_fixture(attrs \\ %{}) do
-
+    mitarbeiter = mitarbeiter_fixture()
     {:ok, abstrakte_abschlussarbeiten} =
       attrs
       |> Enum.into(%{
@@ -17,11 +18,12 @@ defmodule Lehrstuhl.AbschlussarbeitenFixtures do
         semester: "SS-23",
         thema: "some thema",
         themenskizze: "some themenskizze",
-        mitarbeiter_id: "33e68a9e-069e-4e28-96d5-3d85c5849fbc"
+        mitarbeiter_id: mitarbeiter.id
       })
       |> Lehrstuhl.Abschlussarbeiten.create_abstrakte_abschlussarbeiten()
 
     abstrakte_abschlussarbeiten
+
   end
 
   @doc """
