@@ -9,8 +9,13 @@
 </.header>
 
 <.list>
-  <:item title="Abstraktes Seminar"><%= @seminar.abstraktes_seminar.thema %></:item>
-  <:item title="Betreuer"><%= @seminar.mitarbeiter.email %></:item>
+  <:item title="Abstraktes Seminar">
+    <%= if @seminar.abstraktes_seminar do %>
+      <%= @seminar.abstraktes_seminar.thema %>
+    <% else %>
+      <span>No Thema available</span>
+    <% end %>
+  </:item>
   <:item title="Titel"><%= @seminar.titel %></:item>
   <:item title="Aufnahmekapazitaet"><%= @seminar.aufnahmekapazitaet %></:item>
   <:item title="Semester"><%= @seminar.semester %></:item>

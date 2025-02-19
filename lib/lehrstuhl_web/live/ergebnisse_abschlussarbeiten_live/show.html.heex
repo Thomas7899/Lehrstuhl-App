@@ -14,9 +14,9 @@
   <:item title="Status"><%= @ergebnisse_abschlussarbeiten.status %></:item>
   <:item title="Korrekturdatum"><%= @ergebnisse_abschlussarbeiten.korrekturdatum %></:item>
   <:item title="Note"><%= @ergebnisse_abschlussarbeiten.note %></:item>
-<:item title="Konkrete Abschlussarbeit">
-  <%= @ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten && "#{@ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten.id}" || "No konkrete Abschlussarbeit assigned" %>
-</:item>
+  <:item title="Konkrete Abschlussarbeit">
+    <%= @ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten && "#{@ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten.id}" || "No konkrete Abschlussarbeit assigned" %>
+  </:item>
 </.list>
 
 <.back navigate={~p"/ergebnisse_abschlussarbeiten"}>Back to Ergebnisse</.back>

@@ -2,7 +2,7 @@
 
 ## Welcome to the Lehrstuhl-App
 
-## visit directly on https://lehrstuhl-app.fly.dev/
+### visit directly on https://lehrstuhl-app.fly.dev/
 
 Login with: email: "admin@example.com",
             password: password123
@@ -33,9 +33,9 @@ Now you can visit localhost:4000 from your browser.
 
 * Return to Homepage per FernUni - Logo
 
-## Roadmap / To-Do List
+# Roadmap / To-Do List
 
-# The following tasks are planned or still need to be completed:
+## The following tasks are planned or still need to be completed:
 
   * Fix and improve tests
     Resolve failing or incomplete tests to ensure the application functions as expected and meets quality standards.

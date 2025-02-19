@@ -12,8 +12,7 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLive.Show do
   def handle_params(%{"id" => id}, _, socket) do
     konkrete_abschlussarbeiten =
       Abschlussarbeiten.get_konkrete_abschlussarbeiten!(id)
-      |> Lehrstuhl.Repo.preload(:student)
-      |> Lehrstuhl.Repo.preload(:mitarbeiter)
+      |> Lehrstuhl.Repo.preload([:student, :mitarbeiter, :abstrakte_abschlussarbeiten, :ergebnisse_abschlussarbeiten])
 
     {:noreply,
      socket

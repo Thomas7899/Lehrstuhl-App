@@ -20,10 +20,13 @@
   <:item title="Studienniveau"><%= @konkrete_abschlussarbeiten.studienniveau %></:item>
   <:item title="Student">
   <%= @konkrete_abschlussarbeiten.student && "#{@konkrete_abschlussarbeiten.student.vorname} #{@konkrete_abschlussarbeiten.student.nachname}" || "No student assigned" %>
-</:item>
-<:item title="Mitarbeiter">
+  </:item>
+  <:item title="Mitarbeiter">
   <%= @konkrete_abschlussarbeiten.mitarbeiter && "#{@konkrete_abschlussarbeiten.mitarbeiter.vorname} #{@konkrete_abschlussarbeiten.mitarbeiter.nachname}" || "No Mitarbeiter assigned" %>
-</:item>
+  </:item>
+  <:item title="Abstrakte Abschlussarbeit">
+  <%= @konkrete_abschlussarbeiten.abstrakte_abschlussarbeiten_id || "No abstrakte Abschlussarbeit assigned" %>
+  </:item>
 </.list>
 
 <div class="flex space-x-4">

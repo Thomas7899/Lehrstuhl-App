@@ -291,6 +291,22 @@
       })();
     })()
   </script>
+
+<!-- Re-initialize Preline components after LiveView page load -->
+<script>
+  document.addEventListener("phx:page-loading-stop", () => {
+    setTimeout(() => {
+      window.HSStaticMethods.autoInit();
+    }, 10);
+  });
+
+  document.addEventListener("phx:update", () => {
+    setTimeout(() => {
+      window.HSStaticMethods.autoInit();
+    }, 10);
+  });
+</script>
+
 </body>
 </html>
 

@@ -11,7 +11,7 @@ defmodule Lehrstuhl.Persons.Mitarbeiter do
     field :email, :string
     field :nachname, :string
     field :vorname, :string
-    field :rolle, Ecto.Enum, values: [:professor, :wissenschaftlicher_mitarbeiter]
+    field :rolle, Ecto.Enum, values: [:professor, :wissenschaftlicher_mitarbeiter, :nicht_wissenschaftlicher_mitarbeiter, :betreuer, :prüfer]
     has_many :konkrete_abschlussarbeiten, KonkreteAbschlussarbeiten
     has_many :abstrakte_abschlussarbeiten, AbstrakteAbschlussarbeiten
 

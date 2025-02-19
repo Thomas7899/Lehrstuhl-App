@@ -28,7 +28,7 @@ end
 
   def list_abstrakte_abschlussarbeiten do
    Repo.all(AbstrakteAbschlussarbeiten)
-  |> Lehrstuhl.Repo.preload(:mitarbeiter)
+  #|> Lehrstuhl.Repo.preload(:mitarbeiter)
   end
 
 #Neue Funktion
@@ -196,7 +196,7 @@ end
   """
   def list_konkrete_abschlussarbeiten do
     Repo.all(KonkreteAbschlussarbeiten)
-    #|> Repo.preload(:abstrakte_abschlussarbeiten)
+    |> Lehrstuhl.Repo.preload(:abstrakte_abschlussarbeiten)
   end
 
    #Funktionen zum Filtern der Abschlussarbeiten
@@ -246,6 +246,7 @@ end
 def get_konkrete_abschlussarbeiten!(id) do
   Lehrstuhl.Repo.get!(Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten, id)
   |> Lehrstuhl.Repo.preload(:student)
+  |> Lehrstuhl.Repo.preload(:abstrakte_abschlussarbeiten)
 end
 
 
