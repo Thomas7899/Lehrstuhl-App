@@ -3,19 +3,19 @@
   <:subtitle>This is a mitarbeiter record from your database.</:subtitle>
   <:actions>
     <.link patch={~p"/mitarbeiter/#{@mitarbeiter}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit mitarbeiter</.button>
+      <.button>Edit Mitarbeiter</.button>
     </.link>
   </:actions>
 </.header>
 
 <.list>
-  <:item title="Email"><%= @mitarbeiter.email %></:item>
-  <:item title="Nachname"><%= @mitarbeiter.nachname %></:item>
-  <:item title="Vorname"><%= @mitarbeiter.vorname %></:item>
-  <:item title="Rolle"><%= @mitarbeiter.rolle %></:item>
+  <:item title="Email"><span class="text-sm font-medium text-gray-900"><%= @mitarbeiter.email %></span></:item>
+  <:item title="Nachname"><span class="text-sm font-medium text-gray-900"><%= @mitarbeiter.nachname %></span></:item>
+  <:item title="Vorname"><span class="text-sm font-medium text-gray-900"><%= @mitarbeiter.vorname %></span></:item>
+  <:item title="Rolle"><span class="text-sm font-medium text-gray-900"><%= @mitarbeiter.rolle %></span></:item>
 </.list>
 
-<.back navigate={~p"/mitarbeiter"}>Back to mitarbeiter</.back>
+<.back navigate={~p"/mitarbeiter"}>Back to Mitarbeiter</.back>
 
 <.modal
   :if={@live_action == :edit}

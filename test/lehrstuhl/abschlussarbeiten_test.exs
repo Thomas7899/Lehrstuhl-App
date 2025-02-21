@@ -14,13 +14,11 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
       forschungsprojekt: nil,
       semester: nil,
       thema: nil,
-      themenskizze: nil,
-      mitarbeiter_id: nil
+      themenskizze: nil
   }
 
     test "list_abstrakte_abschlussarbeiten/0 returns all abstrakte_abschlussarbeiten" do
       abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
-      
       assert Abschlussarbeiten.list_abstrakte_abschlussarbeiten() == [abstrakte_abschlussarbeiten]
     end
 
@@ -112,7 +110,7 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
     import Lehrstuhl.AbschlussarbeitenFixtures
     import Lehrstuhl.PersonsFixtures
 
-    @invalid_attrs %{betreuer: nil, forschungsprojekt: nil, semester: nil, matrikelnummer: nil, angepasste_themenskizze: nil, gesetzte_schwerpunkte: nil, anmeldung_pruefungsamt: nil, abgabedatum: nil, studienniveau: nil, student_id: nil, mitarbeiter_id: nil, abstrakte_abschlussarbeit_id: nil}
+    @invalid_attrs %{betreuer: nil, forschungsprojekt: nil, semester: nil, matrikelnummer: nil, angepasste_themenskizze: nil, gesetzte_schwerpunkte: nil, anmeldung_pruefungsamt: nil, abgabedatum: nil, studienniveau: nil}
 
     test "list_konkrete_abschlussarbeiten/0 returns all konkrete_abschlussarbeiten" do
       konkrete_abschlussarbeiten = konkrete_abschlussarbeiten_fixture()
@@ -124,7 +122,6 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
       # Preload the student association
       konkrete_abschlussarbeiten =
         Abschlussarbeiten.get_konkrete_abschlussarbeiten!(konkrete_abschlussarbeiten.id)
-        |> Repo.preload(:student)
       # Now compare the expected and actual results
       assert konkrete_abschlussarbeiten == konkrete_abschlussarbeiten
     end
@@ -212,7 +209,7 @@ defmodule Lehrstuhl.AbschlussarbeitenTest do
     import Lehrstuhl.AbschlussarbeitenFixtures
     import Lehrstuhl.PersonsFixtures
 
-    @invalid_attrs %{status: nil, matrikelnummer: nil, studienniveau: nil, korrekturdatum: nil, note: nil, student_id: nil}
+    @invalid_attrs %{status: nil, matrikelnummer: nil, studienniveau: nil, korrekturdatum: nil, note: nil}
 
     test "list_ergebnisse_abschlussarbeiten/0 returns all ergebnisse_abschlussarbeiten" do
       ergebnisse_abschlussarbeiten = ergebnisse_abschlussarbeiten_fixture()

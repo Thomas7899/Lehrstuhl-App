@@ -33,7 +33,7 @@ Repo.insert!(%User{
    confirmed_at: ~N[2025-02-17 00:00:00]
 })
 
-Repo.insert!(%Mitarbeiter{
+mitarbeiter1 = Repo.insert!(%Mitarbeiter{
   id: "11e68b9e-069e-4e28-96d5-3d85c5849fba",
   email: "johanna.müller@studium.fernuni-hagen.de",
   nachname: "Müller",
@@ -41,7 +41,7 @@ Repo.insert!(%Mitarbeiter{
   rolle: :wissenschaftlicher_mitarbeiter
 })
 
-Repo.insert!(%Mitarbeiter{
+mitarbeiter2 = Repo.insert!(%Mitarbeiter{
   id: "22e68a9e-069e-4e28-96d5-3d85c5849fbb",
   email: "peter.hansen@studium.fernuni-hagen.de",
   nachname: "Hansen",
@@ -49,7 +49,7 @@ Repo.insert!(%Mitarbeiter{
   rolle: :wissenschaftlicher_mitarbeiter
 })
 
-Repo.insert!(%Mitarbeiter{
+mitarbeiter3 = Repo.insert!(%Mitarbeiter{
   id: "33e68a9e-069e-4e28-96d5-3d85c5849fbc",
   email: "karl.becker@studium.fernuni-hagen.de",
   nachname: "Becker",
@@ -57,7 +57,7 @@ Repo.insert!(%Mitarbeiter{
   rolle: :wissenschaftlicher_mitarbeiter
 })
 
-Repo.insert!(%Mitarbeiter{
+mitarbeiter4 = Repo.insert!(%Mitarbeiter{
   id: "23e58a9e-069e-4e28-96d5-3d85c5849fbc",
   email: "johann.brenner@studium.fernuni-hagen.de",
   nachname: "Brenner",
@@ -65,7 +65,7 @@ Repo.insert!(%Mitarbeiter{
   rolle: :professor
 })
 
-Repo.insert!(%Mitarbeiter{
+mitarbeiter5 = Repo.insert!(%Mitarbeiter{
   id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
   email: "leon.fischer@studium.fernuni-hagen.de",
   nachname: "Fischer",
@@ -73,7 +73,7 @@ Repo.insert!(%Mitarbeiter{
   rolle: :wissenschaftlicher_mitarbeiter
 })
 
-Repo.insert!(%Mitarbeiter{
+mitarbeiter6 = Repo.insert!(%Mitarbeiter{
   id: "41e58a9e-069e-4e28-96d5-3d85c5849fbd",
   email: "hannah.schmidt@studium.fernuni-hagen.de",
   nachname: "Schmidt",
@@ -81,7 +81,7 @@ Repo.insert!(%Mitarbeiter{
   rolle: :nicht_wissenschaftlicher_mitarbeiter
 })
 
-Repo.insert!(%Mitarbeiter{
+mitarbeiter7 = Repo.insert!(%Mitarbeiter{
   id: "51e68a9e-069e-4e28-96d5-3d85c5849fbe",
   email: "max.krause@studium.fernuni-hagen.de",
   nachname: "Krause",
@@ -89,7 +89,7 @@ Repo.insert!(%Mitarbeiter{
   rolle: :betreuer
 })
 
-Repo.insert!(%Mitarbeiter{
+mitarbeiter8 = Repo.insert!(%Mitarbeiter{
   id: "61e78a9e-069e-4e28-96d5-3d85c5849fbf",
   email: "lisa.wagner@studium.fernuni-hagen.de",
   nachname: "Wagner",
@@ -100,7 +100,8 @@ Repo.insert!(%Mitarbeiter{
 
 # Students
 
-Repo.insert!(%Student{
+# Bereits vorhandene Studenten
+student1 = Repo.insert!(%Student{
   id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
   email: "laura.schmidt@studium.fernuni-hagen.de",
   matrikelnummer: "7967990",
@@ -109,7 +110,7 @@ Repo.insert!(%Student{
   geburtsdatum: ~D[2001-10-12]
 })
 
-Repo.insert!(%Student{
+student2 = Repo.insert!(%Student{
   id: "55e68a9e-069e-4e28-96d5-3d85c5849fb2",
   email: "marcus.bauer@studium.fernuni-hagen.de",
   matrikelnummer: "8887777",
@@ -118,7 +119,7 @@ Repo.insert!(%Student{
   geburtsdatum: ~D[1980-09-12]
 })
 
-Repo.insert!(%Student{
+student3 = Repo.insert!(%Student{
   id: "44e35a9e-069e-4e28-96d5-3d85c5849fb2",
   email: "sophie.meyer@studium.fernuni-hagen.de",
   matrikelnummer: "1837675",
@@ -127,7 +128,7 @@ Repo.insert!(%Student{
   geburtsdatum: ~D[1984-02-19]
 })
 
-Repo.insert!(%Student{
+student4 = Repo.insert!(%Student{
   id: "77e68a9e-069e-4e28-96d5-3d85c5849fb3",
   email: "daniel.fischer@studium.fernuni-hagen.de",
   matrikelnummer: "7647910",
@@ -136,7 +137,7 @@ Repo.insert!(%Student{
   geburtsdatum: ~D[2000-08-12]
 })
 
-Repo.insert!(%Student{
+student5 = Repo.insert!(%Student{
   id: "97e68a9e-069e-4e28-96d5-3d85c5849fb3",
   email: "anna.krause@studium.fernuni-hagen.de",
   matrikelnummer: "6767877",
@@ -145,7 +146,7 @@ Repo.insert!(%Student{
   geburtsdatum: ~D[1995-08-12]
 })
 
-Repo.insert!(%Student{
+student6 = Repo.insert!(%Student{
   id: "10e68a9e-069e-4e28-96d5-3d85c5849fb3",
   email: "felix.wagner@studium.fernuni-hagen.de",
   matrikelnummer: "4447227",
@@ -154,13 +155,130 @@ Repo.insert!(%Student{
   geburtsdatum: ~D[1993-07-11]
 })
 
-Repo.insert!(%Student{
+student7 = Repo.insert!(%Student{
   id: "18e68a9e-069e-4e28-96d5-3d85c5849fb3",
   email: "lena.schneider@studium.fernuni-hagen.de",
   matrikelnummer: "8189911",
   nachname: "Schneider",
   vorname: "Lena",
   geburtsdatum: ~D[1991-03-03]
+})
+
+student8 = Repo.insert!(%Student{
+  id: "21a12a3e-5c3d-4f44-a13b-9e5f26d1c91e",
+  email: "max.mueller@studium.fernuni-hagen.de",
+  matrikelnummer: "5632810",
+  nachname: "Müller",
+  vorname: "Max",
+  geburtsdatum: ~D[1998-04-15]
+})
+
+student9 = Repo.insert!(%Student{
+  id: "32b41b2e-3d7f-4f22-b94b-1a6e72d3c84f",
+  email: "julia.hoffmann@studium.fernuni-hagen.de",
+  matrikelnummer: "6538921",
+  nachname: "Hoffmann",
+  vorname: "Julia",
+  geburtsdatum: ~D[1997-12-30]
+})
+
+student10 = Repo.insert!(%Student{
+  id: "ad3fc4f3-cd30-4012-89ef-fc029c0d42a0",
+  email: "sebastian.schulz@studium.fernuni-hagen.de",
+  matrikelnummer: "7482390",
+  nachname: "Schulz",
+  vorname: "Sebastian",
+  geburtsdatum: ~D[1999-09-05]
+})
+
+student11 = Repo.insert!(%Student{
+  id: "d3eaf256-ec56-48d4-a829-1a1f8d1aab43",
+  email: "sandra.klein@studium.fernuni-hagen.de",
+  matrikelnummer: "8291045",
+  nachname: "Klein",
+  vorname: "Sandra",
+  geburtsdatum: ~D[1996-06-21]
+})
+
+student12 = Repo.insert!(%Student{
+  id: "7d96d8bd-717d-4603-991f-7c4778f9f658",
+  email: "lukas.neumann@studium.fernuni-hagen.de",
+  matrikelnummer: "9342156",
+  nachname: "Neumann",
+  vorname: "Lukas",
+  geburtsdatum: ~D[1995-11-17]
+})
+
+student13 = Repo.insert!(%Student{
+  id: "76f85f6e-9c7d-4b66-f57b-5e8fb4d7c420",
+  email: "lisa.koch@studium.fernuni-hagen.de",
+  matrikelnummer: "10234567",
+  nachname: "Koch",
+  vorname: "Lisa",
+  geburtsdatum: ~D[1994-08-09]
+})
+
+student14 = Repo.insert!(%Student{
+  id: "a8b32561-63ed-40eb-afad-2b0924450d23",
+  email: "tobias.lehmann@studium.fernuni-hagen.de",
+  matrikelnummer: "11345678",
+  nachname: "Lehmann",
+  vorname: "Tobias",
+  geburtsdatum: ~D[1993-02-14]
+})
+
+student15 = Repo.insert!(%Student{
+  id: "697a7678-34ce-4fc1-8371-853ebedb7a99",
+  email: "marina.schmidt@studium.fernuni-hagen.de",
+  matrikelnummer: "12456789",
+  nachname: "Schmidt",
+  vorname: "Marina",
+  geburtsdatum: ~D[1992-07-22]
+})
+
+student16 = Repo.insert!(%Student{
+  id: "bea50865-0fe5-4167-804c-c9c2f6fe0e1e",
+  email: "kevin.schubert@studium.fernuni-hagen.de",
+  matrikelnummer: "13567890",
+  nachname: "Schubert",
+  vorname: "Kevin",
+  geburtsdatum: ~D[1991-05-10]
+})
+
+student17 = Repo.insert!(%Student{
+  id: "d4717012-d5b4-4ab5-9039-5c917f381115",
+  email: "svenja.berger@studium.fernuni-hagen.de",
+  matrikelnummer: "14678901",
+  nachname: "Berger",
+  vorname: "Svenja",
+  geburtsdatum: ~D[1990-03-27]
+})
+
+student18 = Repo.insert!(%Student{
+  id: "bacda517-e1e0-4371-aff6-3a3010cad22e",
+  email: "manuel.walter@studium.fernuni-hagen.de",
+  matrikelnummer: "15789012",
+  nachname: "Walter",
+  vorname: "Manuel",
+  geburtsdatum: ~D[1989-12-15]
+})
+
+student19 = Repo.insert!(%Student{
+  id: "6db5632f-a521-465e-9142-13573ab7cb13",
+  email: "franziska.huber@studium.fernuni-hagen.de",
+  matrikelnummer: "16890123",
+  nachname: "Huber",
+  vorname: "Franziska",
+  geburtsdatum: ~D[1988-10-02]
+})
+
+student20 = Repo.insert!(%Student{
+  id: "6b03a905-a7cd-4c17-95e3-3ccd889cbebe",
+  email: "thomas.maier@studium.fernuni-hagen.de",
+  matrikelnummer: "17901234",
+  nachname: "Maier",
+  vorname: "Thomas",
+  geburtsdatum: ~D[1987-08-20]
 })
 
 #konkrete Abschlussarbeiten
@@ -170,7 +288,8 @@ abstrakte_abschlussarbeit1 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "WS23/24",
   thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
-  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter1.id
 })
 
 konkrete_abschlussarbeit1 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -183,8 +302,8 @@ konkrete_abschlussarbeit1 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-06-05],
   abgabedatum: ~D[2023-12-25],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student1.id,
+  mitarbeiter_id: mitarbeiter1.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit1.id
 })
 
@@ -202,7 +321,8 @@ abstrakte_abschlussarbeit2 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "WS22/23",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter2.id
 })
 
 konkrete_abschlussarbeit2 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -215,8 +335,8 @@ konkrete_abschlussarbeit2 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-06-05],
   abgabedatum: ~D[2022-12-25],
   studienniveau: :master,
-  student_id: "77e68a9e-069e-4e28-96d5-3d85c5849fb3",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student2.id,
+  mitarbeiter_id: mitarbeiter2.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit2.id
 })
 
@@ -234,7 +354,8 @@ abstrakte_abschlussarbeit3 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "SS22",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter3.id
 })
 
 konkrete_abschlussarbeit3 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -247,8 +368,8 @@ konkrete_abschlussarbeit3 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-06-05],
   abgabedatum: ~D[2022-12-25],
   studienniveau: :bachelor,
-  student_id: "55e68a9e-069e-4e28-96d5-3d85c5849fb2",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student3.id,
+  mitarbeiter_id: mitarbeiter3.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit3.id
 })
 
@@ -266,7 +387,8 @@ abstrakte_abschlussarbeit4 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "SS23",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter4.id
 })
 
 konkrete_abschlussarbeit4 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -279,8 +401,8 @@ konkrete_abschlussarbeit4 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-06-05],
   abgabedatum: ~D[2023-12-25],
   studienniveau: :bachelor,
-  student_id: "44e35a9e-069e-4e28-96d5-3d85c5849fb2",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student4.id,
+  mitarbeiter_id: mitarbeiter4.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit4.id
 })
 
@@ -298,7 +420,8 @@ abstrakte_abschlussarbeit5 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "SS23",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter5.id
 })
 
 konkrete_abschlussarbeit5 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -311,8 +434,8 @@ konkrete_abschlussarbeit5 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-02-01],
   abgabedatum: ~D[2023-06-25],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student5.id,
+  mitarbeiter_id: mitarbeiter5.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit5.id
 })
 
@@ -330,7 +453,8 @@ abstrakte_abschlussarbeit6 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :tool,
   semester: "SS22",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter6.id
 })
 
 konkrete_abschlussarbeit6 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -343,8 +467,8 @@ konkrete_abschlussarbeit6 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-02-01],
   abgabedatum: ~D[2023-06-25],
   studienniveau: :bachelor,
-  student_id: "97e68a9e-069e-4e28-96d5-3d85c5849fb3",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student6.id,
+  mitarbeiter_id: mitarbeiter6.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit6.id
 })
 
@@ -362,7 +486,8 @@ abstrakte_abschlussarbeit7 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :tool,
   semester: "WS23/24",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter7.id
 })
 
 konkrete_abschlussarbeit7 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -375,8 +500,8 @@ konkrete_abschlussarbeit7 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-02-01],
   abgabedatum: ~D[2023-06-25],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student7.id,
+  mitarbeiter_id: mitarbeiter7.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit7.id
 })
 
@@ -394,7 +519,8 @@ abstrakte_abschlussarbeit8 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :tool,
   semester: "WS22/23",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter1.id
 })
 
 konkrete_abschlussarbeit8 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -407,8 +533,8 @@ konkrete_abschlussarbeit8 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-03-22],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student8.id,
+  mitarbeiter_id: mitarbeiter1.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit8.id
 })
 
@@ -426,7 +552,8 @@ abstrakte_abschlussarbeit9 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "WS22/23",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter2.id
 })
 
 konkrete_abschlussarbeit9 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -439,8 +566,8 @@ konkrete_abschlussarbeit9 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-12-01],
   abgabedatum: ~D[2023-01-01],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student9.id,
+  mitarbeiter_id: mitarbeiter2.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit9.id
 })
 
@@ -458,7 +585,8 @@ abstrakte_abschlussarbeit10 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "SS22",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter3.id
 })
 
 konkrete_abschlussarbeit10 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -471,8 +599,8 @@ konkrete_abschlussarbeit10 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-01-01],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student10.id,
+  mitarbeiter_id: mitarbeiter3.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit10.id
 })
 
@@ -490,7 +618,8 @@ abstrakte_abschlussarbeit11 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "SS23",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter4.id
 })
 
 konkrete_abschlussarbeit11 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -503,8 +632,8 @@ konkrete_abschlussarbeit11 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-01-01],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student11.id,
+  mitarbeiter_id: mitarbeiter4.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit11.id
 })
 
@@ -522,7 +651,8 @@ abstrakte_abschlussarbeit12 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "WS23/24",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter5.id
 })
 
 konkrete_abschlussarbeit12 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -535,8 +665,8 @@ konkrete_abschlussarbeit12 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-01-01],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student12.id,
+  mitarbeiter_id: mitarbeiter5.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit12.id
 })
 
@@ -554,7 +684,8 @@ abstrakte_abschlussarbeit13 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "SS22",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter6.id
 })
 
 konkrete_abschlussarbeit13 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -567,8 +698,8 @@ konkrete_abschlussarbeit13 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-02-01],
   abgabedatum: ~D[2022-08-01],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student13.id,
+  mitarbeiter_id: mitarbeiter6.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit13.id
 })
 
@@ -586,7 +717,8 @@ abstrakte_abschlussarbeit14 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "WS23/24",
   thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
-  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter7.id
 })
 
 konkrete_abschlussarbeit14 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -599,8 +731,8 @@ konkrete_abschlussarbeit14 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-04-01],
   abgabedatum: ~D[2024-01-01],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student14.id,
+  mitarbeiter_id: mitarbeiter7.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit14.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
@@ -617,7 +749,8 @@ abstrakte_abschlussarbeit15 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "SS22",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter1.id
 })
 
 konkrete_abschlussarbeit15 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -630,8 +763,8 @@ konkrete_abschlussarbeit15 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-04-01],
   abgabedatum: ~D[2022-01-01],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student15.id,
+  mitarbeiter_id: mitarbeiter1.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit15.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
@@ -648,7 +781,8 @@ abstrakte_abschlussarbeit16 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "WS23/24",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter2.id
 })
 
 konkrete_abschlussarbeit16 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -661,8 +795,8 @@ konkrete_abschlussarbeit16 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-07-01],
   abgabedatum: ~D[2023-12-15],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student16.id,
+  mitarbeiter_id: mitarbeiter2.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit16.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
@@ -679,7 +813,8 @@ abstrakte_abschlussarbeit17 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :tool,
   semester: "SS23",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter3.id
 })
 
 konkrete_abschlussarbeit17 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -692,8 +827,8 @@ konkrete_abschlussarbeit17 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-03-10],
   abgabedatum: ~D[2023-09-20],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student17.id,
+  mitarbeiter_id: mitarbeiter3.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit17.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
@@ -710,7 +845,8 @@ abstrakte_abschlussarbeit18 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :tool,
   semester: "SS22",
   thema: "TOOL - Web App Development of Tooly, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Tooly mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter4.id
 })
 
 konkrete_abschlussarbeit18 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -723,8 +859,8 @@ konkrete_abschlussarbeit18 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-03-01],
   abgabedatum: ~D[2022-09-15],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student18.id,
+  mitarbeiter_id: mitarbeiter4.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit18.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
@@ -741,7 +877,8 @@ abstrakte_abschlussarbeit19 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "SS23",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter5.id
 })
 
 konkrete_abschlussarbeit19 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -754,8 +891,8 @@ konkrete_abschlussarbeit19 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-03-15],
   abgabedatum: ~D[2023-09-30],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student19.id,
+  mitarbeiter_id: mitarbeiter5.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit19.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
@@ -772,7 +909,8 @@ abstrakte_abschlussarbeit20 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "WS23/24",
   thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
-  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter6.id
 })
 
 konkrete_abschlussarbeit20 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -785,8 +923,8 @@ konkrete_abschlussarbeit20 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-06-15],
   abgabedatum: ~D[2023-12-20],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student20.id,
+  mitarbeiter_id: mitarbeiter6.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit20.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
@@ -803,7 +941,8 @@ abstrakte_abschlussarbeit21 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :imp,
   semester: "SS23",
   thema: "IMP - Web App Development of Impy, a web app for software developers",
-  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Impy mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter7.id
 })
 
 konkrete_abschlussarbeit21 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -817,7 +956,7 @@ konkrete_abschlussarbeit21 = Repo.insert!(%KonkreteAbschlussarbeiten{
   abgabedatum: ~D[2023-09-10],
   studienniveau: :master,
   student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  mitarbeiter_id: mitarbeiter7.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit21.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
@@ -834,7 +973,8 @@ abstrakte_abschlussarbeit22 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "SS23",
   thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
-  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter8.id
 })
 
 konkrete_abschlussarbeit22 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -847,8 +987,8 @@ konkrete_abschlussarbeit22 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-10-05],
   abgabedatum: ~D[2023-03-15],
   studienniveau: :bachelor,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student19.id,
+  mitarbeiter_id: mitarbeiter8.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit22.id
 })
 
@@ -866,7 +1006,8 @@ abstrakte_abschlussarbeit23 = Repo.insert!(%AbstrakteAbschlussarbeiten{
   forschungsprojekt: :sport,
   semester: "SS22",
   thema: "SPORT - Web App Development of Sportyweb, a web app for sports clubs",
-  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests"
+  themenskizze: "Weiter-Entwicklung der Web-App Sportyweb mit Elixir/Phoenix, PostgreSQL, TailwindCSS – Ausgewählte Features & Feature Requests",
+  mitarbeiter_id: mitarbeiter1.id
 })
 
 konkrete_abschlussarbeit23 = Repo.insert!(%KonkreteAbschlussarbeiten{
@@ -879,8 +1020,8 @@ konkrete_abschlussarbeit23 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2022-02-20],
   abgabedatum: ~D[2022-08-30],
   studienniveau: :master,
-  student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-  mitarbeiter_id: "31e48a9e-069e-4e28-96d5-3d85c5849fbc",
+  student_id: student20.id,
+  mitarbeiter_id: mitarbeiter1.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit23.id
 })
 
