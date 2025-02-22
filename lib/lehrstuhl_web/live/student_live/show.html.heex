@@ -1,35 +1,40 @@
-<.header>
-  Student <%= @student.id %>
-  <:subtitle>This is a student record from your database.</:subtitle>
-  <:actions>
-    <.link patch={~p"/students/#{@student}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit student</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
+  <.header class="relative">
+    <div class="absolute top-0 right-0">
+      <.link patch={~p"/students/#{@student}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit</.button>
+      </.link>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-2">
+      <div class="text-xl font-bold leading-none text-white hover:text-[#8000ff] my-2">Student</div>
+      <div class="text-l leading-none text-white hover:text-[#8000ff]">
+        <%= @student.id %>
+      </div>
+    </div>
+  </.header>
 
-<.list>
-  <:item title="Email"><%= @student.email %></:item>
-  <:item title="Matrikelnummer"><%= @student.matrikelnummer %></:item>
-  <:item title="Vorname"><%= @student.vorname %></:item>
-  <:item title="Nachname"><%= @student.nachname %></:item>
-  <:item title="Geburtsdatum"><%= @student.geburtsdatum %></:item>
-</.list>
+  <div class="mt-4">
+    <.list>
+      <:item title="Email"><%= @student.email %></:item>
+      <:item title="Matrikelnummer"><%= @student.matrikelnummer %></:item>
+      <:item title="Vorname"><%= @student.vorname %></:item>
+      <:item title="Nachname"><%= @student.nachname %></:item>
+      <:item title="Geburtsdatum"><%= @student.geburtsdatum %></:item>
+    </.list>
+  </div>
 
-<.back navigate={~p"/students"}>Back to students</.back>
+  <div class="flex justify-center gap-x-8 mt-4">
+    <.back navigate={~p"/students"}>Back</.back>
+  </div>
 
-<.modal
-  :if={@live_action == :edit}
-  id="student-modal"
-  show
-  on_cancel={JS.patch(~p"/students/#{@student}")}
->
-  <.live_component
-    module={LehrstuhlWeb.StudentLive.FormComponent}
-    id={@student.id}
-    title={@page_title}
-    action={@live_action}
-    student={@student}
-    patch={~p"/students/#{@student}"}
-  />
-</.modal>
+  <.modal :if={@live_action == :edit} id="student-modal" show on_cancel={JS.patch(~p"/students/#{@student}")}> 
+    <.live_component
+      module={LehrstuhlWeb.StudentLive.FormComponent}
+      id={@student.id}
+      title={@page_title}
+      action={@live_action}
+      student={@student}
+      patch={~p"/students/#{@student}"}
+    />
+  </.modal>
+</div>

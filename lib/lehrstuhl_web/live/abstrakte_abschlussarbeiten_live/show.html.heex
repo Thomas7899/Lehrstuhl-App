@@ -1,33 +1,43 @@
-<.header>
-  Abstrakte abschlussarbeiten <%= @abstrakte_abschlussarbeiten.id %>
-  <:subtitle>This is a abstrakte_abschlussarbeiten record from your database.</:subtitle>
-  <:actions>
-    <.link patch={~p"/abstrakte_abschlussarbeiten/#{@abstrakte_abschlussarbeiten}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit abstrakte Abschlussarbeit</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
+  <.header class="relative">
+    <div class="absolute top-0 right-0">
+      <.link patch={~p"/abstrakte_abschlussarbeiten/#{@abstrakte_abschlussarbeiten}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit</.button>
+      </.link>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-2">
+      <div class="text-xl font-bold leading-none text-white hover:text-[#8000ff] my-2">Abstrakte Abschlussarbeiten</div>
+      <div class="leading-none text-white hover:text-[#8000ff]">
+        <%= @abstrakte_abschlussarbeiten.id %>
+      </div>
+    </div>
+  </.header>
 
-<.list>
-  <:item title="Betreuer"><%= @abstrakte_abschlussarbeiten.betreuer %></:item>
-  <:item title="Forschungsprojekt"><%= @abstrakte_abschlussarbeiten.forschungsprojekt %></:item>
-  <:item title="Semester"><%= @abstrakte_abschlussarbeiten.semester %></:item>
-  <:item title="Thema"><%= @abstrakte_abschlussarbeiten.thema %></:item>
-  <:item title="Themenskizze"><%= @abstrakte_abschlussarbeiten.themenskizze %></:item>
-  <:item title="Mitarbeiter">
-  <%= @abstrakte_abschlussarbeiten.mitarbeiter && "#{@abstrakte_abschlussarbeiten.mitarbeiter.vorname} #{@abstrakte_abschlussarbeiten.mitarbeiter.nachname}" || "No Mitarbeiter assigned" %>
-</:item>
-</.list>
+  <div class="flex justify-center items-center">
+    <.list>
+      <:item title="Betreuer"><%= @abstrakte_abschlussarbeiten.betreuer %></:item>
+      <:item title="Forschungsprojekt"><%= @abstrakte_abschlussarbeiten.forschungsprojekt %></:item>
+      <:item title="Semester"><%= @abstrakte_abschlussarbeiten.semester %></:item>
+      <:item title="Thema"><%= @abstrakte_abschlussarbeiten.thema %></:item>
+      <:item title="Themenskizze"><%= @abstrakte_abschlussarbeiten.themenskizze %></:item>
+      <:item title="Mitarbeiter">
+        <%= @abstrakte_abschlussarbeiten.mitarbeiter && "#{@abstrakte_abschlussarbeiten.mitarbeiter.vorname} #{@abstrakte_abschlussarbeiten.mitarbeiter.nachname}" || "No Mitarbeiter assigned" %>
+      </:item>
+    </.list>
+  </div>
 
-<.back navigate={~p"/abstrakte_abschlussarbeiten"}>Back to abstrakte_abschlussarbeiten</.back>
+  <div class="flex justify-center gap-x-8 mt-4">
+    <.back navigate={~p"/abstrakte_abschlussarbeiten"}>Back</.back>
+  </div>
 
-<.modal :if={@live_action == :edit} id="abstrakte_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/abstrakte_abschlussarbeiten/#{@abstrakte_abschlussarbeiten}")}>
-  <.live_component
-    module={LehrstuhlWeb.AbstrakteAbschlussarbeitenLive.FormComponent}
-    id={@abstrakte_abschlussarbeiten.id}
-    title={@page_title}
-    action={@live_action}
-    abstrakte_abschlussarbeiten={@abstrakte_abschlussarbeiten}
-    patch={~p"/abstrakte_abschlussarbeiten/#{@abstrakte_abschlussarbeiten}"}
-  />
-</.modal>
+  <.modal :if={@live_action == :edit} id="abstrakte_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/abstrakte_abschlussarbeiten/#{@abstrakte_abschlussarbeiten}")}> 
+    <.live_component
+      module={LehrstuhlWeb.AbstrakteAbschlussarbeitenLive.FormComponent}
+      id={@abstrakte_abschlussarbeiten.id}
+      title={@page_title}
+      action={@live_action}
+      abstrakte_abschlussarbeiten={@abstrakte_abschlussarbeiten}
+      patch={~p"/abstrakte_abschlussarbeiten/#{@abstrakte_abschlussarbeiten}"}
+    />
+  </.modal>
+</div>

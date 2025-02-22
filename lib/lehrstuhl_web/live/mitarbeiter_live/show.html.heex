@@ -1,34 +1,40 @@
-<.header>
-  Mitarbeiter <%= @mitarbeiter.id %>
-  <:subtitle>This is a mitarbeiter record from your database.</:subtitle>
-  <:actions>
-    <.link patch={~p"/mitarbeiter/#{@mitarbeiter}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit Mitarbeiter</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
+  <.header class="relative">
+    <div class="absolute top-0 right-0">
+      <.link patch={~p"/mitarbeiter/#{@mitarbeiter}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit</.button>
+      </.link>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-2">
+      <div class="text-xl font-bold leading-none text-white hover:text-[#8000ff] my-2">Mitarbeiter</div>
+      <div class="text-l leading-none text-white hover:text-[#8000ff]">
+        <%= @mitarbeiter.id %>
+      </div>
+    </div>
+  </.header>
 
-<.list>
-  <:item title="Email"><span class="text-sm font-medium text-gray-900"><%= @mitarbeiter.email %></span></:item>
-  <:item title="Nachname"><span class="text-sm font-medium text-gray-900"><%= @mitarbeiter.nachname %></span></:item>
-  <:item title="Vorname"><span class="text-sm font-medium text-gray-900"><%= @mitarbeiter.vorname %></span></:item>
-  <:item title="Rolle"><span class="text-sm font-medium text-gray-900"><%= @mitarbeiter.rolle %></span></:item>
-</.list>
+  <div class="mt-4">
+    <.list>
+      <:item title="Email"><%= @mitarbeiter.email %></:item>
+      <:item title="Nachname"><%= @mitarbeiter.nachname %></:item>
+      <:item title="Vorname"><%= @mitarbeiter.vorname %></:item>
+      <:item title="Rolle"><%= @mitarbeiter.rolle %></:item>
+    </.list>
+  </div>
 
-<.back navigate={~p"/mitarbeiter"}>Back to Mitarbeiter</.back>
+  <div class="flex justify-center gap-x-8 mt-4">
+    <.back navigate={~p"/mitarbeiter"}>Back</.back>
+  </div>
 
-<.modal
-  :if={@live_action == :edit}
-  id="mitarbeiter-modal"
-  show
-  on_cancel={JS.patch(~p"/mitarbeiter/#{@mitarbeiter}")}
->
-  <.live_component
-    module={LehrstuhlWeb.MitarbeiterLive.FormComponent}
-    id={@mitarbeiter.id}
-    title={@page_title}
-    action={@live_action}
-    mitarbeiter={@mitarbeiter}
-    patch={~p"/mitarbeiter/#{@mitarbeiter}"}
-  />
-</.modal>
+  <.modal :if={@live_action == :edit} id="mitarbeiter-modal" show on_cancel={JS.patch(~p"/mitarbeiter/#{@mitarbeiter}")}> 
+    <.live_component
+      module={LehrstuhlWeb.MitarbeiterLive.FormComponent}
+      id={@mitarbeiter.id}
+      title={@page_title}
+      action={@live_action}
+      mitarbeiter={@mitarbeiter}
+      patch={~p"/mitarbeiter/#{@mitarbeiter}"}
+    />
+  </.modal>
+</div>
+

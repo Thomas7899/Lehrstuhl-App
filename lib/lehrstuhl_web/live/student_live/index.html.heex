@@ -1,8 +1,8 @@
 <.header>
-  Listing Students
+  Students
   <:actions>
     <.link patch={~p"/students/new"}>
-      <.button>New Student</.button>
+      <.button>Student erstellen</.button>
     </.link>
   </:actions>
 </.header>
@@ -16,7 +16,6 @@
   <:col :let={{_id, student}} label="Matrikelnummer"><%= student.matrikelnummer %></:col>
   <:col :let={{_id, student}} label="Vorname"><%= student.vorname %></:col>
   <:col :let={{_id, student}} label="Nachname"><%= student.nachname %></:col>
-  <:col :let={{_id, student}} label="Geburtsdatum"><%= student.geburtsdatum %></:col>
   <:action :let={{_id, student}}>
     <div class="sr-only">
       <.link navigate={~p"/students/#{student}"}>Show</.link>

@@ -1,8 +1,8 @@
 <.header>
-  Liste der Ergebnisse der Abschlussarbeiten
+  Ergebnisse der Abschlussarbeiten
   <:actions>
     <.link patch={~p"/ergebnisse_abschlussarbeiten/new"}>
-      <.button>Neues Ergebnis eintragen</.button>
+      <.button>Ergebnis eintragen</.button>
     </.link>
   </:actions>
 </.header>
@@ -14,7 +14,6 @@
 >
   <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Matrikelnummer"><%= ergebnisse_abschlussarbeiten.matrikelnummer %></:col>
   <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Studienniveau"><%= ergebnisse_abschlussarbeiten.studienniveau %></:col>
-  <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Status"><%= ergebnisse_abschlussarbeiten.status %></:col>
   <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Korrekturdatum"><%= ergebnisse_abschlussarbeiten.korrekturdatum %></:col>
   <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Note"><%= ergebnisse_abschlussarbeiten.note %></:col>
   <:action :let={{_id, ergebnisse_abschlussarbeiten}}>

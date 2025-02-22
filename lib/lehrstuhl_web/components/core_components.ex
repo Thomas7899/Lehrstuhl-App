@@ -225,7 +225,7 @@ defmodule LehrstuhlWeb.CoreComponents do
     <button
       type={@type}
       class={[
-        "phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3",
+        "phx-submit-loading:opacity-75 rounded-lg bg-black hover:text-[#8000ff] py-2 px-3",
         "text-sm font-semibold leading-6 text-white active:text-white/80",
         @class
       ]}
@@ -528,11 +528,17 @@ defmodule LehrstuhlWeb.CoreComponents do
 
   def list(assigns) do
     ~H"""
-    <div class="mt-14">
-      <dl class="-my-4 divide-y divide-zinc-100">
-        <div :for={item <- @item} class="flex gap-4 py-4 text-sm leading-6 sm:gap-8">
-          <dt class="w-1/4 flex-none text-zinc-500"><%= item.title %></dt>
-          <dd class="text-zinc-700"><%= render_slot(item) %></dd>
+    <div class="mt-8">
+      <dl class="-my-4 divide-y divide-gray-200">
+        <div :for={item <- @item} class="flex gap-4 py-2 text-sm leading-6 sm:gap-8">
+        <div class="flex justify-between w-full">
+        <div>
+          <dt class="w-1/4 flex-none text-neutral-400"><%= item.title %></dt>
+      </div>
+        <div>
+          <dd class="font-semibold text-neutral-400"><%= render_slot(item) %></dd>
+          </div>
+          </div>
         </div>
       </dl>
     </div>
@@ -541,6 +547,9 @@ defmodule LehrstuhlWeb.CoreComponents do
 
   @doc """
   Renders a back navigation link.
+  ## Removed icon
+
+    <.icon name="hero-arrow-left-solid" class="h-4 w-4 mr-2" />
 
   ## Examples
 
@@ -554,14 +563,15 @@ defmodule LehrstuhlWeb.CoreComponents do
     <div class="mt-16">
       <.link
         navigate={@navigate}
-        class="text-sm font-semibold leading-6 text-zinc-900 hover:text-zinc-700"
+        class="flex items-center px-4 py-2 bg-black text-white hover:text-[#8000ff]
+        rounded-lg font-semibold shadow-md transition duration-200 ease-in-out"
       >
-        <.icon name="hero-arrow-left-solid" class="h-3 w-3" />
         <%= render_slot(@inner_block) %>
       </.link>
     </div>
     """
   end
+
 
   @doc """
   Renders a [Heroicon](https://heroicons.com).
