@@ -9,15 +9,31 @@ Login with: email: "admin@example.com",
 
 or create an account!
 
-This app has been specifically developed to optimize chair organization. It allows easy searching and filtering of theses and seminars via a text search field, as well as dropdown menus for supervisors, semesters, and research projects. With these features, you can quickly find out which theses were written in a particular semester or which supervisor is working on which project.
+This app has been specifically developed to optimize chair organization. It allows 
 
-The Lehrstuhl-App enables the efficient management and linking of seminars, exams, staff, theses, and students. Its intuitive user interface ensures that you always have a clear overview of all relevant information.
+# easy searching and filtering of theses and seminars via a text search field, 
+
+# as well as dropdown menus for supervisors, semesters, and research projects. 
+
+With these features, you can quickly find out which theses were written in a particular semester or which supervisor is working on which project.
+
+The Lehrstuhl-App enables the efficient management and linking of seminars, exams, staff, theses, and students.
+
+Easily find out which grades were achieved in exams, theses or seminars
+
+Its intuitive user interface ensures that you always have a clear overview of all relevant information.
+
+An authentication feature (Admin) ensures that critical tasks and pages are restricted to non-authorised individuals.
+
+Our application enables you to perform complex queries between linked database records quickly and efficiently.
 
 Discover how the Lehrstuhl-App simplifies academic administration!
 
 ## How to start
 
 To start your Phoenix Server:
+
+* Clone the repository on your local machine or visit https://lehrstuhl-app.fly.dev/
 
 * Install dependencies with mix deps.get
 
@@ -38,7 +54,7 @@ Now you can visit localhost:4000 from your browser.
 ## The following tasks are planned or still need to be completed:
 
   * Fix and improve tests
-    Resolve failing or incomplete tests to ensure the application functions as expected and meets quality standards.
+    Resolve failing or incomplete tests to ensure the application functions as expected and meets quality standards. (solved)
 
   * Fix navbar. (Dropdown opens not every time or needs reload first)
 
@@ -53,7 +69,7 @@ Now you can visit localhost:4000 from your browser.
   * Refactor code
     Clean up and restructure parts of the codebase for better maintainability and readability.
 
-## Learn more
+## Learn more about the Phoenix Framework
 
   * Official website: https://www.phoenixframework.org/
   * Guides: https://hexdocs.pm/phoenix/overview.html
