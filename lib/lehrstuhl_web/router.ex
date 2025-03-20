@@ -16,7 +16,7 @@ defmodule LehrstuhlWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
- 
+
 
   scope "/", LehrstuhlWeb do
     pipe_through :browser
@@ -33,6 +33,8 @@ defmodule LehrstuhlWeb.Router do
      live "/filter_konkret", FilterKonkretLive
      live "/ergebnisse-abschlussarbeiten", ErgebnisseAbschlussarbeitenLive
      live "/featured_abschlussarbeiten", FeaturedAbschlussarbeitenLive
+
+     live "/show_ergebnis", ShowErgebnisLive
 
      #Filter Seminare
      live "/filterseminare", FilterSeminarLive

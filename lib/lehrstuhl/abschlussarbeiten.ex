@@ -8,6 +8,9 @@ defmodule Lehrstuhl.Abschlussarbeiten do
 
   alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
   alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
+  alias Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten
+  alias Lehrstuhl.Persons.Student
+
 
   @doc """
   Returns the list of abstrakte_abschlussarbeiten.
@@ -50,6 +53,16 @@ def list_abstrakte_abschlussarbeiten_konkret() do
   # Repo.all(query)
 end
 
+def list_konkret_ergebnis() do
+  query =
+    from ka in KonkreteAbschlussarbeiten,
+      join: e in ErgebnisseAbschlussarbeiten,
+      on: ka.id == e.konkrete_abschlussarbeiten_id,
+      join: s in Student,
+      on: ka.student_id == s.id,
+      preload: [ergebnisse_abschlussarbeiten: e, student: s] 
+  Repo.all(query)
+end
 
 #Funktionen zum Filtern der Abschlussarbeiten
 

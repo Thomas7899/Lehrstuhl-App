@@ -212,7 +212,7 @@ student12 = Repo.insert!(%Student{
 student13 = Repo.insert!(%Student{
   id: "76f85f6e-9c7d-4b66-f57b-5e8fb4d7c420",
   email: "lisa.koch@studium.fernuni-hagen.de",
-  matrikelnummer: "10234567",
+  matrikelnummer: "1023467",
   nachname: "Koch",
   vorname: "Lisa",
   geburtsdatum: ~D[1994-08-09]
@@ -221,7 +221,7 @@ student13 = Repo.insert!(%Student{
 student14 = Repo.insert!(%Student{
   id: "a8b32561-63ed-40eb-afad-2b0924450d23",
   email: "tobias.lehmann@studium.fernuni-hagen.de",
-  matrikelnummer: "11345678",
+  matrikelnummer: "1134568",
   nachname: "Lehmann",
   vorname: "Tobias",
   geburtsdatum: ~D[1993-02-14]
@@ -230,7 +230,7 @@ student14 = Repo.insert!(%Student{
 student15 = Repo.insert!(%Student{
   id: "697a7678-34ce-4fc1-8371-853ebedb7a99",
   email: "marina.schmidt@studium.fernuni-hagen.de",
-  matrikelnummer: "12456789",
+  matrikelnummer: "7245789",
   nachname: "Schmidt",
   vorname: "Marina",
   geburtsdatum: ~D[1992-07-22]
@@ -239,7 +239,7 @@ student15 = Repo.insert!(%Student{
 student16 = Repo.insert!(%Student{
   id: "bea50865-0fe5-4167-804c-c9c2f6fe0e1e",
   email: "kevin.schubert@studium.fernuni-hagen.de",
-  matrikelnummer: "13567890",
+  matrikelnummer: "9356789",
   nachname: "Schubert",
   vorname: "Kevin",
   geburtsdatum: ~D[1991-05-10]
@@ -248,7 +248,7 @@ student16 = Repo.insert!(%Student{
 student17 = Repo.insert!(%Student{
   id: "d4717012-d5b4-4ab5-9039-5c917f381115",
   email: "svenja.berger@studium.fernuni-hagen.de",
-  matrikelnummer: "14678901",
+  matrikelnummer: "4678901",
   nachname: "Berger",
   vorname: "Svenja",
   geburtsdatum: ~D[1990-03-27]
@@ -257,7 +257,7 @@ student17 = Repo.insert!(%Student{
 student18 = Repo.insert!(%Student{
   id: "bacda517-e1e0-4371-aff6-3a3010cad22e",
   email: "manuel.walter@studium.fernuni-hagen.de",
-  matrikelnummer: "15789012",
+  matrikelnummer: "7654321",
   nachname: "Walter",
   vorname: "Manuel",
   geburtsdatum: ~D[1989-12-15]
@@ -266,7 +266,7 @@ student18 = Repo.insert!(%Student{
 student19 = Repo.insert!(%Student{
   id: "6db5632f-a521-465e-9142-13573ab7cb13",
   email: "franziska.huber@studium.fernuni-hagen.de",
-  matrikelnummer: "16890123",
+  matrikelnummer: "7788990",
   nachname: "Huber",
   vorname: "Franziska",
   geburtsdatum: ~D[1988-10-02]
@@ -275,7 +275,7 @@ student19 = Repo.insert!(%Student{
 student20 = Repo.insert!(%Student{
   id: "6b03a905-a7cd-4c17-95e3-3ccd889cbebe",
   email: "thomas.maier@studium.fernuni-hagen.de",
-  matrikelnummer: "17901234",
+  matrikelnummer: "7901234",
   nachname: "Maier",
   vorname: "Thomas",
   geburtsdatum: ~D[1987-08-20]
@@ -296,7 +296,7 @@ konkrete_abschlussarbeit1 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "WS23/24",
-  matrikelnummer: "7647910",
+  matrikelnummer: "7967990",
   angepasste_themenskizze: "Erstellung einer Verwaltung von Gebühren",
   gesetzte_schwerpunkte: "Funktionalität",
   anmeldung_pruefungsamt: ~D[2023-06-05],
@@ -308,7 +308,7 @@ konkrete_abschlussarbeit1 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "7647910",
+  matrikelnummer: "7967990",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2024-02-01],
@@ -329,7 +329,7 @@ konkrete_abschlussarbeit2 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "WS22/23",
-  matrikelnummer: "8889911",
+  matrikelnummer: "8887777",
   angepasste_themenskizze: "Erstellung einer Verwaltung von Gebühren",
   gesetzte_schwerpunkte: "Funktionalität",
   anmeldung_pruefungsamt: ~D[2022-06-05],
@@ -341,7 +341,7 @@ konkrete_abschlussarbeit2 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8889911",
+  matrikelnummer: "8887777",
   studienniveau: :masterarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
@@ -362,7 +362,7 @@ konkrete_abschlussarbeit3 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "SS22",
-  matrikelnummer: "7997910",
+  matrikelnummer: "1837675",
   angepasste_themenskizze: "Erstellung einer Verwaltung von Gebühren",
   gesetzte_schwerpunkte: "Funktionalität",
   anmeldung_pruefungsamt: ~D[2022-06-05],
@@ -374,7 +374,7 @@ konkrete_abschlussarbeit3 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "7997910",
+  matrikelnummer: "1837675",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-07-01],
@@ -395,7 +395,7 @@ konkrete_abschlussarbeit4 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "SS23",
-  matrikelnummer: "7966910",
+  matrikelnummer: "7647910",
   angepasste_themenskizze: "Erstellung einer Verwaltung von Gebühren",
   gesetzte_schwerpunkte: "Funktionalität",
   anmeldung_pruefungsamt: ~D[2023-06-05],
@@ -407,7 +407,7 @@ konkrete_abschlussarbeit4 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "7966910",
+  matrikelnummer: "7647910",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-05-01],
@@ -428,7 +428,7 @@ konkrete_abschlussarbeit5 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "SS23",
-  matrikelnummer: "8189911",
+  matrikelnummer: "6767877",
   angepasste_themenskizze: "Erstellung einer neuen Zeichenfunktion",
   gesetzte_schwerpunkte: "Funktionalität und Erscheinung",
   anmeldung_pruefungsamt: ~D[2023-02-01],
@@ -440,7 +440,7 @@ konkrete_abschlussarbeit5 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8189911",
+  matrikelnummer: "6767877",
   studienniveau: :masterarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-03-01],
@@ -461,7 +461,7 @@ konkrete_abschlussarbeit6 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "SS22",
-  matrikelnummer: "7967990",
+  matrikelnummer: "4447227",
   angepasste_themenskizze: "Erstellung einer neuen Zeichenfunktion",
   gesetzte_schwerpunkte: "Funktionalität und Erscheinung",
   anmeldung_pruefungsamt: ~D[2023-02-01],
@@ -473,7 +473,7 @@ konkrete_abschlussarbeit6 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "7967990",
+  matrikelnummer: "4447227",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-09-01],
@@ -494,7 +494,7 @@ konkrete_abschlussarbeit7 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "WS23/24",
-  matrikelnummer: "8867110",
+  matrikelnummer: "8189911",
   angepasste_themenskizze: "Erstellung einer neuen Zeichenfunktion",
   gesetzte_schwerpunkte: "Funktionalität und Erscheinung",
   anmeldung_pruefungsamt: ~D[2023-02-01],
@@ -506,7 +506,7 @@ konkrete_abschlussarbeit7 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8867110",
+  matrikelnummer: "8189911",
   studienniveau: :masterarbeit,
   status: :nichtbestanden,
   korrekturdatum: ~D[2024-02-01],
@@ -527,7 +527,7 @@ konkrete_abschlussarbeit8 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "WS22/23",
-  matrikelnummer: "4112250",
+  matrikelnummer: "5632810",
   angepasste_themenskizze: "Erstellung einer neuen Zeichenfunktion",
   gesetzte_schwerpunkte: "Funktionalität und Erscheinung",
   anmeldung_pruefungsamt: ~D[2022-02-01],
@@ -539,7 +539,7 @@ konkrete_abschlussarbeit8 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "4112250",
+  matrikelnummer: "5632810",
   studienniveau: :masterarbeit,
   status: :nichtbestanden,
   korrekturdatum: ~D[2022-06-11],
@@ -560,7 +560,7 @@ konkrete_abschlussarbeit9 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "WS22/23",
-  matrikelnummer: "6767877",
+  matrikelnummer: "6538921",
   angepasste_themenskizze: "Modellierungsschwierigkeiten bei Entity-Relationship-Modellen",
   gesetzte_schwerpunkte: "Auswertung von Daten",
   anmeldung_pruefungsamt: ~D[2022-12-01],
@@ -572,7 +572,7 @@ konkrete_abschlussarbeit9 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "6767877",
+  matrikelnummer: "6538921",
   studienniveau: :masterarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
@@ -593,7 +593,7 @@ konkrete_abschlussarbeit10 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "S22",
-  matrikelnummer: "6667777",
+  matrikelnummer: "7482390",
   angepasste_themenskizze: "Modellierungsschwierigkeiten bei Entity-Relationship-Modellen",
   gesetzte_schwerpunkte: "Auswertung von Daten",
   anmeldung_pruefungsamt: ~D[2022-02-01],
@@ -605,7 +605,7 @@ konkrete_abschlussarbeit10 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "6667777",
+  matrikelnummer: "7482390",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
@@ -626,7 +626,7 @@ konkrete_abschlussarbeit11 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "SS23",
-  matrikelnummer: "4447227",
+  matrikelnummer: "8291045",
   angepasste_themenskizze: "Modellierungsschwierigkeiten bei Entity-Relationship-Modellen",
   gesetzte_schwerpunkte: "Auswertung von Daten",
   anmeldung_pruefungsamt: ~D[2022-02-01],
@@ -638,7 +638,7 @@ konkrete_abschlussarbeit11 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "4447227",
+  matrikelnummer: "8291045",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
@@ -659,7 +659,7 @@ konkrete_abschlussarbeit12 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "WS23/24",
-  matrikelnummer: "8887777",
+  matrikelnummer: "9342156",
   angepasste_themenskizze: "Modellierungsschwierigkeiten bei Entity-Relationship-Modellen",
   gesetzte_schwerpunkte: "Auswertung von Daten",
   anmeldung_pruefungsamt: ~D[2022-02-01],
@@ -671,7 +671,7 @@ konkrete_abschlussarbeit12 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8887777",
+  matrikelnummer: "9342156",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
@@ -692,7 +692,7 @@ konkrete_abschlussarbeit13 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :imp,
   semester: "SS22",
-  matrikelnummer: "1247527",
+  matrikelnummer: "1023467",
   angepasste_themenskizze: "Modellierungsschwierigkeiten",
   gesetzte_schwerpunkte: "Literaturrecherche",
   anmeldung_pruefungsamt: ~D[2022-02-01],
@@ -704,7 +704,7 @@ konkrete_abschlussarbeit13 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "1247527",
+  matrikelnummer: "1023467",
   studienniveau: :masterarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2022-08-01],
@@ -725,7 +725,7 @@ konkrete_abschlussarbeit14 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :hansen,
   forschungsprojekt: :sport,
   semester: "WS23/24",
-  matrikelnummer: "8681732",
+  matrikelnummer: "1134568",
   angepasste_themenskizze: "Erstellung einer neuen Zeichenfunktion",
   gesetzte_schwerpunkte: "Literaturrecherche",
   anmeldung_pruefungsamt: ~D[2023-04-01],
@@ -736,7 +736,7 @@ konkrete_abschlussarbeit14 = Repo.insert!(%KonkreteAbschlussarbeiten{
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit14.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8681732",
+  matrikelnummer: "1134568",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2024-02-01],
@@ -757,7 +757,7 @@ konkrete_abschlussarbeit15 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "SS22",
-  matrikelnummer: "9641742",
+  matrikelnummer: "7245789",
   angepasste_themenskizze: "Erstellung einer neuen Zeichenfunktion",
   gesetzte_schwerpunkte: "Literaturrecherche",
   anmeldung_pruefungsamt: ~D[2022-04-01],
@@ -768,7 +768,7 @@ konkrete_abschlussarbeit15 = Repo.insert!(%KonkreteAbschlussarbeiten{
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit15.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "9641742",
+  matrikelnummer: "7245789",
   studienniveau: :masterarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2022-08-01],
@@ -789,7 +789,7 @@ konkrete_abschlussarbeit16 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "WS23/24",
-  matrikelnummer: "7641234",
+  matrikelnummer: "9356789",
   angepasste_themenskizze: "Optimierung von Datenmodellen",
   gesetzte_schwerpunkte: "Performance",
   anmeldung_pruefungsamt: ~D[2023-07-01],
@@ -800,7 +800,7 @@ konkrete_abschlussarbeit16 = Repo.insert!(%KonkreteAbschlussarbeiten{
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit16.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "7641234",
+  matrikelnummer: "9356789",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2024-01-01],
@@ -821,7 +821,7 @@ konkrete_abschlussarbeit17 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "SS23",
-  matrikelnummer: "8812345",
+  matrikelnummer: "4678901",
   angepasste_themenskizze: "Entwicklung eines Analysetools",
   gesetzte_schwerpunkte: "Usability",
   anmeldung_pruefungsamt: ~D[2023-03-10],
@@ -832,7 +832,7 @@ konkrete_abschlussarbeit17 = Repo.insert!(%KonkreteAbschlussarbeiten{
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit17.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8812345",
+  matrikelnummer: "4678901",
   studienniveau: :masterarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-10-01],
@@ -917,7 +917,7 @@ konkrete_abschlussarbeit20 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :sport,
   semester: "WS23/24",
-  matrikelnummer: "1234567",
+  matrikelnummer: "7901234",
   angepasste_themenskizze: "Analyse von Trainingseffekten",
   gesetzte_schwerpunkte: "Datenanalyse",
   anmeldung_pruefungsamt: ~D[2023-06-15],
@@ -928,7 +928,7 @@ konkrete_abschlussarbeit20 = Repo.insert!(%KonkreteAbschlussarbeiten{
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit20.id
 })
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "1234567",
+  matrikelnummer: "7901234",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2024-01-15],
@@ -1131,7 +1131,7 @@ konkrete_abschlussarbeit30 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "8887777",
+  matrikelnummer: "7788990",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],

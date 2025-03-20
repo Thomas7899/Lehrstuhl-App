@@ -2,7 +2,6 @@ defmodule LehrstuhlWeb.SeminarLive.Show do
   use LehrstuhlWeb, :live_view
 
   alias Lehrstuhl.Seminare
-  alias Lehrstuhl.Seminare.Seminarergebnis
 
   @impl true
   def mount(_params, _session, socket) do
