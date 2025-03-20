@@ -981,7 +981,7 @@ konkrete_abschlussarbeit22 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :becker,
   forschungsprojekt: :tool,
   semester: "WS22/23",
-  matrikelnummer: "6543210",
+  matrikelnummer: "7788990",
   angepasste_themenskizze: "Erstellung eines Prüfungsverwaltungstools",
   gesetzte_schwerpunkte: "Benutzeroberfläche",
   anmeldung_pruefungsamt: ~D[2022-10-05],
@@ -993,7 +993,7 @@ konkrete_abschlussarbeit22 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "6543210",
+  matrikelnummer: "7788990",
   studienniveau: :bachelorarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2023-04-15],
@@ -1014,7 +1014,7 @@ konkrete_abschlussarbeit23 = Repo.insert!(%KonkreteAbschlussarbeiten{
   betreuer: :müller,
   forschungsprojekt: :imp,
   semester: "SS22",
-  matrikelnummer: "3456789",
+  matrikelnummer: "7901234",
   angepasste_themenskizze: "Entwicklung eines Feedbacksystems",
   gesetzte_schwerpunkte: "Kundenzufriedenheit",
   anmeldung_pruefungsamt: ~D[2022-02-20],
@@ -1026,7 +1026,7 @@ konkrete_abschlussarbeit23 = Repo.insert!(%KonkreteAbschlussarbeiten{
 })
 
 Repo.insert!(%ErgebnisseAbschlussarbeiten{
-  matrikelnummer: "3456789",
+  matrikelnummer: "7901234",
   studienniveau: :masterarbeit,
   status: :bestanden,
   korrekturdatum: ~D[2022-09-15],
