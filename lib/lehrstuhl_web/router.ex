@@ -16,7 +16,7 @@ defmodule LehrstuhlWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
-
+ 
 
   scope "/", LehrstuhlWeb do
     pipe_through :browser

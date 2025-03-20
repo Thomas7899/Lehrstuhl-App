@@ -52,4 +52,6 @@ npm-debug.log
 /Dockerfile
 /elixir_buildpack.config
 
+/credentials.txt
+
 

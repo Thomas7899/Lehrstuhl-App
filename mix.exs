@@ -46,9 +46,9 @@ defmodule Lehrstuhl.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.3"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.19.0"},
-      {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.8.0"},
+      {:phoenix_live_view, "~> 1.0"},
+      {:floki, "~> 0.37.0", only: :test},
+      {:phoenix_live_dashboard, "~> 0.8.6"},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
@@ -60,7 +60,9 @@ defmodule Lehrstuhl.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:excoveralls, "~> 0.10", only: :test},
       {:credo, "~> 1.7.11", only: [:dev, :test], runtime: false},
-      {:bandit, "~> 1.0"}
+      {:ecto_psql_extras, "~> 0.8.7"},
+      {:mint, "~> 1.7"},
+      {:bandit, "~> 1.6"}
     ]
   end
 

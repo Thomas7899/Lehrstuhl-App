@@ -19,6 +19,13 @@ defmodule Lehrstuhl.Repo.Migrations.CreateKonkreteAbschlussarbeiten do
 
       timestamps()
     end
-    flush()
+
+    create index(:konkrete_abschlussarbeiten, [:semester])
+    create index(:konkrete_abschlussarbeiten, [:forschungsprojekt])
+    create index(:konkrete_abschlussarbeiten, [:student_id])
+    create index(:konkrete_abschlussarbeiten, [:mitarbeiter_id])
+    create index(:konkrete_abschlussarbeiten, [:abstrakte_abschlussarbeiten_id])
+    create index(:konkrete_abschlussarbeiten, [:matrikelnummer])
+
   end
 end
