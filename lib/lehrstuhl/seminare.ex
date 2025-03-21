@@ -52,10 +52,14 @@ end
 
    # Funktion zum Abrufen der Seminarergebnisse für ein Seminar
 
-   def get_seminarergebnisse_for_seminar(seminar_id) do
-    Repo.all(from s in Seminarergebnis, where: s.seminar_id == ^seminar_id)
+  def get_seminarergebnisse_for_seminar(seminar_id) do
+    Repo.all(from s in Seminarergebnis,
+    where: s.seminar_id == ^seminar_id,
+    join: p in assoc(s, :student),
+    preload: [student: p])
   end
-  
+
+
   def get_seminarergebnis!(id),
     do: Repo.get!(Seminarergebnis, id) |> Repo.preload([:seminar, :student])
 

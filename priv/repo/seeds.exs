@@ -15,6 +15,7 @@ alias Lehrstuhl.Persons.Student
 alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
 alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
 alias Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten
+alias Lehrstuhl.Seminare.AbstraktesSeminar
 alias Lehrstuhl.Seminare.Seminar
 alias Lehrstuhl.Seminare.Seminarergebnis
 alias Lehrstuhl.Klausuren.Klausurergebnis
@@ -1139,142 +1140,145 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit30.id
 })
 
+#Abstrakte Seminare
+
+abstraktes_seminar1 = Repo.insert!(%AbstraktesSeminar{
+  thema: "Fortgeschrittene Webentwicklung",
+  beschreibung: "Ein Seminar über moderne Web-Technologien und Frameworks",
+  mitarbeiter_id: mitarbeiter1.id
+})
+
+abstraktes_seminar2 = Repo.insert!(%AbstraktesSeminar{
+  thema: "Datenanalyse mit Python",
+  beschreibung: "Ein Seminar über Datenanalyse und Visualisierung mit Python",
+  mitarbeiter_id: mitarbeiter2.id
+})
+abstraktes_seminar3 = Repo.insert!(%AbstraktesSeminar{
+  thema: "Künstliche Intelligenz in der Praxis",
+  beschreibung: "Ein Seminar über die Anwendung von KI in verschiedenen Bereichen",
+  mitarbeiter_id: mitarbeiter3.id
+})
+abstraktes_seminar4 = Repo.insert!(%AbstraktesSeminar{
+  thema: "Cloud Computing und DevOps",
+  beschreibung: "Ein Seminar über Cloud-Architekturen und DevOps-Praktiken",
+  mitarbeiter_id: mitarbeiter4.id
+})
+abstraktes_seminar5 = Repo.insert!(%AbstraktesSeminar{
+  thema: "Mobile App Entwicklung",
+  beschreibung: "Ein Seminar über die Entwicklung von mobilen Anwendungen",
+  mitarbeiter_id: mitarbeiter5.id
+})
+
 #Seminare
 
-Repo.insert!(%Seminar{
-  titel: "Entwicklung von Informationnssystemen",
+seminar1 = Repo.insert!(%Seminar{
+  titel: "Entwicklung von Informationssystemen",
     aufnahmekapazitaet: 25,
     semester: "WS24/25",
     praesenzdatum: ~D[2025-02-10],
-    ort: "Hagen"
+    ort: "Hagen",
+    mitarbeiter_id: mitarbeiter1.id,
+    abstraktes_seminar_id: abstraktes_seminar1.id
 })
 
-Repo.insert!(%Seminar{
+seminar2 = Repo.insert!(%Seminar{
   titel: "Künstliche Intelligenz",
     aufnahmekapazitaet: 21,
     semester: "SS25",
     praesenzdatum: ~D[2025-09-12],
-    ort: "Hagen"
+    ort: "Hagen",
+    mitarbeiter_id: mitarbeiter2.id,
+    abstraktes_seminar_id: abstraktes_seminar2.id
 })
 
-Repo.insert!(%Seminar{
+seminar3 = Repo.insert!(%Seminar{
   titel: "Datenbanken und Datenmodelle",
   aufnahmekapazitaet: 30,
   semester: "SS22",
   praesenzdatum: ~D[2022-05-10],
-  ort: "Berlin"
+  ort: "Berlin",
+  mitarbeiter_id: mitarbeiter3.id,
+  abstraktes_seminar_id: abstraktes_seminar3.id
 })
 
-Repo.insert!(%Seminar{
+seminar4 = Repo.insert!(%Seminar{
   titel: "Big Data und Cloud Computing",
   aufnahmekapazitaet: 28,
   semester: "WS22/23",
   praesenzdatum: ~D[2022-12-05],
-  ort: "Hamburg"
+  ort: "Hamburg",
+  mitarbeiter_id: mitarbeiter4.id,
+  abstraktes_seminar_id: abstraktes_seminar4.id
 })
 
-Repo.insert!(%Seminar{
+seminar5 = Repo.insert!(%Seminar{
   titel: "Maschinelles Lernen",
   aufnahmekapazitaet: 20,
   semester: "SS23",
   praesenzdatum: ~D[2023-06-15],
-  ort: "Köln"
+  ort: "Köln",
+  mitarbeiter_id: mitarbeiter5.id,
+  abstraktes_seminar_id: abstraktes_seminar5.id
 })
 
-Repo.insert!(%Seminar{
+seminar6 = Repo.insert!(%Seminar{
   titel: "Webentwicklung und Frameworks",
   aufnahmekapazitaet: 22,
   semester: "WS23/24",
   praesenzdatum: ~D[2023-11-22],
-  ort: "Dortmund"
+  ort: "Dortmund",
+  mitarbeiter_id: mitarbeiter6.id,
+  abstraktes_seminar_id: abstraktes_seminar1.id
 })
 
-Repo.insert!(%Seminar{
+seminar7 = Repo.insert!(%Seminar{
   titel: "Ethik der Künstlichen Intelligenz",
   aufnahmekapazitaet: 18,
   semester: "SS24",
   praesenzdatum: ~D[2024-05-20],
-  ort: "München"
+  ort: "München",
+  mitarbeiter_id: mitarbeiter7.id,
+  abstraktes_seminar_id: abstraktes_seminar2.id
 })
 
-Repo.insert!(%Seminar{
+seminar8 = Repo.insert!(%Seminar{
   titel: "Cybersicherheit und Datenschutz",
   aufnahmekapazitaet: 25,
   semester: "WS24/25",
   praesenzdatum: ~D[2024-12-10],
-  ort: "Hannover"
+  ort: "Hannover",
+  mitarbeiter_id: mitarbeiter8.id,
+  abstraktes_seminar_id: abstraktes_seminar3.id
 })
 
-Repo.insert!(%Seminar{
+seminar9 = Repo.insert!(%Seminar{
   titel: "Softwarearchitektur",
   aufnahmekapazitaet: 24,
   semester: "SS25",
   praesenzdatum: ~D[2025-05-18],
-  ort: "Frankfurt"
+  ort: "Frankfurt",
+  mitarbeiter_id: mitarbeiter1.id,
+  abstraktes_seminar_id: abstraktes_seminar4.id
 })
 
-Repo.insert!(%Seminar{
+seminar10 = Repo.insert!(%Seminar{
   titel: "Robotik und Automatisierung",
   aufnahmekapazitaet: 19,
   semester: "WS25/26",
   praesenzdatum: ~D[2025-11-25],
-  ort: "Stuttgart"
+  ort: "Stuttgart",
+  mitarbeiter_id: mitarbeiter2.id,
+  abstraktes_seminar_id: abstraktes_seminar5.id
 })
 
-Repo.insert!(%Seminar{
+seminar11 = Repo.insert!(%Seminar{
   titel: "Digitale Transformation",
   aufnahmekapazitaet: 26,
   semester: "SS26",
   praesenzdatum: ~D[2026-06-08],
-  ort: "Leipzig"
-})
-
-Repo.insert!(%Seminar{
-  titel: "Mensch-Maschine-Interaktion",
-  aufnahmekapazitaet: 21,
-  semester: "SS22",
-  praesenzdatum: ~D[2022-04-20],
-  ort: "Bonn"
-})
-
-Repo.insert!(%Seminar{
-  titel: "Kryptographie und Netzwerksicherheit",
-  aufnahmekapazitaet: 27,
-  semester: "WS22/23",
-  praesenzdatum: ~D[2022-11-15],
-  ort: "Dresden"
-})
-
-Repo.insert!(%Seminar{
-  titel: "Mobile App Entwicklung",
-  aufnahmekapazitaet: 23,
-  semester: "SS23",
-  praesenzdatum: ~D[2023-05-25],
-  ort: "Karlsruhe"
-})
-
-Repo.insert!(%Seminar{
-  titel: "Sprachverarbeitung und NLP",
-  aufnahmekapazitaet: 20,
-  semester: "WS23/24",
-  praesenzdatum: ~D[2023-12-01],
-  ort: "Würzburg"
-})
-
-Repo.insert!(%Seminar{
-  titel: "Virtuelle Realität und Augmented Reality",
-  aufnahmekapazitaet: 22,
-  semester: "SS24",
-  praesenzdatum: ~D[2024-05-12],
-  ort: "Mannheim"
-})
-
-Repo.insert!(%Seminar{
-  titel: "Blockchain-Technologie",
-  aufnahmekapazitaet: 25,
-  semester: "WS24/25",
-  praesenzdatum: ~D[2024-12-15],
-  ort: "Freiburg"
+  ort: "Leipzig",
+  mitarbeiter_id: mitarbeiter3.id,
+  abstraktes_seminar_id: abstraktes_seminar1.id
 })
 
 #Seminarergebnisse
@@ -1290,7 +1294,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-01-01],
   seminararbeit_notenvorschlag: 1.5,
   seminararbeit_teilnote: 1.5,
-  gesamtergebnis: 1.4
+  gesamtergebnis: 1.4,
+  seminar_id: seminar1.id,
+  student_id: student1.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1304,7 +1310,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-01-20],
   seminararbeit_notenvorschlag: 1.2,
   seminararbeit_teilnote: 1.2,
-  gesamtergebnis: 1.1
+  gesamtergebnis: 1.1,
+  seminar_id: seminar2.id,
+  student_id: student2.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1318,7 +1326,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-02-28],
   seminararbeit_notenvorschlag: 1.8,
   seminararbeit_teilnote: 1.8,
-  gesamtergebnis: 1.9
+  gesamtergebnis: 1.9,
+  seminar_id: seminar3.id,
+  student_id: student3.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1332,7 +1342,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-03-15],
   seminararbeit_notenvorschlag: 1.6,
   seminararbeit_teilnote: 1.6,
-  gesamtergebnis: 1.65
+  gesamtergebnis: 1.65,
+  seminar_id: seminar4.id,
+  student_id: student4.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1346,7 +1358,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-05-01],
   seminararbeit_notenvorschlag: 1.3,
   seminararbeit_teilnote: 1.3,
-  gesamtergebnis: 1.35
+  gesamtergebnis: 1.35,
+  seminar_id: seminar5.id,
+  student_id: student5.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1360,7 +1374,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-06-01],
   seminararbeit_notenvorschlag: 1.1,
   seminararbeit_teilnote: 1.1,
-  gesamtergebnis: 1.15
+  gesamtergebnis: 1.15,
+  seminar_id: seminar6.id,
+  student_id: student6.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1374,7 +1390,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-07-01],
   seminararbeit_notenvorschlag: 1.7,
   seminararbeit_teilnote: 1.7,
-  gesamtergebnis: 1.75
+  gesamtergebnis: 1.75,
+  seminar_id: seminar7.id,
+  student_id: student7.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1388,7 +1406,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-08-01],
   seminararbeit_notenvorschlag: 1.4,
   seminararbeit_teilnote: 1.4,
-  gesamtergebnis: 1.45
+  gesamtergebnis: 1.45,
+  seminar_id: seminar8.id,
+  student_id: student8.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1402,7 +1422,9 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-09-01],
   seminararbeit_notenvorschlag: 1.0,
   seminararbeit_teilnote: 1.0,
-  gesamtergebnis: 1.05
+  gesamtergebnis: 1.05,
+  seminar_id: seminar9.id,
+  student_id: student9.id
 })
 
 Repo.insert!(%Seminarergebnis{
@@ -1416,7 +1438,188 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_einreichung: ~D[2024-09-20],
   seminararbeit_notenvorschlag: 1.8,
   seminararbeit_teilnote: 1.8,
-  gesamtergebnis: 1.85
+  gesamtergebnis: 1.85,
+  seminar_id: seminar10.id,
+  student_id: student10.id
 })
 
-#Abstrakte Seminare
+Repo.insert!(%Seminarergebnis{
+  fachvortrag_titel: "Functional Programming Paradigms",
+  fachvortrag_datum: ~D[2024-11-15],
+  fachvortrag_start: ~T[10:00:00],
+  fachvortrag_stop: ~T[11:30:00],
+  fachvortrag_notenvorschlag: 1.6,
+  fachvortrag_teilnote: 1.6,
+  seminararbeit_titel: "Comparative Analysis of Functional Languages",
+  seminararbeit_einreichung: ~D[2024-11-01],
+  seminararbeit_notenvorschlag: 1.5,
+  seminararbeit_teilnote: 1.5,
+  gesamtergebnis: 1.55,
+  seminar_id: seminar10.id,
+  student_id: student11.id
+})
+
+Repo.insert!(%Seminarergebnis{
+  fachvortrag_titel: "Software Testing Strategies",
+  fachvortrag_datum: ~D[2024-12-20],
+  fachvortrag_start: ~T[09:00:00],
+  fachvortrag_stop: ~T[10:30:00],
+  fachvortrag_notenvorschlag: 1.4,
+  fachvortrag_teilnote: 1.4,
+  seminararbeit_titel: "Test-Driven Development",
+  seminararbeit_einreichung: ~D[2024-12-01],
+  seminararbeit_notenvorschlag: 1.3,
+  seminararbeit_teilnote: 1.3,
+  gesamtergebnis: 1.35,
+  seminar_id: seminar10.id,
+  student_id: student12.id
+})
+
+Repo.insert!(%Seminarergebnis{
+  fachvortrag_titel: "Data Structures and Algorithms",
+  fachvortrag_datum: ~D[2025-01-15],
+  fachvortrag_start: ~T[10:00:00],
+  fachvortrag_stop: ~T[11:30:00],
+  fachvortrag_notenvorschlag: 1.2,
+  fachvortrag_teilnote: 1.2,
+  seminararbeit_titel: "Algorithm Complexity Analysis",
+  seminararbeit_einreichung: ~D[2025-01-01],
+  seminararbeit_notenvorschlag: 1.1,
+  seminararbeit_teilnote: 1.1,
+  gesamtergebnis: 1.15,
+  seminar_id: seminar10.id,
+  student_id: student13.id
+})
+
+# Module
+
+modul1 = Repo.insert!(%Modul{
+  id: "1a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  mitarbeiter_id: mitarbeiter7.id,
+  name: "Entwicklung von Informationssystemen",
+  lehrstuhlinhaber_id: mitarbeiter1.id
+})
+
+modul2 = Repo.insert!(%Modul{
+  id: "2a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  mitarbeiter_id: mitarbeiter7.id,
+  name: "Künstliche Intelligenz",
+  lehrstuhlinhaber_id: mitarbeiter5.id
+})
+
+modul3 = Repo.insert!(%Modul{
+  id: "3a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  mitarbeiter_id: mitarbeiter7.id,
+  name: "Programmiersprachen",
+  lehrstuhlinhaber_id: mitarbeiter2.id
+})
+
+modul4 = Repo.insert!(%Modul{
+  id: "4a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  mitarbeiter_id: mitarbeiter7.id,
+  name: "Informationssystemarchitekturen",
+  lehrstuhlinhaber_id: mitarbeiter3.id
+})
+
+modul5 = Repo.insert!(%Modul{
+  id: "5a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  mitarbeiter_id: mitarbeiter7.id,
+  name: "Kommunikationssysteme und Rechnernetze",
+  lehrstuhlinhaber_id: mitarbeiter4.id
+})
+
+
+# Klausuren
+
+klausur1 = Repo.insert!(%Klausur{
+  id: "9a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "MATH101",
+  beschreibung: "Klausur über lineare Algebra und Analysis",
+  punkteGesamt: 100,
+  semester: "SS24",
+  praesenzdatum: ~D[2025-06-15],
+  ort: "Raum A1",
+  modul_id: modul1.id
+})
+
+klausur2 = Repo.insert!(%Klausur{
+  id: "8b7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "INF102",
+  beschreibung: "Klausur über Datenstrukturen und Algorithmen",
+  punkteGesamt: 80,
+  semester: "SS24",
+  praesenzdatum: ~D[2025-06-20],
+  ort: "Raum B2",
+  modul_id: modul2.id
+})
+
+klausur3 = Repo.insert!(%Klausur{
+  id: "7c7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "BWL101",
+  beschreibung: "Klausur über Grundlagen der Betriebswirtschaftslehre",
+  punkteGesamt: 60,
+  semester: "WS24/25",
+  praesenzdatum: ~D[2025-07-01],
+  ort: "Raum C3",
+  modul_id: modul3.id
+})
+
+klausur4 = Repo.insert!(%Klausur{
+  id: "6d7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "PHY101",
+  beschreibung: "Klausur über Mechanik und Thermodynamik",
+  punkteGesamt: 75,
+  semester: "WS24/25",
+  praesenzdatum: ~D[2025-07-10],
+  ort: "Raum D4",
+  modul_id: modul4.id
+})
+
+klausur5 = Repo.insert!(%Klausur{
+  id: "5e7b3300-ae7f-11eb-bcbc-0242ac130002",
+  kenner: "CHEM101",
+  beschreibung: "Klausur über Organische und Anorganische Chemie",
+  punkteGesamt: 90,
+  semester: "SS25",
+  praesenzdatum: ~D[2025-08-12],
+  ort: "Raum E5",
+  modul_id: modul5.id
+})
+
+#Klausurergebnisse
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 85,
+  student_id: student1.id,
+  klausur_id: klausur1.id
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 90,
+  student_id: student2.id,
+  klausur_id: klausur1.id
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 78,
+  student_id: student3.id,
+  klausur_id: klausur2.id
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 65,
+  student_id: student4.id,
+  klausur_id: klausur2.id
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 50,
+  student_id: student5.id,
+  klausur_id: klausur3.id
+})
+
+Repo.insert!(%Klausurergebnis{
+  punkte: 88,
+  student_id: student6.id,
+  klausur_id: klausur3.id
+})
