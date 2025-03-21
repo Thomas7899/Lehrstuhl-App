@@ -15,6 +15,9 @@ defmodule LehrstuhlWeb.ShowErgebnisLive do
 
   def render(assigns) do
     ~H"""
+     <div class="flex justify-center items-center">
+    <h1 class="text-3xl font-mono text-white hover:text-[#8000ff] bg-gray-800 hover:bg-neutral-900 rounded-lg inline-block p-3">Übersicht Ergebnisse & Abschlussarbeiten</h1>
+    </div>
     <div class="flex flex-wrap">
       <div :for={konkrete <- @abschlussarbeiten} class="w-full md:w-1/2 lg:w-1/3 p-4">
         <div class="w-full max-w-md p-4 bg-gray-800 hover:bg-neutral-900 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
