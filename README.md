@@ -11,9 +11,9 @@ or create an account!
 
 This app has been specifically developed to optimize chair organization. It allows 
 
-# easy searching and filtering of theses and seminars via a text search field, 
+ easy searching and filtering of theses and seminars via a text search field, 
 
-# as well as dropdown menus for supervisors, semesters, and research projects. 
+ as well as dropdown menus for supervisors, semesters, and research projects. 
 
 With these features, you can quickly find out which theses were written in a particular semester or which supervisor is working on which project.
 
