@@ -1,3 +1,4 @@
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
 <.header>
   Seminar <%= @seminar.id %>
   <:subtitle>This is a seminar record from your database.</:subtitle>
@@ -9,14 +10,21 @@
 </.header>
 
 <.list>
-  <:item title="Abstraktes Seminar"><%= @seminar.abstraktes_seminar.thema %></:item>
-  <:item title="Betreuer"><%= @seminar.mitarbeiter.email %></:item>
+  <:item title="Abstraktes Seminar">
+    <%= if @seminar.abstraktes_seminar do %>
+      <%= @seminar.abstraktes_seminar.thema %>
+    <% else %>
+      <span>No Thema available</span>
+    <% end %>
+  </:item>
   <:item title="Titel"><%= @seminar.titel %></:item>
   <:item title="Aufnahmekapazitaet"><%= @seminar.aufnahmekapazitaet %></:item>
   <:item title="Semester"><%= @seminar.semester %></:item>
   <:item title="Praesenzdatum"><%= @seminar.praesenzdatum %></:item>
   <:item title="Ort"><%= @seminar.ort %></:item>
 </.list>
+
+</div>
 
 <h2 style="font-size: 160%;">Seminarergebnis für Seminar<%= @seminar.titel %></h2>
 <!--TODO some Styling here-->

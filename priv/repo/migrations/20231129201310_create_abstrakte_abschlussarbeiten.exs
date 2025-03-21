@@ -13,7 +13,10 @@ defmodule Lehrstuhl.Repo.Migrations.CreateAbstrakteAbschlussarbeiten do
 
       timestamps()
     end
-    flush()
+
     create index(:abstrakte_abschlussarbeiten, [:mitarbeiter_id])
+    create index(:abstrakte_abschlussarbeiten, [:semester])
+    create index(:abstrakte_abschlussarbeiten, [:forschungsprojekt])
+    create index(:abstrakte_abschlussarbeiten, [:thema])
   end
 end

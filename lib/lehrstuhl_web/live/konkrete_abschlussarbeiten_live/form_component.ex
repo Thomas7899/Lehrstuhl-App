@@ -47,6 +47,20 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLive.FormComponent do
           prompt="Choose a Mitarbeiter"
           options={for mitarbeiter <- @mitarbeiter, do: {mitarbeiter.vorname <> " " <> mitarbeiter.nachname, mitarbeiter.id}}
         />
+        <.input
+          field={@form[:abstrakte_abschlussarbeiten_id]}
+          type="select"
+          label="Abstrakte Abschlussarbeit"
+          prompt="Choose a abstrakte Abschlussarbeit"
+          options={for abschlussarbeit <- @abstrakte_abschlussarbeiten, do: {abschlussarbeit.id, abschlussarbeit.id}}
+        />
+        <.input
+          field={@form[:ergebnisse_abschlussarbeiten_id]}
+          type="select"
+          label="Ergebnis"
+          prompt="Choose Ergebnis"
+          options={for abschlussarbeit <- @ergebnisse_abschlussarbeiten, do: {abschlussarbeit.id, abschlussarbeit.id}}
+        />
 
         <.input field={@form[:semester]} type="text" label="Semester" />
         <.input field={@form[:matrikelnummer]} type="text" label="Matrikelnummer" />
@@ -74,6 +88,8 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLive.FormComponent do
 def update(%{konkrete_abschlussarbeiten: konkrete_abschlussarbeiten} = assigns, socket) do
   students = Lehrstuhl.Persons.list_students()      # Studenten abrufen
   mitarbeiter = Lehrstuhl.Persons.list_mitarbeiter() # Mitarbeiter abrufen
+  abschlussarbeiten = Lehrstuhl.Abschlussarbeiten.list_abstrakte_abschlussarbeiten()  # Abschlussarbeiten abrufen
+  ergebnisse = Lehrstuhl.Abschlussarbeiten.list_ergebnisse_abschlussarbeiten()  # Ergebnisse abrufen
 
   changeset = Abschlussarbeiten.change_konkrete_abschlussarbeiten(konkrete_abschlussarbeiten)
 
@@ -82,6 +98,8 @@ def update(%{konkrete_abschlussarbeiten: konkrete_abschlussarbeiten} = assigns, 
    |> assign(assigns)
    |> assign(:students, students)
    |> assign(:mitarbeiter, mitarbeiter)  # Mitarbeiter hinzufügen
+   |> assign(:abstrakte_abschlussarbeiten, abschlussarbeiten)  # Abschlussarbeiten hinzufügen
+   |> assign(:ergebnisse_abschlussarbeiten, ergebnisse)  # Ergebnisse hinzufügen
    |> assign_form(changeset)}
 end
 

@@ -13,18 +13,16 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLiveTest do
        gesetzte_schwerpunkte: "some gesetzte_schwerpunkte",
         anmeldung_pruefungsamt: "2023-11-28",
          abgabedatum: "2023-11-28",
-          studienniveau: :bachelor,
-          student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"}
+          studienniveau: :bachelor}
   @update_attrs %{betreuer: :becker,
    forschungsprojekt: :tool,
-    semester: "some semester",
+    semester: "some updated semester",
      matrikelnummer: "some updated matrikelnummer",
       angepasste_themenskizze: "some updated angepasste_themenskizze",
        gesetzte_schwerpunkte: "some updated gesetzte_schwerpunkte",
         anmeldung_pruefungsamt: "2023-11-29",
          abgabedatum: "2023-11-29",
-          studienniveau: :master,
-          student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"}
+          studienniveau: :master}
   @invalid_attrs %{betreuer: nil,
    forschungsprojekt: nil,
     semester: nil,
@@ -49,8 +47,8 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLiveTest do
         |> log_in_user(user_fixture())
         |> live(~p"/konkrete_abschlussarbeiten")
 
-      assert html =~ "Liste der konkreten Abschlussarbeiten"
-      assert html =~ konkrete_abschlussarbeiten.matrikelnummer
+      assert html =~ "Konkrete Abschlussarbeiten"
+      assert html =~ "some matrikelnummer"
     end
 
     test "saves new konkrete_abschlussarbeiten", %{conn: conn} do
@@ -126,8 +124,8 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLiveTest do
         |> log_in_user(user_fixture())
         |> live(~p"/konkrete_abschlussarbeiten/#{konkrete_abschlussarbeiten}")
 
-      assert html =~ "Show konkrete Abschlussarbeiten"
-      assert html =~ konkrete_abschlussarbeiten.matrikelnummer
+      assert html =~ "Konkrete Abschlussarbeiten"
+      assert html =~ "some matrikelnummer"
     end
 
     test "updates konkrete_abschlussarbeiten within modal", %{conn: conn, konkrete_abschlussarbeiten: konkrete_abschlussarbeiten} do

@@ -10,14 +10,14 @@ defmodule LehrstuhlWeb.AbstrakteAbschlussarbeitenLiveTest do
    semester: "some semester",
     thema: "some thema",
     themenskizze: "some themenskizze",
-    mitarbeiter_id: "some mitarbeiter"}
+    mitarbeiter_id: "11e68b9e-069e-4e28-96d5-3d85c5849fba"}
 
   @update_attrs %{betreuer: :hansen,
   forschungsprojekt: :tool,
   semester: "some updated semester",
   thema: "some updated thema",
   themenskizze: "some updated themenskizze",
-  mitarbeiter_id: "some mitarbeiter"}
+  mitarbeiter_id: "11e68b9e-069e-4e28-96d5-3d85c5849fba"}
 
   @invalid_attrs %{betreuer: nil,
   forschungsprojekt: nil,
@@ -40,8 +40,8 @@ defmodule LehrstuhlWeb.AbstrakteAbschlussarbeitenLiveTest do
         |> log_in_user(user_fixture())
         |> live(~p"/abstrakte_abschlussarbeiten")
 
-      assert html =~ "Liste der abstrakten Abschlussarbeiten"
-      assert html =~ abstrakte_abschlussarbeiten.semester
+      assert html =~ "Abstrakte Abschlussarbeiten"
+      assert html =~ "some semester"
     end
 
     test "saves new abstrakte_abschlussarbeiten", %{conn: conn} do

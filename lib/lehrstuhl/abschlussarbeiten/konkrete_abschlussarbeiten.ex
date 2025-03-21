@@ -28,8 +28,14 @@ defmodule Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten do
   @doc false
   def changeset(konkrete_abschlussarbeiten, attrs) do
     konkrete_abschlussarbeiten
-    |> cast(attrs, [:betreuer, :forschungsprojekt, :semester, :matrikelnummer, :angepasste_themenskizze, :gesetzte_schwerpunkte, :anmeldung_pruefungsamt, :abgabedatum, :studienniveau, :student_id, :mitarbeiter_id])
-    |> validate_required([:betreuer, :forschungsprojekt, :semester, :matrikelnummer, :angepasste_themenskizze, :gesetzte_schwerpunkte, :anmeldung_pruefungsamt, :abgabedatum, :studienniveau])
+    |> cast(attrs, [:betreuer, :forschungsprojekt, :semester,
+        :matrikelnummer, :angepasste_themenskizze, :gesetzte_schwerpunkte,
+        :anmeldung_pruefungsamt, :abgabedatum, :studienniveau,
+        :student_id, :mitarbeiter_id, :abstrakte_abschlussarbeiten_id])
+    |> validate_required([:betreuer, :forschungsprojekt, :semester,
+        :matrikelnummer, :angepasste_themenskizze,
+        :gesetzte_schwerpunkte, :anmeldung_pruefungsamt,
+        :abgabedatum, :studienniveau])
     |> unique_constraint(:matrikelnummer)
   end
 end

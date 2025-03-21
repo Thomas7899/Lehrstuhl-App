@@ -5,6 +5,24 @@ defmodule Lehrstuhl.Release do
   """
   @app :lehrstuhl
 
+  @doc """
+  alias Lehrstuhl.Repo
+  require Logger
+
+  def migrate do
+    Logger.info("Running migrations...")
+    {:ok, _} = Application.ensure_all_started(:lehrstuhl)
+    Ecto.Migrator.run(Repo, Application.app_dir(:lehrstuhl, "priv/repo/migrations"), :up, all: true)
+  end
+
+  def seed do
+    Logger.info("Running seeds...")
+    {:ok, _} = Application.ensure_all_started(:lehrstuhl)
+    Code.eval_file(Application.app_dir(:lehrstuhl, "priv/repo/seeds.exs"))
+  end
+  """
+
+
   def migrate do
     load_app()
 

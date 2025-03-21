@@ -15,7 +15,7 @@ defmodule Lehrstuhl.AbschlussarbeitenFixtures do
       |> Enum.into(%{
         betreuer: :hansen,
         forschungsprojekt: :sport,
-        semester: "SS-23",
+        semester: "some semester",
         thema: "some thema",
         themenskizze: "some themenskizze",
         mitarbeiter_id: mitarbeiter.id
@@ -30,21 +30,24 @@ defmodule Lehrstuhl.AbschlussarbeitenFixtures do
   Generate a konkrete_abschlussarbeiten.
   """
   def konkrete_abschlussarbeiten_fixture(attrs \\ %{}) do
+    student = student_fixture()
+    mitarbeiter = mitarbeiter_fixture()
+    abstrakte_abschlussarbeiten = abstrakte_abschlussarbeiten_fixture()
     {:ok, konkrete_abschlussarbeiten} =
       attrs
       |> Enum.into(%{
         betreuer: :hansen,
         forschungsprojekt: :sport,
-        semester: "SS-23",
+        semester: "some semester",
         matrikelnummer: "some matrikelnummer",
         angepasste_themenskizze: "some angepasste_themenskizze",
         gesetzte_schwerpunkte: "some gesetzte_schwerpunkte",
         anmeldung_pruefungsamt: ~D[2023-11-28],
         abgabedatum: ~D[2023-11-28],
         studienniveau: :bachelor,
-        student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1",
-        mitarbeiter_id: "33e68a9e-069e-4e28-96d5-3d85c5849fbc",
-        abstrakte_abschlussarbeiten_id: "55e68a9e-069e-4e28-96d5-3d85c5849fbc"
+        student_id: student.id,
+        mitarbeiter_id: mitarbeiter.id,
+        abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeiten.id
 
       })
       |> Lehrstuhl.Abschlussarbeiten.create_konkrete_abschlussarbeiten()
@@ -56,6 +59,7 @@ defmodule Lehrstuhl.AbschlussarbeitenFixtures do
   Generate a ergebnisse_abschlussarbeiten.
   """
   def ergebnisse_abschlussarbeiten_fixture(attrs \\ %{}) do
+    student = student_fixture()
     {:ok, ergebnisse_abschlussarbeiten} =
       attrs
       |> Enum.into(%{
@@ -64,7 +68,7 @@ defmodule Lehrstuhl.AbschlussarbeitenFixtures do
         studienniveau: :bachelorarbeit,
         korrekturdatum: ~D[2023-12-24],
         note: "120.5",
-        student_id: "44e68a9e-069e-4e28-96d5-3d85c5849fb1"
+        student_id: student.id
       })
       |> Lehrstuhl.Abschlussarbeiten.create_ergebnisse_abschlussarbeiten()
 
