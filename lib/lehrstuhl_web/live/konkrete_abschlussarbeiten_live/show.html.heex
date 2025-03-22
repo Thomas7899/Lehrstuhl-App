@@ -6,8 +6,8 @@
     </.link>
   </div>
   <div class="flex flex-col items-center text-center space-y-2">
-    <div class="text-xl font-bold leading-none text-white hover:text-[#8000ff] my-2">Konkrete Abschlussarbeit</div>
-    <div class="leading-none text-white hover:text-[#8000ff]">
+    <div class="text-xl font-bold leading-none text-[#8000ff] my-2">Konkrete Abschlussarbeit</div>
+    <div class="leading-none text-white">
       <%= @konkrete_abschlussarbeiten.id %>
     </div>
   </div>
@@ -52,3 +52,23 @@
   />
 </.modal>
 </div>
+
+
+  <h1 class="text-xl font-bold mb-4 text-center">Ergebnisse</h1>
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
+
+  <%= for ergebnis <- @ergebnisse_abschlussarbeiten do %>
+    <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+    <h2 class="font-bold mb-4 text-center">Ergebnis von <span class="text-yellow-300"><%= ergebnis.matrikelnummer %></span></h2>
+      <p class="text-neutral-400"><strong>Note:</strong> <%= ergebnis.note %></p>
+      <p class="text-neutral-400"><strong>Datum:</strong> <%= ergebnis.korrekturdatum %></p>
+      <p class="text-neutral-400"><strong>Status:</strong> <%= ergebnis.status %></p>
+      <p class="text-neutral-400"><strong>Studienniveau:</strong> <%= ergebnis.studienniveau %></p>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@ergebnisse_abschlussarbeiten) do %>
+    <p class="text-center text-gray-400">Keine konkreten Abschlussarbeiten vorhanden.</p>
+  <% end %>
+</div>
+

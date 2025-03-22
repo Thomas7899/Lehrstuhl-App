@@ -53,6 +53,15 @@ def list_abstrakte_abschlussarbeiten_konkret() do
   # Repo.all(query)
 end
 
+def list_konkrete_abschlussarbeiten_for_abstrakte(abstrakte_id) do
+  from(ka in KonkreteAbschlussarbeiten,
+  where: ka.abstrakte_abschlussarbeiten_id == ^abstrakte_id,
+  join: s in assoc(ka, :student),
+  preload: [student: s])
+  |> Repo.all()
+end
+
+
 def list_konkret_ergebnis() do
   query =
     from ka in KonkreteAbschlussarbeiten,
@@ -60,7 +69,7 @@ def list_konkret_ergebnis() do
       on: ka.id == e.konkrete_abschlussarbeiten_id,
       join: s in Student,
       on: ka.student_id == s.id,
-      preload: [ergebnisse_abschlussarbeiten: e, student: s] 
+      preload: [ergebnisse_abschlussarbeiten: e, student: s]
   Repo.all(query)
 end
 

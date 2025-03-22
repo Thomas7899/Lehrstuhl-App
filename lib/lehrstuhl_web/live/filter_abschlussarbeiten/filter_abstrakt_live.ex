@@ -43,7 +43,7 @@ defmodule LehrstuhlWeb.FilterAbstraktLive do
       </form>
 
       <div class="flex flex-wrap">
-        <div :for={abstrakte_abschlussarbeiten <- @abschlussarbeiten} class="bg-slate-50 p-4 w-full md:w-1/2 lg:w-1/3">
+        <div :for={abstrakte_abschlussarbeiten <- @abschlussarbeiten} class="bg-gray-500 p-4 w-full md:w-1/2 lg:w-1/3">
 
     <div class="w-full max-w-md p-4 bg-gray-800 hover:bg-neutral-900 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <div class="flex items-center justify-between mb-4">

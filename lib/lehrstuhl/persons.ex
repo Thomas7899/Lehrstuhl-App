@@ -35,7 +35,18 @@ defmodule Lehrstuhl.Persons do
       ** (Ecto.NoResultsError)
 
   """
-  def get_mitarbeiter!(id), do: Repo.get!(Mitarbeiter, id)
+  def get_mitarbeiter!(id) do
+    Mitarbeiter
+    |> Repo.get!(id)
+    |> Repo.preload([
+      :konkrete_abschlussarbeiten,
+      :abstrakte_abschlussarbeiten,
+      :abstrakte_seminare,
+      :seminare,
+      :module
+    ])
+  end
+
 
   @doc """
   Creates a mitarbeiter.
@@ -131,7 +142,13 @@ defmodule Lehrstuhl.Persons do
       ** (Ecto.NoResultsError)
 
   """
-  def get_student!(id), do: Repo.get!(Student, id)
+
+def get_student!(id) do
+  Student
+  |> Repo.get!(id)
+  |> Repo.preload([:klausurergebnisse, :konkrete_abschlussarbeiten])
+end
+
 
   @doc """
   Creates a student.

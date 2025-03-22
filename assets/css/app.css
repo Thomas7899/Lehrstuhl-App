@@ -85,9 +85,8 @@ td {
   font-size: 1.125rem; 
   font-weight: 900;
   color: rgb(23 23 23 / var(--tw-text-opacity, 1));
-  text-shadow: 1px 1px 1px #fff;
   text-align: center;
-  background-color: #f5f5f5
+  background-color: rgb(107 114 128);
 }
 
 th:hover {
@@ -104,7 +103,7 @@ th {
   color: #fff;
   text-shadow: 1px 1px 1px #27272a;
   text-align: center;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
   border-radius: 12px;
 }
 
@@ -156,7 +155,6 @@ th {
   margin-left: 10px;
   padding: 15px;
   padding-right: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;

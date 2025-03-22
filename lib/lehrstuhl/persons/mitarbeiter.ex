@@ -4,6 +4,8 @@ defmodule Lehrstuhl.Persons.Mitarbeiter do
   import Ecto.Changeset
 
   alias Lehrstuhl.Abschlussarbeiten.{KonkreteAbschlussarbeiten, AbstrakteAbschlussarbeiten}
+  alias Lehrstuhl.Seminare.{AbstraktesSeminar, Seminar}
+  alias Lehrstuhl.Klausuren.Modul
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -14,6 +16,9 @@ defmodule Lehrstuhl.Persons.Mitarbeiter do
     field :rolle, Ecto.Enum, values: [:professor, :wissenschaftlicher_mitarbeiter, :nicht_wissenschaftlicher_mitarbeiter, :betreuer, :prüfer]
     has_many :konkrete_abschlussarbeiten, KonkreteAbschlussarbeiten
     has_many :abstrakte_abschlussarbeiten, AbstrakteAbschlussarbeiten
+    has_many :abstrakte_seminare, AbstraktesSeminar
+    has_many :seminare, Seminar
+    has_many :module, Modul
 
     timestamps()
   end

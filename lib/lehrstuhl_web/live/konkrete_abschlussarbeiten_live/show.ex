@@ -14,10 +14,18 @@ defmodule LehrstuhlWeb.KonkreteAbschlussarbeitenLive.Show do
       Abschlussarbeiten.get_konkrete_abschlussarbeiten!(id)
       |> Lehrstuhl.Repo.preload([:student, :mitarbeiter, :abstrakte_abschlussarbeiten, :ergebnisse_abschlussarbeiten])
 
+    ergebnisse =
+      case konkrete_abschlussarbeiten.ergebnisse_abschlussarbeiten do
+        %Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten{} = ergebnis -> [ergebnis] 
+        nil -> []
+        ergebnisse when is_list(ergebnisse) -> ergebnisse
+      end
+
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:konkrete_abschlussarbeiten, konkrete_abschlussarbeiten)}
+     |> assign(:konkrete_abschlussarbeiten, konkrete_abschlussarbeiten)
+     |> assign(:ergebnisse_abschlussarbeiten, ergebnisse)}
   end
 
 
