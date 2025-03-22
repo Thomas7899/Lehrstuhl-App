@@ -14,6 +14,8 @@ defmodule Lehrstuhl.Persons.Student do
     field :nachname, :string
     field :geburtsdatum, :date
     has_one :konkrete_abschlussarbeiten, KonkreteAbschlussarbeiten
+    has_many :klausurergebnisse, Lehrstuhl.Klausuren.Klausurergebnis
+    has_many :klausuren, Lehrstuhl.Klausuren.Klausur
 
     timestamps()
   end

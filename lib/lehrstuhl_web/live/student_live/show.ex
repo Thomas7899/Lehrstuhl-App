@@ -12,13 +12,16 @@ defmodule LehrstuhlWeb.StudentLive.Show do
   @impl true
   def handle_params(%{"id" => id}, _, socket) do
     student = Persons.get_student!(id)
-            |> Repo.preload(:konkrete_abschlussarbeiten)
+
+    klausurergebnisse = student.klausurergebnisse || []
+
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:student, student)}
-
+     |> assign(:student, student)
+     |> assign(:klausurergebnisse, klausurergebnisse)}
   end
+
 
   defp page_title(:show), do: "Show Student"
   defp page_title(:edit), do: "Edit Student"

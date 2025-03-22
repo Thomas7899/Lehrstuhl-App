@@ -24,7 +24,7 @@ defmodule LehrstuhlWeb.FilterAbstraktKonkretLive do
               <p class="text-sm text-neutral-400">Semester: <%= abstrakte.semester %></p>
             </div>
             <div class="flow-root">
-            <h2 class="font-semibold underline text-white">Konkrete Abschlussarbeiten:</h2>
+            <h2 class="font-semibold text-yellow-300">Konkrete Abschlussarbeiten:</h2>
               <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
                 <li :for={konkret <- abstrakte.konkrete_abschlussarbeiten} class="py-3 sm:py-4">
                   <div class="flex items-center justify-between">

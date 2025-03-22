@@ -22,7 +22,7 @@ defmodule Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten do
   @doc false
   def changeset(abstrakte_abschlussarbeiten, attrs) do
     abstrakte_abschlussarbeiten
-    |> cast(attrs, [:betreuer,:forschungsprojekt, :semester, :thema, :themenskizze, :mitarbeiter_id])
+    |> cast(attrs, [:betreuer,:forschungsprojekt, :semester, :thema, :themenskizze, :mitarbeiter_id, :konkrete_abschlussarbeiten_id])
     |> validate_required([:betreuer, :forschungsprojekt, :semester, :thema, :themenskizze, :mitarbeiter_id])
   end
 end

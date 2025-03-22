@@ -41,3 +41,22 @@
     />
   </.modal>
 </div>
+
+  <h1 class="text-xl font-bold mb-4 text-center">Konkrete Abschlussarbeiten</h1>
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
+
+  <%= for konkrete <- @konkrete_abschlussarbeiten do %>
+    <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+    <h2 class="font-bold mb-4 text-center">Konkrete Abschlussarbeit von <span class="text-yellow-300"><%= konkrete.student.vorname %></span></h2>
+      <p class="text-neutral-400"><strong>Themenskizze:</strong> <%= konkrete.angepasste_themenskizze %></p>
+      <p class="text-neutral-400"><strong>Matrikelnummer:</strong> <%= konkrete.matrikelnummer %></p>
+      <p class="text-neutral-400"><strong>Student:</strong> <%= "#{konkrete.student.vorname} #{konkrete.student.nachname}" %></p>
+      <p class="text-neutral-400"><strong>Email:</strong> <%= konkrete.student.email %></p>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@konkrete_abschlussarbeiten) do %>
+    <p class="text-center text-gray-400">Keine konkreten Abschlussarbeiten vorhanden.</p>
+  <% end %>
+</div>
+
