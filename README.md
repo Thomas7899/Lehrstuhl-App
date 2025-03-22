@@ -2,32 +2,34 @@
 
 ## Welcome to the Lehrstuhl-App
 
-### visit directly on https://lehrstuhl-app.fly.dev/
+### visit directly on https://lehrstuhl-app.fly.dev/ 
+
+### or get more insights in data models and more on the wiki page...
 
 Login with: email: "admin@example.com",
             password: password123
 
 or create an account!
 
-This app has been specifically developed to optimize chair organization. It allows 
+This app has been specifically developed to optimize faculty management. It allows 
 
- easy searching and filtering of theses and seminars via a text search field, 
+* easy searching and filtering of theses and seminars via a text search field, 
 
- as well as dropdown menus for supervisors, semesters, and research projects. 
+* as well as dropdown menus for supervisors, semesters, and research projects. 
 
-With these features, you can quickly find out which theses were written in a particular semester or which supervisor is working on which project.
+* With these features, you can quickly find out which theses were written in a particular semester or which supervisor is working on which project.
 
-The Lehrstuhl-App enables the efficient management and linking of seminars, exams, staff, theses, and students.
+* The Lehrstuhl-App enables the efficient management and linking of seminars, exams, staff, theses, and students.
 
-Easily find out which grades were achieved in exams, theses or seminars
+* Easily find out which grades were achieved in exams, theses or seminars
 
-Its intuitive user interface ensures that you always have a clear overview of all relevant information.
+* Its intuitive user interface ensures that you always have a clear overview of all relevant information.
 
-An authentication feature (Admin) ensures that critical tasks and pages are restricted to non-authorised individuals.
+* An authentication feature (Admin) ensures that critical tasks and pages are restricted to non-authorised individuals.
 
-Our application enables you to perform complex queries between linked database records quickly and efficiently.
+* Our application enables you to perform complex queries between linked database records quickly and efficiently.
 
-Discover how the Lehrstuhl-App simplifies academic administration!
+* Discover how the Lehrstuhl-App simplifies academic administration!
 
 ## How to start
 
