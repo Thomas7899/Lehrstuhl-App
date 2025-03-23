@@ -2,6 +2,7 @@ defmodule LehrstuhlWeb.StudentLive.Show do
   use LehrstuhlWeb, :live_view
 
   alias Lehrstuhl.Persons
+  
 
   @impl true
   def mount(_params, _session, socket) do
@@ -24,8 +25,6 @@ defmodule LehrstuhlWeb.StudentLive.Show do
      |> assign(:seminarergebnisse, seminarergebnisse)
      |> assign(:ergebnisse_abschlussarbeiten, ergebnisse)}
   end
-
-
 
   defp page_title(:show), do: "Show Student"
   defp page_title(:edit), do: "Edit Student"

@@ -41,27 +41,26 @@
   </.modal>
 </div>
 
-<!--
+
 <h1 class="text-xl font-bold mb-4 text-center">Ergebnisse der Abschlussarbeiten</h1>
 <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
   <%= for ergebnis <- @ergebnisse_abschlussarbeiten do %>
     <div class="border-b border-gray-700 pb-4 mb-4 text-white">
       <h2 class="font-bold mb-4 text-center">
-        Note: <span class="text-yellow-300"><%= ergebnis.note || "Keine Note vorhanden" %></span>
+        Note: <span class="text-yellow-300"><%= ergebnis.note %></span>
       </h2>
       <p class="text-center text-gray-400">
-        Korrekturdatum: <%= ergebnis.korrekturdatum || "Nicht verfügbar" %>
+        Korrekturdatum: <%= ergebnis.korrekturdatum %>
       </p>
         <p class="text-center text-gray-400">
-          Thema: <%= ergebnis.konkrete_abschlussarbeiten.angepasste_themenskizze || "Nicht verfügbar" %>
+          Thema: <%= ergebnis.konkrete_abschlussarbeiten.angepasste_themenskizze %>
         </p>
         <p class="text-center text-gray-400">
-          Schwerpunkte: <%= ergebnis.konkrete_abschlussarbeiten.gesetzte_schwerpunkte || "Nicht verfügbar" %>
+          Schwerpunkte: <%= ergebnis.konkrete_abschlussarbeiten.gesetzte_schwerpunkte %>
         </p>
         <p class="text-center text-gray-400">
-          Abgabedatum: <%= ergebnis.konkrete_abschlussarbeiten.abgabedatum || "Nicht verfügbar" %>
+          Abgabedatum: <%= ergebnis.konkrete_abschlussarbeiten.abgabedatum %>
         </p>
-  
     </div>
   <% end %>
 
@@ -69,8 +68,6 @@
     <p class="text-center text-gray-400">Keine Ergebnisse vorhanden.</p>
   <% end %>
 </div>
-
--->
 
 <h1 class="text-xl font-bold mb-4 text-center">Klausurergebnisse</h1>
 <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-4">

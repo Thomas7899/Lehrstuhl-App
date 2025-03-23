@@ -413,6 +413,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-02-01],
   note: 1.5,
+  student_id: student1.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit1.id
 })
 
@@ -437,6 +438,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
   note: 2.1,
+  student_id: student2.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit2.id
 })
 
@@ -461,6 +463,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-07-01],
   note: 2.3,
+  student_id: student3.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit3.id
 })
 
@@ -485,6 +488,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-05-01],
   note: 2.9,
+  student_id: student4.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit4.id
 })
 
@@ -509,6 +513,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-03-01],
   note: 2.3,
+  student_id: student5.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit5.id
 })
 
@@ -533,6 +538,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-09-01],
   note: 1.7,
+  student_id: student6.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit6.id
 })
 
@@ -557,6 +563,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :nichtbestanden,
   korrekturdatum: ~D[2024-02-01],
   note: 5.0,
+  student_id: student7.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit7.id
 })
 
@@ -581,6 +588,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :nichtbestanden,
   korrekturdatum: ~D[2022-06-11],
   note: 5.0,
+  student_id: student8.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit8.id
 })
 
@@ -605,6 +613,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
   note: 2.7,
+  student_id: student9.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit9.id
 })
 
@@ -629,6 +638,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
   note: 2.6,
+  student_id: student10.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit10.id
 })
 
@@ -653,6 +663,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
   note: 2.7,
+  student_id: student11.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit11.id
 })
 
@@ -677,6 +688,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
   note: 1.7,
+  student_id: student12.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit12.id
 })
 
@@ -701,6 +713,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-08-01],
   note: 1.5,
+  student_id: student13.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit13.id
 })
 
@@ -724,6 +737,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-02-01],
   note: 1.5,
+  student_id: student14.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit14.id
 })
 
@@ -747,6 +761,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-08-01],
   note: 1.5,
+  student_id: student15.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit15.id
 })
 
@@ -770,6 +785,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-01-01],
   note: 1.5,
+  student_id: student16.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit16.id
 })
 
@@ -793,6 +809,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-10-01],
   note: 1.5,
+  student_id: student17.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit17.id
 })
 
@@ -816,6 +833,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-10-01],
   note: 1.5,
+  student_id: student18.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit18.id
 })
 
@@ -839,6 +857,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-10-15],
   note: 1.5,
+  student_id: student19.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit19.id
 })
 
@@ -862,6 +881,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-01-15],
   note: 1.5,
+  student_id: student20.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit20.id
 })
 
@@ -885,6 +905,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-10-10],
   note: 1.5,
+  student_id: student7.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit21.id
 })
 
@@ -909,6 +930,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-04-15],
   note: 1.5,
+  student_id: student19.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit22.id
 })
 
@@ -933,6 +955,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-09-15],
   note: 1.5,
+  student_id: student20.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit23.id
 })
 
@@ -956,6 +979,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-01-15],
   note: 1.5,
+  student_id: student20.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit24.id
 })
 
@@ -1070,6 +1094,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
   note: 2.7,
+  student_id: student8.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit30.id
 })
 
