@@ -21,8 +21,17 @@
       <:item title="Korrekturdatum"><%= @ergebnisse_abschlussarbeiten.korrekturdatum %></:item>
       <:item title="Note"><%= @ergebnisse_abschlussarbeiten.note %></:item>
       <:item title="Konkrete Abschlussarbeit">
-        <%= @ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten && "#{@ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten.id}" || "No Abschlussarbeit assigned" %>
-      </:item>
+  <%= if @ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten do %>
+    <%= @ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten.id %>
+    <.link class="text-sm font-medium text-[#8000ff] hover:underline ml-2" 
+           navigate={~p"/konkrete_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten.id}"}>
+      View
+    </.link>
+  <% else %>
+    No Abschlussarbeit assigned
+  <% end %>
+</:item>
+
     </.list>
   </div>
 

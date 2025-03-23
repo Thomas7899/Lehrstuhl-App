@@ -40,48 +40,53 @@
 
 <h1 class="text-xl font-bold mb-4 text-center">Module</h1>
 <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
-
   <%= for modul <- @mitarbeiter.module do %>
     <div class="border-b border-gray-700 pb-4 mb-4 text-white">
       <h2 class="font-bold mb-4 text-center">
         Modul: <span class="text-yellow-300"><%= modul.name %></span>
       </h2>
+      <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center" 
+             navigate={~p"/module/#{modul.id}"}>
+        View Modul
+      </.link>
     </div>
   <% end %>
 
   <%= if Enum.empty?(@mitarbeiter.module) do %>
     <p class="text-center text-gray-400">Keine Module aus Klausuren vorhanden.</p>
   <% end %>
-
 </div>
-
 
 <h1 class="text-xl font-bold mb-4 text-center">Konkrete Abschlussarbeiten</h1>
 <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
-
   <%= for arbeit <- @mitarbeiter.konkrete_abschlussarbeiten do %>
     <div class="border-b border-gray-700 pb-4 mb-4 text-white">
       <h2 class="font-bold mb-4 text-center">
         Forschungsprojekt: <span class="text-yellow-300"><%= arbeit.forschungsprojekt %></span>
       </h2>
+      <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center" 
+             navigate={~p"/konkrete_abschlussarbeiten/#{arbeit.id}"}>
+        View Abschlussarbeit
+      </.link>
     </div>
   <% end %>
 
   <%= if Enum.empty?(@mitarbeiter.konkrete_abschlussarbeiten) do %>
     <p class="text-center text-gray-400">Keine konkreten Abschlussarbeiten vorhanden.</p>
   <% end %>
-
 </div>
-
 
 <h1 class="text-xl font-bold mb-4 text-center">Abstrakte Abschlussarbeiten</h1>
 <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
-
   <%= for arbeit <- @mitarbeiter.abstrakte_abschlussarbeiten do %>
     <div class="border-b border-gray-700 pb-4 mb-4 text-white">
       <h2 class="font-bold mb-4 text-center">
         Thema: <span class="text-yellow-300"><%= arbeit.thema %></span>
       </h2>
+      <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center" 
+             navigate={~p"/abstrakte_abschlussarbeiten/#{arbeit.id}"}>
+        View Abschlussarbeit
+      </.link>
     </div>
   <% end %>
 
@@ -92,12 +97,15 @@
 
 <h1 class="text-xl font-bold mb-4 text-center">Abstrakte Seminare</h1>
 <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
-
   <%= for seminar <- @mitarbeiter.abstrakte_seminare do %>
     <div class="border-b border-gray-700 pb-4 mb-4 text-white">
       <h2 class="font-bold mb-4 text-center">
         Seminar: <span class="text-yellow-300"><%= seminar.thema %></span>
       </h2>
+      <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center" 
+             navigate={~p"/abstrakte_seminare/#{seminar.id}"}>
+        View Seminar
+      </.link>
     </div>
   <% end %>
 
@@ -105,6 +113,3 @@
     <p class="text-center text-gray-400">Keine abstrakten Seminare vorhanden.</p>
   <% end %>
 </div>
-
-
-

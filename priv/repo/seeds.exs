@@ -1453,28 +1453,28 @@ Repo.insert!(%Seminarergebnis{
 
 modul1 = Repo.insert!(%Modul{
   id: "1a7b3300-ae7f-11eb-bcbc-0242ac130002",
-  mitarbeiter_id: mitarbeiter7.id,
+  mitarbeiter_id: mitarbeiter1.id,
   name: "Entwicklung von Informationssystemen",
   lehrstuhlinhaber_id: mitarbeiter1.id
 })
 
 modul2 = Repo.insert!(%Modul{
   id: "2a7b3300-ae7f-11eb-bcbc-0242ac130002",
-  mitarbeiter_id: mitarbeiter7.id,
+  mitarbeiter_id: mitarbeiter1.id,
   name: "Künstliche Intelligenz",
   lehrstuhlinhaber_id: mitarbeiter5.id
 })
 
 modul3 = Repo.insert!(%Modul{
   id: "3a7b3300-ae7f-11eb-bcbc-0242ac130002",
-  mitarbeiter_id: mitarbeiter7.id,
+  mitarbeiter_id: mitarbeiter2.id,
   name: "Programmiersprachen",
   lehrstuhlinhaber_id: mitarbeiter2.id
 })
 
 modul4 = Repo.insert!(%Modul{
   id: "4a7b3300-ae7f-11eb-bcbc-0242ac130002",
-  mitarbeiter_id: mitarbeiter7.id,
+  mitarbeiter_id: mitarbeiter3.id,
   name: "Informationssystemarchitekturen",
   lehrstuhlinhaber_id: mitarbeiter3.id
 })
@@ -1485,7 +1485,6 @@ modul5 = Repo.insert!(%Modul{
   name: "Kommunikationssysteme und Rechnernetze",
   lehrstuhlinhaber_id: mitarbeiter4.id
 })
-
 
 # Klausuren
 
