@@ -146,7 +146,12 @@ defmodule Lehrstuhl.Persons do
 def get_student!(id) do
   Student
   |> Repo.get!(id)
-  |> Repo.preload([:klausurergebnisse, :konkrete_abschlussarbeiten])
+  |> Repo.preload([
+    klausurergebnisse: [klausur: [:modul]],
+    seminarergebnisse: [:seminar],
+    konkrete_abschlussarbeiten: [:ergebnisse_abschlussarbeiten],
+    ergebnisse_abschlussarbeiten: [:konkrete_abschlussarbeiten]
+  ])
 end
 
 
