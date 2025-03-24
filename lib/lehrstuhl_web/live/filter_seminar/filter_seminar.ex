@@ -16,7 +16,7 @@ defmodule LehrstuhlWeb.FilterSeminarLive do
   def render(assigns) do
     ~H"""
     <div class="flex justify-center items-center">
-     <.form for={@form} phx-change="filter" class="w-full max-w-md bg-neutral-800 rounded-lg shadow-lg p-4" >
+     <.form for={@form} phx-change="filter" class="w-full max-w-md bg-gray-500 rounded-lg shadow-lg p-4" >
       <.input field={@form[:q]}
             placeholder="Suche nach Titel..."
             autocomplete="off"
@@ -25,7 +25,7 @@ defmodule LehrstuhlWeb.FilterSeminarLive do
     </.form>
     </div>
     <div class="flex flex-wrap">
-     <div :for={seminar <- @seminare} class="bg-slate-50 p-4 w-full md:w-1/2 lg:w-1/3" >
+     <div :for={seminar <- @seminare} class="bg-gray-500 p-4 w-full md:w-1/2 lg:w-1/3" >
      <div class="w-full max-w-md p-4 bg-gray-800 hover:bg-neutral-900 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
 
      <.link class="text-sm font-medium text-[#8000ff]" navigate={~p"/seminare/#{seminar}"}>

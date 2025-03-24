@@ -303,70 +303,82 @@
             Progress of <span style="color: #ff0;">our app</span>
           </h2>
 
-          <p class="mt-1 text-neutral-400">Fakultäten profitieren von unserer Lösung – mit optimierten Workflows,
-            höherer Effizienz und einer verbesserten Nutzererfahrung.
-            Von intelligenten Datenverknüpfungen über automatisierte Prozesse bis hin zu einer modernen, intuitiven
-            Oberfläche.</p>
+          <p class="mt-1 text-neutral-400">
+            🎯 Fakultäten profitieren von <span class="text-white font-semibold">unserer Lösung</span> – mit optimierten
+            Workflows,
+            ⚡ <span class="text-yellow-400">höherer Effizienz</span> und einer <span class="text-green-400">verbesserten
+              Nutzererfahrung</span>.
+            🔄 Von <span class="text-white">intelligenten Datenverknüpfungen</span> über <span
+              class="text-blue-400">automatisierte Prozesse</span>
+            bis hin zu einer modernen, <span class="text-purple-400">intuitiven Oberfläche</span>.
+          </p>
+
         </div>
 
-        <div
-          class="grid grid-cols-1 lg:grid-cols-3 items-center border border-neutral-700 divide-y lg:divide-y-0 lg:divide-x divide-neutral-700 rounded-xl">
-          <a class="group relative z-10 p-4 md:p-6 h-full flex flex-col bg-neutral-900 justify-center items-center text-center"
-            href="/konkrete_abschlussarbeiten">
-            <div class="mb-5 flex flex-col justify-center items-center">
-              <!-- <img class="size-10 rounded" src="/images/elixir-icon.png" alt="Elixir Icon"> -->
-              <div class="mt-5">
-                <p class="font-semibold text-4xl text-white">Abschlussarbeiten</p>
-                <h3 class="mt-5 font-medium text-lg text-white"></h3>
-                <img class="w-full object-cover rounded-xl" src="/images/abschlussarbeiten.png" alt="Features Image">
-              </div>
-            </div>
-            <p class="mt-auto">
-              <span
-                class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] group-focus:border-[#ff0] transition focus:outline-hidden">
-                Go to page
-              </span>
-            </p>
-          </a>
-
-
-          <a class="group relative z-10 p-4 md:p-6 h-full flex flex-col bg-neutral-900 justify-center items-center text-center focus:outline-hidden"
-            href="/klausuren">
-            <div class="mb-5 flex flex-col justify-center items-center">
-              <div class="mt-5">
-                <p class="font-semibold text-5xl text-[#ffff80]">Klausuren</p>
-                <h3 class="mt-5 font-medium text-lg text-white"></h3>
-                <div class="aspect-w-16 aspect-h-48 lg:aspect-none">
-                  <img class="w-full object-cover rounded-xl" src="/images/klausuren.png" alt="Features Image">
-                </div>
-              </div>
-            </div>
-            <p class="mt-auto">
-              <span
-                class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] group-focus:border-[#ff0] transition focus:outline-hidden">
-                Go to page
-              </span>
-            </p>
-          </a>
-
-          <a class="group relative z-10 p-4 md:p-6 h-full flex flex-col bg-neutral-900 justify-center items-center text-center"
-            href="/seminare">
-            <div class="mb-5 flex flex-col justify-center items-center">
-              <div class="mt-5">
-                <p class="font-semibold text-5xl text-[#ff0]">Seminare</p>
-                <h3 class="mt-5 font-medium text-lg text-white"></h3>
-                <img class="w-full object-cover rounded-xl" src="/images/seminare.png" alt="Form Image">
-              </div>
-            </div>
-            <p class="mt-auto">
-              <span
-                class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] group-focus:border-[#ff0] transition focus:outline-hidden">
-                Go to page
-              </span>
-            </p>
-          </a>
-        </div>
+       <div class="grid grid-cols-1 lg:grid-cols-3 items-center border border-neutral-700 divide-y lg:divide-y-0 lg:divide-x divide-neutral-700 rounded-xl overflow-hidden">
+  
+  <!-- Abschlussarbeiten -->
+  <a class="group relative z-10 p-6 h-full flex flex-col bg-neutral-900 justify-center items-center text-center transition duration-300 hover:bg-neutral-800 hover:shadow-xl hover:shadow-yellow-500/10"
+    href="/konkrete_abschlussarbeiten">
+    <div class="mb-5 flex flex-col justify-center items-center">
+      <div class="mt-5">
+        <p class="font-semibold text-4xl text-white flex items-center gap-2">
+          Abschlussarbeiten 🎓
+        </p>
+        <img class="w-full object-cover rounded-xl mt-5 shadow-md shadow-neutral-700 group-hover:shadow-yellow-400/50" 
+             src="/images/konkret-show.png" 
+             alt="Abschlussarbeiten Image">
       </div>
+    </div>
+    <p class="mt-auto">
+      <span class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] transition">
+        ➡️ Go to page
+      </span>
+    </p>
+  </a>
+
+  <!-- Klausuren -->
+  <a class="group relative z-10 p-6 h-full flex flex-col bg-neutral-900 justify-center items-center text-center transition duration-300 hover:bg-neutral-800 hover:shadow-xl hover:shadow-yellow-500/10"
+    href="/klausuren">
+    <div class="mb-5 flex flex-col justify-center items-center">
+      <div class="mt-5">
+        <p class="font-semibold text-4xl text-[#ffff80] flex items-center gap-2">
+         Klausuren ✍️ 
+        </p>
+        <img class="w-full object-cover rounded-xl mt-5 shadow-md shadow-neutral-700 group-hover:shadow-yellow-400/50" 
+             src="/images/klausur-show.png" 
+             alt="Klausuren Image">
+      </div>
+    </div>
+    <p class="mt-auto">
+      <span class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] transition">
+        ➡️ Go to page
+      </span>
+    </p>
+  </a>
+
+  <!-- Seminare -->
+  <a class="group relative z-10 p-6 h-full flex flex-col bg-neutral-900 justify-center items-center text-center transition duration-300 hover:bg-neutral-800 hover:shadow-xl hover:shadow-yellow-500/10"
+    href="/seminare">
+    <div class="mb-5 flex flex-col justify-center items-center">
+      <div class="mt-5">
+        <p class="font-semibold text-4xl text-[#ff0] flex items-center gap-2">
+          Seminare 📚 
+        </p>
+        <img class="w-full object-cover rounded-xl mt-5 shadow-md shadow-neutral-700 group-hover:shadow-yellow-400/50" 
+             src="/images/seminare.png" 
+             alt="Seminare Image">
+      </div>
+    </div>
+    <p class="mt-auto">
+      <span class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] transition">
+        ➡️ Go to page
+      </span>
+    </p>
+  </a>
+
+</div>
+</div>
     </div>
 
     <div class="bg-neutral-900">
@@ -374,32 +386,36 @@
 
         <div class="max-w-3xl mb-10 lg:mb-14">
           <h2
-          style="font-weight: 600; font-size: 2rem; line-height: 1.5; display: inline; background: linear-gradient(to right, white, #EE552F); -webkit-background-clip: text; color: transparent; transition: background 0.5s ease-in-out;">
-          Finde dein <span style="color: #EE552F;">Seminar 🔎</span>
-        </h2>
-        <p class="mt-1 text-neutral-400">
-          Mit unserem schnellen Suchfeld ⚡ kannst du Seminare nach Titel filtern – und das alles in Echtzeit! Dank der leistungsstarken Kombination von Phoenix und LiveView erhältst du sofortige Ergebnisse, ohne auf die Seite neu zu laden.
-        </p>        
+            style="font-weight: 600; font-size: 2rem; line-height: 1.5; display: inline; background: linear-gradient(to right, white, #EE552F); -webkit-background-clip: text; color: transparent; transition: background 0.5s ease-in-out;">
+            Finde dein <span style="color: #EE552F;">Seminar 🔎</span>
+          </h2>
+          <p class="mt-1 text-neutral-400">
+            Mit unserem schnellen Suchfeld ⚡ kannst du Seminare nach Titel filtern – und das alles in Echtzeit! Dank der
+            leistungsstarken Kombination von Phoenix und LiveView erhältst du sofortige Ergebnisse, ohne auf die Seite
+            neu zu laden.
+          </p>
         </div>
 
         <div class="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-center">
           <div>
 
             <blockquote>
-              <p class="font-medium text-xl text-white md:text-2xl md:leading-normal xl:text-3xl xl:leading-normal">
+              <p class="font-medium text-xl text-white md:text-2xl md:leading-normal 
+              xl:text-3xl xl:leading-normal hover:text-[#EE552F] transition-colors duration-500 ease-in-out">
                 Mit unserer Seminar-Suche findest du schnell und einfach das passende Thema, das deine Interessen
                 abdeckt.
               </p>
 
               <footer class="mt-6">
                 <div class="flex items-center">
-                  <div class="md:hidden shrink-0">
+                  <div class="shrink-0">
                     <img class="size-12 rounded-full"
-                      src="https://images.unsplash.com/photo-1671725501928-b7d85698ccd8?q=80&w=320&h=320&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Avatar">
+                      src="/images/punk-bird.png"
+                      alt="punk">
                   </div>
                   <div class="ms-4 md:ms-0">
-                    <div class="text-base font-semibold text-white">Thomas Osterlehner</div>
+                    <div class="text-base font-semibold text-white 
+                    hover:text-[#EE552F] transition-colors duration-500 ease-in-out">Thomas Osterlehner</div>
                     <div class="text-xs text-neutral-400">Wissenschaftlicher Mitarbeiter | FernUniversität Hagen</div>
                   </div>
                 </div>
@@ -407,11 +423,13 @@
             </blockquote>
           </div>
 
-          <a href="/filterseminare">
+          <a href="/filterseminare" class="group">
             <div class="hidden md:block mb-24 md:mb-0">
-              <img class="rounded-xl" src="/images/title-search.png" alt="Seminar Suche">
+              <img class="rounded-xl transition-transform duration-300 transform group-hover:scale-105 group-hover:shadow-[0_0_20px_#F25A28]" 
+                   src="/images/title-search.png" 
+                   alt="Seminar Suche">
             </div>
-          </a>
+          </a>          
         </div>
       </div>
     </div>
@@ -420,10 +438,10 @@
     <div class="bg-neutral-900">
       <div class="max-w-5xl px-4 xl:px-0 py-10 mx-auto">
         <div class="border border-neutral-800 rounded-xl">
-          <div class="p-4 lg:p-8 bg-linear-to-bl from-neutral-800 via-neutral-900 to-neutral-950 rounded-xl">
+          <div class="p-4 lg:p-8 bg-gradient-to-bl from-neutral-800 via-neutral-900 to-neutral-950 rounded-xl">
             <div class="grid grid-cols-1 sm:grid-cols-3 items-center gap-y-20 gap-x-12">
-
-              <div class="relative text-center">
+    
+              <div class="relative text-center transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#EE552F]/50">
                 <div class="flex justify-center items-center -space-x-5">
                   <img class="size-10 rounded" src="/images/elixir-icon.png" alt="Elixir Icon">
                 </div>
@@ -432,8 +450,8 @@
                   <p class="mt-1 text-sm sm:text-base text-neutral-400">skalierbare, fehlertolerante Anwendungen ⚙️</p>
                 </div>
               </div>
-
-              <div class="relative text-center">
+    
+              <div class="relative text-center transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#EE552F]/50">
                 <div class="flex justify-center items-center -space-x-5">
                   <img class="size-10 rounded" src="/images/phoenix-icon2.png" alt="Phoenix Icon">
                 </div>
@@ -442,56 +460,54 @@
                   <p class="mt-1 text-sm sm:text-base text-neutral-400">moderne, performante Webanwendungen ⚡</p>
                 </div>
               </div>
-
-              <div class="relative text-center">
+    
+              <div class="relative text-center transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#EE552F]/50">
                 <div class="flex justify-center items-center -space-x-5">
                   <img class="size-10 rounded" src="/images/postgresql-icon.png" alt="Postgresql Icon">
                 </div>
                 <div class="mt-3 sm:mt-5">
                   <h3 class="text-lg sm:text-3xl font-semibold text-white">PostgreSQL 🐘</h3>
-                  <p class="mt-1 text-sm sm:text-base text-neutral-400">zuverlässige und flexible Datenbanklösung, ideal
-                    für komplexe Abfrage 🗄️</p>
+                  <p class="mt-1 text-sm sm:text-base text-neutral-400">zuverlässige und flexible Datenbanklösung, ideal für komplexe Abfragen 🗄️</p>
                 </div>
               </div>
+    
             </div>
           </div>
         </div>
       </div>
     </div>
-
+    
     <div class="bg-neutral-900">
-      <div class="max-w-5xl px-4 xl:px-0 py-10 lg:pt-20  mx-auto">
+      <div class="max-w-5xl px-4 xl:px-0 py-10 lg:pt-20 mx-auto">
         <div class="max-w-3xl mb-10 lg:mb-14">
-          <h2 style="font-weight: 600; font-size: 2rem; line-height: 1.5; display: inline; background: linear-gradient(to right, white, #3A0A53); -webkit-background-clip: text; color: transparent;">
+          <h2
+            style="font-weight: 600; font-size: 2rem; line-height: 1.5; display: inline; background: linear-gradient(to right, white, #3A0A53); -webkit-background-clip: text; color: transparent;">
             Finde gezielt die <span style="color: #8000ff;">Abschlussarbeiten</span>, die dich interessieren!
             <span style="color: #3A0A53;">🚀</span>
           </h2>
-          
           <p class="mt-1 text-neutral-400">Nutze die smarte Filterfunktion 🤓, um schnell und einfach relevante
             Abschlussarbeiten zu entdecken.</p>
         </div>
-
+    
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 lg:items-center">
           <a href="/filter_konkret">
-            <div class="h-[200px] lg:h-[300px]">
+            <div class="h-[200px] lg:h-[300px] transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#EE552F]/50">
               <img class="w-full h-full object-cover rounded-xl" src="/images/dropdown-filter-new.png" alt="Features Image">
             </div>
           </a>
-          
-
+    
           <div>
             <div class="mb-4">
               <h3 class="text-[#ff0] text-xs font-medium uppercase">
                 Steps
               </h3>
             </div>
-
+    
+            <!-- Step 1 -->
             <div class="flex gap-x-5 ms-1">
-              <div
-                class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+              <div class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
                 <div class="relative z-10 size-8 flex justify-center items-center">
-                  <span
-                    class="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-[#ff0] font-semibold text-xs uppercase rounded-full">
+                  <span class="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-[#ff0] font-semibold text-xs uppercase rounded-full">
                     1
                   </span>
                 </div>
@@ -503,18 +519,16 @@
                 </p>
               </div>
             </div>
-
+    
+            <!-- Step 2 -->
             <div class="flex gap-x-5 ms-1">
-              <div
-                class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+              <div class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
                 <div class="relative z-10 size-8 flex justify-center items-center">
-                  <span
-                    class="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-[#ff0] font-semibold text-xs uppercase rounded-full">
+                  <span class="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-[#ff0] font-semibold text-xs uppercase rounded-full">
                     2
                   </span>
                 </div>
               </div>
-
               <div class="grow pt-0.5 pb-8 sm:pb-12">
                 <p class="text-sm lg:text-base text-neutral-400">
                   <span class="text-white">Bestimme das Semester:</span>
@@ -522,17 +536,16 @@
                 </p>
               </div>
             </div>
+    
+            <!-- Step 3 -->
             <div class="flex gap-x-5 ms-1">
-              <div
-                class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+              <div class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
                 <div class="relative z-10 size-8 flex justify-center items-center">
-                  <span
-                    class="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-[#ff0] font-semibold text-xs uppercase rounded-full">
+                  <span class="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-[#ff0] font-semibold text-xs uppercase rounded-full">
                     3
                   </span>
                 </div>
               </div>
-
               <div class="grow pt-0.5 pb-8 sm:pb-12">
                 <p class="text-sm md:text-base text-neutral-400">
                   <span class="text-white">Filtere nach Forschungsprojekt:</span>
@@ -540,13 +553,12 @@
                 </p>
               </div>
             </div>
-
+    
+            <!-- Step 4 -->
             <div class="flex gap-x-5 ms-1">
-              <div
-                class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+              <div class="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
                 <div class="relative z-10 size-8 flex justify-center items-center">
-                  <span
-                    class="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-[#ff0] font-semibold text-xs uppercase rounded-full">
+                  <span class="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-[#ff0] font-semibold text-xs uppercase rounded-full">
                     4
                   </span>
                 </div>
@@ -558,7 +570,7 @@
                 </p>
               </div>
             </div>
-
+    
             <a class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-hidden"
               href="/filter_konkret">
               Schnell, einfach und effizient – probiere es aus!
@@ -567,7 +579,7 @@
         </div>
       </div>
     </div>
-
+    
   </main>
 
   <footer class="bg-neutral-900 dark:bg-gray-800 dark:text-gray-200 p-8 font-sans">
