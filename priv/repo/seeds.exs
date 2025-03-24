@@ -10,22 +10,14 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 alias Lehrstuhl.Repo
-alias Lehrstuhl.Persons.Mitarbeiter
-alias Lehrstuhl.Persons.Student
-alias Lehrstuhl.Abschlussarbeiten.AbstrakteAbschlussarbeiten
-alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
-alias Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten
-alias Lehrstuhl.Seminare.AbstraktesSeminar
-alias Lehrstuhl.Seminare.Seminar
-alias Lehrstuhl.Seminare.Seminarergebnis
-alias Lehrstuhl.Klausuren.Klausurergebnis
-alias Lehrstuhl.Klausuren.Klausur
-alias Lehrstuhl.Klausuren
-alias Lehrstuhl.Klausuren.Modul
+alias Lehrstuhl.Persons.{Mitarbeiter, Student}
+alias Lehrstuhl.Abschlussarbeiten.{AbstrakteAbschlussarbeiten, KonkreteAbschlussarbeiten, ErgebnisseAbschlussarbeiten}
+alias Lehrstuhl.Seminare.{AbstraktesSeminar, Seminar, Seminarergebnis}
+alias Lehrstuhl.Klausuren.{Klausurergebnis, Klausur, Modul}
 alias Lehrstuhl.Accounts.User
+
 import Bcrypt, only: [hash_pwd_salt: 1]
 
-# Passwort hashen
 hashed_password = hash_pwd_salt("password123")
 
 Repo.insert!(%User{
@@ -413,6 +405,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-02-01],
   note: 1.5,
+  versuche: 1,
   student_id: student1.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit1.id
 })
@@ -438,6 +431,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
   note: 2.1,
+  versuche: 1,
   student_id: student2.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit2.id
 })
@@ -463,6 +457,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-07-01],
   note: 2.3,
+  versuche: 1,
   student_id: student3.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit3.id
 })
@@ -488,6 +483,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-05-01],
   note: 2.9,
+  versuche: 1,
   student_id: student4.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit4.id
 })
@@ -513,6 +509,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-03-01],
   note: 2.3,
+  versuche: 1,
   student_id: student5.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit5.id
 })
@@ -538,6 +535,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-09-01],
   note: 1.7,
+  versuche: 1,
   student_id: student6.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit6.id
 })
@@ -563,6 +561,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :nichtbestanden,
   korrekturdatum: ~D[2024-02-01],
   note: 5.0,
+  versuche: 1,
   student_id: student7.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit7.id
 })
@@ -588,6 +587,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :nichtbestanden,
   korrekturdatum: ~D[2022-06-11],
   note: 5.0,
+  versuche: 1,
   student_id: student8.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit8.id
 })
@@ -613,6 +613,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
   note: 2.7,
+  versuche: 1,
   student_id: student9.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit9.id
 })
@@ -638,6 +639,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
   note: 2.6,
+  versuche: 1,
   student_id: student10.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit10.id
 })
@@ -663,6 +665,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-02-01],
   note: 2.7,
+  versuche: 1,
   student_id: student11.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit11.id
 })
@@ -688,6 +691,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
   note: 1.7,
+  versuche: 1,
   student_id: student12.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit12.id
 })
@@ -713,6 +717,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-08-01],
   note: 1.5,
+  versuche: 1,
   student_id: student13.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit13.id
 })
@@ -737,6 +742,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-02-01],
   note: 1.5,
+  versuche: 1,
   student_id: student14.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit14.id
 })
@@ -761,6 +767,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-08-01],
   note: 1.5,
+  versuche: 1,
   student_id: student15.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit15.id
 })
@@ -785,6 +792,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-01-01],
   note: 1.5,
+  versuche: 1,
   student_id: student16.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit16.id
 })
@@ -809,6 +817,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-10-01],
   note: 1.5,
+  versuche: 1,
   student_id: student17.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit17.id
 })
@@ -833,6 +842,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-10-01],
   note: 1.5,
+  versuche: 1,
   student_id: student18.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit18.id
 })
@@ -857,6 +867,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-10-15],
   note: 1.5,
+  versuche: 1,
   student_id: student19.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit19.id
 })
@@ -881,6 +892,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-01-15],
   note: 1.5,
+  versuche: 1,
   student_id: student20.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit20.id
 })
@@ -905,6 +917,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-10-10],
   note: 1.5,
+  versuche: 1,
   student_id: student7.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit21.id
 })
@@ -930,6 +943,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2023-04-15],
   note: 1.5,
+  versuche: 1,
   student_id: student19.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit22.id
 })
@@ -955,6 +969,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-09-15],
   note: 1.5,
+  versuche: 1,
   student_id: student20.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit23.id
 })
@@ -969,7 +984,7 @@ konkrete_abschlussarbeit24 = Repo.insert!(%KonkreteAbschlussarbeiten{
   anmeldung_pruefungsamt: ~D[2023-06-25],
   abgabedatum: ~D[2023-12-10],
   studienniveau: :bachelor,
-  student_id: student20.id,
+  student_id: student18.id,
   mitarbeiter_id: mitarbeiter1.id,
   abstrakte_abschlussarbeiten_id: abstrakte_abschlussarbeit4.id
 })
@@ -979,7 +994,8 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2024-01-15],
   note: 1.5,
-  student_id: student20.id,
+  versuche: 1,
+  student_id: student18.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit24.id
 })
 
@@ -1094,6 +1110,7 @@ Repo.insert!(%ErgebnisseAbschlussarbeiten{
   status: :bestanden,
   korrekturdatum: ~D[2022-02-01],
   note: 2.7,
+  versuche: 1,
   student_id: student8.id,
   konkrete_abschlussarbeiten_id: konkrete_abschlussarbeit30.id
 })
@@ -1253,6 +1270,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.5,
   seminararbeit_teilnote: 1.5,
   gesamtergebnis: 1.4,
+  versuche: 1,
   seminar_id: seminar1.id,
   student_id: student1.id
 })
@@ -1269,6 +1287,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.2,
   seminararbeit_teilnote: 1.2,
   gesamtergebnis: 1.1,
+  versuche: 1,
   seminar_id: seminar2.id,
   student_id: student2.id
 })
@@ -1285,6 +1304,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.8,
   seminararbeit_teilnote: 1.8,
   gesamtergebnis: 1.9,
+  versuche: 1,
   seminar_id: seminar3.id,
   student_id: student3.id
 })
@@ -1301,6 +1321,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.6,
   seminararbeit_teilnote: 1.6,
   gesamtergebnis: 1.65,
+  versuche: 1,
   seminar_id: seminar4.id,
   student_id: student4.id
 })
@@ -1317,6 +1338,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.3,
   seminararbeit_teilnote: 1.3,
   gesamtergebnis: 1.35,
+  versuche: 1,
   seminar_id: seminar5.id,
   student_id: student5.id
 })
@@ -1333,6 +1355,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.1,
   seminararbeit_teilnote: 1.1,
   gesamtergebnis: 1.15,
+  versuche: 1,
   seminar_id: seminar6.id,
   student_id: student6.id
 })
@@ -1349,6 +1372,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.7,
   seminararbeit_teilnote: 1.7,
   gesamtergebnis: 1.75,
+  versuche: 1,
   seminar_id: seminar7.id,
   student_id: student7.id
 })
@@ -1365,6 +1389,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.4,
   seminararbeit_teilnote: 1.4,
   gesamtergebnis: 1.45,
+  versuche: 1,
   seminar_id: seminar8.id,
   student_id: student8.id
 })
@@ -1381,6 +1406,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.0,
   seminararbeit_teilnote: 1.0,
   gesamtergebnis: 1.05,
+  versuche: 1,
   seminar_id: seminar9.id,
   student_id: student9.id
 })
@@ -1397,6 +1423,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.8,
   seminararbeit_teilnote: 1.8,
   gesamtergebnis: 1.85,
+  versuche: 1,
   seminar_id: seminar10.id,
   student_id: student10.id
 })
@@ -1413,6 +1440,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.5,
   seminararbeit_teilnote: 1.5,
   gesamtergebnis: 1.55,
+  versuche: 1,
   seminar_id: seminar10.id,
   student_id: student11.id
 })
@@ -1429,6 +1457,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.3,
   seminararbeit_teilnote: 1.3,
   gesamtergebnis: 1.35,
+  versuche: 1,
   seminar_id: seminar10.id,
   student_id: student12.id
 })
@@ -1445,6 +1474,7 @@ Repo.insert!(%Seminarergebnis{
   seminararbeit_notenvorschlag: 1.1,
   seminararbeit_teilnote: 1.1,
   gesamtergebnis: 1.15,
+  versuche: 1,
   seminar_id: seminar10.id,
   student_id: student13.id
 })
@@ -1548,59 +1578,69 @@ klausur5 = Repo.insert!(%Klausur{
 Repo.insert!(%Klausurergebnis{
   punkte: 85,
   student_id: student1.id,
-  klausur_id: klausur1.id
+  klausur_id: klausur1.id,
+  versuche: 0
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 45,
   student_id: student1.id,
-  klausur_id: klausur1.id
+  klausur_id: klausur1.id,
+  versuche: 1
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 25,
   student_id: student1.id,
-  klausur_id: klausur1.id
+  klausur_id: klausur1.id,
+  versuche: 2
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 90,
   student_id: student2.id,
-  klausur_id: klausur1.id
+  klausur_id: klausur1.id,
+  versuche: 1
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 49,
   student_id: student2.id,
-  klausur_id: klausur1.id
+  klausur_id: klausur1.id,
+  versuche: 1
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 78,
   student_id: student3.id,
-  klausur_id: klausur2.id
+  klausur_id: klausur2.id,
+  versuche: 3
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 24,
   student_id: student3.id,
-  klausur_id: klausur2.id
+  klausur_id: klausur2.id,
+  versuche: 1
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 65,
   student_id: student4.id,
-  klausur_id: klausur2.id
+  klausur_id: klausur2.id,
+  versuche: 1
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 50,
   student_id: student5.id,
-  klausur_id: klausur3.id
+  klausur_id: klausur3.id,
+  versuche: 1
 })
 
 Repo.insert!(%Klausurergebnis{
   punkte: 88,
   student_id: student6.id,
-  klausur_id: klausur3.id
+  klausur_id: klausur3.id,
+  versuche: 1
 })

@@ -17,6 +17,7 @@ defmodule Lehrstuhl.Repo.Migrations.CreateSeminarergebnisse do
       add :gesamtergebnis, :decimal
       add :student_id, references(:students, on_delete: :nothing, type: :uuid)
       add :seminar_id, references(:seminare, on_delete: :nothing, type: :uuid)
+      add :versuche, :integer, default: 0
 
       timestamps()
     end

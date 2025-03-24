@@ -11,6 +11,7 @@ defmodule Lehrstuhl.Repo.Migrations.CreateErgebnisseAbschlussarbeiten do
       add :note, :decimal
       add :konkrete_abschlussarbeiten_id, references(:konkrete_abschlussarbeiten, on_delete: :nothing, type: :uuid)
       add :student_id, references(:students, on_delete: :nothing, type: :uuid)
+      add :versuche, :integer, default: 0
       timestamps()
     end
 

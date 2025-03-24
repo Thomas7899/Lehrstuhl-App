@@ -19,6 +19,7 @@ defmodule Lehrstuhl.Seminare.Seminarergebnis do
     field :seminararbeit_notenvorschlag, :decimal
     field :seminararbeit_teilnote, :decimal
     field :gesamtergebnis, :decimal
+    field :versuche, :integer, default: 0
     belongs_to :student, Student
     belongs_to :seminar, Seminar
 
@@ -41,7 +42,8 @@ defmodule Lehrstuhl.Seminare.Seminarergebnis do
       :seminararbeit_teilnote,
       :gesamtergebnis,
       :seminar_id,
-      :student_id
+      :student_id,
+      :versuche
     ])
     |> validate_required([
       :seminar_id,

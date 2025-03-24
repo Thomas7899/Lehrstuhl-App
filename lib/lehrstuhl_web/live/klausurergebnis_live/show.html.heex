@@ -1,36 +1,69 @@
-<.header>
-  Klausurergebnis <%= @klausurergebnis.id %>
-  <:subtitle>This is a klausurergebnis record from your database.</:subtitle>
-  <:actions>
-    <.link
-      patch={~p"/klausurergebnisse/#{@klausurergebnis}/show/edit"}
-      phx-click={JS.push_focus()}
-    >
-      <.button>Edit klausurergebnis</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-4">
+  <.header class="relative">
+    <div class="absolute top-0 right-0">
+      <.link patch={~p"/klausurergebnisse/#{@klausurergebnis}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit</.button>
+      </.link>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-2">
+      <div class="text-xl font-bold leading-none text-white hover:text-[#8000ff] my-2">Klausurergebnis</div>
+      <div class="text-l leading-none text-white hover:text-[#8000ff]">
+        <%= @klausurergebnis.id %>
+      </div>
+    </div>
+  </.header>
 
-<.list>
-  <:item title="Student"><%= @klausurergebnis.student.matrikelnummer %></:item>
-  <:item title="Klausur"><%= @klausurergebnis.klausur.kenner %></:item>
-  <:item title="Punkte"><%= @klausurergebnis.punkte %></:item>
-</.list>
+  <div class="mt-4">
+    <.list>
+      <:item title="Student"><%= @klausurergebnis.student.matrikelnummer %></:item>
+      <:item title="Klausur"><%= @klausurergebnis.klausur.kenner %></:item>
+      <:item title="Punkte"><%= @klausurergebnis.punkte %></:item>
+    </.list>
+  </div>
 
-<.back navigate={~p"/klausurergebnisse"}>Back to Klausurergebnisse</.back>
+  <div class="flex justify-center gap-x-8 mt-4">
+    <.back navigate={~p"/klausurergebnisse"}>Back</.back>
+  </div>
 
-<.modal
-  :if={@live_action == :edit}
-  id="klausurergebnis-modal"
-  show
-  on_cancel={JS.patch(~p"/klausurergebnisse/#{@klausurergebnis}")}
->
-  <.live_component
-    module={LehrstuhlWeb.KlausurergebnisLive.FormComponent}
-    id={@klausurergebnis.id}
-    title={@page_title}
-    action={@live_action}
-    klausurergebnis={@klausurergebnis}
-    patch={~p"/klausurergebnisse/#{@klausurergebnis}"}
-  />
-</.modal>
+  <.modal :if={@live_action == :edit} id="klausurergebnis-modal" show on_cancel={JS.patch(~p"/klausurergebnisse/#{@klausurergebnis}")}>
+    <.live_component
+      module={LehrstuhlWeb.KlausurergebnisLive.FormComponent}
+      id={@klausurergebnis.id}
+      title={@page_title}
+      action={@live_action}
+      klausurergebnis={@klausurergebnis}
+      patch={~p"/klausurergebnisse/#{@klausurergebnis}"}
+    />
+  </.modal>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Klausurwiederholungen</h1>
+
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-4">
+  <%= if @info_message do %>
+    <div class="alert alert-info mb-4 p-4 bg-blue-600 text-white rounded-lg">
+      <%= @info_message %>
+    </div>
+  <% end %>
+
+  <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+    <strong class="block text-lg">Versuche:</strong> 
+    <span class="text-gray-400"><%= @klausurergebnis.versuche%></span>
+  </div>
+
+  <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+    <strong class="block text-lg">Student:</strong> 
+    <span class="text-gray-400"><%= @klausurergebnis.student.matrikelnummer %></span>
+  </div>
+
+  <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+    <strong class="block text-lg">Klausur:</strong>
+    <span class="text-gray-400"><%= @klausurergebnis.klausur.kenner %></span>
+  </div>
+
+  <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+    <strong class="block text-lg">Punkte:</strong>
+    <span class="text-gray-400"><%= @klausurergebnis.punkte %></span>
+  </div>
+</div>
+
