@@ -1259,221 +1259,117 @@ seminar11 = Repo.insert!(%Seminar{
 #Seminarergebnisse
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Elixir Basics",
-  fachvortrag_datum: ~D[2024-01-15],
-  fachvortrag_start: ~T[09:00:00],
-  fachvortrag_stop: ~T[10:30:00],
-  fachvortrag_notenvorschlag: 1.3,
-  fachvortrag_teilnote: 1.3,
-  seminararbeit_titel: "Concurrent Programming with Elixir",
-  seminararbeit_einreichung: ~D[2024-01-01],
-  seminararbeit_notenvorschlag: 1.5,
-  seminararbeit_teilnote: 1.5,
-  gesamtergebnis: 1.4,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.5,
+  gesamt: 1.4,
   versuche: 1,
   seminar_id: seminar1.id,
   student_id: student1.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Phoenix Framework",
-  fachvortrag_datum: ~D[2024-02-10],
-  fachvortrag_start: ~T[11:00:00],
-  fachvortrag_stop: ~T[12:30:00],
-  fachvortrag_notenvorschlag: 1.0,
-  fachvortrag_teilnote: 1.0,
-  seminararbeit_titel: "Building Web Applications",
-  seminararbeit_einreichung: ~D[2024-01-20],
-  seminararbeit_notenvorschlag: 1.2,
-  seminararbeit_teilnote: 1.2,
-  gesamtergebnis: 1.1,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.2,
+  gesamt: 1.1,
   versuche: 1,
   seminar_id: seminar2.id,
   student_id: student2.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Functional Programming Concepts",
-  fachvortrag_datum: ~D[2024-03-12],
-  fachvortrag_start: ~T[13:00:00],
-  fachvortrag_stop: ~T[14:30:00],
-  fachvortrag_notenvorschlag: 2.0,
-  fachvortrag_teilnote: 2.0,
-  seminararbeit_titel: "Immutable Data Structures",
-  seminararbeit_einreichung: ~D[2024-02-28],
-  seminararbeit_notenvorschlag: 1.8,
-  seminararbeit_teilnote: 1.8,
-  gesamtergebnis: 1.9,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.3,
+  gesamt: 1.2,
   versuche: 1,
   seminar_id: seminar3.id,
   student_id: student3.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Distributed Systems",
-  fachvortrag_datum: ~D[2024-04-05],
-  fachvortrag_start: ~T[10:00:00],
-  fachvortrag_stop: ~T[11:30:00],
-  fachvortrag_notenvorschlag: 1.7,
-  fachvortrag_teilnote: 1.7,
-  seminararbeit_titel: "Scalable Applications",
-  seminararbeit_einreichung: ~D[2024-03-15],
-  seminararbeit_notenvorschlag: 1.6,
-  seminararbeit_teilnote: 1.6,
-  gesamtergebnis: 1.65,
+  mündlich_note: 1.5,
+  schriftlich_note: 1.0,
+  gesamt: 1.25,
   versuche: 1,
   seminar_id: seminar4.id,
   student_id: student4.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Real-Time Communication",
-  fachvortrag_datum: ~D[2024-05-18],
-  fachvortrag_start: ~T[15:00:00],
-  fachvortrag_stop: ~T[16:30:00],
-  fachvortrag_notenvorschlag: 1.4,
-  fachvortrag_teilnote: 1.4,
-  seminararbeit_titel: "WebSockets with Phoenix",
-  seminararbeit_einreichung: ~D[2024-05-01],
-  seminararbeit_notenvorschlag: 1.3,
-  seminararbeit_teilnote: 1.3,
-  gesamtergebnis: 1.35,
+  mündlich_note: 1.4,
+  schriftlich_note: 1.0,
+  gesamt: 1.2,
   versuche: 1,
   seminar_id: seminar5.id,
   student_id: student5.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Testing Elixir Applications",
-  fachvortrag_datum: ~D[2024-06-20],
-  fachvortrag_start: ~T[10:00:00],
-  fachvortrag_stop: ~T[11:30:00],
-  fachvortrag_notenvorschlag: 1.2,
-  fachvortrag_teilnote: 1.2,
-  seminararbeit_titel: "Test Automation Strategies",
-  seminararbeit_einreichung: ~D[2024-06-01],
-  seminararbeit_notenvorschlag: 1.1,
-  seminararbeit_teilnote: 1.1,
-  gesamtergebnis: 1.15,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.5,
+  gesamt: 1.25,
   versuche: 1,
   seminar_id: seminar6.id,
   student_id: student6.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Advanced Pattern Matching",
-  fachvortrag_datum: ~D[2024-07-15],
-  fachvortrag_start: ~T[14:00:00],
-  fachvortrag_stop: ~T[15:30:00],
-  fachvortrag_notenvorschlag: 1.8,
-  fachvortrag_teilnote: 1.8,
-  seminararbeit_titel: "Patterns in Functional Programming",
-  seminararbeit_einreichung: ~D[2024-07-01],
-  seminararbeit_notenvorschlag: 1.7,
-  seminararbeit_teilnote: 1.7,
-  gesamtergebnis: 1.75,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.4,
+  gesamt: 1.2,
   versuche: 1,
   seminar_id: seminar7.id,
   student_id: student7.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Telemetry in Elixir",
-  fachvortrag_datum: ~D[2024-08-22],
-  fachvortrag_start: ~T[09:30:00],
-  fachvortrag_stop: ~T[11:00:00],
-  fachvortrag_notenvorschlag: 1.5,
-  fachvortrag_teilnote: 1.5,
-  seminararbeit_titel: "Monitoring Applications",
-  seminararbeit_einreichung: ~D[2024-08-01],
-  seminararbeit_notenvorschlag: 1.4,
-  seminararbeit_teilnote: 1.4,
-  gesamtergebnis: 1.45,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.3,
+  gesamt: 1.15,
   versuche: 1,
   seminar_id: seminar8.id,
   student_id: student8.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Metaprogramming in Elixir",
-  fachvortrag_datum: ~D[2024-09-10],
-  fachvortrag_start: ~T[10:00:00],
-  fachvortrag_stop: ~T[11:30:00],
-  fachvortrag_notenvorschlag: 1.1,
-  fachvortrag_teilnote: 1.1,
-  seminararbeit_titel: "Macros and Code Generation",
-  seminararbeit_einreichung: ~D[2024-09-01],
-  seminararbeit_notenvorschlag: 1.0,
-  seminararbeit_teilnote: 1.0,
-  gesamtergebnis: 1.05,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.2,
+  gesamt: 1.1,
   versuche: 1,
   seminar_id: seminar9.id,
   student_id: student9.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Erlang Ecosystem",
-  fachvortrag_datum: ~D[2024-10-05],
-  fachvortrag_start: ~T[09:00:00],
-  fachvortrag_stop: ~T[10:30:00],
-  fachvortrag_notenvorschlag: 1.9,
-  fachvortrag_teilnote: 1.9,
-  seminararbeit_titel: "Interoperability in Elixir",
-  seminararbeit_einreichung: ~D[2024-09-20],
-  seminararbeit_notenvorschlag: 1.8,
-  seminararbeit_teilnote: 1.8,
-  gesamtergebnis: 1.85,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.5,
+  gesamt: 1.25,
   versuche: 1,
   seminar_id: seminar10.id,
   student_id: student10.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Functional Programming Paradigms",
-  fachvortrag_datum: ~D[2024-11-15],
-  fachvortrag_start: ~T[10:00:00],
-  fachvortrag_stop: ~T[11:30:00],
-  fachvortrag_notenvorschlag: 1.6,
-  fachvortrag_teilnote: 1.6,
-  seminararbeit_titel: "Comparative Analysis of Functional Languages",
-  seminararbeit_einreichung: ~D[2024-11-01],
-  seminararbeit_notenvorschlag: 1.5,
-  seminararbeit_teilnote: 1.5,
-  gesamtergebnis: 1.55,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.4,
+  gesamt: 1.2,
   versuche: 1,
   seminar_id: seminar10.id,
   student_id: student11.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Software Testing Strategies",
-  fachvortrag_datum: ~D[2024-12-20],
-  fachvortrag_start: ~T[09:00:00],
-  fachvortrag_stop: ~T[10:30:00],
-  fachvortrag_notenvorschlag: 1.4,
-  fachvortrag_teilnote: 1.4,
-  seminararbeit_titel: "Test-Driven Development",
-  seminararbeit_einreichung: ~D[2024-12-01],
-  seminararbeit_notenvorschlag: 1.3,
-  seminararbeit_teilnote: 1.3,
-  gesamtergebnis: 1.35,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.3,
+  gesamt: 1.15,
   versuche: 1,
   seminar_id: seminar10.id,
   student_id: student12.id
 })
 
 Repo.insert!(%Seminarergebnis{
-  fachvortrag_titel: "Data Structures and Algorithms",
-  fachvortrag_datum: ~D[2025-01-15],
-  fachvortrag_start: ~T[10:00:00],
-  fachvortrag_stop: ~T[11:30:00],
-  fachvortrag_notenvorschlag: 1.2,
-  fachvortrag_teilnote: 1.2,
-  seminararbeit_titel: "Algorithm Complexity Analysis",
-  seminararbeit_einreichung: ~D[2025-01-01],
-  seminararbeit_notenvorschlag: 1.1,
-  seminararbeit_teilnote: 1.1,
-  gesamtergebnis: 1.15,
+  mündlich_note: 1.0,
+  schriftlich_note: 1.2,
+  gesamt: 1.1,
   versuche: 1,
   seminar_id: seminar10.id,
   student_id: student13.id
@@ -1482,37 +1378,57 @@ Repo.insert!(%Seminarergebnis{
 # Module
 
 modul1 = Repo.insert!(%Modul{
-  id: "1a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  modulnummer: "32561",
+  titel: "Entwurf und Implementierung von Informationssystemen",
+  einsendearbeiten: "2",
+  ects: :zehn,
+  hilfsmittel: "keine",
+  stoffeingrenzung: "Kurs 8-10",
   mitarbeiter_id: mitarbeiter1.id,
-  name: "Entwicklung von Informationssystemen",
   lehrstuhlinhaber_id: mitarbeiter1.id
 })
 
 modul2 = Repo.insert!(%Modul{
-  id: "2a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  modulnummer: "63016",
+  titel: "Einführung in die objektorientierte Programmierung",
+  einsendearbeiten: "keine Voraussetzung",
+  ects: :zehn,
+  hilfsmittel: "2-seitiges DIN-A4",
+  stoffeingrenzung: "Kurs 7",
   mitarbeiter_id: mitarbeiter1.id,
-  name: "Künstliche Intelligenz",
   lehrstuhlinhaber_id: mitarbeiter5.id
 })
 
 modul3 = Repo.insert!(%Modul{
-  id: "3a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  modulnummer: "32563",
+  titel: "Betriebswirtschaftslehre für Informatiker",
+  einsendearbeiten: "keine Voraussetzung",
+  ects: :zehn,
+  hilfsmittel: "Formelsammlung, Taschenrechner",
+  stoffeingrenzung: "Kurs 1-5",
   mitarbeiter_id: mitarbeiter2.id,
-  name: "Programmiersprachen",
   lehrstuhlinhaber_id: mitarbeiter2.id
 })
 
 modul4 = Repo.insert!(%Modul{
-  id: "4a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  modulnummer: "31751",
+  titel: "Modellierung betrieblicher Informationssysteme",
+  einsendearbeiten: "2",
+  ects: :zehn,
+  hilfsmittel: "keine",
+  stoffeingrenzung: "Kurs 1",
   mitarbeiter_id: mitarbeiter3.id,
-  name: "Informationssystemarchitekturen",
   lehrstuhlinhaber_id: mitarbeiter3.id
 })
 
 modul5 = Repo.insert!(%Modul{
-  id: "5a7b3300-ae7f-11eb-bcbc-0242ac130002",
+  modulnummer: "31001",
+  titel: "Einführung in die Wirtschafts­wissen­schaft",
+  einsendearbeiten: "2 (Klausurvoraussetzung: mindestens 1-mal bestanden)",
+  ects: :zehn,
+  hilfsmittel: "keine",
+  stoffeingrenzung: "keine",
   mitarbeiter_id: mitarbeiter7.id,
-  name: "Kommunikationssysteme und Rechnernetze",
   lehrstuhlinhaber_id: mitarbeiter4.id
 })
 
@@ -1524,7 +1440,7 @@ klausur1 = Repo.insert!(%Klausur{
   beschreibung: "Klausur über lineare Algebra und Analysis",
   punkteGesamt: 100,
   semester: "SS24",
-  praesenzdatum: ~D[2025-06-15],
+  klausurdatum: ~D[2025-06-15],
   ort: "Raum A1",
   modul_id: modul1.id
 })
@@ -1535,7 +1451,7 @@ klausur2 = Repo.insert!(%Klausur{
   beschreibung: "Klausur über Datenstrukturen und Algorithmen",
   punkteGesamt: 80,
   semester: "SS24",
-  praesenzdatum: ~D[2025-06-20],
+  klausurdatum: ~D[2025-06-20],
   ort: "Raum B2",
   modul_id: modul2.id
 })
@@ -1546,7 +1462,7 @@ klausur3 = Repo.insert!(%Klausur{
   beschreibung: "Klausur über Grundlagen der Betriebswirtschaftslehre",
   punkteGesamt: 60,
   semester: "WS24/25",
-  praesenzdatum: ~D[2025-07-01],
+  klausurdatum: ~D[2025-07-01],
   ort: "Raum C3",
   modul_id: modul3.id
 })
@@ -1557,7 +1473,7 @@ klausur4 = Repo.insert!(%Klausur{
   beschreibung: "Klausur über Mechanik und Thermodynamik",
   punkteGesamt: 75,
   semester: "WS24/25",
-  praesenzdatum: ~D[2025-07-10],
+  klausurdatum: ~D[2025-07-10],
   ort: "Raum D4",
   modul_id: modul4.id
 })
@@ -1568,7 +1484,7 @@ klausur5 = Repo.insert!(%Klausur{
   beschreibung: "Klausur über Organische und Anorganische Chemie",
   punkteGesamt: 90,
   semester: "SS25",
-  praesenzdatum: ~D[2025-08-12],
+  klausurdatum: ~D[2025-08-12],
   ort: "Raum E5",
   modul_id: modul5.id
 })
@@ -1577,6 +1493,9 @@ klausur5 = Repo.insert!(%Klausur{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 85,
+  note: 2.0,
+  status: :bestanden,
+  pruefungsdatum: ~D[2025-06-15],
   student_id: student1.id,
   klausur_id: klausur1.id,
   versuche: 0
@@ -1584,6 +1503,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 45,
+  note: 5.0,
+  status: :nicht_bestanden,
+  pruefungsdatum: ~D[2025-06-15],
   student_id: student1.id,
   klausur_id: klausur1.id,
   versuche: 1
@@ -1591,6 +1513,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 25,
+  note: 5.0,
+  status: :nicht_bestanden,
+  pruefungsdatum: ~D[2025-06-15],
   student_id: student1.id,
   klausur_id: klausur1.id,
   versuche: 2
@@ -1598,6 +1523,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 90,
+  note: 1.5,
+  status: :bestanden,
+  pruefungsdatum: ~D[2025-06-20],
   student_id: student2.id,
   klausur_id: klausur1.id,
   versuche: 1
@@ -1605,6 +1533,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 49,
+  note: 5.0,
+  status: :nicht_bestanden,
+  pruefungsdatum: ~D[2025-06-20],
   student_id: student2.id,
   klausur_id: klausur1.id,
   versuche: 1
@@ -1612,6 +1543,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 78,
+  note: 2.3,
+  status: :bestanden,
+  pruefungsdatum: ~D[2025-06-20],
   student_id: student3.id,
   klausur_id: klausur2.id,
   versuche: 3
@@ -1619,6 +1553,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 24,
+  note: 5.0,
+  status: :nicht_bestanden,
+  pruefungsdatum: ~D[2025-06-20],
   student_id: student3.id,
   klausur_id: klausur2.id,
   versuche: 1
@@ -1626,6 +1563,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 65,
+  note: 3.0,
+  status: :bestanden,
+  pruefungsdatum: ~D[2025-06-20],
   student_id: student4.id,
   klausur_id: klausur2.id,
   versuche: 1
@@ -1633,6 +1573,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 50,
+  note: 4.0,
+  status: :bestanden,
+  pruefungsdatum: ~D[2025-06-20],
   student_id: student5.id,
   klausur_id: klausur3.id,
   versuche: 1
@@ -1640,6 +1583,9 @@ Repo.insert!(%Klausurergebnis{
 
 Repo.insert!(%Klausurergebnis{
   punkte: 88,
+  note: 1.7,
+  status: :bestanden,
+  pruefungsdatum: ~D[2025-06-20],
   student_id: student6.id,
   klausur_id: klausur3.id,
   versuche: 1

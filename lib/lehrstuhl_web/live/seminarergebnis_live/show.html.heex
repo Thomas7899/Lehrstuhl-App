@@ -14,20 +14,12 @@
   </.header>
 
   <div class="mt-4">
-    <.list>
-      <:item title="Fachvortrag Titel"><%= @seminarergebnis.fachvortrag_titel %></:item>
+    <.list>   
       <:item title="Student"><%= @seminarergebnis.student.nachname %></:item>
       <:item title="Seminar"><%= @seminarergebnis.seminar.titel %></:item>
-      <:item title="Fachvortrag Datum"><%= @seminarergebnis.fachvortrag_datum %></:item>
-      <:item title="Fachvortrag Start"><%= @seminarergebnis.fachvortrag_start %></:item>
-      <:item title="Fachvortrag Stop"><%= @seminarergebnis.fachvortrag_stop %></:item>
-      <:item title="Fachvortrag Notenvorschlag"><%= @seminarergebnis.fachvortrag_notenvorschlag %></:item>
-      <:item title="Fachvortrag Teilnote"><%= @seminarergebnis.fachvortrag_teilnote %></:item>
-      <:item title="Seminararbeit Titel"><%= @seminarergebnis.seminararbeit_titel %></:item>
-      <:item title="Seminararbeit Einreichung"><%= @seminarergebnis.seminararbeit_einreichung %></:item>
-      <:item title="Seminararbeit Notenvorschlag"><%= @seminarergebnis.seminararbeit_notenvorschlag %></:item>
-      <:item title="Seminararbeit Teilnote"><%= @seminarergebnis.seminararbeit_teilnote %></:item>
-      <:item title="Gesamtergebnis"><%= @seminarergebnis.gesamtergebnis %></:item>
+      <:item title="Eregbnis Fachvortrag"><%= @seminarergebnis.mündlich_note %></:item>
+      <:item title="Eregbnis schriftliche Ausarbeitung"><%= @seminarergebnis.schriftlich_note%></:item>
+      <:item title="Gesamtergebnis Seminar"><%= @seminarergebnis.gesamt %></:item>
     </.list>
   </div>
 

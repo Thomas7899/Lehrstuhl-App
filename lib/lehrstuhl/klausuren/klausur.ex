@@ -12,7 +12,7 @@ defmodule Lehrstuhl.Klausuren.Klausur do
     field :beschreibung, :string
     field :punkteGesamt, :integer
     field :semester, :string
-    field :praesenzdatum, :date
+    field :klausurdatum, :date
     field :ort, :string
     belongs_to :modul, Modul
 

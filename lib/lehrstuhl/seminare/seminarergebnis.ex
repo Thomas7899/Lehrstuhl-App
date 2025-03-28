@@ -8,17 +8,9 @@ defmodule Lehrstuhl.Seminare.Seminarergebnis do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "seminarergebnisse" do
-    field :fachvortrag_titel, :string
-    field :fachvortrag_datum, :date
-    field :fachvortrag_start, :time
-    field :fachvortrag_stop, :time
-    field :fachvortrag_notenvorschlag, :decimal
-    field :fachvortrag_teilnote, :decimal
-    field :seminararbeit_titel, :string
-    field :seminararbeit_einreichung, :date
-    field :seminararbeit_notenvorschlag, :decimal
-    field :seminararbeit_teilnote, :decimal
-    field :gesamtergebnis, :decimal
+    field :mündlich_note, :float
+    field :schriftlich_note, :float
+    field :gesamt, :float
     field :versuche, :integer, default: 0
     belongs_to :student, Student
     belongs_to :seminar, Seminar
@@ -30,17 +22,9 @@ defmodule Lehrstuhl.Seminare.Seminarergebnis do
   def changeset(seminarergebnis, attrs) do
     seminarergebnis
     |> cast(attrs, [
-      :fachvortrag_titel,
-      :fachvortrag_datum,
-      :fachvortrag_start,
-      :fachvortrag_stop,
-      :fachvortrag_notenvorschlag,
-      :fachvortrag_teilnote,
-      :seminararbeit_titel,
-      :seminararbeit_einreichung,
-      :seminararbeit_notenvorschlag,
-      :seminararbeit_teilnote,
-      :gesamtergebnis,
+      :mündlich_note,
+      :schriftlich_note,
+      :gesamt,
       :seminar_id,
       :student_id,
       :versuche

@@ -8,7 +8,7 @@ defmodule Lehrstuhl.Repo.Migrations.CreateKlausuren do
       add :beschreibung, :string
       add :punkteGesamt, :integer
       add :semester, :string
-      add :praesenzdatum, :date
+      add :klausurdatum, :date
       add :ort, :string
       add :modul_id, references(:module, on_delete: :nothing, type: :uuid)
 
