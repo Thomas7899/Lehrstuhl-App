@@ -30,14 +30,12 @@ defmodule LehrstuhlWeb.ModulLive.FormComponent do
           options={@all_mitarbeiter}
           label="Betreuer"
         />
-        <!-- <.input field={@form[:presenzdatum_id]} type="select" options={@my_options} label="Datum" /> -->
         <.input
           field={@form[:lehrstuhlinhaber_id]}
           type="select"
           options={@all_mitarbeiter}
           label="Lehrstuhlinhaber"
         />
-        <.input field={@form[:name]} type="text" label="Name" />
         <:actions>
           <.button phx-disable-with="Saving...">Save Modul</.button>
         </:actions>

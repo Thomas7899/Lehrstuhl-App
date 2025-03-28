@@ -3,15 +3,20 @@
   <:subtitle>This is a modul record from your database.</:subtitle>
   <:actions>
     <.link patch={~p"/module/#{@modul}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit modul</.button>
+      <.button>Edit</.button>
     </.link>
   </:actions>
 </.header>
 
 <.list>
-  <:item title="Betreuer"><%= @modul.mitarbeiter.email %></:item>
-  <:item title="Lehrstuhlinahber"><%= @modul.lehrstuhlinhaber.email %></:item>
-  <:item title="Name"><%= @modul.name %></:item>
+  <:item title="Betreuer"><%= @modul.mitarbeiter.nachname %></:item>
+  <:item title="Lehrstuhlinhaber|Postdoc"><%= @modul.lehrstuhlinhaber.nachname %></:item>
+  <:item title="Modulnummer"><%= @modul.modulnummer %></:item>
+  <:item title="Modulbezeichner"><%= @modul.titel %></:item>
+  <:item title="ECTS"><%= @modul.ects %></:item>
+  <:item title="Einsendearbeiten"><%= @modul.einsendearbeiten %></:item>
+  <:item title="Hilfsmittel"><%= @modul.hilfsmittel %></:item>
+  <:item title="Stoffeingrenzung"><%= @modul.stoffeingrenzung %></:item>
 </.list>
 
 <.back navigate={~p"/module"}>Back to module</.back>

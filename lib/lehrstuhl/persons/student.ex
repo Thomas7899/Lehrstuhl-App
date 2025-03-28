@@ -13,6 +13,8 @@ defmodule Lehrstuhl.Persons.Student do
     field :vorname, :string
     field :nachname, :string
     field :geburtsdatum, :date
+    has_many :seminarergebnisse, Lehrstuhl.Seminare.Seminarergebnis
+    has_many :ergebnisse_abschlussarbeiten, Lehrstuhl.Abschlussarbeiten.ErgebnisseAbschlussarbeiten
     has_one :konkrete_abschlussarbeiten, KonkreteAbschlussarbeiten
     has_many :klausurergebnisse, Lehrstuhl.Klausuren.Klausurergebnis
     has_many :klausuren, Lehrstuhl.Klausuren.Klausur

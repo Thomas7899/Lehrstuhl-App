@@ -16,13 +16,13 @@
       href={~p"/module/#{@klausur.modul}"}
       class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
     >
-      <%= @klausur.modul.name %>
+      <%= @klausur.modul.modulnummer %>
     </.link>
   </:item>
   <:item title="Beschreibung"><%= @klausur.beschreibung %></:item>
   <:item title="Punktegesamt"><%= @klausur.punkteGesamt %></:item>
   <:item title="Semester"><%= @klausur.semester %></:item>
-  <:item title="Praesenzdatum"><%= @klausur.praesenzdatum %></:item>
+  <:item title="Praesenzdatum"><%= @klausur.klausurdatum %></:item>
   <:item title="Ort"><%= @klausur.ort %></:item>
   <:item title="Notenschnitt "><%= @avg %></:item>
   <:item title="Anzahl Klausurteilnehmer "><%= @anz_studierende %></:item>

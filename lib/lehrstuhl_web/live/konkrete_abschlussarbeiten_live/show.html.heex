@@ -31,8 +31,16 @@
     <%= @konkrete_abschlussarbeiten.mitarbeiter && "#{@konkrete_abschlussarbeiten.mitarbeiter.vorname} #{@konkrete_abschlussarbeiten.mitarbeiter.nachname}" || "No Mitarbeiter assigned" %>
   </:item>
   <:item title="Abstrakte Abschlussarbeit">
-    <%= @konkrete_abschlussarbeiten.abstrakte_abschlussarbeiten_id || "No Abschlussarbeit assigned" %>
-  </:item>
+  <%= if @konkrete_abschlussarbeiten.abstrakte_abschlussarbeiten_id do %>
+    <%= @konkrete_abschlussarbeiten.abstrakte_abschlussarbeiten_id %>
+    <.link class="text-sm font-medium text-[#8000ff] hover:underline ml-2" 
+           navigate={~p"/abstrakte_abschlussarbeiten/#{@konkrete_abschlussarbeiten.abstrakte_abschlussarbeiten_id}"}>
+      View
+    </.link>
+  <% else %>
+    No Abschlussarbeit assigned
+  <% end %>
+</:item>
 </.list>
 </div>
 
@@ -59,16 +67,24 @@
 
   <%= for ergebnis <- @ergebnisse_abschlussarbeiten do %>
     <div class="border-b border-gray-700 pb-4 mb-4 text-white">
-    <h2 class="font-bold mb-4 text-center">Ergebnis von <span class="text-yellow-300"><%= ergebnis.matrikelnummer %></span></h2>
+      <h2 class="font-bold mb-4 text-center">
+        Ergebnis von <span class="text-yellow-300"><%= ergebnis.matrikelnummer %></span>
+      </h2>
       <p class="text-neutral-400"><strong>Note:</strong> <%= ergebnis.note %></p>
       <p class="text-neutral-400"><strong>Datum:</strong> <%= ergebnis.korrekturdatum %></p>
       <p class="text-neutral-400"><strong>Status:</strong> <%= ergebnis.status %></p>
       <p class="text-neutral-400"><strong>Studienniveau:</strong> <%= ergebnis.studienniveau %></p>
+
+      <.link class="text-sm font-medium text-[#8000ff] hover:underline mt-2 block text-center" 
+             navigate={~p"/ergebnisse_abschlussarbeiten/#{ergebnis.id}"}>
+        View Details
+      </.link>
     </div>
   <% end %>
 
   <%= if Enum.empty?(@ergebnisse_abschlussarbeiten) do %>
-    <p class="text-center text-gray-400">Keine konkreten Abschlussarbeiten vorhanden.</p>
+    <p class="text-center text-gray-400">Keine Ergebnisse vorhanden.</p>
   <% end %>
 </div>
+
 

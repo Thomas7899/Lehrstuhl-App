@@ -10,10 +10,20 @@ defmodule LehrstuhlWeb.SeminarergebnisLive.Show do
 
   @impl true
   def handle_params(%{"id" => id}, _, socket) do
+    seminarergebnis = Seminare.get_seminarergebnis!(id)
+
+    info_message =
+      if seminarergebnis.versuche < 3 do
+        "Student has another attempt remaining."
+      else
+        "No more attempts allowed."
+      end
+
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:seminarergebnis, Seminare.get_seminarergebnis!(id))}
+     |> assign(:seminarergebnis, seminarergebnis)
+     |> assign(:info_message, info_message)}
   end
 
   defp page_title(:show), do: "Show Seminarergebnis"

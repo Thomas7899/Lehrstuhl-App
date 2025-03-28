@@ -7,6 +7,7 @@ defmodule Lehrstuhl.Klausuren do
   alias Lehrstuhl.Repo
 
   alias Lehrstuhl.Klausuren.Klausur
+  alias Lehrstuhl.Klausuren.Klausurergebnis
 
   @doc """
   Returns the list of klausuren.
@@ -18,6 +19,13 @@ defmodule Lehrstuhl.Klausuren do
 
   """
 
+def versuche_und_punkte(student_id, klausur_id) do
+  from(k in Klausurergebnis,
+    where: k.student_id == ^student_id and k.klausur_id == ^klausur_id,
+    select: {count(k.id), max(k.punkte)}
+  )
+  |> Repo.one()
+end
 
   def list_klausuren do
     Klausur

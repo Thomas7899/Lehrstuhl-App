@@ -8,7 +8,12 @@ defmodule Lehrstuhl.Klausuren.Modul do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "module" do
-    field :name, :string
+    field :modulnummer, :string
+    field :titel, :string
+    field :einsendearbeiten, :string
+    field :ects, Ecto.Enum, values: [fünf: 5, zehn: 10]
+    field :hilfsmittel, :string
+    field :stoffeingrenzung, :string
     belongs_to :mitarbeiter, Mitarbeiter
     belongs_to :lehrstuhlinhaber, Mitarbeiter
 
@@ -18,7 +23,7 @@ defmodule Lehrstuhl.Klausuren.Modul do
   @doc false
   def changeset(modul, attrs) do
     modul
-    |> cast(attrs, [:mitarbeiter_id, :lehrstuhlinhaber_id, :name])
-    |> validate_required([:mitarbeiter_id, :name])
+    |> cast(attrs, [:modulnummer, :titel, :ects, :hilfsmittel, :stoffeingrenzung, :mitarbeiter_id, :lehrstuhlinhaber_id])
+    |> validate_required([:mitarbeiter_id])
   end
 end

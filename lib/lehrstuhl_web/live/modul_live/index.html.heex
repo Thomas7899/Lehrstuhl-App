@@ -14,7 +14,10 @@
 >
   <:col :let={{_id, modul}} label="Betreuer"><%= modul.mitarbeiter.email %></:col>
   <:col :let={{_id, modul}} label="Lehrstuhlinhaber"><%= modul.lehrstuhlinhaber.email %></:col>
-  <:col :let={{_id, modul}} label="Name"><%= modul.name %></:col>
+  <:col :let={{_id, modul}} label="Modulnummer"><%= modul.modulnummer %></:col>
+  <:col :let={{_id, modul}} label="Titel"><%= modul.titel %></:col>
+  <:col :let={{_id, modul}} label="ECTS"><%= modul.ects %></:col>
+  <:col :let={{_id, modul}} label="Einsendearbeiten"><%= modul.einsendearbeiten %></:col>
   <:action :let={{_id, modul}}>
     <div class="sr-only">
       <.link navigate={~p"/module/#{modul}"}>Show</.link>

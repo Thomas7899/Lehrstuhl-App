@@ -16,6 +16,6 @@ defmodule LehrstuhlWeb.ModulLive.Show do
      |> assign(:modul, Klausuren.get_modul!(id))}
   end
 
-  defp page_title(:show), do: "Show Modul"
-  defp page_title(:edit), do: "Edit Modul"
+  defp page_title(:show), do: "Show"
+  defp page_title(:edit), do: "Edit"
 end

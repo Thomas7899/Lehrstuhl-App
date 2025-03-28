@@ -2,7 +2,7 @@
   Listing Seminarergebnisse
   <:actions>
     <.link patch={~p"/seminarergebnisse/new"}>
-      <.button>New Seminarergebnis</.button>
+      <.button>New</.button>
     </.link>
   </:actions>
 </.header>
@@ -14,38 +14,14 @@
     fn {_id, seminarergebnis} -> JS.navigate(~p"/seminarergebnisse/#{seminarergebnis}") end
   }
 >
-  <:col :let={{_id, seminarergebnis}} label="Fachvortrag titel">
-    <%= seminarergebnis.fachvortrag_titel %>
+  <:col :let={{_id, seminarergebnis}} label="Eregbnis Fachvortrag">
+    <%= seminarergebnis.mündlich_note %>
   </:col>
-  <:col :let={{_id, seminarergebnis}} label="Fachvortrag datum">
-    <%= seminarergebnis.fachvortrag_datum %>
+  <:col :let={{_id, seminarergebnis}} label="Eregbnis schriftliche Ausarbeitung">
+    <%= seminarergebnis.schriftlich_note %>
   </:col>
-  <:col :let={{_id, seminarergebnis}} label="Fachvortrag start">
-    <%= seminarergebnis.fachvortrag_start %>
-  </:col>
-  <:col :let={{_id, seminarergebnis}} label="Fachvortrag stop">
-    <%= seminarergebnis.fachvortrag_stop %>
-  </:col>
-  <:col :let={{_id, seminarergebnis}} label="Fachvortrag notenvorschlag">
-    <%= seminarergebnis.fachvortrag_notenvorschlag %>
-  </:col>
-  <:col :let={{_id, seminarergebnis}} label="Fachvortrag teilnote">
-    <%= seminarergebnis.fachvortrag_teilnote %>
-  </:col>
-  <:col :let={{_id, seminarergebnis}} label="Seminararbeit titel">
-    <%= seminarergebnis.seminararbeit_titel %>
-  </:col>
-  <:col :let={{_id, seminarergebnis}} label="Seminararbeit einreichung">
-    <%= seminarergebnis.seminararbeit_einreichung %>
-  </:col>
-  <:col :let={{_id, seminarergebnis}} label="Seminararbeit notenvorschlag">
-    <%= seminarergebnis.seminararbeit_notenvorschlag %>
-  </:col>
-  <:col :let={{_id, seminarergebnis}} label="Seminararbeit teilnote">
-    <%= seminarergebnis.seminararbeit_teilnote %>
-  </:col>
-  <:col :let={{_id, seminarergebnis}} label="Gesamtergebnis">
-    <%= seminarergebnis.gesamtergebnis %>
+  <:col :let={{_id, seminarergebnis}} label="Gesamtergebnis Seminar">
+    <%= seminarergebnis.gesamt %>
   </:col>
   <:action :let={{_id, seminarergebnis}}>
     <div class="sr-only">
