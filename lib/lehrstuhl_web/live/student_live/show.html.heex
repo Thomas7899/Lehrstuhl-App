@@ -1,0 +1,164 @@
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
+  <.header class="relative">
+    <div class="absolute top-0 right-0">
+      <.link patch={~p"/students/#{@student}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit</.button>
+      </.link>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-2">
+      <div class="text-xl font-bold leading-none text-white hover:text-[#8000ff] my-2">Student</div>
+      <div class="text-l leading-none text-white hover:text-[#8000ff]">
+        <%= @student.id %>
+      </div>
+    </div>
+  </.header>
+
+  <div class="mt-4">
+    <.list>
+      <:item title="Email"><%= @student.email %></:item>
+      <:item title="Matrikelnummer"><%= @student.matrikelnummer %></:item>
+      <:item title="Vorname"><%= @student.vorname %></:item>
+      <:item title="Nachname"><%= @student.nachname %></:item>
+      <:item title="Geburtsdatum"><%= @student.geburtsdatum %></:item>
+      <:item title="Abschlussarbeits_ID"><%= @student.konkrete_abschlussarbeiten.id %></:item>
+
+    </.list>
+  </div>
+
+  <div class="flex justify-center gap-x-8 mt-4">
+    <.back navigate={~p"/students"}>Back</.back>
+  </div>
+
+  <.modal :if={@live_action == :edit} id="student-modal" show on_cancel={JS.patch(~p"/students/#{@student}")}> 
+    <.live_component
+      module={LehrstuhlWeb.StudentLive.FormComponent}
+      id={@student.id}
+      title={@page_title}
+      action={@live_action}
+      student={@student}
+      patch={~p"/students/#{@student}"}
+    />
+  </.modal>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Ergebnisse der Abschlussarbeiten</h1>
+<div class="flex flex-wrap justify-between gap-4">
+  <%= for ergebnis <- @ergebnisse_abschlussarbeiten do %>
+    <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 w-full sm:w-1/3 md:w-1/4 space-y-2">
+      <div class="border-b border-gray-700 pb-4 mb-4 text-white">     
+        <h2 class="font-bold mb-4 text-center">
+          Note: <span class="text-yellow-300"><%= ergebnis.note %></span>
+        </h2>
+        <p class="text-center text-gray-400">
+          Korrekturdatum: <%= ergebnis.korrekturdatum %>
+        </p>
+        <p class="text-center text-gray-400">
+          Thema: <%= ergebnis.konkrete_abschlussarbeiten.angepasste_themenskizze %>
+        </p>
+        <p class="text-center text-gray-400">
+          Schwerpunkte: <%= ergebnis.konkrete_abschlussarbeiten.gesetzte_schwerpunkte %>
+        </p>
+        <p class="text-center text-gray-400">
+          Abgabedatum: <%= ergebnis.konkrete_abschlussarbeiten.abgabedatum %>
+        </p>
+        <.link class="text-sm font-medium text-[#8000ff] block text-center hover:underline mt-4" 
+        navigate={~p"/ergebnisse_abschlussarbeiten/#{ergebnis.id}"}>
+        View
+        </.link>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@ergebnisse_abschlussarbeiten) do %>
+    <p class="text-center text-gray-400">Keine Ergebnisse vorhanden.</p>
+  <% end %>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Klausurergebnisse</h1>
+<div class="flex flex-wrap justify-between gap-4">
+  <%= for klausurergebnis <- @klausurergebnisse do %>
+    <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 w-full sm:w-1/3 md:w-1/4 space-y-4">
+      <div class="border-b border-gray-700 pb-4 mb-6 text-white">
+        <h2 class="font-bold mb-2 text-center">
+          Klausur: <span class="text-green-400"><%= klausurergebnis.klausur.kenner %></span>
+        </h2>
+        <p class="text-center text-gray-300">
+          Beschreibung: <span class="text-blue-300"><%= klausurergebnis.klausur.beschreibung %></span>
+        </p>
+        <p class="text-center text-gray-300">
+          Semester: <span class="text-blue-300"><%= klausurergebnis.klausur.semester %></span> |
+          Ort: <span class="text-blue-300"><%= klausurergebnis.klausur.ort %></span>
+        </p>
+        <p class="text-center text-gray-300">
+          Prüfungsdatum: <span class="text-blue-300"><%= klausurergebnis.klausur.klausurdatum %></span>
+        </p>
+
+        <h3 class="font-semibold mt-4 text-center text-lg text-yellow-400">Ergebnis</h3>
+        <p class="text-center text-yellow-300">
+          Erzielte Punkte: <span class="text-yellow-300"><%= klausurergebnis.punkte %> / <%= klausurergebnis.klausur.punkteGesamt %></span>
+        </p>
+
+        <div class="mt-4">
+          <h3 class="font-semibold text-center text-lg text-yellow-400">Modul</h3>
+          <p class="text-center text-gray-300">
+            Modul: <span class="text-yellow-300"><%= klausurergebnis.klausur.modul.modulnummer %></span>
+          </p>
+        </div>
+
+        <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center mt-4" 
+             navigate={~p"/klausurergebnisse/#{klausurergebnis.id}"}>
+          View
+        </.link>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@klausurergebnisse) do %>
+    <p class="text-center text-gray-400">Keine Klausurergebnisse vorhanden.</p>
+  <% end %>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Seminarergebnisse</h1>
+<div class="flex flex-wrap justify-between gap-4">
+  <%= for seminar <- @seminarergebnisse do %>
+    <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 w-full sm:w-1/3 md:w-1/4 space-y-4">
+      <div class="border-b border-gray-700 pb-4 mb-6 text-white">
+        <h2 class="font-bold mb-2 text-center">
+          Seminar: <span class="text-green-400"><%= seminar.seminar.titel %></span>
+        </h2>
+        <p class="text-center text-gray-300">
+          Semester: <span class="text-blue-300"><%= seminar.seminar.semester %></span> |
+          Ort: <span class="text-blue-300"><%= seminar.seminar.ort %></span> |
+          Präsenzdatum: <span class="text-blue-300"><%= seminar.seminar.praesenzdatum %></span>
+        </p>
+
+        <div class="mt-4">
+          <h3 class="font-semibold text-center text-lg text-yellow-400">Fachvortrag</h3>
+          <p class="text-center text-gray-300">
+            Mündliche Note: <span class="text-yellow-300"><%= seminar.mündlich_note %></span>
+          </p> 
+        </div>
+
+        <div class="mt-4">
+          <h3 class="font-semibold text-center text-lg text-yellow-400">Seminararbeit</h3>
+          <p class="text-center text-gray-300">
+            Schriftliche Ausarbeitung: <span class="text-yellow-300"><%= seminar.schriftlich_note %></span>
+          </p>
+        </div>
+
+        <h2 class="font-bold mt-4 text-center text-lg">
+          Gesamtergebnis: <span class="text-green-400"><%= seminar.gesamt %></span>
+        </h2>
+
+        <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center mt-4" 
+               navigate={~p"/seminarergebnisse/#{seminar.id}"}>
+          View
+        </.link>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@seminarergebnisse) do %>
+    <p class="text-center text-gray-400">Keine Seminarergebnisse vorhanden.</p>
+  <% end %>
+</div>

@@ -1,0 +1,44 @@
+<.header>
+  Ergebnisse der Abschlussarbeiten
+  <:actions>
+    <.link patch={~p"/ergebnisse_abschlussarbeiten/new"}>
+      <.button>Ergebnis eintragen</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="ergebnisse_abschlussarbeiten"
+  rows={@streams.ergebnisse_abschlussarbeiten_collection}
+  row_click={fn {_id, ergebnisse_abschlussarbeiten} -> JS.navigate(~p"/ergebnisse_abschlussarbeiten/#{ergebnisse_abschlussarbeiten}") end}
+>
+  <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Matrikelnummer"><%= ergebnisse_abschlussarbeiten.matrikelnummer %></:col>
+  <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Studienniveau"><%= ergebnisse_abschlussarbeiten.studienniveau %></:col>
+  <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Korrekturdatum"><%= ergebnisse_abschlussarbeiten.korrekturdatum %></:col>
+  <:col :let={{_id, ergebnisse_abschlussarbeiten}} label="Note"><%= ergebnisse_abschlussarbeiten.note %></:col>
+  <:action :let={{_id, ergebnisse_abschlussarbeiten}}>
+    <div class="sr-only">
+      <.link navigate={~p"/ergebnisse_abschlussarbeiten/#{ergebnisse_abschlussarbeiten}"}>Show</.link>
+    </div>
+    <.link patch={~p"/ergebnisse_abschlussarbeiten/#{ergebnisse_abschlussarbeiten}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, ergebnisse_abschlussarbeiten}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: ergebnisse_abschlussarbeiten.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="ergebnisse_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/ergebnisse_abschlussarbeiten")}>
+  <.live_component
+    module={LehrstuhlWeb.ErgebnisseAbschlussarbeitenLive.FormComponent}
+    id={@ergebnisse_abschlussarbeiten.id || :new}
+    title={@page_title}
+    action={@live_action}
+    ergebnisse_abschlussarbeiten={@ergebnisse_abschlussarbeiten}
+    patch={~p"/ergebnisse_abschlussarbeiten"}
+  />
+</.modal>

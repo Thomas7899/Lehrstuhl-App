@@ -1,0 +1,49 @@
+<.header>
+  <div class="überschrift">Abstrakte Abschlussarbeiten</div>
+  <:actions>
+<.link patch={~p"/abstrakte_abschlussarbeiten/new"}>
+  <.button>
+    Abschlussarbeit erstellen
+  </.button>
+</.link>
+  </:actions>
+</.header>
+
+<div class="table">
+<.table 
+  id="abstrakte_abschlussarbeiten"
+  rows={@streams.abstrakte_abschlussarbeiten_collection}
+  row_click={fn {_id, abstrakte_abschlussarbeiten} -> JS.navigate(~p"/abstrakte_abschlussarbeiten/#{abstrakte_abschlussarbeiten}") end}
+>
+  <:col :let={{_id, abstrakte_abschlussarbeiten}} label="Betreuer"><%= abstrakte_abschlussarbeiten.betreuer %></:col>
+  <:col :let={{_id, abstrakte_abschlussarbeiten}} label="Forschungsprojekt"><%= abstrakte_abschlussarbeiten.forschungsprojekt %></:col>
+  <:col :let={{_id, abstrakte_abschlussarbeiten}} label="Semester"><%= abstrakte_abschlussarbeiten.semester %></:col>
+  <:col :let={{_id, abstrakte_abschlussarbeiten}} label="Thema"><%= abstrakte_abschlussarbeiten.thema %></:col>
+  <:col :let={{_id, abstrakte_abschlussarbeiten}} label="Themenskizze"><%= abstrakte_abschlussarbeiten.themenskizze %></:col>
+  <:action :let={{_id, abstrakte_abschlussarbeiten}}>
+    <div class="sr-only">
+      <.link navigate={~p"/abstrakte_abschlussarbeiten/#{abstrakte_abschlussarbeiten}"}>Show</.link>
+    </div>
+    <.link patch={~p"/abstrakte_abschlussarbeiten/#{abstrakte_abschlussarbeiten}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, abstrakte_abschlussarbeiten}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: abstrakte_abschlussarbeiten.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+</div>
+
+<.modal :if={@live_action in [:new, :edit]} id="abstrakte_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/abstrakte_abschlussarbeiten")}>
+  <.live_component
+    module={LehrstuhlWeb.AbstrakteAbschlussarbeitenLive.FormComponent}
+    id={@abstrakte_abschlussarbeiten.id || :new}
+    title={@page_title}
+    action={@live_action}
+    abstrakte_abschlussarbeiten={@abstrakte_abschlussarbeiten}
+    patch={~p"/abstrakte_abschlussarbeiten"}
+  />
+</.modal>

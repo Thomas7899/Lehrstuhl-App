@@ -1,0 +1,47 @@
+<.header>
+  Abstraktes seminar <%= @abstraktes_seminar.id %>
+  <:subtitle>This is a abstraktes_seminar record from your database.</:subtitle>
+  <:actions>
+    <.link
+      patch={~p"/abstrakte_seminare/#{@abstraktes_seminar}/show/edit"}
+      phx-click={JS.push_focus()}
+    >
+      <.button>Edit abstraktes_seminar</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Urheber"><%= @abstraktes_seminar.mitarbeiter.email %></:item>
+  <:item title="Thema"><%= @abstraktes_seminar.thema %></:item>
+  <:item title="Beschreibung"><%= @abstraktes_seminar.beschreibung %></:item>
+</.list>
+
+<h2 style="font-size: 160%;">Seminare für AbstraktesSeminar<%= @abstraktes_seminar.thema %></h2>
+<!--TODO some Styling here-->
+<.table id="seminare_detail" rows={@seminare}>
+  <:col :let={seminar} label="Betreuer"><%= seminar.mitarbeiter.email %></:col>
+  <:col :let={seminar} label="Titel"><%= seminar.titel %></:col>
+  <:col :let={seminar} label="Aufnahmekapazitaet"><%= seminar.aufnahmekapazitaet %></:col>
+  <:col :let={seminar} label="Semester"><%= seminar.semester %></:col>
+  <:col :let={seminar} label="Praesenzdatum"><%= seminar.praesenzdatum %></:col>
+  <:col :let={seminar} label="Ort"><%= seminar.ort %></:col>
+</.table>
+
+<.back navigate={~p"/abstrakte_seminare"}>Back to abstrakte_seminare</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="abstraktes_seminar-modal"
+  show
+  on_cancel={JS.patch(~p"/abstrakte_seminare/#{@abstraktes_seminar}")}
+>
+  <.live_component
+    module={LehrstuhlWeb.AbstraktesSeminarLive.FormComponent}
+    id={@abstraktes_seminar.id}
+    title={@page_title}
+    action={@live_action}
+    abstraktes_seminar={@abstraktes_seminar}
+    patch={~p"/abstrakte_seminare/#{@abstraktes_seminar}"}
+  />
+</.modal>

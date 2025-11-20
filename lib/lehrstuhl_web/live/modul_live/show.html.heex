@@ -1,0 +1,172 @@
+<div class="max-w-6xl mx-auto py-10 space-y-10">
+
+  <!-- Header / Titelzeile -->
+  <.header>
+    Modul <%= @modul.modulnummer %> – <%= @modul.titel %>
+    <:subtitle>
+      Überblick über verantwortliche Personen, Klausuren und Leistungsdaten.
+    </:subtitle>
+    <:actions>
+      <.link patch={~p"/module/#{@modul}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit Modul</.button>
+      </.link>
+    </:actions>
+  </.header>
+
+  <!-- Oberer Bereich: Modul-Infos + Verantwortliche + KPIs -->
+  <div class="grid gap-6 md:grid-cols-[2fr,1.5fr]">
+
+    <!-- Modul-Details -->
+    <div class="bg-neutral-900/80 border border-neutral-800 shadow-xl rounded-2xl p-6 space-y-4">
+      <h2 class="text-lg font-semibold text-white mb-2">Modulinformationen</h2>
+
+      <.list>
+        <:item title="Modulnummer"><%= @modul.modulnummer %></:item>
+        <:item title="Bezeichner"><%= @modul.titel %></:item>
+        <:item title="ECTS"><%= @modul.ects %></:item>
+        <:item title="Einsendearbeiten"><%= @modul.einsendearbeiten %></:item>
+        <:item title="Hilfsmittel"><%= @modul.hilfsmittel %></:item>
+        <:item title="Stoffeingrenzung"><%= @modul.stoffeingrenzung %></:item>
+      </.list>
+    </div>
+
+    <!-- Verantwortliche + KPIs -->
+    <div class="space-y-4">
+
+      <!-- Verantwortliche -->
+      <div class="bg-neutral-900/80 border border-neutral-800 rounded-2xl p-6 space-y-3">
+        <h2 class="text-lg font-semibold text-white mb-2">Verantwortliche</h2>
+
+        <div class="space-y-2 text-sm text-neutral-200">
+          <div>
+            <div class="text-neutral-400 text-xs uppercase tracking-wide">Betreuer</div>
+            <div class="font-medium">
+              <%= @modul.mitarbeiter.vorname %> <%= @modul.mitarbeiter.nachname %>
+            </div>
+            <div class="text-neutral-400 text-xs"><%= @modul.mitarbeiter.email %></div>
+          </div>
+
+          <div class="mt-3">
+            <div class="text-neutral-400 text-xs uppercase tracking-wide">
+              Lehrstuhlinhaber / Postdoc
+            </div>
+            <div class="font-medium">
+              <%= @modul.lehrstuhlinhaber.vorname %> <%= @modul.lehrstuhlinhaber.nachname %>
+            </div>
+            <div class="text-neutral-400 text-xs"><%= @modul.lehrstuhlinhaber.email %></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI-Karten -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="bg-neutral-900/80 border border-neutral-800 rounded-2xl p-4">
+          <div class="text-xs uppercase tracking-wide text-neutral-400">
+            Klausuren gesamt
+          </div>
+          <div class="mt-2 text-2xl font-semibold text-white">
+            <%= @total_klausuren %>
+          </div>
+        </div>
+
+        <div class="bg-neutral-900/80 border border-neutral-800 rounded-2xl p-4">
+          <div class="text-xs uppercase tracking-wide text-neutral-400">
+            Teilnehmer gesamt
+          </div>
+          <div class="mt-2 text-2xl font-semibold text-white">
+            <%= @total_teilnehmer %>
+          </div>
+        </div>
+
+        <div class="bg-neutral-900/80 border border-neutral-800 rounded-2xl p-4">
+          <div class="text-xs uppercase tracking-wide text-neutral-400">
+            Ø-Note über alle Klausuren
+          </div>
+          <div class="mt-2 text-2xl font-semibold text-white">
+            <%= if @overall_avg_note do %>
+              <%= Float.round(@overall_avg_note, 2) %>
+            <% else %>
+              –
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <section class="space-y-6">
+    <h2 class="text-lg font-semibold text-white">Leistungsübersicht</h2>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      <!-- Chart: Durchschnittsnoten -->
+      <div class="bg-neutral-900/80 border border-neutral-800 rounded-2xl p-6">
+        <h3 class="text-sm font-medium text-neutral-100 mb-4">
+          Durchschnittsnote pro Klausur
+        </h3>
+        <canvas
+          id="modulAverageChart"
+          phx-hook="ModulAverageChartHook"
+          data-labels={Jason.encode!(@chart_labels)}
+          data-values={Jason.encode!(@chart_avg_values)}
+          height="160"
+        >
+        </canvas>
+      </div>
+
+      <!-- Chart: Teilnehmer -->
+      <div class="bg-neutral-900/80 border border-neutral-800 rounded-2xl p-6">
+        <h3 class="text-sm font-medium text-neutral-100 mb-4">
+          Teilnehmer pro Klausur
+        </h3>
+        <canvas
+          id="modulParticipantsChart"
+          phx-hook="ModulParticipantsChartHook"
+          data-labels={Jason.encode!(@chart_labels)}
+          data-values={Jason.encode!(@chart_count_values)}
+          height="160"
+        >
+        </canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabelle der Klausuren dieses Moduls -->
+  <section class="space-y-4">
+    <h2 class="text-lg font-semibold text-white">Klausuren in diesem Modul</h2>
+
+    <.table id="module_klausuren" rows={@klausur_stats}>
+      <:col :let={s} label="Klausur">
+        <%= s.klausur.kenner %>
+      </:col>
+      <:col :let={s} label="Semester">
+        <%= s.klausur.semester %>
+      </:col>
+      <:col :let={s} label="Prüfungsdatum">
+        <%= s.klausur.klausurdatum %>
+      </:col>
+      <:col :let={s} label="Ort">
+        <%= s.klausur.ort %>
+      </:col>
+      <:col :let={s} label="Teilnehmer">
+        <%= s.teilnehmer %>
+      </:col>
+      <:col :let={s} label="Ø-Note">
+        <%= if s.avg_note do %>
+          <%= Float.round(s.avg_note, 2) %>
+        <% else %>
+          –
+        <% end %>
+      </:col>
+      <:action :let={s}>
+        <.link navigate={~p"/klausuren/#{s.klausur.id}"} class="text-[#8000ff] hover:underline">
+          Details
+        </.link>
+      </:action>
+    </.table>
+  </section>
+
+  <div class="pt-4">
+    <.back navigate={~p"/module"}>Zurück zur Modulübersicht</.back>
+  </div>
+</div>

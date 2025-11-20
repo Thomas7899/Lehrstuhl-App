@@ -1,0 +1,54 @@
+<.header>
+  Listing Abstrakte seminare
+  <:actions>
+    <.link patch={~p"/abstrakte_seminare/new"}>
+      <.button>New Abstraktes seminar</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="abstrakte_seminare"
+  rows={@streams.abstrakte_seminare}
+  row_click={
+    fn {_id, abstraktes_seminar} -> JS.navigate(~p"/abstrakte_seminare/#{abstraktes_seminar}") end
+  }
+>
+  <:col :let={{_id, abstraktes_seminar}} label="Urheber">
+    <%= abstraktes_seminar.mitarbeiter.email %>
+  </:col>
+  <:col :let={{_id, abstraktes_seminar}} label="Thema"><%= abstraktes_seminar.thema %></:col>
+  <:col :let={{_id, abstraktes_seminar}} label="Beschreibung">
+    <%= abstraktes_seminar.beschreibung %>
+  </:col>
+  <:action :let={{_id, abstraktes_seminar}}>
+    <div class="sr-only">
+      <.link navigate={~p"/abstrakte_seminare/#{abstraktes_seminar}"}>Show</.link>
+    </div>
+    <.link patch={~p"/abstrakte_seminare/#{abstraktes_seminar}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, abstraktes_seminar}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: abstraktes_seminar.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="abstraktes_seminar-modal"
+  show
+  on_cancel={JS.patch(~p"/abstrakte_seminare")}
+>
+  <.live_component
+    module={LehrstuhlWeb.AbstraktesSeminarLive.FormComponent}
+    id={@abstraktes_seminar.id || :new}
+    title={@page_title}
+    action={@live_action}
+    abstraktes_seminar={@abstraktes_seminar}
+    patch={~p"/abstrakte_seminare"}
+  />
+</.modal>

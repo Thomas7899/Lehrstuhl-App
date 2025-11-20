@@ -1,0 +1,72 @@
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
+  <.header class="relative">
+    <div class="absolute top-0 right-0">
+      <.link patch={~p"/ergebnisse_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit</.button>
+      </.link>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-2">
+      <div class="text-xl font-bold leading-none text-white hover:text-[#8000ff] my-2">Ergebnis Abschlussarbeiten</div>
+      <div class="leading-none text-white hover:text-[#8000ff]">
+        <%= @ergebnisse_abschlussarbeiten.id %>
+      </div>
+    </div>
+  </.header>
+
+  <div class="flex justify-center items-center">
+    <.list>
+      <:item title="Matrikelnummer"><%= @ergebnisse_abschlussarbeiten.matrikelnummer %></:item>
+      <:item title="Studienniveau"><%= @ergebnisse_abschlussarbeiten.studienniveau %></:item>
+      <:item title="Status"><%= @ergebnisse_abschlussarbeiten.status %></:item>
+      <:item title="Korrekturdatum"><%= @ergebnisse_abschlussarbeiten.korrekturdatum %></:item>
+      <:item title="Note"><%= @ergebnisse_abschlussarbeiten.note %></:item>
+      <:item title="Konkrete Abschlussarbeit">
+  <%= if @ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten do %>
+    <%= @ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten.id %>
+    <.link class="text-sm font-medium text-[#8000ff] hover:underline ml-2" 
+           navigate={~p"/konkrete_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten.konkrete_abschlussarbeiten.id}"}>
+      View
+    </.link>
+  <% else %>
+    No Abschlussarbeit assigned
+  <% end %>
+</:item>
+
+    </.list>
+  </div>
+
+  <div class="flex justify-center gap-x-8 mt-4">
+    <.back navigate={~p"/ergebnisse_abschlussarbeiten"}>Back</.back>
+  </div>
+
+  <.modal :if={@live_action == :edit} id="ergebnisse_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/ergebnisse_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten}")}> 
+    <.live_component
+      module={LehrstuhlWeb.ErgebnisseAbschlussarbeitenLive.FormComponent}
+      id={@ergebnisse_abschlussarbeiten.id}
+      title={@page_title}
+      action={@live_action}
+      ergebnisse_abschlussarbeiten={@ergebnisse_abschlussarbeiten}
+      patch={~p"/ergebnisse_abschlussarbeiten/#{@ergebnisse_abschlussarbeiten}"}
+    />
+  </.modal>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Abschlussarbeiten Wiederholungen</h1>
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-4">
+
+  <%= if @info_message do %>
+    <div class="alert alert-info mb-4 p-4 bg-blue-600 text-white rounded-lg">
+      <%= @info_message %>
+    </div>
+  <% end %>
+
+  <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+    <strong class="block text-lg">Versuche:</strong> 
+    <span class="text-gray-400"><%= @ergebnisse_abschlussarbeiten.versuche %> / 3</span>
+  </div>
+  <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+    <strong class="block text-lg">Student:</strong> 
+    <span class="text-gray-400"><%= @ergebnisse_abschlussarbeiten.matrikelnummer %></span>
+  </div>
+</div>
+

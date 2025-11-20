@@ -1,0 +1,43 @@
+<.header>
+  <div class="überschrift">Konkrete Abschlussarbeiten</div>
+  <:actions>
+     <.link patch={~p"/konkrete_abschlussarbeiten/new"}>
+      <.button>Abschlussarbeit erstellen</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="konkrete_abschlussarbeiten"
+  rows={@streams.konkrete_abschlussarbeiten_collection}
+  row_click={fn {_id, konkrete_abschlussarbeiten} -> JS.navigate(~p"/konkrete_abschlussarbeiten/#{konkrete_abschlussarbeiten}") end}>
+    <:col :let={{_id, konkrete_abschlussarbeiten}} label="Matrikelnummer"><%= konkrete_abschlussarbeiten.matrikelnummer %></:col>
+      <:col :let={{_id, konkrete_abschlussarbeiten}} label="Semester"><%= konkrete_abschlussarbeiten.semester %></:col>
+    <:col :let={{_id, konkrete_abschlussarbeiten}} label="Forschungsprojekt"><%= konkrete_abschlussarbeiten.forschungsprojekt %></:col>
+  <:col :let={{_id, konkrete_abschlussarbeiten}} label="Betreuer"><%= konkrete_abschlussarbeiten.betreuer %></:col>
+  <:action :let={{_id, konkrete_abschlussarbeiten}}>
+    <div class="sr-only">
+      <.link navigate={~p"/konkrete_abschlussarbeiten/#{konkrete_abschlussarbeiten}"}>Show</.link>
+    </div>
+    <.link patch={~p"/konkrete_abschlussarbeiten/#{konkrete_abschlussarbeiten}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, konkrete_abschlussarbeiten}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: konkrete_abschlussarbeiten.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="konkrete_abschlussarbeiten-modal" show on_cancel={JS.patch(~p"/konkrete_abschlussarbeiten")}>
+  <.live_component
+    module={LehrstuhlWeb.KonkreteAbschlussarbeitenLive.FormComponent}
+    id={@konkrete_abschlussarbeiten.id || :new}
+    title={@page_title}
+    action={@live_action}
+    konkrete_abschlussarbeiten={@konkrete_abschlussarbeiten}
+    patch={~p"/konkrete_abschlussarbeiten"}
+  />
+</.modal>

@@ -1,0 +1,123 @@
+<div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 mx-auto my-4 max-w-2xl space-y-2">
+  <.header class="relative">
+    <div class="absolute top-0 right-0">
+      <.link patch={~p"/mitarbeiter/#{@mitarbeiter}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit</.button>
+      </.link>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-2">
+      <div class="text-xl font-bold leading-none text-white hover:text-[#8000ff] my-2">Mitarbeiter</div>
+      <div class="text-l leading-none text-white hover:text-[#8000ff]">
+        <%= @mitarbeiter.id %>
+      </div>
+    </div>
+  </.header>
+
+  <div class="mt-4">
+    <.list>
+      <:item title="Email"><%= @mitarbeiter.email %></:item>
+      <:item title="Nachname"><%= @mitarbeiter.nachname %></:item>
+      <:item title="Vorname"><%= @mitarbeiter.vorname %></:item>
+      <:item title="Rolle"><%= @mitarbeiter.rolle %></:item>
+    </.list>
+  </div>
+
+  <div class="flex justify-center gap-x-8 mt-4">
+    <.back navigate={~p"/mitarbeiter"}>Back</.back>
+  </div>
+
+  <.modal :if={@live_action == :edit} id="mitarbeiter-modal" show on_cancel={JS.patch(~p"/mitarbeiter/#{@mitarbeiter}")}> 
+    <.live_component
+      module={LehrstuhlWeb.MitarbeiterLive.FormComponent}
+      id={@mitarbeiter.id}
+      title={@page_title}
+      action={@live_action}
+      mitarbeiter={@mitarbeiter}
+      patch={~p"/mitarbeiter/#{@mitarbeiter}"}
+    />
+  </.modal>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Module</h1>
+<div class="flex flex-wrap justify-between gap-4">
+  <%= for modul <- @mitarbeiter.module do %>
+    <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 w-full sm:w-1/3 md:w-1/4 space-y-2">
+      <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+        <h2 class="font-bold mb-4 text-center">
+          Modul: <span class="text-yellow-300"><%= modul.modulnummer %></span>
+        </h2>
+        <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center"
+               navigate={~p"/module/#{modul.id}"}>
+          View Modul
+        </.link>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@mitarbeiter.module) do %>
+    <p class="text-center text-gray-400">Keine Module vorhanden.</p>
+  <% end %>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Konkrete Abschlussarbeiten</h1>
+<div class="flex flex-wrap justify-between gap-4">
+  <%= for arbeit <- @mitarbeiter.konkrete_abschlussarbeiten do %>
+    <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 w-full sm:w-1/3 md:w-1/4 space-y-2">
+      <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+        <h2 class="font-bold mb-4 text-center">
+          Forschungsprojekt: <span class="text-yellow-300"><%= arbeit.forschungsprojekt %></span>
+        </h2>
+        <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center"
+               navigate={~p"/konkrete_abschlussarbeiten/#{arbeit.id}"}>
+          View Abschlussarbeit
+        </.link>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@mitarbeiter.konkrete_abschlussarbeiten) do %>
+    <p class="text-center text-gray-400">Keine konkreten Abschlussarbeiten vorhanden.</p>
+  <% end %>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Abstrakte Abschlussarbeiten</h1>
+<div class="flex flex-wrap justify-between gap-4">
+  <%= for arbeit <- @mitarbeiter.abstrakte_abschlussarbeiten do %>
+    <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 w-full sm:w-1/3 md:w-1/4 space-y-2">
+      <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+        <h2 class="font-bold mb-4 text-center">
+          Thema: <span class="text-yellow-300"><%= arbeit.thema %></span>
+        </h2>
+        <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center"
+               navigate={~p"/abstrakte_abschlussarbeiten/#{arbeit.id}"}>
+          View Abschlussarbeit
+        </.link>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@mitarbeiter.abstrakte_abschlussarbeiten) do %>
+    <p class="text-center text-gray-400">Keine abstrakten Abschlussarbeiten vorhanden.</p>
+  <% end %>
+</div>
+
+<h1 class="text-xl font-bold mb-4 text-center">Abstrakte Seminare</h1>
+<div class="flex flex-wrap justify-between gap-4">
+  <%= for seminar <- @mitarbeiter.abstrakte_seminare do %>
+    <div class="bg-gray-800 hover:bg-neutral-900 shadow sm:rounded-lg p-8 w-full sm:w-1/3 md:w-1/4 space-y-2">
+      <div class="border-b border-gray-700 pb-4 mb-4 text-white">
+        <h2 class="font-bold mb-4 text-center">
+          Seminar: <span class="text-yellow-300"><%= seminar.thema %></span>
+        </h2>
+        <.link class="text-sm font-medium text-[#8000ff] hover:underline block text-center"
+               navigate={~p"/abstrakte_seminare/#{seminar.id}"}>
+          View Seminar
+        </.link>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if Enum.empty?(@mitarbeiter.abstrakte_seminare) do %>
+    <p class="text-center text-gray-400">Keine abstrakten Seminare vorhanden.</p>
+  <% end %>
+</div>

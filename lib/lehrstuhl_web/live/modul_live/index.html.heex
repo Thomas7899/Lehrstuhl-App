@@ -1,0 +1,51 @@
+<.header>
+  Listing Module
+  <:actions>
+    <.link patch={~p"/module/new"}>
+      <.button>New Modul</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="module"
+  rows={@streams.module}
+  row_click={fn {_id, modul} -> JS.navigate(~p"/module/#{modul}") end}
+>
+  <:col :let={{_id, modul}} label="Betreuer"><%= modul.mitarbeiter.email %></:col>
+  <:col :let={{_id, modul}} label="Lehrstuhlinhaber"><%= modul.lehrstuhlinhaber.email %></:col>
+  <:col :let={{_id, modul}} label="Modulnummer"><%= modul.modulnummer %></:col>
+  <:col :let={{_id, modul}} label="Titel"><%= modul.titel %></:col>
+  <:col :let={{_id, modul}} label="ECTS"><%= modul.ects %></:col>
+  <:col :let={{_id, modul}} label="Einsendearbeiten"><%= modul.einsendearbeiten %></:col>
+  <:action :let={{_id, modul}}>
+    <div class="sr-only">
+      <.link navigate={~p"/module/#{modul}"}>Show</.link>
+    </div>
+    <.link patch={~p"/module/#{modul}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, modul}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: modul.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="modul-modal"
+  show
+  on_cancel={JS.patch(~p"/module")}
+>
+  <.live_component
+    module={LehrstuhlWeb.ModulLive.FormComponent}
+    id={@modul.id || :new}
+    title={@page_title}
+    action={@live_action}
+    modul={@modul}
+    patch={~p"/module"}
+  />
+</.modal>

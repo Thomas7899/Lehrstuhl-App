@@ -1,0 +1,56 @@
+<.header>
+  Listing Seminarergebnisse
+  <:actions>
+    <.link patch={~p"/seminarergebnisse/new"}>
+      <.button>New</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="seminarergebnisse"
+  rows={@streams.seminarergebnisse}
+  row_click={
+    fn {_id, seminarergebnis} -> JS.navigate(~p"/seminarergebnisse/#{seminarergebnis}") end
+  }
+>
+  <:col :let={{_id, seminarergebnis}} label="Eregbnis Fachvortrag">
+    <%= seminarergebnis.mündlich_note %>
+  </:col>
+  <:col :let={{_id, seminarergebnis}} label="Eregbnis schriftliche Ausarbeitung">
+    <%= seminarergebnis.schriftlich_note %>
+  </:col>
+  <:col :let={{_id, seminarergebnis}} label="Gesamtergebnis Seminar">
+    <%= seminarergebnis.gesamt %>
+  </:col>
+  <:action :let={{_id, seminarergebnis}}>
+    <div class="sr-only">
+      <.link navigate={~p"/seminarergebnisse/#{seminarergebnis}"}>Show</.link>
+    </div>
+    <.link patch={~p"/seminarergebnisse/#{seminarergebnis}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, seminarergebnis}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: seminarergebnis.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="seminarergebnis-modal"
+  show
+  on_cancel={JS.patch(~p"/seminarergebnisse")}
+>
+  <.live_component
+    module={LehrstuhlWeb.SeminarergebnisLive.FormComponent}
+    id={@seminarergebnis.id || :new}
+    title={@page_title}
+    action={@live_action}
+    seminarergebnis={@seminarergebnis}
+    patch={~p"/seminarergebnisse"}
+  />
+</.modal>

@@ -1,0 +1,101 @@
+<div class="max-w-5xl mx-auto mt-10 space-y-12">
+
+  <!-- ====================================================== -->
+  <!-- 🔥 HEADER CARD -->
+  <!-- ====================================================== -->
+
+  <div class="rounded-2xl p-8 bg-gray-900/60 backdrop-blur-xl
+              border border-gray-700/50 shadow-2xl">
+    <h1 class="text-4xl font-bold text-white tracking-tight">
+      <span class="text-purple-500">Klausur</span> <%= @klausur.kenner %>
+    </h1>
+
+    <p class="text-gray-400 text-sm mt-2">
+      ID: <%= @klausur.id %>
+    </p>
+
+    <div class="mt-6">
+      <.link patch={~p"/klausuren/#{@klausur}/show/edit"}>
+        <button class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700
+                       text-white font-semibold shadow-lg transition">
+          Edit Klausur
+        </button>
+      </.link>
+    </div>
+  </div>
+
+  <!-- ====================================================== -->
+  <!-- 📘 DETAILS PANEL -->
+  <!-- ====================================================== -->
+
+  <div class="rounded-2xl p-8 bg-gray-900/60 backdrop-blur-xl
+              border border-gray-700/50 shadow-xl space-y-4">
+
+    <h2 class="text-2xl font-semibold text-white mb-4">Details</h2>
+
+    <.list>
+      <:item title="Kenner"><%= @klausur.kenner %></:item>
+      <:item title="Modul">
+        <.link class="text-purple-300 hover:text-purple-400"
+               href={~p"/module/#{@klausur.modul}"}>
+          <%= @klausur.modul.modulnummer %>
+        </.link>
+      </:item>
+      <:item title="Beschreibung"><%= @klausur.beschreibung %></:item>
+      <:item title="Punktegesamt"><%= @klausur.punkteGesamt %></:item>
+      <:item title="Semester"><%= @klausur.semester %></:item>
+      <:item title="Prüfungsdatum"><%= @klausur.klausurdatum %></:item>
+      <:item title="Ort"><%= @klausur.ort %></:item>
+      <:item title="Notenschnitt"><%= @avg %></:item>
+      <:item title="Teilnehmerzahl"><%= @anz_studierende %></:item>
+    </.list>
+
+  </div>
+
+  <!-- ====================================================== -->
+  <!-- 📊 NOTENVERTEILUNG - MODERNES PANEL -->
+  <!-- ====================================================== -->
+
+  <div class="rounded-2xl p-8 bg-gray-900/60 backdrop-blur-xl
+              border border-gray-700/50 shadow-xl">
+
+    <h2 class="text-2xl font-semibold text-white mb-6">Notenverteilung</h2>
+
+    <canvas
+      id="notenChart"
+      phx-hook="NotenChartHook"
+      data-labels={Jason.encode!(@notenverteilung |> Enum.map(fn {note, _} -> note end))}
+      data-values={Jason.encode!(@notenverteilung |> Enum.map(fn {_, count} -> count end))}
+      height="240"
+      class="w-full"
+    ></canvas>
+  </div>
+
+  <!-- ====================================================== -->
+  <!-- 🧑‍🎓 TABELLE: KLAUSURERGEBNISSE -->
+  <!-- ====================================================== -->
+
+  <div class="rounded-2xl p-8 bg-gray-900/60 backdrop-blur-xl
+              border border-gray-700/50 shadow-xl">
+
+    <h2 class="text-2xl font-semibold text-white mb-6">
+      Klausurergebnisse für <%= @klausur.kenner %>
+    </h2>
+
+    <.table
+      id="klausur_tabelle"
+      rows={@klausurergebnisse}
+      class="text-gray-200"
+    >
+      <:col :let={k} label="Student"><%= k.student.email %></:col>
+      <:col :let={k} label="Matrikelnummer"><%= k.student.matrikelnummer %></:col>
+      <:col :let={k} label="Punkte"><%= k.punkte %></:col>
+      <:col :let={k} label="% Punkte">
+        <%= Float.round(k.punkte / @klausur.punkteGesamt * 100, 1) %>
+      </:col>
+    </.table>
+  </div>
+
+  <.back navigate={~p"/klausuren"}>← Zurück zu den Klausuren</.back>
+
+</div>

@@ -1,0 +1,52 @@
+<.header>
+  Listing Klausuren
+  <:actions>
+    <.link patch={~p"/klausuren/new"}>
+      <.button>New</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="klausuren"
+  rows={@streams.klausuren}
+  row_click={fn {_id, klausur} -> JS.navigate(~p"/klausuren/#{klausur}") end}
+>
+  <:col :let={{_id, klausur}} label="Kenner"><%= klausur.kenner %></:col>
+  <:col :let={{_id, klausur}} label="Beschreibung"><%= klausur.beschreibung %></:col>
+  <:col :let={{_id, klausur}} label="Punktegesamt"><%= klausur.punkteGesamt %></:col>
+  <:col :let={{_id, klausur}} label="Semester"><%= klausur.semester %></:col>
+  <:col :let={{_id, klausur}} label="Klausurdatum"><%= klausur.klausurdatum %></:col>
+  <:col :let={{_id, klausur}} label="Ort"><%= klausur.ort %></:col>
+  <:col :let={{_id, klausur}} label="Modul"><%= klausur.modul.modulnummer %></:col>
+  <:action :let={{_id, klausur}}>
+    <div class="sr-only">
+      <.link navigate={~p"/klausuren/#{klausur}"}>Show</.link>
+    </div>
+    <.link patch={~p"/klausuren/#{klausur}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, klausur}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: klausur.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="klausur-modal"
+  show
+  on_cancel={JS.patch(~p"/klausuren")}
+>
+  <.live_component
+    module={LehrstuhlWeb.KlausurLive.FormComponent}
+    id={@klausur.id || :new}
+    title={@page_title}
+    action={@live_action}
+    klausur={@klausur}
+    patch={~p"/klausuren"}
+  />
+</.modal>

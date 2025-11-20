@@ -1,0 +1,83 @@
+<div class="flex justify-center items-center">
+<h1 class="text-3xl font-mono text-white hover:text-[#8000ff] bg-gray-800 hover:bg-neutral-900 rounded-lg inline-block p-3">Ergebnisse Abschlussarbeiten</h1>
+</div>
+<div id="ergebnisse-abschlussarbeiten">
+  <form phx-change="select-per-page">
+    <select name="per-page">
+      <%= Phoenix.HTML.Form.options_for_select(
+        [5, 10, 15, 20],
+        @options.per_page
+      ) %>
+    </select>
+    <label for="label">pro Seite</label>
+  </form>
+  <div class="wrapper">
+    <table class="table-auto mx-auto border-collapse bg-gray-500">
+      <thead>
+        <tr>
+          <th>
+            <.sort_link sort_by={:matrikelnummer} options={@options}>
+              Matrikelnummer
+            </.sort_link>
+          </th>
+          <th>
+            <.sort_link sort_by={:studienniveau} options={@options}>
+              Studienniveau
+            </.sort_link>
+          </th>
+          <th>
+            <.sort_link sort_by={:status} options={@options}>
+              Status
+            </.sort_link>
+          </th>
+          <th>
+            <.sort_link sort_by={:korrekturdatum} options={@options}>
+              Korrekturdatum
+            </.sort_link>
+          </th>
+          <th>
+            <.sort_link sort_by={:note} options={@options}>
+              Note
+            </.sort_link>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr :for={abschlussarbeiten <- @ergebnisse_abschlussarbeiten}>
+          <td>
+            <%= abschlussarbeiten.matrikelnummer %>
+          </td>
+          <td>
+            <%= abschlussarbeiten.studienniveau %>
+          </td>
+          <td>
+            <%= abschlussarbeiten.status %>
+          </td>
+          <td>
+            <%= abschlussarbeiten.korrekturdatum %>
+          </td>
+          <td>
+            <%= abschlussarbeiten.note %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center mx-auto p-4 rounded-md">
+      <div class="pagination">
+       <div class="zurück">
+        <.link
+          :if={@options.page > 1}
+          patch={
+            ~p"/ergebnisse-abschlussarbeiten?#{%{@options | page: @options.page - 1}}"
+          }>
+          Zurück
+        </.link></div><div class="vor">
+        <.link patch={
+          ~p"/ergebnisse-abschlussarbeiten?#{%{@options | page: @options.page + 1}}"
+        }>
+          Vor
+        </.link></div>
+      </div>
+    </div>
+  </div>
+</div>
