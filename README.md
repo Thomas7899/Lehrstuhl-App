@@ -1,81 +1,112 @@
-# Lehrstuhl App
+# 🎓 Lehrstuhl App (Faculty Management System)
 
-## Welcome to the Lehrstuhl-App
+> An optimized, real-time management system for university faculties to handle theses, seminars, exams, and student data efficiently.
 
-### visit directly on https://lehrstuhl-app.fly.dev/ 
+**🚀 Live Demo:** [https://lehrstuhl-app.fly.dev/](https://lehrstuhl-app.fly.dev/)
 
-### or get more insights in data models and more on the wiki page...
+---
 
-Login with: email: "admin@example.com",
-            password: password123
+## 📖 About The Project
 
-or create an account!
+The **Lehrstuhl App** helps academic chairs manage their administrative workload. It replaces complex spreadsheets with a centralized, reactive web application. It allows faculty members to easily filter theses, track exam grades, manage seminars, and visualize performance statistics.
 
-This app has been specifically developed to optimize faculty management. It allows 
+Built with **Elixir** and **Phoenix LiveView**, the application offers real-time updates and a snappy user experience without page reloads.
 
-* easy searching and filtering of theses and seminars via a text search field, 
+### ✨ Key Features
 
-* as well as dropdown menus for supervisors, semesters, and research projects. 
+* **dashboard & Analytics:** Get a quick overview of running theses, upcoming exams, and student KPIs. Visualized data includes grade distributions and average performance.
+* **Thesis Management:** Sophisticated filtering for Bachelor's and Master's theses by semester, supervisor, research project, or status (Abstract/Concrete).
+* **Exam Administration:** manage exam dates, participants, and import results efficiently via **CSV upload**.
+* **Seminar Finder:** Real-time search functionality for students to find relevant seminars based on titles or topics.
+* **Student Profiles:** Detailed digital files for students, tracking their academic progress and personal information.
+* **Role-Based Access:** Secure login system distinguishing between public views and administrative areas.
 
-* With these features, you can quickly find out which theses were written in a particular semester or which supervisor is working on which project.
+---
 
-* The Lehrstuhl-App enables the efficient management and linking of seminars, exams, staff, theses, and students.
+# 📸 Screenshots
 
-* Easily find out which grades were achieved in exams, theses or seminars
+Here you can see the application in action, from the central dashboard to detailed filtering and statistical analysis.
 
-* Its intuitive user interface ensures that you always have a clear overview of all relevant information.
+<div align="center">
+  <h3>🎛️ Centralized Dashboard</h3>
+  <img src="/screenshots/homepage.png" alt="Dashboard Overview">
+  <p><em>A quick overview of all active administrative processes, student counts, and upcoming tasks.</em></p>
+</div>
 
-* An authentication feature (Admin) ensures that critical tasks and pages are restricted to non-authorised individuals.
+<br>
 
-* Our application enables you to perform complex queries between linked database records quickly and efficiently.
+| 🔍 Thesis & Project Filtering | 📊 Module Statistics & Analytics |
+|:---:|:---:|
+| ![Filtering Theses](/screenshots/abschlussarbeiten.png) | ![Module Details](/screenshots/module.png) |
+| *Advanced filtering for specific research projects, semesters, and supervisors.* | *Detailed performance tracking, grade averages, and visualization per module.* |
 
-* Discover how the Lehrstuhl-App simplifies academic administration!
+---
 
-## How to start
+## 🛠 Tech Stack
 
-To start your Phoenix Server:
+* **Backend/Frontend:** [Elixir](https://elixir-lang.org/) & [Phoenix Framework](https://www.phoenixframework.org/) (LiveView)
+* **Database:** PostgreSQL
+* **Styling:** Tailwind CSS
+* **Deployment:** Fly.io
+* **Visualization:** SVG/CSS Charts
 
-* Clone the repository on your local machine or visit https://lehrstuhl-app.fly.dev/
+---
 
-* Install dependencies with mix deps.get
+## 🚀 Getting Started
 
-* Create and migrate your database with mix ecto.setup 
+To run this project locally, you will need Elixir and PostgreSQL installed.
 
-* Start Phoenix with mix phx.server or inside IEx with iex -S mix 
+### Prerequisites
 
-Now you can visit localhost:4000 from your browser.
+* Elixir ~> 1.14
+* Erlang/OTP ~> 25
+* PostgreSQL
 
-* First create an account with your own e-mail and password!
+### Installation
 
-* Navigate to Erstellen, Filtern and Submenu's
+1.  **Clone the repository**
+    ```sh
+    git clone [https://github.com/your-username/lehrstuhl-app.git](https://github.com/your-username/lehrstuhl-app.git)
+    cd lehrstuhl-app
+    ```
 
-* Return to Homepage per FernUni - Logo
+2.  **Install dependencies**
+    ```sh
+    mix deps.get
+    ```
 
-# Roadmap / To-Do List
+3.  **Setup Database**
+    Update your `config/dev.exs` with your database credentials, then run:
+    ```sh
+    mix ecto.setup
+    ```
 
-## The following tasks are planned or still need to be completed:
+4.  **Start the Server**
+    ```sh
+    mix phx.server
+    ```
 
-  * Fix and improve tests
-    Resolve failing or incomplete tests to ensure the application functions as expected and meets quality standards. (solved)
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-  * Fix navbar. (Dropdown opens not every time or needs reload first)
+---
 
-  * Add new features to manage Klausuren und Seminare.
+## 🔐 Test Credentials
 
-  * Improve documentation
-    Expand the documentation to provide clearer instructions for installation, usage, and contributing.
+To explore the admin features in the live demo or local version, use the following credentials:
 
-  * Optimize performance
-    Analyze and address potential performance bottlenecks.
+* **Email:** `admin@example.com`
+* **Password:** `password123`
 
-  * Refactor code
-    Clean up and restructure parts of the codebase for better maintainability and readability.
+---
 
-## Learn more about the Phoenix Framework
+## 🗺 Roadmap
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+- [x] Core management for Theses and Seminars
+- [x] CSV Import for Exam Grades
+- [x] Data Visualization (Grade Distribution)
+- [ ] Improved Mobile Responsiveness
+- [ ] PDF Export for Student Transcripts
+- [ ] Calendar Integration for Exam Dates
+
+---
 
