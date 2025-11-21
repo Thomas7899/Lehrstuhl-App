@@ -6,7 +6,7 @@ import { LiveSocket } from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
 // Chart.js
-import Chart from "chart.js/auto"
+// import Chart from "chart.js/auto"
 
 // -----------------------------
 // 🔥 LiveView Hooks

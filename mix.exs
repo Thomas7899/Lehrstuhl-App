@@ -61,7 +61,8 @@ defmodule Lehrstuhl.MixProject do
       {:excoveralls, "~> 0.10", only: :test},
       {:credo, "~> 1.7.13", only: [:dev, :test], runtime: false},
       {:mint, "~> 1.7"},
-      {:bandit, "~> 1.6"}
+      {:bandit, "~> 1.8"},
+      {:nimble_csv, "~> 1.3"}
     ]
   end
 
