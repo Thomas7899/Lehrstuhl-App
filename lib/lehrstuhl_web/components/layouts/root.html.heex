@@ -9,34 +9,40 @@
       <%= assigns[:page_title] || "Lehrstuhl App" %>
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    
+    <link rel="stylesheet" href="https://preline.co/assets/css/main.min.css">
+    
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
 
   <body class="bg-gray-500">
-    <ul class="relative z-10 flex items-center bg-gray-500 gap-4 px-4 sm:px-6 lg:px-8 justify-end">
+    <ul class="relative z-10 flex items-center bg-gray-500 gap-4 px-4 sm:px-6 lg:px-8 justify-end py-2">
       <%= if @current_user do %>
-        <li class="text-[0.8125rem] leading-6 text-zinc-900">
-          <%= @current_user.email %>
+        <li class="hs-dropdown relative inline-flex">
+          <button id="hs-dropdown-custom-trigger" type="button" class="hs-dropdown-toggle inline-flex items-center gap-x-2 text-[0.8125rem] font-semibold leading-6 text-zinc-900 hover:text-zinc-700 disabled:opacity-50 disabled:pointer-events-none">
+            <span><%= @current_user.email %></span>
+            <svg class="hs-dropdown-open:rotate-180 size-4 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+
+          <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-48 bg-white shadow-md rounded-lg p-2 mt-2 dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 z-50 absolute right-0" aria-labelledby="hs-dropdown-custom-trigger">
+            <.link
+              href={~p"/users/settings"}
+              class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+            >
+              Settings
+            </.link>
+            
+            <.link
+              href={~p"/users/log_out"}
+              method="delete"
+              class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+            >
+              Log out
+            </.link>
+          </div>
         </li>
-        <li>
-          <.link
-            href={~p"/users/settings"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Settings
-          </.link>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/log_out"}
-            method="delete"
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Log out
-          </.link>
-        </li>
-      <% else %>
+        <% else %>
         <li>
           <.link
             href={~p"/users/register"}
@@ -55,7 +61,28 @@
         </li>
       <% end %>
     </ul>
+
     <%= @inner_content %>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+    <script src="https://preline.co/assets/js/hs-ui.bundle.js"></script>
+    <script>
+      // Init Funktion
+      const initPreline = () => {
+        // Kleiner Timeout hilft, falls der DOM noch nicht 100% bereit ist
+        setTimeout(() => {
+          if (window.HSStaticMethods) {
+            window.HSStaticMethods.autoInit();
+          }
+        }, 100);
+      };
+
+      window.addEventListener('load', initPreline);
+
+      window.addEventListener('phx:page-loading-stop', initPreline);
+      
+      window.addEventListener('phx:update', initPreline);
+    </script>
   </body>
 </html>

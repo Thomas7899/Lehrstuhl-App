@@ -1,9 +1,12 @@
+//assets/js/app.js
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
 
 import { Socket } from "phoenix"
 import { LiveSocket } from "phoenix_live_view"
 import topbar from "../vendor/topbar"
+
+import "preline"
 
 // Chart.js
 // import Chart from "chart.js/auto"
@@ -167,6 +170,22 @@ topbar.config({
 
 window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
 window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
+
+// --- WICHTIG: Preline Re-Init Logik ---
+window.addEventListener("phx:page-loading-stop", _info => {
+  topbar.hide()
+  // Preline nach Navigation neu starten
+  setTimeout(() => {
+    if (window.HSStaticMethods) window.HSStaticMethods.autoInit();
+  }, 100)
+})
+
+window.addEventListener("phx:update", () => {
+    // Preline bei LiveView Updates neu starten
+    setTimeout(() => {
+      if (window.HSStaticMethods) window.HSStaticMethods.autoInit();
+    }, 100)
+});
 
 // -----------------------------
 // Verbinden
