@@ -14,6 +14,22 @@ defmodule LehrstuhlWeb.StudentLive.Index do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
+  # --- NEUER EVENT HANDLER FÜR DIE SUCHE ---
+  @impl true
+  def handle_event("search", %{"query" => query}, socket) do
+
+    students =
+      if query == "" do
+        Persons.list_students()
+      else
+        Persons.search_students(query)
+      end
+
+    {:noreply, stream(socket, :students, students, reset: true)}
+  end
+
+  # -----------------------------------------
+
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
     |> assign(:page_title, "Edit Student")
@@ -37,11 +53,4 @@ defmodule LehrstuhlWeb.StudentLive.Index do
     {:noreply, stream_insert(socket, :students, student)}
   end
 
-  @impl true
-  def handle_event("delete", %{"id" => id}, socket) do
-    student = Persons.get_student!(id)
-    {:ok, _} = Persons.delete_student(student)
-
-    {:noreply, stream_delete(socket, :students, student)}
-  end
 end

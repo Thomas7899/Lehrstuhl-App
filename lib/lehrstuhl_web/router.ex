@@ -26,7 +26,10 @@ defmodule LehrstuhlWeb.Router do
   scope "/", LehrstuhlWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+live "/", PageLive
+
+# Falsch (Löschen!):
+# get "/", PageController, :home
 
     # Bereich, der Login erfordert
     pipe_through :require_authenticated_user
@@ -46,7 +49,7 @@ defmodule LehrstuhlWeb.Router do
   end
 
   # ------------------------
-  # ADMIN-Bereich (ALLE CRUDS)
+  # ADMIN-Bereich (ALLE CRUDS + DASHBOARD)
   # ------------------------
   scope "/", LehrstuhlWeb do
 
@@ -58,6 +61,11 @@ defmodule LehrstuhlWeb.Router do
         {LehrstuhlWeb.UserAuth, :ensure_authenticated},
         {LehrstuhlWeb.UserAuth, :ensure_admin}
       ] do
+
+      # -------------------------------------------
+      # Dashboard / Cockpit (NEU)
+      # -------------------------------------------
+      live "/dashboard", DashboardLive
 
       # -------------------------------------------
       # Abschlussarbeiten – Abstrakte
@@ -171,6 +179,8 @@ defmodule LehrstuhlWeb.Router do
 
     scope "/dev" do
       pipe_through :browser
+      # Achtung: Das hier ist unter /dev/dashboard erreichbar,
+      # dein neues Dashboard unter /dashboard (im Admin Bereich).
       live_dashboard "/dashboard", metrics: LehrstuhlWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end

@@ -21,6 +21,16 @@ defmodule Lehrstuhl.Abschlussarbeiten do
       [%AbstrakteAbschlussarbeiten{}, ...]
 
   """
+
+  # Zählt alle Arbeiten, die angemeldet sind, aber noch kein Ergebnis haben
+  def count_running_theses do
+    from(k in KonkreteAbschlussarbeiten,
+      # Wir joinen auf ErgebnisseAbschlussarbeiten (angenommen, das existiert)
+      left_join: e in assoc(k, :ergebnis),
+      where: is_nil(e.id)
+    )
+    |> Repo.aggregate(:count, :id)
+  end
 #Suchfunktion
 def suche_abschlussarbeiten(filter) do
   query = (from ka in KonkreteAbschlussarbeiten,

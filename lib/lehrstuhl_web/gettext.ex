@@ -19,6 +19,13 @@ defmodule LehrstuhlWeb.Gettext do
       dgettext("errors", "Here is the error message to translate")
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
+
+
+  defmodule LehrstuhlWeb.Gettext do
+  use Gettext.Backend, otp_app: :lehrstuhl
+end
+use Gettext, backend: LehrstuhlWeb.Gettext
+
   """
   use Gettext, otp_app: :lehrstuhl
 end

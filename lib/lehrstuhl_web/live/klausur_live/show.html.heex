@@ -71,6 +71,63 @@
     ></canvas>
   </div>
 
+  <div class="rounded-2xl p-8 bg-gray-800 border border-gray-700 shadow-xl">
+    <div class="flex items-start justify-between">
+      <div>
+        <h2 class="text-2xl font-semibold text-white mb-2">Ergebnisse importieren</h2>
+        <p class="text-gray-400 text-sm mb-4">
+          Lade eine CSV-Datei hoch, um Noten massenhaft zu importieren.<br>
+          Erwartetes Format: <code>Matrikelnummer;Punkte</code> (Trennzeichen: Semikolon)
+        </p>
+      </div>
+      <div class="bg-purple-900/50 p-2 rounded-lg border border-purple-700">
+        <span class="text-purple-300 text-xs font-mono">.CSV</span>
+      </div>
+    </div>
+
+    <form phx-submit="save_csv" phx-change="validate" class="space-y-4">
+      
+      <div class="flex items-center justify-center w-full" phx-drop-target={@uploads.csv.ref}>
+        <label for={@uploads.csv.ref} class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-700/30 hover:bg-gray-700/50 transition-colors">
+            
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <%= if @uploads.csv.entries == [] do %>
+                  <svg class="w-8 h-8 mb-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                  </svg>
+                  <p class="text-sm text-gray-400"><span class="font-semibold">Klicken zum Auswählen</span> oder Datei hierher ziehen</p>
+                <% else %>
+                  <%= for entry <- @uploads.csv.entries do %>
+                    <div class="text-green-400 font-semibold flex items-center gap-2">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                      <%= entry.client_name %>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1"><%= entry.progress %>% hochgeladen</p>
+                  <% end %>
+                <% end %>
+            </div>
+            
+            <.live_file_input upload={@uploads.csv} class="hidden" />
+        </label>
+      </div>
+
+      <%= for err <- upload_errors(@uploads.csv) do %>
+        <div class="text-red-400 text-sm bg-red-900/20 p-2 rounded border border-red-900">
+          Fehler: <%= inspect(err) %>
+        </div>
+      <% end %>
+
+      <div class="text-right">
+        <button type="submit" 
+          disabled={@uploads.csv.entries == []}
+          class="px-6 py-2.5 bg-[#8000ff] hover:bg-[#6a00d6] disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium rounded-lg shadow-lg transition-all transform hover:scale-105 active:scale-95">
+          Daten importieren
+        </button>
+      </div>
+
+    </form>
+  </div>
+
   <!-- ====================================================== -->
   <!-- 🧑‍🎓 TABELLE: KLAUSURERGEBNISSE -->
   <!-- ====================================================== -->

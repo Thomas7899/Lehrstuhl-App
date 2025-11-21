@@ -115,6 +115,28 @@ defmodule Lehrstuhl.Persons do
 
   alias Lehrstuhl.Persons.Student
 
+  # Zählt alle Studenten
+  def count_students do
+    Repo.aggregate(Student, :count, :id)
+  end
+
+  def search_students(query) do
+  search_term = "%#{query}%"
+
+  from(s in Student,
+    where: ilike(s.vorname, ^search_term) or
+           ilike(s.nachname, ^search_term) or
+           ilike(s.matrikelnummer, ^search_term) or
+           ilike(s.email, ^search_term)
+  )
+  |> Repo.all()
+end
+
+
+  def get_student_by_matrikelnummer(matrikelnummer) do
+    Repo.get_by(Lehrstuhl.Persons.Student, matrikelnummer: matrikelnummer)
+  end
+
   @doc """
   Returns the list of students.
 
@@ -147,10 +169,15 @@ def get_student!(id) do
   Student
   |> Repo.get!(id)
   |> Repo.preload([
-    klausurergebnisse: [klausur: [:modul]],
-    seminarergebnisse: [:seminar],
-    konkrete_abschlussarbeiten: [:ergebnisse_abschlussarbeiten],
-    ergebnisse_abschlussarbeiten: [:konkrete_abschlussarbeiten]
+    # 1. Abschlussarbeiten laden (inkl. verknüpfte Daten)
+    konkrete_abschlussarbeiten: [],
+    ergebnisse_abschlussarbeiten: [:konkrete_abschlussarbeiten],
+
+    # 2. Klausurergebnisse laden -> Klausur -> Modul
+    klausurergebnisse: [klausur: :modul],
+
+    # 3. Seminarergebnisse laden -> Seminar
+    seminarergebnisse: :seminar
   ])
 end
 

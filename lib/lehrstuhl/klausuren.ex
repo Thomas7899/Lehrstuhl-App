@@ -19,6 +19,88 @@ defmodule Lehrstuhl.Klausuren do
 
   """
 
+# lib/lehrstuhl/klausuren.ex
+
+alias Lehrstuhl.Persons
+# Zählt alle Klausuren (gesamt)
+  def count_klausuren do
+    Repo.aggregate(Klausur, :count, :id)
+  end
+
+  # Zählt anstehende Klausuren (muss Ecto.Query importiert haben)
+  def count_upcoming_klausuren do
+    today = Date.utc_today()
+    from(k in Klausur, where: k.klausurdatum >= ^today)
+    |> Repo.aggregate(:count, :id)
+  end
+# Das erzeugt ein Modul namens Lehrstuhl.Klausuren.MyParser
+  NimbleCSV.define(MyParser, separator: ";", escape: "\"")
+  # ----
+
+def import_klausurergebnisse(klausur_id, file_path) do
+    IO.puts("--- STARTE IMPORT ---")
+    # Debug Ausgabe
+    IO.inspect(File.read!(file_path), label: "Datei-Inhalt Raw")
+
+    # WICHTIG: Hier rufen wir jetzt den lokalen Parser auf
+    MyParser.parse_stream(File.stream!(file_path))
+    |> Enum.reduce({0, 0}, fn row, {created, errors} ->
+      IO.inspect(row, label: "Geparste Zeile")
+
+      case row do
+        [matrikelnummer, punkte] ->
+          # Matrikelnummer bereinigen (falls Leerzeichen drin sind)
+          matrikelnummer = String.trim(matrikelnummer)
+          punkte = String.trim(punkte)
+
+          case Persons.get_student_by_matrikelnummer(matrikelnummer) do
+            nil ->
+              IO.puts("FEHLER: Student #{matrikelnummer} nicht gefunden.")
+              {created, errors + 1}
+
+            student ->
+              punkte_int = String.to_integer(punkte)
+
+              # Note berechnen (Beispiel-Logik)
+              note =
+                cond do
+                  punkte_int >= 90 -> 1.0
+                  punkte_int >= 80 -> 2.0
+                  punkte_int >= 65 -> 3.0
+                  punkte_int >= 50 -> 4.0
+                  true -> 5.0
+                end
+
+              attrs = %{
+                student_id: student.id,
+                klausur_id: klausur_id,
+                punkte: punkte_int,
+                note: note,
+                status: if(punkte_int >= 50, do: :bestanden, else: :nicht_bestanden),
+                versuche: 1,
+                pruefungsdatum: Date.utc_today() # Oder das der Klausur nehmen
+              }
+
+              case create_klausurergebnis(attrs) do
+                {:ok, _} -> {created + 1, errors}
+                {:error, changeset} ->
+                  IO.inspect(changeset.errors, label: "DB Error")
+                  {created, errors + 1}
+              end
+          end
+
+        _ ->
+          IO.puts("FORMAT FEHLER")
+          {created, errors + 1}
+      end
+    end)
+  end
+
+# lib/lehrstuhl/persons.ex
+def get_student_by_matrikelnummer(matnr) do
+  Repo.get_by(Student, matrikelnummer: matnr)
+end
+
 def list_klausuren_for_modul(modul_id) do
   Klausur
   |> where([k], k.modul_id == ^modul_id)

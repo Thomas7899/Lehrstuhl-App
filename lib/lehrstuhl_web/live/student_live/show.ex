@@ -2,7 +2,6 @@ defmodule LehrstuhlWeb.StudentLive.Show do
   use LehrstuhlWeb, :live_view
 
   alias Lehrstuhl.Persons
-  
 
   @impl true
   def mount(_params, _session, socket) do
@@ -11,11 +10,13 @@ defmodule LehrstuhlWeb.StudentLive.Show do
 
   @impl true
   def handle_params(%{"id" => id}, _, socket) do
+    # Hier wird nun die mächtige get_student! Funktion aus Schritt 1 aufgerufen
     student = Persons.get_student!(id)
 
+    # Sicherheits-Check: Falls Assoziationen nil sind, leere Listen verwenden
     klausurergebnisse = student.klausurergebnisse || []
     seminarergebnisse = student.seminarergebnisse || []
-    ergebnisse = student.ergebnisse_abschlussarbeiten || []
+    ergebnisse_abschlussarbeiten = student.ergebnisse_abschlussarbeiten || []
 
     {:noreply,
      socket
@@ -23,9 +24,9 @@ defmodule LehrstuhlWeb.StudentLive.Show do
      |> assign(:student, student)
      |> assign(:klausurergebnisse, klausurergebnisse)
      |> assign(:seminarergebnisse, seminarergebnisse)
-     |> assign(:ergebnisse_abschlussarbeiten, ergebnisse)}
+     |> assign(:ergebnisse_abschlussarbeiten, ergebnisse_abschlussarbeiten)}
   end
 
-  defp page_title(:show), do: "Show Student"
-  defp page_title(:edit), do: "Edit Student"
+  defp page_title(:show), do: "Studentenakte"
+  defp page_title(:edit), do: "Student bearbeiten"
 end

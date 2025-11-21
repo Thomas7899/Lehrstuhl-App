@@ -5,7 +5,6 @@ defmodule Lehrstuhl.Persons.Student do
 
   alias Lehrstuhl.Abschlussarbeiten.KonkreteAbschlussarbeiten
   alias Lehrstuhl.Klausuren.Klausurergebnis
-  alias Lehrstuhl.Klausuren.Klausur
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
