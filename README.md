@@ -1,4 +1,4 @@
-# 🎓 Lehrstuhl App (Faculty Management System)
+# 🎓 Lehrstuhl App
 
 > An optimized, real-time management system for university faculties to handle theses, seminars, exams, and student data efficiently.
 
