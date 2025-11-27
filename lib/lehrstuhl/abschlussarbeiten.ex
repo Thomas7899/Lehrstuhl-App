@@ -117,8 +117,90 @@ defp filter_by_semester1(query, %{semester: semester}) do
   where(query, semester: ^semester)
 end
 
+@doc """
+  Statistik pro abstrakter Abschlussarbeit: Anzahl Ergebnisse + Durchschnittsnote.
 
+  Liefert eine Liste von Maps:
 
+      [
+        %{id: ..., label: "...", anzahl: 5, durchschnittsnote: 2.3},
+        ...
+      ]
+  """
+  def statistik_abstrakte_abschlussarbeiten do
+    query =
+      from abstrakt in AbstrakteAbschlussarbeiten,
+        left_join: konkret in KonkreteAbschlussarbeiten,
+        on: konkret.abstrakte_abschlussarbeiten_id == abstrakt.id,
+        left_join: erg in ErgebnisseAbschlussarbeiten,
+        on: erg.konkrete_abschlussarbeiten_id == konkret.id,
+        group_by: [abstrakt.id, abstrakt.thema, abstrakt.semester],
+        select: %{
+          id: abstrakt.id,
+          # Thema + Semester als Label, damit du SPORT-Themen für verschiedene Semester unterscheiden kannst
+          label:
+            fragment(
+              "? || ' (' || ? || ')'",
+              abstrakt.thema,
+              abstrakt.semester
+            ),
+          anzahl: count(erg.id),
+          durchschnittsnote: avg(erg.note)
+        }
+
+    Repo.all(query)
+  end
+
+   @doc """
+  Statistik pro Forschungsprojekt (SPORT / TOOL / IMP): Anzahl Ergebnisse + Durchschnittsnote.
+  """
+  def statistik_nach_forschungsprojekt do
+  from(abstrakt in AbstrakteAbschlussarbeiten,
+    left_join: konkret in KonkreteAbschlussarbeiten,
+    on: konkret.abstrakte_abschlussarbeiten_id == abstrakt.id,
+    left_join: erg in ErgebnisseAbschlussarbeiten,
+    on: erg.konkrete_abschlussarbeiten_id == konkret.id,
+    group_by: abstrakt.forschungsprojekt,
+    select: %{
+      projekt: abstrakt.forschungsprojekt,
+      anzahl: count(erg.id),
+      durchschnittsnote: avg(erg.note)
+    }
+  )
+  |> Repo.all()
+end
+
+    @doc """
+  Notenverteilung der konkreten Abschlussarbeiten zu einer abstrakten Arbeit.
+  """
+  def notenverteilung_konkrete_fuer_abstrakte(abstrakt_id) do
+    from(erg in ErgebnisseAbschlussarbeiten,
+      join: konkret in KonkreteAbschlussarbeiten,
+      on: erg.konkrete_abschlussarbeiten_id == konkret.id,
+      where: konkret.abstrakte_abschlussarbeiten_id == ^abstrakt_id,
+      group_by: erg.note,
+      order_by: erg.note,
+      select: %{note: erg.note, count: count(erg.id)}
+    )
+    |> Repo.all()
+  end
+
+  def statistik_abstrakte_abschlussarbeiten_projekt do
+  from(abstrakt in AbstrakteAbschlussarbeiten,
+    left_join: konkret in KonkreteAbschlussarbeiten,
+    on: konkret.abstrakte_abschlussarbeiten_id == abstrakt.id,
+    left_join: erg in ErgebnisseAbschlussarbeiten,
+    on: erg.konkrete_abschlussarbeiten_id == konkret.id,
+    group_by: [abstrakt.id, abstrakt.forschungsprojekt],
+    select: %{
+      id: abstrakt.id,
+      projekt: abstrakt.forschungsprojekt,
+      anzahl: count(erg.id),
+      durchschnittsnote: avg(erg.note)
+    }
+  )
+  |> Repo.all()
+end
 
   @doc """
   Gets a single abstrakte_abschlussarbeiten.

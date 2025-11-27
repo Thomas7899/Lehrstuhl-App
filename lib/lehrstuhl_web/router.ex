@@ -26,6 +26,9 @@ defmodule LehrstuhlWeb.Router do
   scope "/", LehrstuhlWeb do
     pipe_through :browser
 
+    # One-Click Login für Admin/Recruiter
+  get "/quick_login_admin", QuickLoginController, :admin
+
 live "/", PageLive
 
 # Falsch (Löschen!):

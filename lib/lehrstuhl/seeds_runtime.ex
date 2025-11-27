@@ -1,24 +1,15 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Lehrstuhl.Repo.insert!(%Lehrstuhl.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
-alias Lehrstuhl.Repo
-alias Lehrstuhl.Persons.{Mitarbeiter, Student}
-alias Lehrstuhl.Abschlussarbeiten.{AbstrakteAbschlussarbeiten, KonkreteAbschlussarbeiten, ErgebnisseAbschlussarbeiten}
-alias Lehrstuhl.Seminare.{AbstraktesSeminar, Seminar, Seminarergebnis}
-alias Lehrstuhl.Klausuren.{Klausurergebnis, Klausur, Modul}
-alias Lehrstuhl.Accounts.User
+defmodule Lehrstuhl.SeedsRuntime do
+  alias Lehrstuhl.Repo
+  alias Lehrstuhl.Persons.{Mitarbeiter, Student}
+  alias Lehrstuhl.Abschlussarbeiten.{AbstrakteAbschlussarbeiten, KonkreteAbschlussarbeiten, ErgebnisseAbschlussarbeiten}
+  alias Lehrstuhl.Seminare.{AbstraktesSeminar, Seminar, Seminarergebnis}
+  alias Lehrstuhl.Klausuren.{Klausurergebnis, Klausur, Modul}
+  alias Lehrstuhl.Accounts.User
 
-import Bcrypt, only: [hash_pwd_salt: 1]
+  import Bcrypt, only: [hash_pwd_salt: 1]
 
-hashed_password = hash_pwd_salt("password123")
+  def run do
+   hashed_password = hash_pwd_salt("password123")
 
 Repo.insert!(%User{
    email: "admin@example.com",
@@ -1727,3 +1718,7 @@ Repo.insert!(%Klausurergebnis{
   klausur_id: klausur4.id,
   versuche: 1
 })
+
+    :ok
+  end
+end

@@ -22,6 +22,28 @@ defmodule Lehrstuhl.Klausuren do
 # lib/lehrstuhl/klausuren.ex
 
 alias Lehrstuhl.Persons
+
+#Dashboard-Statistiken - letzte Klausuren
+
+def letzte_klausuren(limit \\ 5) do
+    from(k in Klausur,
+      left_join: e in Klausurergebnis,
+      on: e.klausur_id == k.id,
+      group_by: [k.id, k.kenner, k.beschreibung, k.klausurdatum],
+      order_by: [desc: k.klausurdatum],
+      limit: ^limit,
+      select: %{
+        id: k.id,
+        kenner: k.kenner,
+        beschreibung: k.beschreibung,
+        datum: k.klausurdatum,
+        teilnehmer: count(e.id),
+        durchschnittsnote: avg(e.note)
+      }
+    )
+    |> Repo.all()
+  end
+
 # Zählt alle Klausuren (gesamt)
   def count_klausuren do
     Repo.aggregate(Klausur, :count, :id)

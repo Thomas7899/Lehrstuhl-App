@@ -1,5 +1,4 @@
-//assets/js/app.js
-// Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
+// assets/js/app.js
 import "phoenix_html"
 
 import { Socket } from "phoenix"
@@ -8,8 +7,7 @@ import topbar from "../vendor/topbar"
 
 import "../vendor/preline"
 
-// Chart.js
-// import Chart from "chart.js/auto"
+// Chart.js kommt global über das Script in root.html.heex (window.Chart)
 
 // -----------------------------
 // 🔥 LiveView Hooks
@@ -148,6 +146,80 @@ Hooks.ModulParticipantsChartHook = {
   }
 }
 
+/* ----------------------------------------------------
+   📊 Statistik abstrakte Abschlussarbeiten (Dashboard & Filter)
+---------------------------------------------------- */
+Hooks.AbstraktStatsChart = {
+  mounted() {
+    console.log("AbstraktStatsChart mounted")
+
+    const el = this.el
+    const ctx = el.getContext("2d")
+
+    const labels = JSON.parse(el.dataset.labels || "[]")
+    const values = JSON.parse(el.dataset.values || "[]")
+    const counts = JSON.parse(el.dataset.counts || "[]")
+
+    if (!labels.length) return
+
+    this.chart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [
+          {
+            type: "bar",
+            label: "Durchschnittsnote",
+            data: values,
+            backgroundColor: "rgba(129, 140, 248, 0.7)", // indigo
+            borderWidth: 1
+          },
+          {
+            type: "line",
+            label: "Anzahl Ergebnisse",
+            data: counts,
+            borderColor: "rgba(16, 185, 129, 1)", // emerald
+            borderWidth: 2,
+            tension: 0.3,
+            yAxisID: "y1"
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: { color: "#e5e7eb" }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: "#e5e7eb" },
+            grid: { color: "rgba(255,255,255,0.05)" }
+          },
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: "Note", color: "#e5e7eb" },
+            ticks: { color: "#e5e7eb" },
+            grid: { color: "rgba(255,255,255,0.05)" }
+          },
+          y1: {
+            beginAtZero: true,
+            position: "right",
+            title: { display: true, text: "Anzahl", color: "#e5e7eb" },
+            ticks: { color: "#e5e7eb" },
+            grid: { drawOnChartArea: false }
+          }
+        }
+      }
+    })
+  },
+  destroyed() {
+    if (this.chart) this.chart.destroy()
+  }
+}
+
 // -----------------------------
 // 🔥 LiveSocket initialisieren
 // -----------------------------
@@ -161,7 +233,7 @@ let liveSocket = new LiveSocket("/live", Socket, {
 })
 
 // -----------------------------
-// Progress Bar
+// Progress Bar + Preline Re-Init
 // -----------------------------
 topbar.config({
   barColors: { 0: "#29d" },
@@ -169,28 +241,22 @@ topbar.config({
 })
 
 window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
-window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
 
-// --- WICHTIG: Preline Re-Init Logik ---
 window.addEventListener("phx:page-loading-stop", _info => {
   topbar.hide()
-  // Preline nach Navigation neu starten
   setTimeout(() => {
-    if (window.HSStaticMethods) window.HSStaticMethods.autoInit();
+    if (window.HSStaticMethods) window.HSStaticMethods.autoInit()
   }, 100)
 })
 
 window.addEventListener("phx:update", () => {
-    // Preline bei LiveView Updates neu starten
-    setTimeout(() => {
-      if (window.HSStaticMethods) window.HSStaticMethods.autoInit();
-    }, 100)
-});
+  setTimeout(() => {
+    if (window.HSStaticMethods) window.HSStaticMethods.autoInit()
+  }, 100)
+})
 
 // -----------------------------
 // Verbinden
 // -----------------------------
 liveSocket.connect()
-
-// Debug
 window.liveSocket = liveSocket
