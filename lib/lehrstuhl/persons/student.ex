@@ -16,6 +16,14 @@ defmodule Lehrstuhl.Persons.Student do
     field :nachname, :string
     field :geburtsdatum, :date
 
+    field :status, Ecto.Enum,
+    values: [:aktiv, :alumni, :exmatrikuliert],
+    default: :aktiv
+
+    field :abschluss_datum, :date
+    field :abschluss_art, Ecto.Enum,
+    values: [:bachelor, :master, :diplom]
+
     # Seminare
     has_many :seminarergebnisse, Lehrstuhl.Seminare.Seminarergebnis
 

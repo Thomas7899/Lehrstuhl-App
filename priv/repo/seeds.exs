@@ -16,6 +16,7 @@ alias Lehrstuhl.Seminare.{AbstraktesSeminar, Seminar, Seminarergebnis}
 alias Lehrstuhl.Klausuren.{Klausurergebnis, Klausur, Modul}
 alias Lehrstuhl.Accounts.User
 
+import Ecto.Query  
 import Bcrypt, only: [hash_pwd_salt: 1]
 
 hashed_password = hash_pwd_salt("password123")
@@ -1727,3 +1728,35 @@ Repo.insert!(%Klausurergebnis{
   klausur_id: klausur4.id,
   versuche: 1
 })
+
+# --- Alumni-Felder aus Abschlussarbeiten ableiten ---
+
+alumni_query =
+  from e in ErgebnisseAbschlussarbeiten,
+    where: e.status == :bestanden,
+    join: s in assoc(e, :student),
+    select: {s.id, e.studienniveau, e.korrekturdatum}
+
+alumni =
+  alumni_query
+  |> Repo.all()
+  |> Enum.uniq_by(fn {student_id, _niveau, _datum} -> student_id end)
+
+Enum.each(alumni, fn {student_id, studienniveau, korrekturdatum} ->
+  abschluss_art =
+    case studienniveau do
+      :bachelorarbeit -> :bachelor
+      :masterarbeit -> :master
+      :diplomarbeit -> :diplom
+      _ -> nil
+    end
+
+  Repo.update_all(
+    from(s in Student, where: s.id == ^student_id),
+    set: [
+      status: "alumni",
+      abschluss_datum: korrekturdatum,
+      abschluss_art: if(abschluss_art, do: Atom.to_string(abschluss_art), else: nil)
+    ]
+  )
+end)

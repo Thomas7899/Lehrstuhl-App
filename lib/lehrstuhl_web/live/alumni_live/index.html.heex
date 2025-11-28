@@ -1,0 +1,140 @@
+<div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 space-y-10">
+  <!-- Kopfbereich / Hero -->
+  <div class="pb-6 border-b border-purple-600/40">
+    <p class="text-xs font-semibold tracking-[0.2em] text-purple-300 uppercase">
+      Alumni · Lehrstuhl für BWL, insbes. Entwicklung von Informationssystemen
+    </p>
+    <h1 class="mt-2 text-4xl font-bold tracking-tight text-white">
+      Ehemalige Studierende im Blick behalten
+    </h1>
+    <p class="mt-4 text-sm text-gray-200 leading-relaxed max-w-3xl">
+      Diese Seite zeigt, welche Studierenden ihre Abschlussarbeit am Lehrstuhl erfolgreich
+      abgeschlossen haben und wie aktiv unsere Community in einem Semester war –
+      über Seminare, Klausuren und Abschlussarbeiten hinweg.
+    </p>
+    <p class="mt-3 text-sm text-gray-400 max-w-3xl">
+      <span class="text-gray-100 font-medium">Alumni</span> sind für uns frühere
+      Studierende mit betreuter Abschlussarbeit am Lehrstuhl. Auf Basis der erfassten
+      Leistungsdaten entstehen hier einfache, aber aussagekräftige Auswertungen.
+    </p>
+  </div>
+
+  <!-- Kennzahlen / Teaser -->
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+    <!-- Alumni gesamt -->
+    <div class="relative bg-gradient-to-br from-purple-900/70 via-gray-900 to-gray-900 rounded-2xl border border-purple-500/70 shadow-lg shadow-purple-900/30 p-6 overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top,_rgba(250,250,255,0.18),_transparent_55%)]"></div>
+      <div class="relative">
+        <div class="text-xs uppercase tracking-wide text-purple-200/80 mb-1">
+          Alumni gesamt
+        </div>
+        <div class="text-5xl font-bold text-white mb-2">
+          <%= length(@alumni) %>
+        </div>
+        <p class="text-xs text-purple-100/80">
+          Studierende mit erfolgreich abgeschlossener Abschlussarbeit am Lehrstuhl.
+        </p>
+      </div>
+    </div>
+
+    <!-- Aktivitäten im Semester -->
+    <div class="bg-gray-900 rounded-2xl border border-gray-700/80 p-6">
+      <div class="text-xs uppercase tracking-wide text-gray-400 mb-2">
+        Aktivitäten im Semester <span class="text-gray-100"><%= @semester %></span>
+      </div>
+      <dl class="space-y-2 text-sm text-gray-100">
+        <div class="flex justify-between">
+          <dt class="text-gray-400">Abschlussarbeiten</dt>
+          <dd class="font-semibold"><%= @stats.abschlussarbeiten || 0 %></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt class="text-gray-400">Seminar‑Teilnahmen</dt>
+          <dd class="font-semibold"><%= @stats.seminar_teilnehmer || 0 %></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt class="text-gray-400">Klausur‑Teilnahmen</dt>
+          <dd class="font-semibold"><%= @stats.klausur_teilnehmer || 0 %></dd>
+        </div>
+      </dl>
+      <p class="mt-3 text-[11px] text-gray-500">
+        Grundlage sind die aktuell im System erfassten Leistungen des Semesters.
+      </p>
+    </div>
+
+    <!-- Verbunden bleiben -->
+    <div class="bg-gray-900 rounded-2xl border border-gray-700/80 p-6 flex flex-col justify-between">
+      <div>
+        <div class="text-xs uppercase tracking-wide text-gray-400 mb-2">
+          Verbunden bleiben
+        </div>
+        <p class="text-sm text-gray-200">
+          Viele Absolventinnen und Absolventen bleiben dem Lehrstuhl in
+          Praxis‑projekten, Gastvorträgen oder gemeinsamen Publikationen verbunden.
+        </p>
+      </div>
+      <div class="mt-4 text-[11px] text-gray-400">
+        <p>
+          Sie möchten Alumni‑Kontakte pflegen oder Einladungen zu Veranstaltungen erhalten?
+        </p>
+        <p class="mt-1">
+          Schreiben Sie uns an
+          <a href="mailto:alumni@evistuhl.example"
+             class="text-purple-300 hover:text-purple-200 underline underline-offset-2">
+            alumni@evistuhl.example
+          </a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alumni-Tabelle -->
+  <div class="bg-gray-900 rounded-2xl border border-gray-700/80 overflow-hidden">
+    <div class="px-4 py-3 border-b border-gray-800 flex items-center justify-between">
+      <div>
+        <h2 class="text-lg font-semibold text-white">
+          Alumni‑Liste
+        </h2>
+        <p class="text-xs text-gray-400 mt-1">
+          Basierend auf den erfassten Abschlussarbeiten. Neue Abschlüsse erscheinen
+          automatisch, sobald die Ergebnisse eingetragen sind.
+        </p>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-800 text-sm">
+        <thead class="bg-gray-950/80">
+          <tr>
+            <th class="px-4 py-2 text-left font-medium text-gray-300">Name</th>
+            <th class="px-4 py-2 text-left font-medium text-gray-300">Matrikelnummer</th>
+            <th class="px-4 py-2 text-left font-medium text-gray-300">Abschlussart</th>
+            <th class="px-4 py-2 text-left font-medium text-gray-300">Abschlussdatum</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-800">
+          <tr :for={s <- @alumni} class="hover:bg-gray-800/80">
+            <td class="px-4 py-2 text-white">
+              <%= s.nachname %>, <%= s.vorname %>
+            </td>
+            <td class="px-4 py-2 text-gray-200">
+              <%= s.matrikelnummer %>
+            </td>
+            <td class="px-4 py-2 text-gray-200">
+              <%= s.abschluss_art || "-" %>
+            </td>
+            <td class="px-4 py-2 text-gray-200">
+              <%= s.abschluss_datum || "-" %>
+            </td>
+          </tr>
+
+          <tr :if={Enum.empty?(@alumni)}>
+            <td colspan="4" class="px-4 py-4 text-center text-gray-400 text-xs">
+              Noch keine Alumni erfasst. Sobald erste Abschlussarbeiten mit bestandenem
+              Ergebnis vorliegen, werden die zugehörigen Studierenden hier angezeigt.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

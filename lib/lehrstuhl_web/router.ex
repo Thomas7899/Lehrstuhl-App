@@ -37,6 +37,9 @@ live "/", PageLive
     # Bereich, der Login erfordert
     pipe_through :require_authenticated_user
 
+    # Alumni Management und Statistiken
+    live "/alumni", AlumniLive.Index, :index
+
     # Filter-Funktionen für nicht-Admin-Nutzer
     live "/filter_abstrakt", FilterAbstraktLive
     live "/filter_abstrakt_konkret", FilterAbstraktKonkretLive

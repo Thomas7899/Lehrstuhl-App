@@ -4,31 +4,29 @@ defmodule LehrstuhlWeb.DashboardComponent do
   alias Lehrstuhl.Persons
   alias Lehrstuhl.Klausuren
   alias Lehrstuhl.Abschlussarbeiten
+  alias Lehrstuhl.Alumni
 
   @impl true
   def update(assigns, socket) do
     socket = assign(socket, assigns)
 
+    current_semester = current_semester()
+
     stats = %{
       students: Persons.count_students(),
       klausuren_total: Klausuren.count_klausuren(),
       klausuren_upcoming: Klausuren.count_upcoming_klausuren(),
-      theses_active: length(Abschlussarbeiten.list_konkrete_abschlussarbeiten())
+      theses_active: length(Abschlussarbeiten.list_konkrete_abschlussarbeiten()),
+      alumni_total: Alumni.count_alumni(),
+      alumni_semester: Alumni.semester_statistics(current_semester),
+      current_semester: current_semester
     }
 
     statistik = Abschlussarbeiten.statistik_abstrakte_abschlussarbeiten()
 
-    labels =
-      statistik
-      |> Enum.map(& &1.label)
-
-    values =
-      statistik
-      |> Enum.map(&(&1.durchschnittsnote || 0))
-
-    counts =
-      statistik
-      |> Enum.map(& &1.anzahl)
+    labels = Enum.map(statistik, & &1.label)
+    values = Enum.map(statistik, &(&1.durchschnittsnote || 0))
+    counts = Enum.map(statistik, & &1.anzahl)
 
     letzte_klausuren = Klausuren.letzte_klausuren(5)
 
@@ -43,92 +41,120 @@ defmodule LehrstuhlWeb.DashboardComponent do
     {:ok, socket}
   end
 
+  defp current_semester do
+    {{year, month, _}, _} = :calendar.local_time()
+
+    if month in 4..9 do
+      "SS#{rem(year, 100)}"
+    else
+      "WS#{year}/#{rem(year + 1, 100)}"
+    end
+  end
+
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 space-y-10">
-      <div class="border-b border-gray-700 pb-5">
-        <p class="text-gray-400 mt-2">
+    <div class="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-0 space-y-8">
+      <div class="border-b border-gray-700 pb-4">
+        <h1 class="text-xl font-semibold text-gray-100">
           Live-Übersicht
-        </p>
+        </h1>
       </div>
 
-      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="bg-gray-800 overflow-hidden shadow rounded-2xl border border-gray-700 hover:border-purple-500 transition-colors group">
-          <div class="p-5">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 bg-purple-900/50 rounded-md p-3">
-                <div class="text-2xl">🎓</div>
-              </div>
-              <div class="ml-5 w-0 flex-1">
-                <dl>
-                  <dt class="text-sm font-medium text-gray-400 truncate">Studenten</dt>
-                  <dd>
-                    <div class="text-3xl font-medium text-white"><%= @stats.students %></div>
-                  </dd>
-                </dl>
-              </div>
+      <!-- Kennzahlen-Grid -->
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <!-- Studenten -->
+        <div class="bg-[#0f172a] rounded-2xl border border-purple-700/60 shadow-lg shadow-purple-900/30 p-4 flex flex-col justify-between">
+          <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 bg-purple-900/70 rounded-xl p-3">
+              <div class="text-2xl">🎓</div>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400">Studenten</p>
+              <p class="text-3xl font-semibold text-white leading-tight">
+                <%= @stats.students %>
+              </p>
             </div>
           </div>
-          <div class="bg-gray-700/30 px-5 py-3">
-            <.link navigate={~p"/students"} class="text-sm font-medium text-purple-400 hover:text-purple-300">
+          <div class="mt-4 pt-3 border-t border-purple-900/50">
+            <.link navigate={~p"/students"} class="text-sm font-medium text-purple-300 hover:text-purple-200">
               Zur Liste &rarr;
             </.link>
           </div>
         </div>
 
-        <div class="bg-gray-800 overflow-hidden shadow rounded-2xl border border-gray-700 hover:border-blue-500 transition-colors group">
-          <div class="p-5">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 bg-blue-900/50 rounded-md p-3">
-                <div class="text-2xl">📝</div>
-              </div>
-              <div class="ml-5 w-0 flex-1">
-                <dl>
-                  <dt class="text-sm font-medium text-gray-400 truncate">Klausuren (Anstehend)</dt>
-                  <dd>
-                    <div class="text-3xl font-medium text-white">
-                      <%= @stats.klausuren_upcoming %>
-                      <span class="text-sm text-gray-500 font-normal">/ <%= @stats.klausuren_total %></span>
-                    </div>
-                  </dd>
-                </dl>
-              </div>
+        <!-- Klausuren -->
+        <div class="bg-[#0f172a] rounded-2xl border border-blue-700/60 shadow-lg shadow-blue-900/30 p-4 flex flex-col justify-between">
+          <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 bg-blue-900/70 rounded-xl p-3">
+              <div class="text-2xl">📝</div>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400">Klausuren (anstehend / gesamt)</p>
+              <p class="text-3xl font-semibold text-white leading-tight">
+                <%= @stats.klausuren_upcoming %>
+                <span class="text-sm text-gray-400 font-normal">
+                  / <%= @stats.klausuren_total %>
+                </span>
+              </p>
             </div>
           </div>
-          <div class="bg-gray-700/30 px-5 py-3">
-            <.link navigate={~p"/klausuren"} class="text-sm font-medium text-blue-400 hover:text-blue-300">
+          <div class="mt-4 pt-3 border-t border-blue-900/50">
+            <.link navigate={~p"/klausuren"} class="text-sm font-medium text-blue-300 hover:text-blue-200">
               Verwalten &rarr;
             </.link>
           </div>
         </div>
 
-        <div class="bg-gray-800 overflow-hidden shadow rounded-2xl border border-gray-700 hover:border-green-500 transition-colors group">
-          <div class="p-5">
-            <div class="flex items-center">
-              <div class="flex-shrink-0 bg-green-900/50 rounded-md p-3">
-                <div class="text-2xl">📚</div>
-              </div>
-              <div class="ml-5 w-0 flex-1">
-                <dl>
-                  <dt class="text-sm font-medium text-gray-400 truncate">Laufende Arbeiten</dt>
-                  <dd>
-                    <div class="text-3xl font-medium text-white"><%= @stats.theses_active %></div>
-                  </dd>
-                </dl>
-              </div>
+        <!-- Laufende Arbeiten -->
+        <div class="bg-[#0f172a] rounded-2xl border border-emerald-700/60 shadow-lg shadow-emerald-900/30 p-4 flex flex-col justify-between">
+          <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 bg-emerald-900/70 rounded-xl p-3">
+              <div class="text-2xl">📚</div>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400">Laufende Abschlussarbeiten</p>
+              <p class="text-3xl font-semibold text-white leading-tight">
+                <%= @stats.theses_active %>
+              </p>
             </div>
           </div>
-          <div class="bg-gray-700/30 px-5 py-3">
-            <.link navigate={~p"/konkrete_abschlussarbeiten"} class="text-sm font-medium text-green-400 hover:text-green-300">
+          <div class="mt-4 pt-3 border-t border-emerald-900/50">
+            <.link navigate={~p"/konkrete_abschlussarbeiten"} class="text-sm font-medium text-emerald-300 hover:text-emerald-200">
               Zur Liste &rarr;
+            </.link>
+          </div>
+        </div>
+
+        <!-- Alumni -->
+        <div class="bg-[#0f172a] rounded-2xl border border-amber-700/60 shadow-lg shadow-amber-900/30 p-4 flex flex-col justify-between">
+          <div class="flex items-center gap-3">
+            <div class="flex-shrink-0 bg-amber-900/70 rounded-xl p-3">
+              <div class="text-2xl">🎓</div>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400">
+                Alumni (gesamt / Abschlüsse <%= @stats.current_semester %>)
+              </p>
+              <p class="text-3xl font-semibold text-white leading-tight">
+                <%= @stats.alumni_total %>
+                <span class="text-sm text-gray-400 font-normal">
+                  / <%= @stats.alumni_semester.abschlussarbeiten %>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-amber-900/50">
+            <.link navigate={~p"/alumni"} class="text-sm font-medium text-amber-300 hover:text-amber-200">
+              Alumni &rarr;
             </.link>
           </div>
         </div>
       </div>
 
-      <div class="bg-gray-800 overflow-hidden shadow rounded-2xl border border-gray-700">
-        <div class="p-5">
+      <!-- Letzte Klausuren -->
+      <div class="bg-[#020617] rounded-2xl border border-gray-800 overflow-hidden">
+        <div class="p-4 sm:p-5">
           <h2 class="text-lg font-semibold text-white mb-1">
             Letzte Klausuren
           </h2>
@@ -137,17 +163,17 @@ defmodule LehrstuhlWeb.DashboardComponent do
           </p>
 
           <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-700 text-sm">
-              <thead class="bg-gray-900">
+            <table class="min-w-full divide-y divide-gray-800 text-sm">
+              <thead class="bg-[#020617]">
                 <tr>
                   <th class="px-4 py-2 text-left font-medium text-gray-300">Klausur</th>
                   <th class="px-4 py-2 text-left font-medium text-gray-300">Datum</th>
                   <th class="px-4 py-2 text-left font-medium text-gray-300">Teilnehmer</th>
-                  <th class="px-4 py-2 text-left font-medium text-gray-300">Ø-Note</th>
+                  <th class="px-4 py-2 text-left font-medium text-gray-300">Ø‑Note</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-800">
-                <tr :for={k <- @letzte_klausuren} class="hover:bg-gray-900/60">
+                <tr :for={k <- @letzte_klausuren} class="hover:bg-gray-900/70">
                   <td class="px-4 py-2 text-white">
                     <div class="font-medium"><%= k.kenner %></div>
                     <div class="text-xs text-gray-400 truncate max-w-xs">
