@@ -42,7 +42,22 @@ Here you can see the application in action, from the central dashboard to detail
 
 ---
 
-## 🛠 Tech Stack
+## � Documentation
+
+This project includes comprehensive documentation covering the full software development lifecycle:
+
+**📖 [View Full Documentation (Wiki)](https://github.com/Thomas7899/Lehrstuhl-App/wiki)**
+
+| Section | Description |
+|---------|-------------|
+| [Requirements](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Anforderungen-Lehrstuhl%E2%80%90App) | Functional & non-functional requirements (A1–A7) |
+| [Data Model](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Datenhaltung) | Entity-Relationship diagram & database design |
+| [Design Decisions](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Entwurfsentscheidungen-und-Datenmodell) | Architecture choices & implementation rationale |
+| [Evaluation](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Evaluation) | Cognitive Walkthrough usability testing & results |
+
+---
+
+## �🛠 Tech Stack
 
 * **Backend/Frontend:** [Elixir](https://elixir-lang.org/) & [Phoenix Framework](https://www.phoenixframework.org/) (LiveView)
 * **Database:** PostgreSQL
