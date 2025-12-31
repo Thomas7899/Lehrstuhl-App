@@ -12,6 +12,23 @@ The **Lehrstuhl App** helps academic chairs manage their administrative workload
 
 Built with **Elixir** and **Phoenix LiveView**, the application offers real-time updates and a snappy user experience without page reloads.
 
+---
+
+## � Documentation
+
+This project includes comprehensive documentation covering the full software development lifecycle:
+
+**📖 [View Full Documentation (Wiki)](https://github.com/Thomas7899/Lehrstuhl-App/wiki)**
+
+| Section | Description |
+|---------|-------------|
+| [Requirements](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Anforderungen-Lehrstuhl%E2%80%90App) | Functional & non-functional requirements (A1–A7) |
+| [Data Model](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Datenhaltung) | Entity-Relationship diagram & database design |
+| [Design Decisions](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Entwurfsentscheidungen-und-Datenmodell) | Architecture choices & implementation rationale |
+| [Evaluation](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Evaluation) | Cognitive Walkthrough usability testing & results |
+
+---
+
 ### ✨ Key Features
 
 * **dashboard & Analytics:** Get a quick overview of running theses, upcoming exams, and student KPIs. Visualized data includes grade distributions and average performance.
@@ -39,21 +56,6 @@ Here you can see the application in action, from the central dashboard to detail
 |:---:|:---:|
 | ![Filtering Theses](/screenshots/abschlussarbeiten.png) | ![Module Details](/screenshots/module.png) |
 | *Advanced filtering for specific research projects, semesters, and supervisors.* | *Detailed performance tracking, grade averages, and visualization per module.* |
-
----
-
-## � Documentation
-
-This project includes comprehensive documentation covering the full software development lifecycle:
-
-**📖 [View Full Documentation (Wiki)](https://github.com/Thomas7899/Lehrstuhl-App/wiki)**
-
-| Section | Description |
-|---------|-------------|
-| [Requirements](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Anforderungen-Lehrstuhl%E2%80%90App) | Functional & non-functional requirements (A1–A7) |
-| [Data Model](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Datenhaltung) | Entity-Relationship diagram & database design |
-| [Design Decisions](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Entwurfsentscheidungen-und-Datenmodell) | Architecture choices & implementation rationale |
-| [Evaluation](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Evaluation) | Cognitive Walkthrough usability testing & results |
 
 ---
 
