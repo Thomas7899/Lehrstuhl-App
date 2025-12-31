@@ -30,6 +30,21 @@ Traditionelle Verwaltungstools sind oft statisch und langsam. Dieses System nutz
 
 ---
 
+## 📚 Dokumentation
+
+Die vollständige Dokumentation über den gesamten Software-Entwicklungszyklus befindet sich im GitHub Wiki:
+
+🔗 **[Hier klicken: Vollständige Dokumentation (Wiki)](https://github.com/Thomas7899/Lehrstuhl-App/wiki)**
+
+| Sektion | Beschreibung |
+|---------|--------------|
+| [Requirements](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Anforderungen-Lehrstuhl%E2%80%90App) | Funktionale & nicht-funktionale Anforderungen (A1–A7) |
+| [Datenmodell](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Datenhaltung) | ER-Diagramme & Datenbank-Design |
+| [Entwurf](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Entwurfsentscheidungen-und-Datenmodell) | Architekturentscheidungen & Implementierungsdetails |
+| [Evaluation](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Evaluation) | Cognitive Walkthrough Usability-Tests & Ergebnisse |
+
+---
+
 ## ✨ Features
 
 <table>
@@ -105,7 +120,9 @@ Traditionelle Verwaltungstools sind oft statisch und langsam. Dieses System nutz
 
 Die Anwendung folgt dem klassischen **Phoenix Context** Design Pattern, wobei LiveView für die Interaktivität sorgt, ohne dass eine komplexe SPA (Single Page Application) und API-Trennung notwendig ist.
 
+```text
 ┌─────────────────────────────────────────────────────────────────┐ │ BROWSER (Client) │ │ WebSockets (Phoenix Channels) │ │ ▲ │ │ └───────────────────────────┼────┼────────────────────────────────┘ │ ▼ ┌───────────────────────────┼────┼────────────────────────────────┐ │ SERVER │ │ (Phoenix / BEAM VM) │ │ │ │ ┌─────────────────────────────────────────────────────────┐ │ │ │ Web Layer (LiveView) │ │ │ │ DashboardLive │ ThesisLive │ ExamLive │ StudentLive │ │ │ │ (Stateful Processes per User Session) │ │ │ └───────────────────────────┬─────────────────────────────┘ │ │ │ calls │ │ ┌───────────────────────────▼─────────────────────────────┐ │ │ │ Context Layer (Business Logic) │ │ │ │ Theses │ Seminars │ Exams │ Accounts │ Stats │ │ │ └───────────────────────────┬─────────────────────────────┘ │ │ │ uses │ │ ┌───────────────────────────▼─────────────────────────────┐ │ │ │ Schema Layer (Ecto) │ │ │ │ Thesis │ Student │ ExamResult │ User │ Seminar │ │ │ └─────────────────────────────────────────────────────────┘ │ │ │ │ └───────────────────────────────┼─────────────────────────────────┘ │ SQL ┌───────────────────────────────▼─────────────────────────────────┐ │ DATABASE │ │ PostgreSQL │ └─────────────────────────────────────────────────────────────────┘
+```
 
 
 ### 🗂 Datenmodell (ER-Diagramm)
@@ -152,74 +169,90 @@ erDiagram
         Boolean passed
     }
 
-🚀 Installation
-Voraussetzungen
+```
 
-    💧 Elixir 1.14+ (Installationsanleitung)
+---
 
-    📦 Erlang/OTP 25+
+## 🚀 Installation
 
-    🐘 PostgreSQL 15+
+### Voraussetzungen
 
-1️⃣ Repository klonen
-Bash
+- 💧 **Elixir 1.14+** (Installationsanleitung)
+- 📦 **Erlang/OTP 25+**
+- 🐘 **PostgreSQL 15+**
 
-git clone [https://github.com/your-username/lehrstuhl-app.git](https://github.com/your-username/lehrstuhl-app.git)
+### 1️⃣ Repository klonen
+
+```bash
+git clone https://github.com/your-username/lehrstuhl-app.git
 cd lehrstuhl-app
+```
 
-2️⃣ Abhängigkeiten installieren
-Bash
+### 2️⃣ Abhängigkeiten installieren
 
+```bash
 mix deps.get
+```
 
-3️⃣ Datenbank einrichten
+### 3️⃣ Datenbank einrichten
 
-Passe bei Bedarf die config/dev.exs an (Username/Passwort). Dann führe aus:
-Bash
+Passe bei Bedarf die `config/dev.exs` an (Username/Passwort). Dann führe aus:
 
+```bash
 mix ecto.setup
+```
 
-4️⃣ Server starten
-Bash
+### 4️⃣ Server starten
 
+```bash
 mix phx.server
+```
 
-    📍 App läuft auf: http://localhost:4000
+> 📍 App läuft auf: **http://localhost:4000**
 
-🔐 Test-Zugangsdaten
+## 🔐 Test-Zugangsdaten
 
 Um die Admin-Features in der lokalen Version oder der Demo zu testen:
-Rolle	Email	Passwort
-Admin	admin@example.com	password123
-📚 Dokumentation
 
-Detaillierte Dokumentation über den gesamten Software-Lebenszyklus ist im Wiki verfügbar.
-Sektion	Beschreibung
-Requirements	Funktionale & nicht-funktionale Anforderungen (A1–A7)
-Datenmodell	ER-Diagramme & Datenbank-Design
-Entwurf	Architekturentscheidungen & Implementierungsdetails
-Evaluation	Cognitive Walkthrough Usability-Tests & Ergebnisse
-📸 Screenshots
+| Rolle | Email | Passwort |
+|-------|-------|----------|
+| Admin | admin@example.com | password123 |
+
+---
+
+## 📸 Screenshots
 
 Hier ein Einblick in die Anwendung, vom zentralen Dashboard bis zur detaillierten Filterung.
 
-<div align="center"> <h3>🎛️ Zentrales Dashboard</h3> <img src="/screenshots/homepage.png" alt="Dashboard Overview" width="80%"> <p><em>Schneller Überblick über alle administrativen Prozesse und anstehende Aufgaben.</em></p> </div>
-🔍 Abschlussarbeiten Filter	📊 Modul Statistiken
-<img src="/screenshots/abschlussarbeiten.png" width="100%">	<img src="/screenshots/module.png" width="100%">
-Detaillierte Filterung nach Projekt, Semester und Status.	Performance-Tracking und Notenverteilung pro Modul.
-🔮 Roadmap
+<div align="center"> 
+<h3>🎛️ Zentrales Dashboard</h3> 
+<img src="/screenshots/homepage.png" alt="Dashboard Overview" width="80%"> <p><em>Schneller Überblick über alle administrativen Prozesse und anstehende Aufgaben.</em></p> </div>
 
-    [x] ✅ Kernverwaltung für Abschlussarbeiten und Seminare
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <h3>🔍 Abschlussarbeiten Filter</h3>
+      <img src="/screenshots/abschlussarbeiten.png" width="100%">
+      <p>Detaillierte Filterung nach Projekt, Semester und Status.</p>
+    </td>
+    <td width="50%" align="center">
+      <h3>📊 Modul Statistiken</h3>
+      <img src="/screenshots/module.png" width="100%">
+      <p>Performance-Tracking und Notenverteilung pro Modul.</p>
+    </td>
+  </tr>
+</table>
 
-    [x] ✅ CSV Import für Prüfungsnoten
+## 🔮 Roadmap
 
-    [x] ✅ Datenvisualisierung (Notenverteilung)
+- [x] ✅ Kernverwaltung für Abschlussarbeiten und Seminare
+- [x] ✅ CSV Import für Prüfungsnoten
+- [x] ✅ Datenvisualisierung (Notenverteilung)
+- [ ] 📱 Verbesserte Mobile Responsiveness
+- [ ] 📄 PDF Export für Transcripts of Records
+- [ ] 📅 Kalender-Integration für Prüfungstermine
 
-    [ ] 📱 Verbesserte Mobile Responsiveness
-
-    [ ] 📄 PDF Export für Transcripts of Records
-
-    [ ] 📅 Kalender-Integration für Prüfungstermine
+---
 
 <div align="center">
 
