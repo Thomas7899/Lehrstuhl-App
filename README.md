@@ -1,129 +1,228 @@
+<div align="center">
+
 # 🎓 Lehrstuhl App
 
-> An optimized, real-time management system for university faculties to handle theses, seminars, exams, and student data efficiently.
+[![Elixir](https://img.shields.io/badge/Elixir-1.14-purple?style=for-the-badge&logo=elixir)](https://elixir-lang.org/)
+[![Phoenix](https://img.shields.io/badge/Phoenix-1.7-orange?style=for-the-badge&logo=phoenixframework)](https://www.phoenixframework.org/)
+[![LiveView](https://img.shields.io/badge/LiveView-Realtime-red?style=for-the-badge&logo=phoenixframework)](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-**🚀 Live Demo:** [https://lehrstuhl-app.fly.dev/](https://lehrstuhl-app.fly.dev/)
+**Ein optimiertes Echtzeit-Verwaltungssystem für universitäre Fakultäten zur effizienten Handhabung von Abschlussarbeiten, Seminaren und Prüfungen.**
 
----
+[Live Demo](https://lehrstuhl-app.fly.dev/) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Dokumentation](#-dokumentation) • [Architektur](#-architektur)
 
-## 📖 About The Project
-
-The **Lehrstuhl App** helps academic chairs manage their administrative workload. It replaces complex spreadsheets with a centralized, reactive web application. It allows faculty members to easily filter theses, track exam grades, manage seminars, and visualize performance statistics.
-
-Built with **Elixir** and **Phoenix LiveView**, the application offers real-time updates and a snappy user experience without page reloads.
-
----
-
-## � Documentation
-
-This project includes comprehensive documentation covering the full software development lifecycle:
-
-**📖 [View Full Documentation (Wiki)](https://github.com/Thomas7899/Lehrstuhl-App/wiki)**
-
-| Section | Description |
-|---------|-------------|
-| [Requirements](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Anforderungen-Lehrstuhl%E2%80%90App) | Functional & non-functional requirements (A1–A7) |
-| [Data Model](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Datenhaltung) | Entity-Relationship diagram & database design |
-| [Design Decisions](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Entwurfsentscheidungen-und-Datenmodell) | Architecture choices & implementation rationale |
-| [Evaluation](https://github.com/Thomas7899/Lehrstuhl-App/wiki/Evaluation) | Cognitive Walkthrough usability testing & results |
-
----
-
-### ✨ Key Features
-
-* **dashboard & Analytics:** Get a quick overview of running theses, upcoming exams, and student KPIs. Visualized data includes grade distributions and average performance.
-* **Thesis Management:** Sophisticated filtering for Bachelor's and Master's theses by semester, supervisor, research project, or status (Abstract/Concrete).
-* **Exam Administration:** manage exam dates, participants, and import results efficiently via **CSV upload**.
-* **Seminar Finder:** Real-time search functionality for students to find relevant seminars based on titles or topics.
-* **Student Profiles:** Detailed digital files for students, tracking their academic progress and personal information.
-* **Role-Based Access:** Secure login system distinguishing between public views and administrative areas.
-
----
-
-# 📸 Screenshots
-
-Here you can see the application in action, from the central dashboard to detailed filtering and statistical analysis.
-
-<div align="center">
-  <h3>🎛️ Centralized Dashboard</h3>
-  <img src="/screenshots/homepage.png" alt="Dashboard Overview">
-  <p><em>A quick overview of all active administrative processes, student counts, and upcoming tasks.</em></p>
 </div>
 
-<br>
+---
 
-| 🔍 Thesis & Project Filtering | 📊 Module Statistics & Analytics |
-|:---:|:---:|
-| ![Filtering Theses](/screenshots/abschlussarbeiten.png) | ![Module Details](/screenshots/module.png) |
-| *Advanced filtering for specific research projects, semesters, and supervisors.* | *Detailed performance tracking, grade averages, and visualization per module.* |
+## 🎯 Über das Projekt
+
+Die **Lehrstuhl App** hilft akademischen Lehrstühlen dabei, ihren administrativen Aufwand zu bewältigen. Sie ersetzt komplexe Excel-Tabellen durch eine zentralisierte, reaktive Webanwendung. Dozenten können Abschlussarbeiten filtern, Prüfungsnoten erfassen, Seminare verwalten und Leistungsstatistiken visualisieren.
+
+Entwickelt mit **Elixir** und **Phoenix LiveView**, bietet die Anwendung Echtzeit-Updates und eine extrem schnelle Benutzererfahrung ohne Page Reloads.
+
+### 💡 Warum dieses Projekt?
+
+> *"Verwaltung sollte Forschung und Lehre unterstützen, nicht behindern."*
+
+Traditionelle Verwaltungstools sind oft statisch und langsam. Dieses System nutzt die **BEAM VM**, um Tausende von gleichzeitigen Verbindungen zu verwalten und Änderungen (z.B. Seminarbelegung) sofort für alle Nutzer sichtbar zu machen.
 
 ---
 
-## �🛠 Tech Stack
+## ✨ Features
 
-* **Backend/Frontend:** [Elixir](https://elixir-lang.org/) & [Phoenix Framework](https://www.phoenixframework.org/) (LiveView)
-* **Database:** PostgreSQL
-* **Styling:** Tailwind CSS
-* **Deployment:** Fly.io
-* **Visualization:** SVG/CSS Charts
+<table>
+<tr>
+<td width="50%">
 
----
+### 🎓 Abschlussarbeiten & Seminare
+- **Erweitertes Filtering** nach Semester, Betreuer & Projekt
+- **Status-Tracking** (Abstract → Konkret → Abgegeben)
+- **Seminar Finder** mit Echtzeit-Suche für Studenten
+- **Themenvergabe** und Kapazitätsplanung
 
-## 🚀 Getting Started
+</td>
+<td width="50%">
 
-To run this project locally, you will need Elixir and PostgreSQL installed.
+### 📊 Dashboard & Analytics
+- **Echtzeit-KPIs** (Laufende Arbeiten, Ausstehende Prüfungen)
+- **Notenverteilung** (Visualisierung der Durschnittsnoten)
+- **Interaktive Charts** mit SVG/CSS
+- **Modul-Statistiken** zur Leistungsüberwachung
 
-### Prerequisites
+</td>
+</tr>
+<tr>
+<td width="50%">
 
-* Elixir ~> 1.14
-* Erlang/OTP ~> 25
-* PostgreSQL
+### 📝 Prüfungsverwaltung
+- **CSV Import** für schnelle Notenerfassung
+- **Teilnehmerlisten** und Terminverwaltung
+- **Export-Funktionen** für Prüfungsämter
+- **Historie** vergangener Prüfungsperioden
 
-### Installation
+</td>
+<td width="50%">
 
-1.  **Clone the repository**
-    ```sh
-    git clone [https://github.com/your-username/lehrstuhl-app.git](https://github.com/your-username/lehrstuhl-app.git)
-    cd lehrstuhl-app
-    ```
+### 👤 Profile & Sicherheit
+- **Digitale Studentenakte** mit Fortschrittsanzeige
+- **Rollenbasiertes System** (Admin vs. Public View)
+- **Sicheres Login** für Mitarbeiter
+- **DSGVO-konforme** Datenhaltung
 
-2.  **Install dependencies**
-    ```sh
-    mix deps.get
-    ```
-
-3.  **Setup Database**
-    Update your `config/dev.exs` with your database credentials, then run:
-    ```sh
-    mix ecto.setup
-    ```
-
-4.  **Start the Server**
-    ```sh
-    mix phx.server
-    ```
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
----
-
-## 🔐 Test Credentials
-
-To explore the admin features in the live demo or local version, use the following credentials:
-
-* **Email:** `admin@example.com`
-* **Password:** `password123`
+</td>
+</tr>
+</table>
 
 ---
 
-## 🗺 Roadmap
+## 🛠 Tech Stack
 
-- [x] Core management for Theses and Seminars
-- [x] CSV Import for Exam Grades
-- [x] Data Visualization (Grade Distribution)
-- [ ] Improved Mobile Responsiveness
-- [ ] PDF Export for Student Transcripts
-- [ ] Calendar Integration for Exam Dates
+### Core Stack
+
+| Technologie | Version | Verwendung |
+|-------------|---------|------------|
+| **Elixir** | 1.14+ | Funktionale Programmiersprache |
+| **Phoenix** | 1.7+ | Web Framework |
+| **Phoenix LiveView** | 0.19+ | Real-time Frontend Engine |
+| **Ecto** | 3.10+ | Database Wrapper / Query Generator |
+| **PostgreSQL** | 15+ | Datenbank |
+| **Tailwind CSS** | 3.x | Utility-first CSS Framework |
+
+### DevOps & Tools
+
+| Technologie | Verwendung |
+|-------------|------------|
+| **Fly.io** | Cloud Deployment |
+| **Docker** | Containerization (optional) |
+| **Git** | Version Control |
+| **ExUnit** | Testing Framework |
 
 ---
 
+## 🏗 Architektur
+
+Die Anwendung folgt dem klassischen **Phoenix Context** Design Pattern, wobei LiveView für die Interaktivität sorgt, ohne dass eine komplexe SPA (Single Page Application) und API-Trennung notwendig ist.
+
+┌─────────────────────────────────────────────────────────────────┐ │ BROWSER (Client) │ │ WebSockets (Phoenix Channels) │ │ ▲ │ │ └───────────────────────────┼────┼────────────────────────────────┘ │ ▼ ┌───────────────────────────┼────┼────────────────────────────────┐ │ SERVER │ │ (Phoenix / BEAM VM) │ │ │ │ ┌─────────────────────────────────────────────────────────┐ │ │ │ Web Layer (LiveView) │ │ │ │ DashboardLive │ ThesisLive │ ExamLive │ StudentLive │ │ │ │ (Stateful Processes per User Session) │ │ │ └───────────────────────────┬─────────────────────────────┘ │ │ │ calls │ │ ┌───────────────────────────▼─────────────────────────────┐ │ │ │ Context Layer (Business Logic) │ │ │ │ Theses │ Seminars │ Exams │ Accounts │ Stats │ │ │ └───────────────────────────┬─────────────────────────────┘ │ │ │ uses │ │ ┌───────────────────────────▼─────────────────────────────┐ │ │ │ Schema Layer (Ecto) │ │ │ │ Thesis │ Student │ ExamResult │ User │ Seminar │ │ │ └─────────────────────────────────────────────────────────┘ │ │ │ │ └───────────────────────────────┼─────────────────────────────────┘ │ SQL ┌───────────────────────────────▼─────────────────────────────────┐ │ DATABASE │ │ PostgreSQL │ └─────────────────────────────────────────────────────────────────┘
+
+
+### 🗂 Datenmodell (ER-Diagramm)
+
+```mermaid
+erDiagram
+    STUDENT ||--o{ THESIS : writes
+    STUDENT ||--o{ EXAM_RESULT : obtains
+    SEMINAR ||--o{ STUDENT : attends
+    MODULE ||--o{ EXAM : has
+    EXAM ||--o{ EXAM_RESULT : contains
+    USER ||--o{ THESIS : supervises
+
+    STUDENT {
+        UUID id PK
+        String matriculation_number UK
+        String first_name
+        String last_name
+        String email
+        Integer current_semester
+    }
+
+    THESIS {
+        UUID id PK
+        String title
+        String type "Bachelor/Master"
+        String status "Abstract/Concrete/Finished"
+        UUID student_id FK
+        UUID supervisor_id FK
+    }
+
+    EXAM {
+        UUID id PK
+        String name
+        Date date
+        UUID module_id FK
+    }
+
+    EXAM_RESULT {
+        UUID id PK
+        UUID exam_id FK
+        UUID student_id FK
+        Decimal grade
+        Boolean passed
+    }
+
+🚀 Installation
+Voraussetzungen
+
+    💧 Elixir 1.14+ (Installationsanleitung)
+
+    📦 Erlang/OTP 25+
+
+    🐘 PostgreSQL 15+
+
+1️⃣ Repository klonen
+Bash
+
+git clone [https://github.com/your-username/lehrstuhl-app.git](https://github.com/your-username/lehrstuhl-app.git)
+cd lehrstuhl-app
+
+2️⃣ Abhängigkeiten installieren
+Bash
+
+mix deps.get
+
+3️⃣ Datenbank einrichten
+
+Passe bei Bedarf die config/dev.exs an (Username/Passwort). Dann führe aus:
+Bash
+
+mix ecto.setup
+
+4️⃣ Server starten
+Bash
+
+mix phx.server
+
+    📍 App läuft auf: http://localhost:4000
+
+🔐 Test-Zugangsdaten
+
+Um die Admin-Features in der lokalen Version oder der Demo zu testen:
+Rolle	Email	Passwort
+Admin	admin@example.com	password123
+📚 Dokumentation
+
+Detaillierte Dokumentation über den gesamten Software-Lebenszyklus ist im Wiki verfügbar.
+Sektion	Beschreibung
+Requirements	Funktionale & nicht-funktionale Anforderungen (A1–A7)
+Datenmodell	ER-Diagramme & Datenbank-Design
+Entwurf	Architekturentscheidungen & Implementierungsdetails
+Evaluation	Cognitive Walkthrough Usability-Tests & Ergebnisse
+📸 Screenshots
+
+Hier ein Einblick in die Anwendung, vom zentralen Dashboard bis zur detaillierten Filterung.
+
+<div align="center"> <h3>🎛️ Zentrales Dashboard</h3> <img src="/screenshots/homepage.png" alt="Dashboard Overview" width="80%"> <p><em>Schneller Überblick über alle administrativen Prozesse und anstehende Aufgaben.</em></p> </div>
+🔍 Abschlussarbeiten Filter	📊 Modul Statistiken
+<img src="/screenshots/abschlussarbeiten.png" width="100%">	<img src="/screenshots/module.png" width="100%">
+Detaillierte Filterung nach Projekt, Semester und Status.	Performance-Tracking und Notenverteilung pro Modul.
+🔮 Roadmap
+
+    [x] ✅ Kernverwaltung für Abschlussarbeiten und Seminare
+
+    [x] ✅ CSV Import für Prüfungsnoten
+
+    [x] ✅ Datenvisualisierung (Notenverteilung)
+
+    [ ] 📱 Verbesserte Mobile Responsiveness
+
+    [ ] 📄 PDF Export für Transcripts of Records
+
+    [ ] 📅 Kalender-Integration für Prüfungstermine
+
+<div align="center">
+
+Made with ❤️ and ☕ by Thomas Osterlehner
+
+</div>
